@@ -1,20 +1,17 @@
+# files I don't ever see us needing
 **.json
 **.DS_Store
 **.pyc
 **.pyo
-**.grdt
-**.pdf
-**.agr
-**.mod
-**.png
+# folders containing data, half-fininshed calculations, ...
 **/_eigenvectors/**
 **/_interactions/**
 **/_trdens_input_files/**
 **/_ncsd_output/**
 **/_sample_cross_section_files/**
-**/cross_sections/**
-**/raising_lowering/**
-**/trdens_python/**
 **/_Nmax4_ncsmc_output/**
 **/_Nmax6_ncsmc_output/**
 experiment_Li9.txt
+# code in progress, not ready to be added
+**/cross_sections/**
+**/trdens_python/**
