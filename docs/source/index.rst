@@ -2,7 +2,7 @@
 No Pain Shell Model
 ======================
 
-.. mdinclude:: ../../../README.md
+.. mdinclude:: ../../README.md
 
 All Modules
 -----------
