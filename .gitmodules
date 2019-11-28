@@ -1,0 +1,6 @@
+[submodule "ncsd_python"]
+	path = ncsd_python
+	url = https://github.com/callum-mccracken/ncsd_python
+[submodule "ncsmc_python"]
+	path = ncsmc_python
+	url = https://github.com/callum-mccracken/ncsmc_python.git
