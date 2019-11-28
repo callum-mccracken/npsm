@@ -19,5 +19,5 @@ We won't need much, but we will need numpy, matplotlib, ...
 Then, run `tests.py`, to make sure everything worked!
 
 # Python Modules you Should Care About
-
-# Important Notes
+- this one
+- that one

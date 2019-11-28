@@ -10,11 +10,11 @@ All Modules
 .. toctree::
    :maxdepth: 1
 
-   ncsd_python
-   ncsmc_python
-   raising_lowering
-   trdens_python
-   cross_sections
+   table_of_contents/ncsd_python
+   table_of_contents/ncsmc_python
+   table_of_contents/raising_lowering
+   table_of_contents/trdens_python
+   table_of_contents/cross_sections
 
 To Edit these Docs
 ------------------
