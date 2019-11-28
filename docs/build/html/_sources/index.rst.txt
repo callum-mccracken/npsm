@@ -2,7 +2,7 @@
 No Pain Shell Model
 ======================
 
-.. mdinclude:: ../../../README.md
+.. mdinclude:: ../../README.md
 
 All Modules
 -----------
@@ -10,15 +10,11 @@ All Modules
 .. toctree::
    :maxdepth: 1
 
-   constants
-   earth_data
-   genetics
-   geometry
-   optimization
-   plot_funcs
-   sampling
-   tests
-   timer
+   ncsd_python
+   ncsmc_python
+   raising_lowering
+   trdens_python
+   cross_sections
 
 To Edit these Docs
 ------------------
