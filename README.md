@@ -1,6 +1,8 @@
 [See the Detailed Docs](https://callum-mccracken.github.io/npsm/build/html)
 
-# What Is npsm for?
+Welcome to ``npsm``!
+
+# What Is npsm?
 
 We have a whole bunch of different codes to run when doing No Core Shell Model
 calculations, and a bunch of those tasks are easy to do with Python / Bash.

@@ -1,5 +1,5 @@
 ======================
-The OptCov Docs
+No Pain Shell Model
 ======================
 
 .. mdinclude:: ../../../README.md
