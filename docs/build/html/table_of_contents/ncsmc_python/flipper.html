@@ -34,7 +34,6 @@
             
   <div class="section" id="module-ncsmc_python.flipper">
 <span id="flipper-py"></span><h1>flipper.py<a class="headerlink" href="#module-ncsmc_python.flipper" title="Permalink to this headline">¶</a></h1>
-<p>Flipper</p>
 <p>Contains a whole bunch of functions which…</p>
 <ul class="simple">
 <li><p>read ncsmc phase shift output files</p></li>
@@ -46,12 +45,13 @@
 <li><p>allow you to pick out individual channels</p></li>
 </ul>
 <p>This module can be run with</p>
-<p>python flipper.py -f /path/to/some/file (assumes file is not already flipped)</p>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">flipper.py</span> <span class="pre">-f</span> <span class="pre">/path/to/some/file</span></code>
+(assumes file is not already flipped)</p>
 <p>(output is saved in the same spot as the input, with _flipped at the end)</p>
 <dl class="function">
 <dt id="ncsmc_python.flipper.apply_add_mapping">
 <code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">apply_add_mapping</code><span class="sig-paren">(</span><em class="sig-param">line</em>, <em class="sig-param">mapping</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.apply_add_mapping" title="Permalink to this definition">¶</a></dt>
-<dd><p>apply map generated in get_add_map() to a line</p>
+<dd><p>Apply map generated in get_add_map() to a line</p>
 </dd></dl>
 
 <dl class="function">
@@ -126,10 +126,10 @@ of flipped sections don’t have big jumps due to fixing flipping issues.</p>
 to which one in the bottom line, you can use this mapping.</p>
 <p>To apply a column mapping easily, use apply_col_mapping()</p>
 <p>but the ideas is that you just say you just say</p>
-<p>a = top line
-b = bottom line
-map = get_column_map(a, b)
-b = [b[map[i]] for i in range(len(b))]</p>
+<p>a = top line</p>
+<p>b = bottom line</p>
+<p>map = get_column_map(a, b)</p>
+<p>b = [b[map[i]] for i in range(len(b))]</p>
 <p>and then b has the same column order as a.</p>
 </dd></dl>
 

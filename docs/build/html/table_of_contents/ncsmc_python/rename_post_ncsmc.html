@@ -34,23 +34,25 @@
             
   <div class="section" id="module-ncsmc_python.rename_post_ncsmc">
 <span id="rename-post-ncsmc-py"></span><h1>rename_post_ncsmc.py<a class="headerlink" href="#module-ncsmc_python.rename_post_ncsmc" title="Permalink to this headline">¶</a></h1>
-<p>#Rename Post NCSMC</p>
 <p>Module for renaming files created by NCSMC.</p>
 <p>You can add a line to the end of your NCSMC batch script to call this, e.g.</p>
-<p>python /path/to/rename_post_ncsmc.py –projectile=$projectile
-–target=$target –potential=$potential –freq=$freq –Nmax=$Nmax
-–affix=$affix</p>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">/path/to/rename_post_ncsmc.py</span> <span class="pre">--projectile=$projectile</span>
+<span class="pre">--target=$target</span> <span class="pre">--potential=$potential</span> <span class="pre">--freq=$freq</span> <span class="pre">--Nmax=$Nmax</span>
+<span class="pre">--affix=$affix</span></code></p>
 <dl class="function">
 <dt id="ncsmc_python.rename_post_ncsmc.rename_all">
 <code class="sig-prename descclassname">ncsmc_python.rename_post_ncsmc.</code><code class="sig-name descname">rename_all</code><span class="sig-paren">(</span><em class="sig-param">projectile='n'</em>, <em class="sig-param">target='Li8'</em>, <em class="sig-param">potential='n3lo-NN3Nlnl-srg2.0'</em>, <em class="sig-param">freq='20'</em>, <em class="sig-param">Nmax='6'</em>, <em class="sig-param">affix=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.rename_post_ncsmc.rename_all" title="Permalink to this definition">¶</a></dt>
-<dd><p>given a bunch of nucleus details, rename files after running ncsmc</p>
-<p>Example parameters:
-projectile = ‘n’
+<dd><p>Given a bunch of nucleus details, rename files after running ncsmc</p>
+<p>Example parameters:</p>
+<dl class="simple">
+<dt>::</dt><dd><p>projectile = ‘n’
 target = ‘Li8’
 potential = ‘n3lo-NN3Nlnl-srg2.0’
 freq = ‘20’
 Nmax = ‘4’
 affix = ‘’</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>

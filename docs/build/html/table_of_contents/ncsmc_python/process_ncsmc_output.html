@@ -34,8 +34,7 @@
             
   <div class="section" id="module-ncsmc_python.process_ncsmc_output">
 <span id="process-ncsmc-output-py"></span><h1>process_ncsmc_output.py<a class="headerlink" href="#module-ncsmc_python.process_ncsmc_output" title="Permalink to this headline">¶</a></h1>
-<p>#Process NCSMC Output</p>
-<p>a module to consolidate all functions in ncsmc_python, so you can just
+<p>A module to consolidate all functions in ncsmc_python, so you can just
 feed it the NCSMC output, and it gives you a bunch of useful stuff:</p>
 <ul class="simple">
 <li><p>plots of all resonances</p></li>
@@ -43,9 +42,34 @@ feed it the NCSMC output, and it gives you a bunch of useful stuff:</p>
 <li><p>level scheme plot</p></li>
 </ul>
 <dl class="function">
+<dt id="ncsmc_python.process_ncsmc_output.add_nmax_data">
+<code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">add_nmax_data</code><span class="sig-paren">(</span><em class="sig-param">Nmax_list</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.add_nmax_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add data to be plotted on the level scheme for each Nmax in Nmax_list</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="ncsmc_python.process_ncsmc_output.add_resonances">
 <code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">add_resonances</code><span class="sig-paren">(</span><em class="sig-param">Nmax</em>, <em class="sig-param">eigenphase_flipped</em>, <em class="sig-param">channels_str</em>, <em class="sig-param">channel_titles</em>, <em class="sig-param">bound_energies</em>, <em class="sig-param">bound_titles</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.add_resonances" title="Permalink to this definition">¶</a></dt>
-<dd><p>use eigenphase file to find details about resonances</p>
+<dd><p>Use eigenphase file to find details about resonances (widths, energies)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsmc_python.process_ncsmc_output.get_experimental">
+<code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">get_experimental</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.get_experimental" title="Permalink to this definition">¶</a></dt>
+<dd><p>Grab experimental data from a file which must be prepared in advance.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsmc_python.process_ncsmc_output.plot_scheme">
+<code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">plot_scheme</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.plot_scheme" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot a level scheme!</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsmc_python.process_ncsmc_output.select_interesting_channels">
+<code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">select_interesting_channels</code><span class="sig-paren">(</span><em class="sig-param">Nmax</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.select_interesting_channels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get interesting channels (i.e. those channels which contain resonances)
+by using human input in a file.</p>
 </dd></dl>
 
 </div>

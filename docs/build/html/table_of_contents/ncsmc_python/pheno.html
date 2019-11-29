@@ -34,12 +34,30 @@
             
   <div class="section" id="module-ncsmc_python.pheno">
 <span id="pheno-py"></span><h1>pheno.py<a class="headerlink" href="#module-ncsmc_python.pheno" title="Permalink to this headline">¶</a></h1>
-<p>module to do phenomenological adjustment of data</p>
-<p>i.e. it’ll mess with your coupling kernel files</p>
+<p>Module to do phenomenological adjustment of data</p>
+<p>i.e. it’ll mess with your coupling kernel files and re-run ncsmc.</p>
+<dl class="function">
+<dt id="ncsmc_python.pheno.adjust_energy">
+<code class="sig-prename descclassname">ncsmc_python.pheno.</code><code class="sig-name descname">adjust_energy</code><span class="sig-paren">(</span><em class="sig-param">n_points</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.pheno.adjust_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make run directories for a bunch of different energies</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsmc_python.pheno.get_current_state_energy">
+<code class="sig-prename descclassname">ncsmc_python.pheno.</code><code class="sig-name descname">get_current_state_energy</code><span class="sig-paren">(</span><em class="sig-param">coupling_file</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.pheno.get_current_state_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the current energy of the state of interest.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsmc_python.pheno.get_ground_state_energy">
+<code class="sig-prename descclassname">ncsmc_python.pheno.</code><code class="sig-name descname">get_ground_state_energy</code><span class="sig-paren">(</span><em class="sig-param">dot_out_file</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.pheno.get_ground_state_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get ground state energy from ncsmc output.</p>
+</dd></dl>
+
 <dl class="function">
 <dt id="ncsmc_python.pheno.make_run_dir">
 <code class="sig-prename descclassname">ncsmc_python.pheno.</code><code class="sig-name descname">make_run_dir</code><span class="sig-paren">(</span><em class="sig-param">new_energy</em>, <em class="sig-param">old_energy</em>, <em class="sig-param">line_num</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.pheno.make_run_dir" title="Permalink to this definition">¶</a></dt>
-<dd><p>put all necessary files in a run directory</p>
+<dd><p>Put all files needed to run ncsmc in a directory</p>
 </dd></dl>
 
 </div>
