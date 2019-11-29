@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>ncsmc_python &#8212; NPSM 0.0.1 documentation</title>
+    <title>process_ncsmc_output.py &#8212; NPSM 0.0.1 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -14,8 +14,8 @@
     <script type="text/javascript" src="../../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="fitter.py" href="fitter.html" />
-    <link rel="prev" title="ncsd_python" href="../ncsd_python/ncsd_python.html" />
+    <link rel="next" title="rename_post_ncsmc.py" href="rename_post_ncsmc.html" />
+    <link rel="prev" title="pheno.py" href="pheno.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -32,22 +32,22 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="ncsmc-python">
-<h1>ncsmc_python<a class="headerlink" href="#ncsmc-python" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="fitter.html">fitter.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="flipper.html">flipper.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output_simplifier.html">output_simplifier.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pheno.html">pheno.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="process_ncsmc_output.html">process_ncsmc_output.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rename_post_ncsmc.html">rename_post_ncsmc.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="resonance_info.html">resonance_info.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="resonance_plotter.html">resonance_plotter.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scheme_plot.html">scheme_plot.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utils.html">utils.py</a></li>
+  <div class="section" id="module-ncsmc_python.process_ncsmc_output">
+<span id="process-ncsmc-output-py"></span><h1>process_ncsmc_output.py<a class="headerlink" href="#module-ncsmc_python.process_ncsmc_output" title="Permalink to this headline">¶</a></h1>
+<p>#Process NCSMC Output</p>
+<p>a module to consolidate all functions in ncsmc_python, so you can just
+feed it the NCSMC output, and it gives you a bunch of useful stuff:</p>
+<ul class="simple">
+<li><p>plots of all resonances</p></li>
+<li><p>spaghetti plot with interesting resonances</p></li>
+<li><p>level scheme plot</p></li>
 </ul>
-</div>
+<dl class="function">
+<dt id="ncsmc_python.process_ncsmc_output.add_resonances">
+<code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">add_resonances</code><span class="sig-paren">(</span><em class="sig-param">Nmax</em>, <em class="sig-param">eigenphase_flipped</em>, <em class="sig-param">channels_str</em>, <em class="sig-param">channel_titles</em>, <em class="sig-param">bound_energies</em>, <em class="sig-param">bound_titles</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.add_resonances" title="Permalink to this definition">¶</a></dt>
+<dd><p>use eigenphase file to find details about resonances</p>
+</dd></dl>
+
 </div>
 
 
@@ -69,12 +69,12 @@
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">ncsd_python</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">ncsmc_python</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="ncsmc_python.html">ncsmc_python</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="fitter.html">fitter.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="flipper.html">flipper.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="output_simplifier.html">output_simplifier.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pheno.html">pheno.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="process_ncsmc_output.html">process_ncsmc_output.py</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">process_ncsmc_output.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rename_post_ncsmc.html">rename_post_ncsmc.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resonance_info.html">resonance_info.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resonance_plotter.html">resonance_plotter.py</a></li>
@@ -91,8 +91,10 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../ncsd_python/ncsd_python.html" title="previous chapter">ncsd_python</a></li>
-      <li>Next: <a href="fitter.html" title="next chapter">fitter.py</a></li>
+  <li><a href="ncsmc_python.html">ncsmc_python</a><ul>
+      <li>Previous: <a href="pheno.html" title="previous chapter">pheno.py</a></li>
+      <li>Next: <a href="rename_post_ncsmc.html" title="next chapter">rename_post_ncsmc.py</a></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>
@@ -126,7 +128,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../../_sources/table_of_contents/ncsmc_python/ncsmc_python.rst.txt"
+      <a href="../../_sources/table_of_contents/ncsmc_python/process_ncsmc_output.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

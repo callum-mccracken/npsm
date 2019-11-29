@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>ncsmc_python &#8212; NPSM 0.0.1 documentation</title>
+    <title>rename_post_ncsmc.py &#8212; NPSM 0.0.1 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -14,8 +14,8 @@
     <script type="text/javascript" src="../../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="fitter.py" href="fitter.html" />
-    <link rel="prev" title="ncsd_python" href="../ncsd_python/ncsd_python.html" />
+    <link rel="next" title="resonance_info.py" href="resonance_info.html" />
+    <link rel="prev" title="process_ncsmc_output.py" href="process_ncsmc_output.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -32,22 +32,27 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="ncsmc-python">
-<h1>ncsmc_python<a class="headerlink" href="#ncsmc-python" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="fitter.html">fitter.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="flipper.html">flipper.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output_simplifier.html">output_simplifier.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pheno.html">pheno.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="process_ncsmc_output.html">process_ncsmc_output.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rename_post_ncsmc.html">rename_post_ncsmc.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="resonance_info.html">resonance_info.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="resonance_plotter.html">resonance_plotter.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scheme_plot.html">scheme_plot.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utils.html">utils.py</a></li>
-</ul>
-</div>
+  <div class="section" id="module-ncsmc_python.rename_post_ncsmc">
+<span id="rename-post-ncsmc-py"></span><h1>rename_post_ncsmc.py<a class="headerlink" href="#module-ncsmc_python.rename_post_ncsmc" title="Permalink to this headline">¶</a></h1>
+<p>#Rename Post NCSMC</p>
+<p>Module for renaming files created by NCSMC.</p>
+<p>You can add a line to the end of your NCSMC batch script to call this, e.g.</p>
+<p>python /path/to/rename_post_ncsmc.py –projectile=$projectile
+–target=$target –potential=$potential –freq=$freq –Nmax=$Nmax
+–affix=$affix</p>
+<dl class="function">
+<dt id="ncsmc_python.rename_post_ncsmc.rename_all">
+<code class="sig-prename descclassname">ncsmc_python.rename_post_ncsmc.</code><code class="sig-name descname">rename_all</code><span class="sig-paren">(</span><em class="sig-param">projectile='n'</em>, <em class="sig-param">target='Li8'</em>, <em class="sig-param">potential='n3lo-NN3Nlnl-srg2.0'</em>, <em class="sig-param">freq='20'</em>, <em class="sig-param">Nmax='6'</em>, <em class="sig-param">affix=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.rename_post_ncsmc.rename_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>given a bunch of nucleus details, rename files after running ncsmc</p>
+<p>Example parameters:
+projectile = ‘n’
+target = ‘Li8’
+potential = ‘n3lo-NN3Nlnl-srg2.0’
+freq = ‘20’
+Nmax = ‘4’
+affix = ‘’</p>
+</dd></dl>
+
 </div>
 
 
@@ -69,13 +74,13 @@
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">ncsd_python</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">ncsmc_python</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="ncsmc_python.html">ncsmc_python</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="fitter.html">fitter.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="flipper.html">flipper.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="output_simplifier.html">output_simplifier.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pheno.html">pheno.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="process_ncsmc_output.html">process_ncsmc_output.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rename_post_ncsmc.html">rename_post_ncsmc.py</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">rename_post_ncsmc.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resonance_info.html">resonance_info.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resonance_plotter.html">resonance_plotter.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scheme_plot.html">scheme_plot.py</a></li>
@@ -91,8 +96,10 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../ncsd_python/ncsd_python.html" title="previous chapter">ncsd_python</a></li>
-      <li>Next: <a href="fitter.html" title="next chapter">fitter.py</a></li>
+  <li><a href="ncsmc_python.html">ncsmc_python</a><ul>
+      <li>Previous: <a href="process_ncsmc_output.html" title="previous chapter">process_ncsmc_output.py</a></li>
+      <li>Next: <a href="resonance_info.html" title="next chapter">resonance_info.py</a></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>
@@ -126,7 +133,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../../_sources/table_of_contents/ncsmc_python/ncsmc_python.rst.txt"
+      <a href="../../_sources/table_of_contents/ncsmc_python/rename_post_ncsmc.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

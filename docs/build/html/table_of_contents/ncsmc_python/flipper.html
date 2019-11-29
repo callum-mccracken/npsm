@@ -14,7 +14,7 @@
     <script type="text/javascript" src="../../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="raising_lowering" href="../raising_lowering/raising_lowering.html" />
+    <link rel="next" title="output_simplifier.py" href="output_simplifier.html" />
     <link rel="prev" title="fitter.py" href="fitter.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -34,7 +34,7 @@
             
   <div class="section" id="module-ncsmc_python.flipper">
 <span id="flipper-py"></span><h1>flipper.py<a class="headerlink" href="#module-ncsmc_python.flipper" title="Permalink to this headline">¶</a></h1>
-<p>#Flipper</p>
+<p>Flipper</p>
 <p>Contains a whole bunch of functions which…</p>
 <ul>
 <li><p>read ncsmc phase shift output files</p></li>
@@ -165,7 +165,7 @@ channels have the same length as the energy list!</p>
 <dl class="function">
 <dt id="ncsmc_python.flipper.separate_into_megasections">
 <code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">separate_into_megasections</code><span class="sig-paren">(</span><em class="sig-param">sections</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.separate_into_megasections" title="Permalink to this definition">¶</a></dt>
-<dd><p>maybe calling them megasections was a little dramatic,
+<dd><p>Maybe calling them megasections was a little dramatic,
 but megasections are the sections of the input file separated by titles,
 rather than sections, which are separated by changing line length</p>
 <p>e.g. the input looks like:
@@ -214,31 +214,11 @@ throughout a megasection!</p>
 <dl class="function">
 <dt id="ncsmc_python.flipper.separate_into_sections">
 <code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">separate_into_sections</code><span class="sig-paren">(</span><em class="sig-param">list_of_nums</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.separate_into_sections" title="Permalink to this definition">¶</a></dt>
-<dd><p>returns sections of the file based on line length</p>
+<dd><p>Returns sections of the file based on line length</p>
 <p>e.g. if your file looks like
-[</p>
-<blockquote>
-<div><p>[1, 2],
-[1, 2],
-[1, 2, 3, 4],
-[1, 2, 3, 4]</p>
-</div></blockquote>
-<p>]</p>
+[[1, 2], [1, 2], [1, 2, 3, 4], [1, 2, 3, 4]]</p>
 <p>then this will return</p>
-<dl>
-<dt>[</dt><dd><dl class="simple">
-<dt>[</dt><dd><p>[1, 2],
-[1, 2]</p>
-</dd>
-</dl>
-<blockquote>
-<div><p>[1, 2, 3, 4],
-[1, 2, 3, 4]</p>
-</div></blockquote>
-<p>]</p>
-</dd>
-</dl>
-<p>]</p>
+<p>[[[1, 2], [1, 2]], [[1, 2, 3, 4], [1, 2, 3, 4]]]</p>
 <p>I do realize some sections might have the same lengths, one after the other
 (especially at the interface between megasections) and that is dealt with.</p>
 </dd></dl>
@@ -282,6 +262,7 @@ making sure to put the text lines (i.e. titles) back in the right spots</p>
 <li class="toctree-l1 current"><a class="reference internal" href="ncsmc_python.html">ncsmc_python</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="fitter.html">fitter.py</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">flipper.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_simplifier.html">output_simplifier.py</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../raising_lowering/raising_lowering.html">raising_lowering</a></li>
@@ -295,7 +276,7 @@ making sure to put the text lines (i.e. titles) back in the right spots</p>
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="ncsmc_python.html">ncsmc_python</a><ul>
       <li>Previous: <a href="fitter.html" title="previous chapter">fitter.py</a></li>
-      <li>Next: <a href="../raising_lowering/raising_lowering.html" title="next chapter">raising_lowering</a></li>
+      <li>Next: <a href="output_simplifier.html" title="next chapter">output_simplifier.py</a></li>
   </ul></li>
   </ul></li>
 </ul>

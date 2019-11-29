@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>ncsmc_python &#8212; NPSM 0.0.1 documentation</title>
+    <title>scheme_plot.py &#8212; NPSM 0.0.1 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -14,8 +14,8 @@
     <script type="text/javascript" src="../../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="fitter.py" href="fitter.html" />
-    <link rel="prev" title="ncsd_python" href="../ncsd_python/ncsd_python.html" />
+    <link rel="next" title="utils.py" href="utils.html" />
+    <link rel="prev" title="resonance_plotter.py" href="resonance_plotter.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -32,22 +32,27 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="ncsmc-python">
-<h1>ncsmc_python<a class="headerlink" href="#ncsmc-python" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="fitter.html">fitter.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="flipper.html">flipper.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output_simplifier.html">output_simplifier.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pheno.html">pheno.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="process_ncsmc_output.html">process_ncsmc_output.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rename_post_ncsmc.html">rename_post_ncsmc.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="resonance_info.html">resonance_info.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="resonance_plotter.html">resonance_plotter.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scheme_plot.html">scheme_plot.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utils.html">utils.py</a></li>
-</ul>
-</div>
+  <div class="section" id="module-ncsmc_python.scheme_plot">
+<span id="scheme-plot-py"></span><h1>scheme_plot.py<a class="headerlink" href="#module-ncsmc_python.scheme_plot" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="ncsmc_python.scheme_plot.linewidth_from_data_units">
+<code class="sig-prename descclassname">ncsmc_python.scheme_plot.</code><code class="sig-name descname">linewidth_from_data_units</code><span class="sig-paren">(</span><em class="sig-param">linewidth</em>, <em class="sig-param">axis</em>, <em class="sig-param">reference='y'</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.scheme_plot.linewidth_from_data_units" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a linewidth in data units to linewidth in points.
+(many thanks to stack exchange!)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsmc_python.scheme_plot.plot_levels">
+<code class="sig-prename descclassname">ncsmc_python.scheme_plot.</code><code class="sig-name descname">plot_levels</code><span class="sig-paren">(</span><em class="sig-param">energies</em>, <em class="sig-param">widths</em>, <em class="sig-param">channel_titles</em>, <em class="sig-param">main_title</em>, <em class="sig-param">min_y</em>, <em class="sig-param">max_y</em>, <em class="sig-param">ax=None</em>, <em class="sig-param">y_label='Energy ($MeV$)'</em>, <em class="sig-param">colors=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.scheme_plot.plot_levels" title="Permalink to this definition">¶</a></dt>
+<dd><p>makes a plot of a single level scheme</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsmc_python.scheme_plot.plot_multi_levels">
+<code class="sig-prename descclassname">ncsmc_python.scheme_plot.</code><code class="sig-name descname">plot_multi_levels</code><span class="sig-paren">(</span><em class="sig-param">energies_list</em>, <em class="sig-param">widths_list</em>, <em class="sig-param">channel_title_list</em>, <em class="sig-param">main_title_list</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.scheme_plot.plot_multi_levels" title="Permalink to this definition">¶</a></dt>
+<dd><p>make plots of many different spectra on one figure</p>
+</dd></dl>
+
 </div>
 
 
@@ -69,7 +74,7 @@
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">ncsd_python</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">ncsmc_python</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="ncsmc_python.html">ncsmc_python</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="fitter.html">fitter.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="flipper.html">flipper.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="output_simplifier.html">output_simplifier.py</a></li>
@@ -78,7 +83,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rename_post_ncsmc.html">rename_post_ncsmc.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resonance_info.html">resonance_info.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resonance_plotter.html">resonance_plotter.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scheme_plot.html">scheme_plot.py</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">scheme_plot.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="utils.html">utils.py</a></li>
 </ul>
 </li>
@@ -91,8 +96,10 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../ncsd_python/ncsd_python.html" title="previous chapter">ncsd_python</a></li>
-      <li>Next: <a href="fitter.html" title="next chapter">fitter.py</a></li>
+  <li><a href="ncsmc_python.html">ncsmc_python</a><ul>
+      <li>Previous: <a href="resonance_plotter.html" title="previous chapter">resonance_plotter.py</a></li>
+      <li>Next: <a href="utils.html" title="next chapter">utils.py</a></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>
@@ -126,7 +133,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../../_sources/table_of_contents/ncsmc_python/ncsmc_python.rst.txt"
+      <a href="../../_sources/table_of_contents/ncsmc_python/scheme_plot.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
