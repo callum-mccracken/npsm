@@ -35,22 +35,28 @@
   <div class="section" id="ncsd-python">
 <h1>ncsd_python<a class="headerlink" href="#ncsd-python" title="Permalink to this headline">¶</a></h1>
 <p>There are two top-level modules here and two sub-modules.</p>
-<span class="target" id="module-ncsd_python.ncsd_multi"></span><p>ncsd_multi.py: facilitates running ncsd-it.exe with many nuclei</p>
+<span class="target" id="module-ncsd_python.ncsd_multi"></span><div class="section" id="ncsd-multi-py">
+<h2>ncsd_multi.py<a class="headerlink" href="#ncsd-multi-py" title="Permalink to this headline">¶</a></h2>
+<p>A module to facilitate running <code class="docutils literal notranslate"><span class="pre">ncsd</span></code> with many nuclei</p>
 <ul class="simple">
-<li><p>takes sets of inputs for ncsd-it.exe runs</p></li>
 <li><dl class="simple">
-<dt>then, for each run:</dt><dd><ul>
-<li><p>makes a folder so each run’s output is contained, copies exe file</p></li>
-<li><p>makes a bunch of mfdp.dat files to complete each run</p></li>
-<li><p>runs each process at the end, if desired</p></li>
+<dt>takes sets of inputs for multiple <code class="docutils literal notranslate"><span class="pre">ncsd</span></code> runs. Then, for each run:</dt><dd><ul>
+<li><p>makes a folder so each run’s output is contained, copies <code class="docutils literal notranslate"><span class="pre">.exe</span></code> file</p></li>
+<li><p>makes a bunch of <code class="docutils literal notranslate"><span class="pre">mfdp.dat</span></code> files to complete each run</p></li>
+<li><p>runs each process at the end, if desired.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p>more details in README.md</p></li>
 </ul>
-<span class="target" id="module-ncsd_python.output_exporter"></span><p>Module for helping to deal with data from NCSD output files,
-and export that data to different formats.</p>
+</div>
+<span class="target" id="module-ncsd_python.output_exporter"></span><div class="section" id="output-exporter-py">
+<h2>output_exporter.py<a class="headerlink" href="#output-exporter-py" title="Permalink to this headline">¶</a></h2>
+<p>A module for helping to deal with data from NCSD output files,
+and export that data to different formats (e.g. png plots, xmgrace files).</p>
+<p>You can run this file by adjusting some parameters within it first,
+or by just running <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">output_exporter.py</span> <span class="pre">-f</span> <span class="pre">filename</span></code>, if you’re okay
+with default values.</p>
 <dl class="function">
 <dt id="ncsd_python.output_exporter.make_plot_files">
 <code class="sig-prename descclassname">ncsd_python.output_exporter.</code><code class="sig-name descname">make_plot_files</code><span class="sig-paren">(</span><em class="sig-param">output_paths=[], save_dir=None, out_types=['xmgrace'], skip_Nmax=[], max_state=1e+100, get_online_data=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.output_exporter.make_plot_files" title="Permalink to this definition">¶</a></dt>
@@ -60,6 +66,7 @@ and exports the data to each format listed in out_types.</p>
 <p>max_state = maximum numbered state to consider</p>
 </dd></dl>
 
+</div>
 <div class="section" id="multi-modules">
 <h2>multi_modules<a class="headerlink" href="#multi-modules" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
