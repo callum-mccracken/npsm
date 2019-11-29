@@ -36,16 +36,21 @@
 <span id="flipper-py"></span><h1>flipper.py<a class="headerlink" href="#module-ncsmc_python.flipper" title="Permalink to this headline">¶</a></h1>
 <p>Flipper</p>
 <p>Contains a whole bunch of functions which…</p>
-<ul>
+<ul class="simple">
 <li><p>read ncsmc phase shift output files</p></li>
 <li><p>clean them up for processing</p></li>
 <li><p>remove unphysical jumps in the data caused by “wrapping”
 (e.g. -89.8, -89.9, 89.9)</p></li>
-<li><p>reorder columns so that they are consistent as one scrolls down
-- (This was deprecated, but the functions still</p>
-<blockquote>
-<div><p>exist in case you want to use them later)</p>
-</div></blockquote>
+<li><dl class="simple">
+<dt>reorder columns so that they are consistent as one scrolls down</dt><dd><ul>
+<li><dl class="simple">
+<dt>(This was deprecated, but the functions still </dt><dd><p>exist in case you want to use them later)</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
 </li>
 <li><p>allow you to pick out individual channels</p></li>
 </ul>
@@ -125,13 +130,7 @@ of flipped sections don’t have big jumps due to fixing flipping issues.</p>
 <dt id="ncsmc_python.flipper.get_column_map">
 <code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">get_column_map</code><span class="sig-paren">(</span><em class="sig-param">top_line</em>, <em class="sig-param">bottom_line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.get_column_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>get a dict of the form</p>
-<dl class="simple">
-<dt>map ={</dt><dd><p>0: index0,
-1: index1,
-…</p>
-</dd>
-</dl>
-<p>}</p>
+<p>map ={0: index0, 1: index1, …}</p>
 <p>so if you’re wondering what column in the top line corresponds
 to which one in the bottom line, you can use this mapping.</p>
 <p>To apply a column mapping easily, use apply_col_mapping()</p>
@@ -169,45 +168,10 @@ channels have the same length as the energy list!</p>
 but megasections are the sections of the input file separated by titles,
 rather than sections, which are separated by changing line length</p>
 <p>e.g. the input looks like:
-[</p>
-<blockquote>
-<div><dl class="simple">
-<dt>[</dt><dd><p>[1, 2],
-[1, 2]</p>
-</dd>
-</dl>
-<p>],
-[</p>
-<blockquote>
-<div><p>[1, 3, 4, 6]</p>
-</div></blockquote>
-<p>],
-# there must have been a title here since the next line is smaller
-[</p>
-<blockquote>
-<div><p>[1, 2]</p>
-</div></blockquote>
-<p>]</p>
-</div></blockquote>
-<p>]
+[[[1, 2], [1, 2]], [[1, 3, 4, 6]],[[1, 2]]]
 –&gt; the megasections are:</p>
-<dl>
-<dt>[</dt><dd><dl class="simple">
-<dt>[</dt><dd><p>[1, 2],
-[1, 2],
-[1, 3, 4, 6]</p>
-</dd>
-</dl>
-<p>],
-[</p>
-<blockquote>
-<div><p>[1, 2]</p>
-</div></blockquote>
-<p>]</p>
-</dd>
-</dl>
-<p>]
-When combining sections, also make sure that energy is monotonic
+<p>[[[1, 2],[1, 2],[1, 3, 4, 6]],[[1, 2]]]</p>
+<p>When combining sections, also make sure that energy is monotonic
 throughout a megasection!</p>
 </dd></dl>
 
@@ -259,12 +223,7 @@ making sure to put the text lines (i.e. titles) back in the right spots</p>
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">ncsd_python</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="ncsmc_python.html">ncsmc_python</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="fitter.html">fitter.py</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">flipper.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="output_simplifier.html">output_simplifier.py</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="reference internal" href="ncsmc_python.html">ncsmc_python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../raising_lowering/raising_lowering.html">raising_lowering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../trdens_python/trdens_python.html">trdens_python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cross_sections/cross_sections.html">cross_sections</a></li>
