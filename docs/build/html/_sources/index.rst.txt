@@ -8,13 +8,13 @@ All Modules
 -----------
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
-   table_of_contents/ncsd_python
-   table_of_contents/ncsmc_python
-   table_of_contents/raising_lowering
-   table_of_contents/trdens_python
-   table_of_contents/cross_sections
+   table_of_contents/ncsd_python/ncsd_python
+   table_of_contents/ncsmc_python/ncsmc_python
+   table_of_contents/raising_lowering/raising_lowering
+   table_of_contents/trdens_python/trdens_python
+   table_of_contents/cross_sections/cross_sections
 
 To Edit these Docs
 ------------------
