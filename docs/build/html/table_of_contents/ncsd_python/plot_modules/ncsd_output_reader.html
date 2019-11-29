@@ -34,24 +34,32 @@
             
   <div class="section" id="module-ncsd_python.plot_modules.ncsd_output_reader">
 <span id="ncsd-output-reader-py"></span><h1>ncsd_output_reader.py<a class="headerlink" href="#module-ncsd_python.plot_modules.ncsd_output_reader" title="Permalink to this headline">¶</a></h1>
-<p>-contains function which gets important data from ncsd output files
--also contains a couple small functions for getting names of nuclei</p>
+<p>Contains function which reads data from ncsd output files.
+Also contains a couple small functions for getting names of nuclei.</p>
+<dl class="function">
+<dt id="ncsd_python.plot_modules.ncsd_output_reader.element_name">
+<code class="sig-prename descclassname">ncsd_python.plot_modules.ncsd_output_reader.</code><code class="sig-name descname">element_name</code><span class="sig-paren">(</span><em class="sig-param">Z</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.ncsd_output_reader.element_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the name of an element, e.g. element_name(1) = “H”.</p>
+</dd></dl>
+
 <dl class="function">
 <dt id="ncsd_python.plot_modules.ncsd_output_reader.nucleus_name">
 <code class="sig-prename descclassname">ncsd_python.plot_modules.ncsd_output_reader.</code><code class="sig-name descname">nucleus_name</code><span class="sig-paren">(</span><em class="sig-param">Z</em>, <em class="sig-param">N</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.ncsd_output_reader.nucleus_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>returns the name of a nucleus in ‘Li8’ style</p>
+<dd><p>Returns the name of a nucleus in ‘Li8’ style</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsd_python.plot_modules.ncsd_output_reader.read_all_ncsd_output">
 <code class="sig-prename descclassname">ncsd_python.plot_modules.ncsd_output_reader.</code><code class="sig-name descname">read_all_ncsd_output</code><span class="sig-paren">(</span><em class="sig-param">real_paths</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.ncsd_output_reader.read_all_ncsd_output" title="Permalink to this definition">¶</a></dt>
-<dd><p>runs read_ncsd_output for many paths, tries to merge data</p>
+<dd><p>Runs read_ncsd_output for many paths in case you have a few different files,
+tries to merge data at the end.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsd_python.plot_modules.ncsd_output_reader.read_ncsd_output">
 <code class="sig-prename descclassname">ncsd_python.plot_modules.ncsd_output_reader.</code><code class="sig-name descname">read_ncsd_output</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.ncsd_output_reader.read_ncsd_output" title="Permalink to this definition">¶</a></dt>
-<dd><p>eventually returns a dict of the form:</p>
+<dd><p>Parses ncsd output.</p>
+<p>Eventually returns a dict of the form:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;element_name&quot;</span><span class="p">:</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span>
     <span class="s2">&quot;nucleus_name&quot;</span><span class="p">:</span> <span class="s2">&quot;B11&quot;</span><span class="p">,</span>

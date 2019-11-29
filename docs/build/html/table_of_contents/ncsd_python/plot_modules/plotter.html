@@ -72,21 +72,30 @@
 </pre></div>
 </div>
 <dl class="function">
+<dt id="ncsd_python.plot_modules.plotter.export_data">
+<code class="sig-prename descclassname">ncsd_python.plot_modules.plotter.</code><code class="sig-name descname">export_data</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">save_dir</em>, <em class="sig-param">grace_plotter_path</em>, <em class="sig-param">out_type='xmgrace'</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.plotter.export_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Produces output in a bunch of different ways.</p>
+<p>Valid output types: “xmgrace”, “csv”, “matplotlib”</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="ncsd_python.plot_modules.plotter.matplotlib_plot">
 <code class="sig-prename descclassname">ncsd_python.plot_modules.plotter.</code><code class="sig-name descname">matplotlib_plot</code><span class="sig-paren">(</span><em class="sig-param">input_data</em>, <em class="sig-param">save_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.plotter.matplotlib_plot" title="Permalink to this definition">¶</a></dt>
-<dd><p>makes a matplotlib style plot of our data</p>
+<dd><p>Makes a matplotlib style plot of our data, saves as <code class="docutils literal notranslate"><span class="pre">.png</span></code></p>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsd_python.plot_modules.plotter.write_csv">
 <code class="sig-prename descclassname">ncsd_python.plot_modules.plotter.</code><code class="sig-name descname">write_csv</code><span class="sig-paren">(</span><em class="sig-param">input_data</em>, <em class="sig-param">save_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.plotter.write_csv" title="Permalink to this definition">¶</a></dt>
-<dd><p>creates a csv file containing useful data, for easier parsing later</p>
+<dd><p>Creates a csv file containing useful data, for easier parsing later</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsd_python.plot_modules.plotter.write_xmgrace">
 <code class="sig-prename descclassname">ncsd_python.plot_modules.plotter.</code><code class="sig-name descname">write_xmgrace</code><span class="sig-paren">(</span><em class="sig-param">input_data</em>, <em class="sig-param">save_dir</em>, <em class="sig-param">grace_plotter_path</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.plotter.write_xmgrace" title="Permalink to this definition">¶</a></dt>
-<dd><p>creates a file which can be used by xmgrace</p>
+<dd><p>Creates a <code class="docutils literal notranslate"><span class="pre">.agr</span></code> file which can be plotted by <code class="docutils literal notranslate"><span class="pre">xmgrace</span></code>,
+or rather just a <code class="docutils literal notranslate"><span class="pre">.grdt</span></code> file,
+which you have to convert to <code class="docutils literal notranslate"><span class="pre">.agr</span></code> using <code class="docutils literal notranslate"><span class="pre">grace_plotter.exe</span></code>.</p>
 </dd></dl>
 
 </div>

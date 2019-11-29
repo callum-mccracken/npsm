@@ -34,34 +34,42 @@
             
   <div class="section" id="module-ncsd_python.multi_modules.parameter_calculations">
 <span id="parameter-calculations-py"></span><h1>parameter_calculations.py<a class="headerlink" href="#module-ncsd_python.multi_modules.parameter_calculations" title="Permalink to this headline">¶</a></h1>
-<p>Module for calculating parameters for files from user input
-as well as the mfdp template file</p>
+<p>A module for calculating parameters to be used in ncsd run files,
+using manual parameters.</p>
 <dl class="function">
 <dt id="ncsd_python.multi_modules.parameter_calculations.Ngs_func">
 <code class="sig-prename descclassname">ncsd_python.multi_modules.parameter_calculations.</code><code class="sig-name descname">Ngs_func</code><span class="sig-paren">(</span><em class="sig-param">Z</em>, <em class="sig-param">N</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.parameter_calculations.Ngs_func" title="Permalink to this definition">¶</a></dt>
-<dd><p>calculates Ngs: number of excitations in ground state</p>
-<p>but I didn’t want to call this function Ngs, so I could use
-Ngs for the variable later</p>
+<dd><p>Calculates Ngs: number of excitations in the ground state</p>
+<p>I didn’t want to call this function Ngs, so I could use
+Ngs as a variable later.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsd_python.multi_modules.parameter_calculations.Nmin_HO">
 <code class="sig-prename descclassname">ncsd_python.multi_modules.parameter_calculations.</code><code class="sig-name descname">Nmin_HO</code><span class="sig-paren">(</span><em class="sig-param">Z</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.parameter_calculations.Nmin_HO" title="Permalink to this definition">¶</a></dt>
-<dd><p>helper function for Ngs_func</p>
+<dd><p>Helper function for Ngs_func</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsd_python.multi_modules.parameter_calculations.calc_params">
-<code class="sig-prename descclassname">ncsd_python.multi_modules.parameter_calculations.</code><code class="sig-name descname">calc_params</code><span class="sig-paren">(</span><em class="sig-param">MinParams instance</em>, <em class="sig-param">MFDPParams instance</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.parameter_calculations.calc_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>–&gt; MFDPParams, BatchParams to be written into a folder for an NCSD run</p>
-<p>Calculates all parameters needed for an NCSD run, using manual
-parameters input by the user (man_params) and a set of defaults</p>
+<code class="sig-prename descclassname">ncsd_python.multi_modules.parameter_calculations.</code><code class="sig-name descname">calc_params</code><span class="sig-paren">(</span><em class="sig-param">run_dir</em>, <em class="sig-param">paths</em>, <em class="sig-param">man_params</em>, <em class="sig-param">default_params</em>, <em class="sig-param">machine</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.parameter_calculations.calc_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates all parameters needed for an NCSD run, using manual
+parameters input by the user (man_params) and a set of default_params.</p>
+<ul class="simple">
+<li><p>run_dir = the directory where the files will be stored</p></li>
+<li><p>paths = list containing
+- interaction files directory
+- path to ncsd executable
+- path to output_exporter module</p></li>
+</ul>
+<p>Returns MFDPParams, BatchParams objects,
+to be written into a folder for an NCSD run.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsd_python.multi_modules.parameter_calculations.nucleus">
 <code class="sig-prename descclassname">ncsd_python.multi_modules.parameter_calculations.</code><code class="sig-name descname">nucleus</code><span class="sig-paren">(</span><em class="sig-param">Z</em>, <em class="sig-param">N</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.parameter_calculations.nucleus" title="Permalink to this definition">¶</a></dt>
-<dd><p>returns the name of a nucleus in ‘Li8’ style</p>
+<dd><p>Returns the name of a nucleus in ‘Li8’ style</p>
 </dd></dl>
 
 </div>
