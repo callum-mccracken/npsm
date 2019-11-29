@@ -44,15 +44,35 @@ calculations, and a bunch of those tasks are easy to do with Python / Bash.</p>
 <div class="section" id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <p>First clone the <a class="reference external" href="https://github.com/callum-mccracken/npsm.git">github repository</a></p>
-<p>Make sure you have some kind of way to download python packages, e.g. pip, Anaconda.
-We won’t need much, but we will need numpy, matplotlib, …</p>
+<p>Make sure you have some kind of way to download python packages, e.g. pip.
+We won’t need much, but we will need numpy, matplotlib, maybe a few others.</p>
 <p>Then, run <code class="docutils literal notranslate"><span class="pre">tests.py</span></code>, to make sure everything worked!</p>
 </div>
-<div class="section" id="python-modules-you-should-care-about">
-<h2>Python Modules you Should Care About<a class="headerlink" href="#python-modules-you-should-care-about" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="main-things-that-npsm-should-do">
+<h2>Main Things That npsm Should Do<a class="headerlink" href="#main-things-that-npsm-should-do" title="Permalink to this headline">¶</a></h2>
+<p>(should != does, this is just the outline of what I’d like it to eventually do)</p>
 <ul class="simple">
-<li><p>this one</p></li>
-<li><p>that one</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">ncsd</span></code> code, using the <code class="docutils literal notranslate"><span class="pre">ncsd_python</span></code> module</p>
+<ul>
+<li><p>And once the code has been run, make some plots of the output</p></li>
+</ul>
+</li>
+<li><p>Raise/lower J for your <code class="docutils literal notranslate"><span class="pre">ncsd</span></code> eigenvectors with <code class="docutils literal notranslate"><span class="pre">raising_lowering</span></code></p></li>
+<li><p>Help you run <code class="docutils literal notranslate"><span class="pre">trdens</span></code> with some scripts in <code class="docutils literal notranslate"><span class="pre">trdens_python</span></code></p>
+<ul>
+<li><p>This will give RGM Kernels, Coupling Kernels and B/E matrix elements</p></li>
+</ul>
+</li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">ncsmc</span></code> with <code class="docutils literal notranslate"><span class="pre">ncsmc_python</span></code>, and process the output</p>
+<ul>
+<li><p>This gives observ.out files, resonance plots, and level scheme plots</p></li>
+</ul>
+</li>
+<li><p>Calculate nuclear cross-sections using <code class="docutils literal notranslate"><span class="pre">cross_sections</span></code></p>
+<ul>
+<li><p>Automatically deal with creating weird input files</p></li>
+</ul>
+</li>
 </ul>
 <div class="section" id="all-modules">
 <h3>All Modules<a class="headerlink" href="#all-modules" title="Permalink to this headline">¶</a></h3>

@@ -14,7 +14,7 @@
     <script type="text/javascript" src="../../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="ncsmc_python" href="../ncsmc_python/ncsmc_python.html" />
+    <link rel="next" title="data_checker.py" href="multi_modules/data_checker.html" />
     <link rel="prev" title="No Pain Shell Model" href="../../index.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -32,8 +32,58 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="module-ncsd_python">
-<span id="ncsd-python"></span><h1>ncsd_python<a class="headerlink" href="#module-ncsd_python" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="ncsd-python">
+<h1>ncsd_python<a class="headerlink" href="#ncsd-python" title="Permalink to this headline">¶</a></h1>
+<p>There are two top-level modules here and two sub-modules.</p>
+<span class="target" id="module-ncsd_python.ncsd_multi"></span><p>ncsd_multi.py: facilitates running ncsd-it.exe with many nuclei</p>
+<ul class="simple">
+<li><p>takes sets of inputs for ncsd-it.exe runs</p></li>
+<li><dl class="simple">
+<dt>then, for each run:</dt><dd><ul>
+<li><p>makes a folder so each run’s output is contained, copies exe file</p></li>
+<li><p>makes a bunch of mfdp.dat files to complete each run</p></li>
+<li><p>runs each process at the end, if desired</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>more details in README.md</p></li>
+</ul>
+<span class="target" id="module-ncsd_python.output_exporter"></span><p>Module for helping to deal with data from NCSD output files,
+and export that data to different formats.</p>
+<dl class="function">
+<dt id="ncsd_python.output_exporter.make_plot_files">
+<code class="sig-prename descclassname">ncsd_python.output_exporter.</code><code class="sig-name descname">make_plot_files</code><span class="sig-paren">(</span><em class="sig-param">output_paths=[], save_dir=None, out_types=['xmgrace'], skip_Nmax=[], max_state=1e+100, get_online_data=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.output_exporter.make_plot_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>This takes ncsd output filenames,
+and exports the data to each format listed in out_types.</p>
+<p>skip_Nmax = list of Nmax values to skip</p>
+<p>max_state = maximum numbered state to consider</p>
+</dd></dl>
+
+<div class="section" id="multi-modules">
+<h2>multi_modules<a class="headerlink" href="#multi-modules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="multi_modules/data_checker.html">data_checker.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multi_modules/data_structures.html">data_structures.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multi_modules/file_manager.html">file_manager.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multi_modules/formats.html">formats.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multi_modules/ncsd_multi_run.html">ncsd_multi_run.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multi_modules/parameter_calculations.html">parameter_calculations.py</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="plot-modules">
+<h2>plot_modules<a class="headerlink" href="#plot-modules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plot_modules/formats.html">formats.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_modules/ncsd_output_reader.html">ncsd_output_reader.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_modules/plotter.html">plotter.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_modules/scraper.html">scraper.py</a></li>
+</ul>
+</div>
+</div>
 </div>
 
 
@@ -66,7 +116,7 @@
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
       <li>Previous: <a href="../../index.html" title="previous chapter">No Pain Shell Model</a></li>
-      <li>Next: <a href="../ncsmc_python/ncsmc_python.html" title="next chapter">ncsmc_python</a></li>
+      <li>Next: <a href="multi_modules/data_checker.html" title="next chapter">data_checker.py</a></li>
   </ul></li>
 </ul>
 </div>
