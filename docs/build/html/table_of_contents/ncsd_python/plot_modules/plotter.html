@@ -35,6 +35,42 @@
   <div class="section" id="module-ncsd_python.plot_modules.plotter">
 <span id="plotter-py"></span><h1>plotter.py<a class="headerlink" href="#module-ncsd_python.plot_modules.plotter" title="Permalink to this headline">¶</a></h1>
 <p>Contains functions to help plot (or otherwise export) data.</p>
+<p>When calling most of these functions, data must be of the form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;skip_Nmax&quot;</span> <span class="o">=</span> <span class="p">[],</span>
+    <span class="s2">&quot;max_state&quot;</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s2">&quot;nucleus_name&quot;</span><span class="p">:</span> <span class="s2">&quot;B11&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Z&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s2">&quot;N&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="s2">&quot;n_states&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>    
+    <span class="s2">&quot;element_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Li&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Z_plus_N&quot;</span><span class="p">:</span> <span class="s2">&quot;8&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;interaction_name&quot;</span><span class="p">:</span> <span class="s2">&quot;some_name&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;filename&quot;</span><span class="p">:</span> <span class="s2">&quot;filename,</span>
+    <span class="s2">&quot;calculated_spectrum&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="o">&lt;</span><span class="n">Nmax</span><span class="o">&gt;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="o">&lt;</span><span class="n">state_num</span><span class="o">&gt;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="n">angular_momentum</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+                <span class="n">repetition</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span>
+                <span class="n">parity</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span>
+                <span class="n">energy</span><span class="p">:</span> <span class="nb">float</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+        <span class="o">...</span>
+    <span class="p">}</span>
+    <span class="s2">&quot;expt_spectrum&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;Expt&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="o">&lt;</span><span class="n">state_num</span><span class="o">&gt;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="n">angular_momentum</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+                <span class="n">repetition</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span>
+                <span class="n">parity</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span>
+                <span class="n">energy</span><span class="p">:</span> <span class="nb">float</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <dl class="function">
 <dt id="ncsd_python.plot_modules.plotter.matplotlib_plot">
 <code class="sig-prename descclassname">ncsd_python.plot_modules.plotter.</code><code class="sig-name descname">matplotlib_plot</code><span class="sig-paren">(</span><em class="sig-param">input_data</em>, <em class="sig-param">save_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.plotter.matplotlib_plot" title="Permalink to this definition">¶</a></dt>
