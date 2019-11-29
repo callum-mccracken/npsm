@@ -34,42 +34,48 @@
             
   <div class="section" id="module-ncsd_python.multi_modules.data_structures">
 <span id="data-structures-py"></span><h1>data_structures.py<a class="headerlink" href="#module-ncsd_python.multi_modules.data_structures" title="Permalink to this headline">¶</a></h1>
-<p>contains the Params class and subclasses, which are pretty basic</p>
-<p>they have attributes for every field in the data files, e.g. mfdp.dat files
-have a field for Z, so a MFDPParams object has an attribute .Z</p>
+<p>Contains the Params class and subclasses for specific file types.</p>
 <dl class="class">
 <dt id="ncsd_python.multi_modules.data_structures.CedarBatchParams">
 <em class="property">class </em><code class="sig-prename descclassname">ncsd_python.multi_modules.data_structures.</code><code class="sig-name descname">CedarBatchParams</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.data_structures.CedarBatchParams" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Params</span></code> subclass for cedar batch files</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="ncsd_python.multi_modules.data_structures.DefaultParams">
 <em class="property">class </em><code class="sig-prename descclassname">ncsd_python.multi_modules.data_structures.</code><code class="sig-name descname">DefaultParams</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.data_structures.DefaultParams" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Params</span></code> subclass for default parameters</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="ncsd_python.multi_modules.data_structures.LocalBatchParams">
 <em class="property">class </em><code class="sig-prename descclassname">ncsd_python.multi_modules.data_structures.</code><code class="sig-name descname">LocalBatchParams</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.data_structures.LocalBatchParams" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Params</span></code> subclass for local machine batch files</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="ncsd_python.multi_modules.data_structures.MFDPParams">
 <em class="property">class </em><code class="sig-prename descclassname">ncsd_python.multi_modules.data_structures.</code><code class="sig-name descname">MFDPParams</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.data_structures.MFDPParams" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Params</span></code> subclass for <code class="docutils literal notranslate"><span class="pre">mfdp.dat</span></code> files</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="ncsd_python.multi_modules.data_structures.ManParams">
 <em class="property">class </em><code class="sig-prename descclassname">ncsd_python.multi_modules.data_structures.</code><code class="sig-name descname">ManParams</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.data_structures.ManParams" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Params</span></code> subclass for manual input</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="ncsd_python.multi_modules.data_structures.Params">
 <em class="property">class </em><code class="sig-prename descclassname">ncsd_python.multi_modules.data_structures.</code><code class="sig-name descname">Params</code><span class="sig-paren">(</span><em class="sig-param">filetype</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.data_structures.Params" title="Permalink to this definition">¶</a></dt>
-<dd><p>I created this rather than just using dictionaries or something
-for parameter passing, because with dicts, I tend to lose track of which
-variables every file type needs, etc.</p>
-<p>When you create a Params object, it makes sure that all variables are
-provided, and that no extra ones are provided!</p>
+<dd><p>The Params class is pretty much just an <code class="docutils literal notranslate"><span class="pre">argparse.Namespace</span></code>,
+except you can only have certain variables.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">mfdp.dat</span></code> files have a field for <code class="docutils literal notranslate"><span class="pre">Z</span></code>,
+so a <code class="docutils literal notranslate"><span class="pre">Params</span></code> object for that file type should have an attribute
+<code class="docutils literal notranslate"><span class="pre">self.Z</span></code>.</p>
+<p>But if you tried to set <code class="docutils literal notranslate"><span class="pre">self.z</span></code> by accident it should raise an error.</p>
+<p>This prevents accidentally setting the wrong attributes for a file type,
+or too many parameters, or too few.</p>
 <dl class="method">
 <dt id="ncsd_python.multi_modules.data_structures.Params.param_dict">
 <code class="sig-name descname">param_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.data_structures.Params.param_dict" title="Permalink to this definition">¶</a></dt>
@@ -81,7 +87,8 @@ provided, and that no extra ones are provided!</p>
 <dl class="class">
 <dt id="ncsd_python.multi_modules.data_structures.SummitBatchParams">
 <em class="property">class </em><code class="sig-prename descclassname">ncsd_python.multi_modules.data_structures.</code><code class="sig-name descname">SummitBatchParams</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.data_structures.SummitBatchParams" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Params</span></code> subclass for summit batch files</p>
+</dd></dl>
 
 </div>
 
