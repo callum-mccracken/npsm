@@ -8,7 +8,7 @@ All Modules
 -----------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    table_of_contents/ncsd_python/ncsd_python
    table_of_contents/ncsmc_python/ncsmc_python
