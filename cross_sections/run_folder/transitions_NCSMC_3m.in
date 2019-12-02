@@ -1,15 +1,15 @@
-nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6_2p1p
+nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6
 3m
 NCSMC_E1M1E2_Li9_2J_3
 1
 1
-8 3 0 1 2 2    !  nA1i, nz1i, nI1i, npi1i, nT1i, nst1i
--39.2273d0   3  -1  3     ! E, J,pi,T of target
--37.3749d0   1  -1  3     ! E, J,pi,T of target
+8 3 4 1 2 2    !  nA1i, nz1i, nI1i, npi1i, nT1i, nst1i
+-34.8845d0   4  1  2     ! E, J,pi,T of target
+-32.7694d0   2  1  2     ! E, J,pi,T of target
 1 0 1 1 1 1   !  nA2i, nz2i, nI2i, npi2i, nT2i, nst2i
-8 3 0 1 2 2    !  nA1i, nz1i, nI1i, npi1i, nT1i, nst1i
--39.2273d0   3  -1  3     ! E, J,pi,T of target
--37.3749d0   1  -1  3     ! E, J,pi,T of target
+8 3 4 1 2 2    !  nA1i, nz1i, nI1i, npi1i, nT1i, nst1i
+-34.8845d0   4  1  2     ! E, J,pi,T of target
+-32.7694d0   2  1  2     ! E, J,pi,T of target
 1 0 1 1 1 1   !  nA2i, nz2i, nI2i, npi2i, nT2i, nst2i
 20.d0
 18.d0
