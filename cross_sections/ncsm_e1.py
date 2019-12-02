@@ -16,8 +16,8 @@ run_name = "nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6_2p1p"
 
 # names of observ.out files from which to read data
 files = [
-    "/Users/callum/Desktop/npsm/cross_sections/Li8Li9/Li9_observ_Nmax6_Jz1",
-    "/Users/callum/Desktop/npsm/cross_sections/Li8Li9/Li9_observ_Nmax7_Nmax6_Jz1"
+    "/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output/Li9_observ_Nmax6_Jz1",
+    "/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output/Li9_observ_Nmax7_Nmax6_Jz1"
 ]
 
 def transition_parameter(trans_str):
