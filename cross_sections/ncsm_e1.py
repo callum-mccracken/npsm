@@ -12,7 +12,7 @@ desired_states = ["1 -1 3", "3 -1 3"]
 transitions = ["E1", "E2", "M1"]
 
 # this variable is for naming of output files
-run_name = "nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6_2p1p"
+run_name = "nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6"
 
 # names of observ.out files from which to read data
 files = [
