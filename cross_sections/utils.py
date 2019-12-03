@@ -120,35 +120,58 @@ ptable = {
     "Og": 118
 }
 
-def get_info(nuclear_name):
-    """
-    nuclear_name is a string, usually of the form "Li-8",
-    but if it doesn't contain a dash, we check for a couple special cases,
-    e.g. "n", "p", "d"
+def is_float(string):
+    try:
+        x = float(string)
+        return True
+    except:
+        return False
 
-    Returns a list of integers, containing [A, Z, N, 2J, parity, 2T]
+def get_state_name(state):
     """
-    if "-" in nuclear_name:
-        name, A = nuclear_name.split("-")
-        A = int(A)
-        Z = ptable[name]
-        N = A - Z
-        J2 = 0 if (Z + N) % 2 == 0 else 1
-        T2 = N - Z
-        parity = 1 if (T2 % 2) == 0 else -1
-        return [A, Z, J2, parity, T2]
-    elif nuclear_name == "n":
-        print(get_info("n-0"))
-        return [1, 0, 1, 1, 1, 1]
-    elif nuclear_name == "p":
-        return get_info("H-1")
-    elif nuclear_name == "d":
-        return get_info("H-2")
-    elif nuclear_name == "t":
-        return get_info("H-3")
+    if state = e.g., "3 -1 3"
+    this will return the corresponding state_name,
+    e.g., state_name = "3m"
+    """
+    J2, pi, T2 = map(int, state.split())
+    pi_str = "p" if pi > 0 else "m"
+    state_name = str(J2)+pi_str
+    return state_name
 
-if __name__ == "__main__":
-    print(get_info("n"))
-    print(get_info("Li-8"))
-    print(get_info("Li-9"))
+
+def get_A_Z(name):
+    # name is something like Li8
+    # first assume the name only has 1 letter like H2
+    n_chars = 1
     
+    while not is_float(name[n_chars:]):
+        n_chars += 1
+    A = float(name[n_chars:])
+    Z = ptable[name[:n_chars]]
+    return A, Z
+
+
+transitions_fmt = """{run_name} ! Naming convention used in input files
+{state_name} ! State of reaction product
+{naming_str} ! Something to use to rename your output
+{n_targets} ! Number of target nuclei
+{n_projectiles} ! Number of projectiles
+{target_A} {target_Z} {target_gs_J2} {target_gs_parity} {target_gs_T2} {n_bound_target} ! Target info
+{targ_bound_str}
+{proj_A} {proj_Z} {proj_gs_J2} {proj_gs_parity} {proj_gs_T2} {n_bound_proj} ! Projectile info
+{target_A} {target_Z} {target_gs_J2} {target_gs_parity} {target_gs_T2} {n_bound_target} ! Target info
+{targ_bound_str}
+{proj_A} {proj_Z} {proj_gs_J2} {proj_gs_parity} {proj_gs_T2} {n_bound_proj} ! Projectile info
+{hw} ! Frequency used in NCSM calculation
+{r_matching} ! Matching radius
+{r_zero} ! Cutoff radius, after which wavefunction ~0
+{n_points} ! Number of points to use for integration
+0 1 1 2 ! nsig_min,nsig_max,lamb_min,lamb_max
+
+2.1961 2.3077 2.2605 ! targ Rp, Rn, Rm
+
+{e_lines}
+{m_lines}
+{Emin} {Emax} {Estep} ! Emin, Emax, dE
+{Eexpt} ! Eexpt
+"""

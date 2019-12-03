@@ -2,7 +2,8 @@
 A script to take files from the ``observ.out`` format of NCSMC output,
 to the ``NCSM_E1_Afi`` format needed for cross-section calculations.
 """
-import process_observ
+
+import file_tools
 import os
 import re
 # state we care about, 2J, pi, 2T
@@ -70,7 +71,7 @@ def make_ncsm_e1(desired_states, transitions, run_name, files, out_dir=None):
         # data stores info from both files, to be written out after the loop
         data = []
         for file_index, filename in enumerate(files):
-            simp, num = process_observ.simplify(
+            simp, num = file_tools.simplify_observ(
                 desired_state, transitions, filename, function="make_ncsm_e1")
             num_desired_state = num
             # now get the useful info out of the data lines, e.g. E2p number

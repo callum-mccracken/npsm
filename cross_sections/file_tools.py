@@ -2,9 +2,10 @@
 A module for processing ``observ.out`` files from NCSMC output.
 """
 import re
+from os.path import basename, join
+import utils
 
-
-def simplify(desired_state, transitions, filename, function=None):
+def simplify_observ(desired_state, transitions, filename, function=None):
     """
     Makes a simplified version of an ``observ.out`` file.
 
@@ -220,3 +221,53 @@ def simplify(desired_state, transitions, filename, function=None):
         return simp_path
     else:
         return simp_path
+
+
+def make_wf_file(wavefunction_NCSMC_file, res_state, run_dir):
+    """
+    Makes a wavefunction_NCSMC file for the resultant nucleus state given by
+    res_state, and puts it in the directory run_dir.
+
+    res_state is of the form "2J parity 2T", and the other variables are paths
+    """
+    with open(wavefunction_NCSMC_file, "r+") as wf_file:
+        lines = wf_file.readlines()
+
+    # look for the line that designates the res_state's segment of the file
+    segments = []
+    segment = []
+    hashtag_counter = 0
+    for line in lines:
+        if "#" in line:
+            # if it's one of the lines related to a section break, it should
+            # have #words < 5
+            # TODO: 
+            if len(line.split()) < 5:
+                hashtag_counter += 1
+        if hashtag_counter == 5:
+            # we've started a new segment
+            hashtag_counter = 0
+            segments.append(segment)
+            segment = []
+        segment.append(line)
+    # then add the last segment
+    segments.append(segment)
+
+    # now pick which segment to save by comparing J, parity, T
+    J2, parity, T2 = map(int, res_state.split())
+    the_chosen_one = None
+    for segment in segments:
+        first_line = segment[0]
+        seg_J2, seg_parity, seg_T2 = map(int, first_line.split()[1:])
+        if J2 == seg_J2 and parity == seg_parity and T2 == seg_T2:
+            the_chosen_one = segment
+    assert the_chosen_one is not None
+
+    # save that segment back out to a file
+    state_name = utils.get_state_name(res_state)
+    # I assume the filename ends with .agr
+    filename = basename(wavefunction_NCSMC_file)[:-4]
+    out_path = join(run_dir, filename + "_" + state_name + ".agr")
+    with open(out_path, "w+") as out_file:
+        out_file.writelines(the_chosen_one)
+    return out_path

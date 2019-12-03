@@ -3,11 +3,11 @@ nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6 ! Naming convention used in input files
 NCSMC_E1M1E2_Li9_2J_3 ! Something to use to rename your output
 1 ! Number of target nuclei
 1 ! Number of projectiles
-8 3 4 1 2 2 ! Target info
+8 3 2 1 1 2 ! Target info
 -34.8845   4  1  2     ! E, J, pi, T
 -33.7694   2  1  2     ! E, J, pi, T
 1 0 1 1 1 1 ! Projectile info
-8 3 4 1 2 2 ! Target info
+8 3 2 1 1 2 ! Target info
 -34.8845   4  1  2     ! E, J, pi, T
 -33.7694   2  1  2     ! E, J, pi, T
 1 0 1 1 1 1 ! Projectile info
