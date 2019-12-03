@@ -1,0 +1,33 @@
+nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6 ! Naming convention used in input files
+3m ! State of reaction product
+NCSMC_E1M1E2_Li9_2J_3 ! Something to use to rename your output
+1 ! Number of target nuclei
+1 ! Number of projectiles
+8 3 4 1 2 2 ! Target info
+-34.8845   4  1  2     ! E, J, pi, T
+-33.7694   2  1  2     ! E, J, pi, T
+1 0 1 1 1 1 ! Projectile info
+8 3 4 1 2 2 ! Target info
+-34.8845   4  1  2     ! E, J, pi, T
+-33.7694   2  1  2     ! E, J, pi, T
+1 0 1 1 1 1 ! Projectile info
+20.0 ! Frequency used in NCSM calculation
+18.0 ! Matching radius
+50.0 ! Cutoff radius, after which wavefunction ~0
+10000 ! Number of points to use for integration
+0 1 1 2 ! nsig_min,nsig_max,lamb_min,lamb_max
+
+2.1961 2.3077 2.2605 ! targ Rp, Rn, Rm
+
+2 1 1 1.4850 2.4430 ! targ E mul i f  Mp Mn
+2 1 2 -0.7626 -1.5856 ! targ E mul i f  Mp Mn
+2 2 1 0.9845 2.0470 ! targ E mul i f  Mp Mn
+2 2 2 1.0374 0.8974 ! targ E mul i f  Mp Mn
+
+  1 1 0.1840 0.5372 0.2718 0.2038 ! targ M1 i f Mlp Mln Msp Msn
+  1 2 0.0456 -0.2920 0.2633 -0.0169 ! targ M1 i f Mlp Mln Msp Msn
+  2 1 -0.0589 0.3770 -0.3400 0.0218 ! targ M1 i f Mlp Mln Msp Msn
+  2 2 0.1636 0.3718 -0.1199 0.2755 ! targ M1 i f Mlp Mln Msp Msn
+
+0.02 10.0 0.02 ! Emin, Emax, dE
+0.0 ! Eexpt
