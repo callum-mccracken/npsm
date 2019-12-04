@@ -122,7 +122,7 @@ ptable = {
 
 def is_float(string):
     try:
-        x = float(string)
+        _ = float(string)
         return True
     except:
         return False
@@ -133,7 +133,7 @@ def get_state_name(state):
     this will return the corresponding state_name,
     e.g., state_name = "3m"
     """
-    J2, pi, T2 = map(int, state.split())
+    J2, pi, _ = map(int, state.split())
     pi_str = "p" if pi > 0 else "m"
     state_name = str(J2)+pi_str
     return state_name
