@@ -26,30 +26,36 @@ exe_path = "../trdens_kernels_Oeff_devel.exe"
 run_word = "srun"
 
 # make link to eigenvector file
-real_eig = "mfdp_"+N+".egv_"+nuc+"_"+potential+"_Nmax"+Nmax+"."+freq+""+sufegv
-eig_link = real_eig+"_"+Jz2+"_"+Tz2
+real_eig = f"mfdp_{N}.egv_{nuc}_{potential}_Nmax{Nmax}.{freq}{sufegv}"
+eig_link = f"{real_eig}_{Jz2}_{Tz2}"
 symlink(real_eig, eig_link)
 
-for Jzf in [0, 1, -1, 2, -2]:
-    Jzf2 = 2 * Jzf
+Jzf_list = [0, 1, -1, 2, -2]
 
-    if Jzf == 0:
-        nkf=2
-    elif Jzf == 1 or Jzf == -1:
-        nkf=2
-    else:
-        nkf=1
+def run_coupling():
+    for Jzf in Jzf_list:
+        Jzf2 = 2 * Jzf
 
-    copyfile("trdens.in_"+Nmax+"_"+nkf, "trdens.in")
-    
-    real_eig_f = real_eig+"_"+Jzf2+"_"+Tz2
-    
-    symlink(real_eig_f, "mfdf.egv")
-    
-    output_file = "t.o_"+nucA+"_"+nuc+"_"+potential+"_Nmax"+Nmaxi+"_Nmax"+Nmax+"."+freq+""+suffile+"_"+Jzf2
+        if Jzf == 0:
+            nkf=2
+        elif Jzf == 1 or Jzf == -1:
+            nkf=2
+        else:
+            nkf=1
 
-    system(run_word+" "+exe_path+" > "+output_file)
-    
-    rename("trdens.out", "trdens.out_"+nucA+"_"+nuc+"_"+potential+"_Nmax"+Nmaxi+"_Nmax"+Nmax+"."+freq+""+suffile+"_Jz"+Jzf)
-    rename("NCSMC_kernels.dat", "NCSMC_kernels.dat_"+nucA+"_"+nuc+"_"+potential+"_Nmax"+Nmaxi+"_Nmax"+Nmax+"."+freq+""+suffile+"_Jz"+Jzf)
-    remove("mfdf.egv")
+        copyfile("trdens.in_"+Nmax+"_"+nkf, "trdens.in")
+        
+        real_eig_f = real_eig+"_"+Jzf2+"_"+Tz2
+        
+        symlink(real_eig_f, "mfdf.egv")
+        
+        output_file = "t.o_"+nucA+"_"+nuc+"_"+potential+"_Nmax"+Nmaxi+"_Nmax"+Nmax+"."+freq+""+suffile+"_"+Jzf2
+
+        system(run_word+" "+exe_path+" > "+output_file)
+        
+        rename("trdens.out", "trdens.out_"+nucA+"_"+nuc+"_"+potential+"_Nmax"+Nmaxi+"_Nmax"+Nmax+"."+freq+""+suffile+"_Jz"+Jzf)
+        rename("NCSMC_kernels.dat", "NCSMC_kernels.dat_"+nucA+"_"+nuc+"_"+potential+"_Nmax"+Nmaxi+"_Nmax"+Nmax+"."+freq+""+suffile+"_Jz"+Jzf)
+        remove("mfdf.egv")
+
+if __name__ == "__main__":
+    run_coupling()

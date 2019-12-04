@@ -83,8 +83,10 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">ncsd_python</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="ncsmc_python.html">ncsmc_python</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">1. ncsd_python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raising_lowering/raising_lowering.html">2. raising_lowering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trdens_python/trdens_python.html">3. trdens_python</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="ncsmc_python.html">4. ncsmc_python</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="fitter.html">fitter.py</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">flipper.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="output_simplifier.html">output_simplifier.py</a></li>
@@ -97,8 +99,6 @@
 <li class="toctree-l2"><a class="reference internal" href="utils.html">utils.py</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../raising_lowering/raising_lowering.html">raising_lowering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trdens_python/trdens_python.html">trdens_python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cross_sections/cross_sections.html">cross_sections</a></li>
 </ul>
 
@@ -145,7 +145,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="ncsmc_python.html">ncsmc_python</a> &raquo;</li>
+          <li><a href="ncsmc_python.html">4. ncsmc_python</a> &raquo;</li>
         
       <li>flipper.py</li>
     
@@ -178,32 +178,59 @@
 <li><p>(that was deprecated, but the functions still exist)</p></li>
 <li><p>allow you to pick out individual channels</p></li>
 </ul>
-<p>This module can be run with</p>
-<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">flipper.py</span> <span class="pre">-f</span> <span class="pre">/path/to/some/file</span></code>
-(assumes file is not already flipped)</p>
-<p>(output is saved in the same spot as the input, with _flipped at the end)</p>
+<p>This module can be run with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">flipper</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>if you’ve edited the filepath at the top of this file, or with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">flipper</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">some</span><span class="o">/</span><span class="n">file</span>
+</pre></div>
+</div>
+<p>(output is saved in the same spot as the input, with <code class="docutils literal notranslate"><span class="pre">_flipped</span></code> at the end)</p>
 <dl class="function">
 <dt id="ncsmc_python.flipper.apply_add_mapping">
 <code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">apply_add_mapping</code><span class="sig-paren">(</span><em class="sig-param">line</em>, <em class="sig-param">mapping</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.apply_add_mapping" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply map generated in get_add_map() to a line</p>
+<dl class="simple">
+<dt>line:</dt><dd><p>list of floats</p>
+</dd>
+<dt>mapping:</dt><dd><p>dictionary {index: how_much_to_add}</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsmc_python.flipper.apply_col_mapping">
 <code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">apply_col_mapping</code><span class="sig-paren">(</span><em class="sig-param">line</em>, <em class="sig-param">mapping</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.apply_col_mapping" title="Permalink to this definition">¶</a></dt>
 <dd><p>Applies a column mapping to a line, mapping defined in get_column_map()</p>
+<dl class="simple">
+<dt>line:</dt><dd><p>list of floats</p>
+</dd>
+<dt>mapping:</dt><dd><p>dictionary {maps_this_index: to_this_index}</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsmc_python.flipper.dist">
 <code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">dist</code><span class="sig-paren">(</span><em class="sig-param">a</em>, <em class="sig-param">b</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.dist" title="Permalink to this definition">¶</a></dt>
-<dd><p>compares a and b “up to flips”, i.e. mod 180</p>
+<dd><p>Compares a and b “up to flips”, i.e. mod 180</p>
+<dl class="simple">
+<dt>a:</dt><dd><p>float</p>
+</dd>
+<dt>b:</dt><dd><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsmc_python.flipper.do_one_flip">
 <code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">do_one_flip</code><span class="sig-paren">(</span><em class="sig-param">section</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.do_one_flip" title="Permalink to this definition">¶</a></dt>
-<dd><p>perform the flip operation on one section one time</p>
+<dd><p>Perform the flip operation on one section one time</p>
+<dl class="simple">
+<dt>sections:</dt><dd><p>list, one element from the output of <code class="docutils literal notranslate"><span class="pre">separate_into_sections</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -211,6 +238,12 @@
 <code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">flip</code><span class="sig-paren">(</span><em class="sig-param">read_filename</em>, <em class="sig-param">verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.flip" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs flipping operation from start to finish,
 returns the filename of the flipped file</p>
+<dl class="simple">
+<dt>read_filename:</dt><dd><p>string, phase_shift / eigenphase_shift ncsmc output file path</p>
+</dd>
+<dt>verbose:</dt><dd><p>boolean, whether or not to print messages before/after flipping</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -218,6 +251,10 @@ returns the filename of the flipped file</p>
 <code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">flip_all_sections</code><span class="sig-paren">(</span><em class="sig-param">sections</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.flip_all_sections" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform flipping operation on each section and make sure that there
 are no discontinuities at section breaks within megasections</p>
+<dl class="simple">
+<dt>sections:</dt><dd><p>list, same format as output by <code class="docutils literal notranslate"><span class="pre">separate_into_sections()</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -225,12 +262,22 @@ are no discontinuities at section breaks within megasections</p>
 <code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">flip_columns</code><span class="sig-paren">(</span><em class="sig-param">sections</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.flip_columns" title="Permalink to this definition">¶</a></dt>
 <dd><p>Take a list of sections and return those same sections, but with
 the columns re-ordered so they’re consistent throughout megasections.</p>
+<dl class="simple">
+<dt>sections:</dt><dd><p>list, same format as output by <code class="docutils literal notranslate"><span class="pre">separate_into_sections()</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsmc_python.flipper.flip_if_needed">
 <code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">flip_if_needed</code><span class="sig-paren">(</span><em class="sig-param">top_nums</em>, <em class="sig-param">btm_nums</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.flip_if_needed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compare every number in top_nums to every one in btm_nums.
+<dd><dl class="simple">
+<dt>top_nums:</dt><dd><p>list of floats, line directly above btm_nums</p>
+</dd>
+<dt>btm_nums:</dt><dd><p>list of floats</p>
+</dd>
+</dl>
+<p>Compare every number in top_nums to every one in btm_nums.
 If the difference is big, flip the number to make it small.</p>
 <p>By “flip”, I mean add or subtract 180, as needed.</p>
 <p>Return the new list of nums, after being flipped if needed</p>
@@ -239,7 +286,11 @@ If the difference is big, flip the number to make it small.</p>
 <dl class="function">
 <dt id="ncsmc_python.flipper.flip_one_section">
 <code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">flip_one_section</code><span class="sig-paren">(</span><em class="sig-param">section</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.flip_one_section" title="Permalink to this definition">¶</a></dt>
-<dd><p>perform flip operation on a section until fully finished</p>
+<dd><p>Perform flip operation on a section until fully finished</p>
+<dl class="simple">
+<dt>sections:</dt><dd><p>list, one element from the output of <code class="docutils literal notranslate"><span class="pre">separate_into_sections</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -249,22 +300,41 @@ If the difference is big, flip the number to make it small.</p>
 and we need to know what to add to other sections so that the boundaries
 of flipped sections don’t have big jumps due to fixing flipping issues.</p>
 <p>Same kind of idea as get_column_map()</p>
+<dl class="simple">
+<dt>top_line:</dt><dd><p>list of floats</p>
+</dd>
+<dt>bottom_line:</dt><dd><p>list of floats</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsmc_python.flipper.get_column_map">
 <code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">get_column_map</code><span class="sig-paren">(</span><em class="sig-param">top_line</em>, <em class="sig-param">bottom_line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.get_column_map" title="Permalink to this definition">¶</a></dt>
-<dd><p>get a dict of the form</p>
-<p>map ={0: index0, 1: index1, …}</p>
+<dd><p>get a dict of the form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="n">index0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">index1</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
+</pre></div>
+</div>
 <p>so if you’re wondering what column in the top line corresponds
 to which one in the bottom line, you can use this mapping.</p>
 <p>To apply a column mapping easily, use apply_col_mapping()</p>
-<p>but the ideas is that you just say you just say</p>
-<p>a = top line</p>
-<p>b = bottom line</p>
-<p>map = get_column_map(a, b)</p>
-<p>b = [b[map[i]] for i in range(len(b))]</p>
+<p>but the ideas is that you just say you just say:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">top</span> <span class="n">line</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">bottom</span> <span class="n">line</span>
+
+<span class="nb">map</span> <span class="o">=</span> <span class="n">get_column_map</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="p">[</span><span class="nb">map</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">))]</span>
+</pre></div>
+</div>
 <p>and then b has the same column order as a.</p>
+<dl class="simple">
+<dt>top_line:</dt><dd><p>list of floats</p>
+</dd>
+<dt>bottom_line:</dt><dd><p>list of floats</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -272,9 +342,15 @@ to which one in the bottom line, you can use this mapping.</p>
 <code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">sanitize</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.sanitize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Opens NCSMC output file, reads each line, separates into text lines and
 number lines. Sets NaN values to zero.</p>
-<p>Returns lists:
-- one for title lines, contains strings
-- one for number lines, each entry is a sub-list of floats</p>
+<dl class="simple">
+<dt>filename:</dt><dd><p>ncsmc eigenphase_shift or phase_shift file path</p>
+</dd>
+<dt>returns:</dt><dd><ul class="simple">
+<li><p>one list of strings, for title lines</p></li>
+<li><p>one list of number lines, each entry is a sub-list of floats</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -284,6 +360,10 @@ number lines. Sets NaN values to zero.</p>
 as lists of floats, along with their associated labels (strings).</p>
 <p>Also returns energies associated with each row. Note that not all
 channels have the same length as the energy list!</p>
+<dl class="simple">
+<dt>filname:</dt><dd><p>string, the path to a phase_shift / eigenphase_shift file</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -292,24 +372,74 @@ channels have the same length as the energy list!</p>
 <dd><p>Maybe calling them megasections was a little dramatic,
 but megasections are the sections of the input file separated by titles,
 rather than sections, which are separated by changing line length</p>
-<p>e.g. the input looks like:
-[[[1, 2], [1, 2]], [[1, 3, 4, 6]],[[1, 2]]]
-–&gt; the megasections are:</p>
-<p>[[[1, 2],[1, 2],[1, 3, 4, 6]],[[1, 2]]]</p>
+<p>e.g. if <code class="docutils literal notranslate"><span class="pre">sections</span></code> looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">[</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="p">],</span>
+    <span class="p">[</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+    <span class="p">],</span>
+    <span class="p">[</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>then the megasections are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">[</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+    <span class="p">],</span>
+    <span class="p">[</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">]</span>
+</pre></div>
+</div>
 <p>When combining sections, also make sure that energy is monotonic
 throughout a megasection!</p>
+<dl class="simple">
+<dt>sections:</dt><dd><p>a list of lists of lists, of the form above</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsmc_python.flipper.separate_into_sections">
 <code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">separate_into_sections</code><span class="sig-paren">(</span><em class="sig-param">list_of_nums</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.separate_into_sections" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns sections of the file based on line length</p>
-<p>e.g. if your file looks like
-[[1, 2], [1, 2], [1, 2, 3, 4], [1, 2, 3, 4]]</p>
-<p>then this will return</p>
-<p>[[[1, 2], [1, 2]], [[1, 2, 3, 4], [1, 2, 3, 4]]]</p>
+<p>e.g. if your list_of_nums looks like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>then this will return:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">[</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="p">],</span>
+    <span class="p">[</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">]</span>
+</pre></div>
+</div>
 <p>I do realize some sections might have the same lengths, one after the other
 (especially at the interface between megasections) and that is dealt with.</p>
+<dl class="simple">
+<dt>list_of_nums:</dt><dd><p>a list of the above input form</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -318,13 +448,26 @@ throughout a megasection!</p>
 <dd><p>Ensure that all channels start “from zero”,
 or rather that they don’t start at like 180 or -180 or something.</p>
 <p>Make them start from, say, 0.1, not 180.1</p>
+<dl class="simple">
+<dt>sections:</dt><dd><p>list, same format as output by <code class="docutils literal notranslate"><span class="pre">separate_into_sections()</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsmc_python.flipper.write_data">
 <code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">write_data</code><span class="sig-paren">(</span><em class="sig-param">sections</em>, <em class="sig-param">text_lines</em>, <em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.write_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>write flipped data back into a file,
-making sure to put the text lines (i.e. titles) back in the right spots</p>
+<dd><p>Write flipped data back into a file,
+making sure to put the text_lines (i.e. section titles, …)
+back in the right spots.</p>
+<dl class="simple">
+<dt>sections:</dt><dd><p>list, same format as output by <code class="docutils literal notranslate"><span class="pre">separate_into_sections</span></code></p>
+</dd>
+<dt>text_lines:</dt><dd><p>lines from the original file which did contained non-number characters</p>
+</dd>
+<dt>filename:</dt><dd><p>path to phase_shift / eigenphase_shift file</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>

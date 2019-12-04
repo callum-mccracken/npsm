@@ -83,8 +83,10 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">ncsd_python</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="ncsmc_python.html">ncsmc_python</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">1. ncsd_python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raising_lowering/raising_lowering.html">2. raising_lowering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trdens_python/trdens_python.html">3. trdens_python</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="ncsmc_python.html">4. ncsmc_python</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="fitter.html">fitter.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="flipper.html">flipper.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="output_simplifier.html">output_simplifier.py</a></li>
@@ -97,8 +99,6 @@
 <li class="toctree-l2"><a class="reference internal" href="utils.html">utils.py</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../raising_lowering/raising_lowering.html">raising_lowering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trdens_python/trdens_python.html">trdens_python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cross_sections/cross_sections.html">cross_sections</a></li>
 </ul>
 
@@ -145,7 +145,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="ncsmc_python.html">ncsmc_python</a> &raquo;</li>
+          <li><a href="ncsmc_python.html">4. ncsmc_python</a> &raquo;</li>
         
       <li>resonance_plotter.py</li>
     
@@ -177,12 +177,67 @@
 - flip the file (output saved in same directory as original file)
 - detect which channels have resonances (saved in resonances directory)
 - plot all channels</p>
+<dl class="data">
+<dt id="ncsmc_python.resonance_plotter.Nmax">
+<code class="sig-prename descclassname">ncsmc_python.resonance_plotter.</code><code class="sig-name descname">Nmax</code><em class="property"> = 4</em><a class="headerlink" href="#ncsmc_python.resonance_plotter.Nmax" title="Permalink to this definition">¶</a></dt>
+<dd><p>value of Nmax, for file naming purposes</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ncsmc_python.resonance_plotter.channels_to_plot">
+<code class="sig-prename descclassname">ncsmc_python.resonance_plotter.</code><code class="sig-name descname">channels_to_plot</code><em class="property"> = '\n\n'</em><a class="headerlink" href="#ncsmc_python.resonance_plotter.channels_to_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>channels_to_plot: which channels should be added to the multi channel plot?</p>
+<dl class="simple">
+<dt>format:</dt><dd><p>2J,parity,2T,column_number,resonance_type, e.g.: “2,+,4,1,strong”</p>
+</dd>
+<dt>blank spots:</dt><dd><p>blank lines are okay, but no extra spacing please!
+Just paste into the space between the pair of triple quotes above</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="data">
+<dt id="ncsmc_python.resonance_plotter.energy_bounds">
+<code class="sig-prename descclassname">ncsmc_python.resonance_plotter.</code><code class="sig-name descname">energy_bounds</code><em class="property"> = (-inf, inf)</em><a class="headerlink" href="#ncsmc_python.resonance_plotter.energy_bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>energy_bounds: the bounds to use for the energy (x) axis,
+- e.g. if you have 0-10 but only want 0-5, set this to (0, 5)
+- If you don’t want bounds set this to (-inf, inf)</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ncsmc_python.resonance_plotter.filepath">
+<code class="sig-prename descclassname">ncsmc_python.resonance_plotter.</code><code class="sig-name descname">filepath</code><em class="property"> = '/path/to/phase_shift.agr_flipped'</em><a class="headerlink" href="#ncsmc_python.resonance_plotter.filepath" title="Permalink to this definition">¶</a></dt>
+<dd><p>File path (relative paths are okay)</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ncsmc_python.resonance_plotter.flipped">
+<code class="sig-prename descclassname">ncsmc_python.resonance_plotter.</code><code class="sig-name descname">flipped</code><em class="property"> = True</em><a class="headerlink" href="#ncsmc_python.resonance_plotter.flipped" title="Permalink to this definition">¶</a></dt>
+<dd><p>Has the file already been “flipped”?</p>
+</dd></dl>
+
 <dl class="function">
 <dt id="ncsmc_python.resonance_plotter.plot">
 <code class="sig-prename descclassname">ncsmc_python.resonance_plotter.</code><code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">flipped=False</em>, <em class="sig-param">e_bounds=(-inf</em>, <em class="sig-param">inf)</em>, <em class="sig-param">res_types='all'</em>, <em class="sig-param">channels=''</em>, <em class="sig-param">Nmax=None</em>, <em class="sig-param">dpi=90</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.resonance_plotter.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Makes a whole bunch of plots.
 - one for each of the user-specified channels
 - one with all channels on the same plot</p>
+<dl class="simple">
+<dt>filename:</dt><dd><p>string, an eigenphase_shift / phase_shift file path</p>
+</dd>
+<dt>flipped:</dt><dd><p>boolean, has this file been put throught flipper.py?</p>
+</dd>
+<dt>e_bounds:</dt><dd><p>tuple, (left, right) bounds of the energy axis</p>
+</dd>
+<dt>res_types:</dt><dd><p>string or list. what types of resonances should be plotted?</p>
+</dd>
+<dt>channels:</dt><dd><p>big string, one channel per line, of channels to be plotted</p>
+</dd>
+<dt>Nmax:</dt><dd><p>float, for giving the plot a title</p>
+</dd>
+<dt>dpi:</dt><dd><p>resolution of the image</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>

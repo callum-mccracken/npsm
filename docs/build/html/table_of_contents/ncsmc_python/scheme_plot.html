@@ -83,8 +83,10 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">ncsd_python</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="ncsmc_python.html">ncsmc_python</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">1. ncsd_python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raising_lowering/raising_lowering.html">2. raising_lowering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trdens_python/trdens_python.html">3. trdens_python</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="ncsmc_python.html">4. ncsmc_python</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="fitter.html">fitter.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="flipper.html">flipper.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="output_simplifier.html">output_simplifier.py</a></li>
@@ -97,8 +99,6 @@
 <li class="toctree-l2"><a class="reference internal" href="utils.html">utils.py</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../raising_lowering/raising_lowering.html">raising_lowering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trdens_python/trdens_python.html">trdens_python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cross_sections/cross_sections.html">cross_sections</a></li>
 </ul>
 
@@ -145,7 +145,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="ncsmc_python.html">ncsmc_python</a> &raquo;</li>
+          <li><a href="ncsmc_python.html">4. ncsmc_python</a> &raquo;</li>
         
       <li>scheme_plot.py</li>
     
@@ -168,23 +168,69 @@
             
   <div class="section" id="module-ncsmc_python.scheme_plot">
 <span id="scheme-plot-py"></span><h1>scheme_plot.py<a class="headerlink" href="#module-ncsmc_python.scheme_plot" title="Permalink to this headline">¶</a></h1>
+<p>A module with functions for making plots of level schemes.</p>
+<p>Either single or multi-scheme plots are possible, and we make output in
+two different formats.</p>
+<p>The one with a .png extension is an image file
+(if you haven’t heard of png, get outta here).</p>
+<p>The one with a .svg extension is also an image file, but saved in
+Scalable Vector Graphics format. It’s like .agr, but more commonly used.
+To open / edit that file, may I recommend <a class="reference external" href="https://inkscape.org/">Inkscape</a>?</p>
 <dl class="function">
 <dt id="ncsmc_python.scheme_plot.linewidth_from_data_units">
 <code class="sig-prename descclassname">ncsmc_python.scheme_plot.</code><code class="sig-name descname">linewidth_from_data_units</code><span class="sig-paren">(</span><em class="sig-param">linewidth</em>, <em class="sig-param">axis</em>, <em class="sig-param">reference='y'</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.scheme_plot.linewidth_from_data_units" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a linewidth in data units to linewidth in points.
 (many thanks to stack exchange!)</p>
+<dl class="simple">
+<dt>linewidth:</dt><dd><p>float, how big you want your line to be, in data units</p>
+</dd>
+<dt>axis:</dt><dd><p>axis object on which your graph is made</p>
+</dd>
+<dt>reference:</dt><dd><p>string, x or y, which axis data units?</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsmc_python.scheme_plot.plot_levels">
 <code class="sig-prename descclassname">ncsmc_python.scheme_plot.</code><code class="sig-name descname">plot_levels</code><span class="sig-paren">(</span><em class="sig-param">energies</em>, <em class="sig-param">widths</em>, <em class="sig-param">channel_titles</em>, <em class="sig-param">main_title</em>, <em class="sig-param">min_y</em>, <em class="sig-param">max_y</em>, <em class="sig-param">ax=None</em>, <em class="sig-param">y_label='Energy ($MeV$)'</em>, <em class="sig-param">colors=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.scheme_plot.plot_levels" title="Permalink to this definition">¶</a></dt>
 <dd><p>Makes a plot of a single level scheme.</p>
+<dl class="simple">
+<dt>energies:</dt><dd><p>list of floats, energies to plot</p>
+</dd>
+<dt>widths:</dt><dd><p>list of floats, widths to plot</p>
+</dd>
+<dt>channel_titles:</dt><dd><p>list of strings, text to be placed beside levels</p>
+</dd>
+<dt>main_title:</dt><dd><p>main plot title, usually something like 2hbarOmega</p>
+</dd>
+<dt>min_y, max_y:</dt><dd><p>two floats, if a width would go outside these bounds, we cut it off</p>
+</dd>
+<dt>ax:</dt><dd><p>matplotlib axis object on which we wish to make this plot.
+If you’re just making a single plot there’s no need to worry about this
+it’s just useful if you’re putting multiple ones on the same figure.</p>
+</dd>
+<dt>y_label:</dt><dd><p>string, label for the y axis</p>
+</dd>
+<dt>colors:</dt><dd><p>colors for each level’s width, in any matplotlib-compatible format</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsmc_python.scheme_plot.plot_multi_levels">
 <code class="sig-prename descclassname">ncsmc_python.scheme_plot.</code><code class="sig-name descname">plot_multi_levels</code><span class="sig-paren">(</span><em class="sig-param">energies_list</em>, <em class="sig-param">widths_list</em>, <em class="sig-param">channel_title_list</em>, <em class="sig-param">main_title_list</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.scheme_plot.plot_multi_levels" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make plots of many different schemes, stiched together into one figure.</p>
+<dl class="simple">
+<dt>energies_list:</dt><dd><p>list of list of floats, energies of each channel on each plot</p>
+</dd>
+<dt>widths_list:</dt><dd><p>list of list of floats, widths of each channel on each plot</p>
+</dd>
+<dt>channel_title_list:</dt><dd><p>list of list of strings, titles of each channel on each plot</p>
+</dd>
+<dt>main_title_list:</dt><dd><p>list of strings, main titles of each plot</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>

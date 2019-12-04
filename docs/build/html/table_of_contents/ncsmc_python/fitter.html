@@ -36,7 +36,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="flipper.py" href="flipper.html" />
-    <link rel="prev" title="ncsmc_python" href="ncsmc_python.html" />
+    <link rel="prev" title="4. ncsmc_python" href="ncsmc_python.html" />
     <link href="../../_static/style.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -83,8 +83,10 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">ncsd_python</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="ncsmc_python.html">ncsmc_python</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">1. ncsd_python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raising_lowering/raising_lowering.html">2. raising_lowering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trdens_python/trdens_python.html">3. trdens_python</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="ncsmc_python.html">4. ncsmc_python</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">fitter.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="flipper.html">flipper.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="output_simplifier.html">output_simplifier.py</a></li>
@@ -97,8 +99,6 @@
 <li class="toctree-l2"><a class="reference internal" href="utils.html">utils.py</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../raising_lowering/raising_lowering.html">raising_lowering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trdens_python/trdens_python.html">trdens_python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cross_sections/cross_sections.html">cross_sections</a></li>
 </ul>
 
@@ -145,7 +145,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="ncsmc_python.html">ncsmc_python</a> &raquo;</li>
+          <li><a href="ncsmc_python.html">4. ncsmc_python</a> &raquo;</li>
         
       <li>fitter.py</li>
     
@@ -174,28 +174,43 @@
 <dt id="ncsmc_python.fitter.find_resonance">
 <code class="sig-prename descclassname">ncsmc_python.fitter.</code><code class="sig-name descname">find_resonance</code><span class="sig-paren">(</span><em class="sig-param">csv_filename</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.fitter.find_resonance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the energy at which a resonance occurs for given channel.</p>
-<p>Requires a csv file with a name of the form</p>
-<p><code class="docutils literal notranslate"><span class="pre">path/to/file/phase_1_-_3_column_4_Nmax_4.csv</span></code></p>
+<dl>
+<dt>csv_filename:</dt><dd><p>path of the form <code class="docutils literal notranslate"><span class="pre">path/to/file/phase_1_-_3_column_4_Nmax_4.csv</span></code></p>
 <p>or more generally,</p>
 <p><code class="docutils literal notranslate"><span class="pre">path/to/file/[word]_[2J]_[parity]_[2T]_column_[col]_Nmax_[Nmax].csv</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsmc_python.fitter.fit_cubic">
 <code class="sig-prename descclassname">ncsmc_python.fitter.</code><code class="sig-name descname">fit_cubic</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.fitter.fit_cubic" title="Permalink to this definition">¶</a></dt>
-<dd><p>x, y are 1D arrays of floats.</p>
-<p>Returns cubic, a, b, c, d,
+<dd><dl class="simple">
+<dt>x, y:</dt><dd><p>1D arrays of floats</p>
+</dd>
+<dt>returns:</dt><dd><p>cubic, a, b, c, d;
 where cubic is the callable best-fit function y = cubic(x),
 and a, b, c, d are the coefficients (floats)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsmc_python.fitter.make_plot">
 <code class="sig-prename descclassname">ncsmc_python.fitter.</code><code class="sig-name descname">make_plot</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">title</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.fitter.make_plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function makes an interactive plot for finding resonances.</p>
-<p>x, y = 1D arrays of floats, title = string</p>
+<dl class="simple">
+<dt>x, y:</dt><dd><p>1D arrays of floats</p>
+</dd>
+<dt>title:</dt><dd><p>string, title for plot</p>
+</dd>
+</dl>
 <p>Requires the ability to open a window and interact with it.</p>
-<p>returns [(width of resonance), (energy of resonance)]</p>
+<dl class="simple">
+<dt>returns:</dt><dd><p>list of the form [(width of resonance), (energy of resonance)]
+for one resonance</p>
+</dd>
+</dl>
 <p>(both list elements are floats)</p>
 </dd></dl>
 
@@ -203,17 +218,28 @@ and a, b, c, d are the coefficients (floats)</p>
 <dt id="ncsmc_python.fitter.read_csv">
 <code class="sig-prename descclassname">ncsmc_python.fitter.</code><code class="sig-name descname">read_csv</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.fitter.read_csv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gives the x and y values contained in a 2-column csv file</p>
-<p>filename: string, path to a csv file with 2 columns (for x and y values)</p>
-<p>returns: x, y, arrays of floats</p>
+<dl class="simple">
+<dt>filename:</dt><dd><p>string, path to a csv file with 2 columns (for x and y values)</p>
+</dd>
+<dt>returns:</dt><dd><p>x, y, arrays of floats</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsmc_python.fitter.save_info">
 <code class="sig-prename descclassname">ncsmc_python.fitter.</code><code class="sig-name descname">save_info</code><span class="sig-paren">(</span><em class="sig-param">csv_path</em>, <em class="sig-param">titles</em>, <em class="sig-param">widths</em>, <em class="sig-param">energies</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.fitter.save_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save titles, widths, and energies to a csv file.</p>
-<p>titles = list of srings</p>
-<p>energies, widths = lists of floats</p>
-<p>csv_path = string</p>
+<dl class="simple">
+<dt>csv_path:</dt><dd><p>string, where to save the file</p>
+</dd>
+<dt>titles:</dt><dd><p>list of srings, titles of resonances</p>
+</dd>
+<dt>energies:</dt><dd><p>list of floats, energies of resonances</p>
+</dd>
+<dt>widths:</dt><dd><p>list of floats, widths of resonances</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -229,7 +255,7 @@ and a, b, c, d are the coefficients (floats)</p>
         <a href="flipper.html" class="btn btn-neutral float-right" title="flipper.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ncsmc_python.html" class="btn btn-neutral float-left" title="ncsmc_python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ncsmc_python.html" class="btn btn-neutral float-left" title="4. ncsmc_python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>resonance_info.py &mdash; NPSM 0.0.1 documentation</title>
+  <title>rgm_kernels.py &mdash; NPSM 0.0.1 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="resonance_plotter.py" href="resonance_plotter.html" />
-    <link rel="prev" title="rename_post_ncsmc.py" href="rename_post_ncsmc.html" />
+    <link rel="next" title="e_and_m.py" href="e_and_m.html" />
+    <link rel="prev" title="coupling_kernels.py" href="coupling_kernels.html" />
     <link href="../../_static/style.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -85,20 +85,13 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">1. ncsd_python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../raising_lowering/raising_lowering.html">2. raising_lowering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trdens_python/trdens_python.html">3. trdens_python</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="ncsmc_python.html">4. ncsmc_python</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="fitter.html">fitter.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flipper.html">flipper.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="output_simplifier.html">output_simplifier.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pheno.html">pheno.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="process_ncsmc_output.html">process_ncsmc_output.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rename_post_ncsmc.html">rename_post_ncsmc.py</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">resonance_info.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resonance_plotter.html">resonance_plotter.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scheme_plot.html">scheme_plot.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utils.html">utils.py</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="trdens_python.html">3. trdens_python</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="coupling_kernels.html">coupling_kernels.py</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">rgm_kernels.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="e_and_m.html">e_and_m.py</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../ncsmc_python/ncsmc_python.html">ncsmc_python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cross_sections/cross_sections.html">cross_sections</a></li>
 </ul>
 
@@ -145,15 +138,15 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="ncsmc_python.html">4. ncsmc_python</a> &raquo;</li>
+          <li><a href="trdens_python.html">3. trdens_python</a> &raquo;</li>
         
-      <li>resonance_info.py</li>
+      <li>rgm_kernels.py</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/table_of_contents/ncsmc_python/resonance_info.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/table_of_contents/trdens_python/rgm_kernels.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -166,35 +159,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ncsmc_python.resonance_info">
-<span id="resonance-info-py"></span><h1>resonance_info.py<a class="headerlink" href="#module-ncsmc_python.resonance_info" title="Permalink to this headline">¶</a></h1>
-<p>Contains a function which looks through ncsmc data and figures out which
-channels likely have a resonance, which ones have a potential resonance,
-and which ones likely have no resonance. Writes data to a csv file.</p>
-<p>The classification is mostly to make it easy to see which channels probably
-have a resonance, but it is not a good way to actually classify channels.
-If you have a better way, feel free to implement it.</p>
-<p>This file can be run with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">resonance_info</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">some</span><span class="o">/</span><span class="n">file</span>
-</pre></div>
-</div>
-<dl class="function">
-<dt id="ncsmc_python.resonance_info.get_resonance_info">
-<code class="sig-prename descclassname">ncsmc_python.resonance_info.</code><code class="sig-name descname">get_resonance_info</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">Nmax=None</em>, <em class="sig-param">already_flipped=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.resonance_info.get_resonance_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parses a ncsmc (eigen)phase shift file and writes info about each
-channel to a .csv file, with information about whether or not there is a
-resonance there. Returns name of said .csv file</p>
-<dl class="simple">
-<dt>filename:</dt><dd><p>path to phase shift file</p>
-</dd>
-<dt>Nmax:</dt><dd><p>integer, max number of excitations allowed</p>
-</dd>
-<dt>already_flipped:</dt><dd><p>boolean, whether or not the file has already been
-“flipped” by flipper.py</p>
-</dd>
-</dl>
-</dd></dl>
-
+  <div class="section" id="module-trdens_python.rgm_kernels">
+<span id="rgm-kernels-py"></span><h1>rgm_kernels.py<a class="headerlink" href="#module-trdens_python.rgm_kernels" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -205,10 +171,10 @@ resonance there. Returns name of said .csv file</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="resonance_plotter.html" class="btn btn-neutral float-right" title="resonance_plotter.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="e_and_m.html" class="btn btn-neutral float-right" title="e_and_m.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="rename_post_ncsmc.html" class="btn btn-neutral float-left" title="rename_post_ncsmc.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="coupling_kernels.html" class="btn btn-neutral float-left" title="coupling_kernels.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

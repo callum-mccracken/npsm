@@ -83,8 +83,10 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">ncsd_python</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="ncsmc_python.html">ncsmc_python</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">1. ncsd_python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raising_lowering/raising_lowering.html">2. raising_lowering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trdens_python/trdens_python.html">3. trdens_python</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="ncsmc_python.html">4. ncsmc_python</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="fitter.html">fitter.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="flipper.html">flipper.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="output_simplifier.html">output_simplifier.py</a></li>
@@ -97,8 +99,6 @@
 <li class="toctree-l2"><a class="reference internal" href="utils.html">utils.py</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../raising_lowering/raising_lowering.html">raising_lowering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trdens_python/trdens_python.html">trdens_python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cross_sections/cross_sections.html">cross_sections</a></li>
 </ul>
 
@@ -145,7 +145,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="ncsmc_python.html">ncsmc_python</a> &raquo;</li>
+          <li><a href="ncsmc_python.html">4. ncsmc_python</a> &raquo;</li>
         
       <li>rename_post_ncsmc.py</li>
     
@@ -169,10 +169,12 @@
   <div class="section" id="module-ncsmc_python.rename_post_ncsmc">
 <span id="rename-post-ncsmc-py"></span><h1>rename_post_ncsmc.py<a class="headerlink" href="#module-ncsmc_python.rename_post_ncsmc" title="Permalink to this headline">¶</a></h1>
 <p>Module for renaming files created by NCSMC.</p>
-<p>You can add a line to the end of your NCSMC batch script to call this, e.g.</p>
-<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">/path/to/rename_post_ncsmc.py</span> <span class="pre">--projectile=$projectile</span>
-<span class="pre">--target=$target</span> <span class="pre">--potential=$potential</span> <span class="pre">--freq=$freq</span> <span class="pre">--Nmax=$Nmax</span>
-<span class="pre">--affix=$affix</span></code></p>
+<p>You can add a line to the end of your NCSMC batch script to call this, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>python /path/to/rename_post_ncsmc.py --projectile=$projectile
+--target=$target --potential=$potential --freq=$freq --Nmax=$Nmax
+--affix=$affix
+</pre></div>
+</div>
 <dl class="function">
 <dt id="ncsmc_python.rename_post_ncsmc.rename_all">
 <code class="sig-prename descclassname">ncsmc_python.rename_post_ncsmc.</code><code class="sig-name descname">rename_all</code><span class="sig-paren">(</span><em class="sig-param">projectile='n'</em>, <em class="sig-param">target='Li8'</em>, <em class="sig-param">potential='n3lo-NN3Nlnl-srg2.0'</em>, <em class="sig-param">freq='20'</em>, <em class="sig-param">Nmax='6'</em>, <em class="sig-param">affix=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.rename_post_ncsmc.rename_all" title="Permalink to this definition">¶</a></dt>

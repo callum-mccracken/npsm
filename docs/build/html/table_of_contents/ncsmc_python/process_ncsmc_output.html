@@ -83,8 +83,10 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">ncsd_python</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="ncsmc_python.html">ncsmc_python</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">1. ncsd_python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raising_lowering/raising_lowering.html">2. raising_lowering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trdens_python/trdens_python.html">3. trdens_python</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="ncsmc_python.html">4. ncsmc_python</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="fitter.html">fitter.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="flipper.html">flipper.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="output_simplifier.html">output_simplifier.py</a></li>
@@ -97,8 +99,6 @@
 <li class="toctree-l2"><a class="reference internal" href="utils.html">utils.py</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../raising_lowering/raising_lowering.html">raising_lowering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trdens_python/trdens_python.html">trdens_python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cross_sections/cross_sections.html">cross_sections</a></li>
 </ul>
 
@@ -145,7 +145,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="ncsmc_python.html">ncsmc_python</a> &raquo;</li>
+          <li><a href="ncsmc_python.html">4. ncsmc_python</a> &raquo;</li>
         
       <li>process_ncsmc_output.py</li>
     
@@ -179,18 +179,39 @@ feed it the NCSMC output, and it gives you a bunch of useful stuff:</p>
 <dt id="ncsmc_python.process_ncsmc_output.add_nmax_data">
 <code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">add_nmax_data</code><span class="sig-paren">(</span><em class="sig-param">Nmax_list</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.add_nmax_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add data to be plotted on the level scheme for each Nmax in Nmax_list</p>
+<dl class="simple">
+<dt>Nmax_list:</dt><dd><p>list of floats</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsmc_python.process_ncsmc_output.add_resonances">
 <code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">add_resonances</code><span class="sig-paren">(</span><em class="sig-param">Nmax</em>, <em class="sig-param">eigenphase_flipped</em>, <em class="sig-param">channels_str</em>, <em class="sig-param">channel_titles</em>, <em class="sig-param">bound_energies</em>, <em class="sig-param">bound_titles</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.add_resonances" title="Permalink to this definition">¶</a></dt>
-<dd><p>Use eigenphase file to find details about resonances (widths, energies)</p>
+<dd><p>Use eigenphase file to add details about resonances (widths, energies, …)
+to the overall lists of data to be plotted.</p>
+<dl class="simple">
+<dt>Nmax:</dt><dd><p>float</p>
+</dd>
+<dt>eigenphase_flipped:</dt><dd><p>path to flipped eigenphase file</p>
+</dd>
+<dt>channels_str:</dt><dd><p>string, the contents of the csv file with the details
+of interesting resonances (width, energy, state)</p>
+</dd>
+<dt>channel_titles:</dt><dd><p>list of strings, again representing channels but formatted nicely</p>
+</dd>
+<dt>bound_energies:</dt><dd><p>list of floats, energies of bound states</p>
+</dd>
+<dt>bound_titles:</dt><dd><p>list of strings, titles of bound states</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="data">
 <dt id="ncsmc_python.process_ncsmc_output.experiment">
 <code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">experiment</code><em class="property"> = '../experiment_Li9.txt'</em><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.experiment" title="Permalink to this definition">¶</a></dt>
-<dd><p>the experiment.txt file should contain look something like this:</p>
+<dd><p>To run this file, you must have an experiment.txt file stored at this location.</p>
+<p>That file should look something like this:</p>
 <p>[start of file]
 Data is from the TUNL images and widths are eyeballed
 (<a class="reference external" href="http://www.tunl.duke.edu/nucldata/figures/09figs/09_03_2004.gif">http://www.tunl.duke.edu/nucldata/figures/09figs/09_03_2004.gif</a>)</p>
@@ -214,12 +235,21 @@ Use question marks for values that are not known experimentally.</p>
 <dt id="ncsmc_python.process_ncsmc_output.get_experimental">
 <code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">get_experimental</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.get_experimental" title="Permalink to this definition">¶</a></dt>
 <dd><p>Grab experimental data from a file which must be prepared in advance.</p>
+<p>The path to the file is saved above as <code class="docutils literal notranslate"><span class="pre">experiment</span></code></p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ncsmc_python.process_ncsmc_output.help_str">
+<code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">help_str</code><em class="property"> = &quot;\nFirst, take a look at the phase_PNG files, to figure out which\nchannels are interesting\n\n(just look at the graph, if you see a swoop up, it's interesting)\n\nThen, figure out which columns in the eigenphase file those match with.\n(they should have the same J, pi, T, but may have a different column #)\n\nThen, open up resonances_eigenphase_Nmax_[#].csv and copy the lines\nassociated with those channels.\n\nWhen you're done, the file should look\nsomething like this:\n\n3,+,3,1,strong\n3,+,3,3,strong\n3,-,3,3,strong\n5,-,3,4,none\n5,+,3,4,strong\n\n[lines copied from the eigenphase csv file, one blank line at the end]\n\n&quot;</em><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.help_str" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">help_str</span></code> is the help text displayed to the user when they have to look
+at the phase shift plots and select which channels are important.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsmc_python.process_ncsmc_output.plot_scheme">
 <code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">plot_scheme</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.plot_scheme" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plot a level scheme!</p>
+<dd><p>Plot a level scheme! Grab all data and call
+<code class="docutils literal notranslate"><span class="pre">scheme_plot.plot_multi_levels()</span></code></p>
 </dd></dl>
 
 <dl class="function">
@@ -227,6 +257,10 @@ Use question marks for values that are not known experimentally.</p>
 <code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">select_interesting_channels</code><span class="sig-paren">(</span><em class="sig-param">Nmax</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.select_interesting_channels" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get interesting channels (i.e. those channels which contain resonances)
 by using human input in a file.</p>
+<dl class="simple">
+<dt>Nmax:</dt><dd><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>

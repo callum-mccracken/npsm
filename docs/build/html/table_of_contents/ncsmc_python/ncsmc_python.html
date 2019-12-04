@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ncsmc_python &mdash; NPSM 0.0.1 documentation</title>
+  <title>4. ncsmc_python &mdash; NPSM 0.0.1 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="fitter.py" href="fitter.html" />
-    <link rel="prev" title="scraper.py" href="../ncsd_python/plot_modules/scraper.html" />
+    <link rel="prev" title="e_and_m.py" href="../trdens_python/e_and_m.html" />
     <link href="../../_static/style.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -83,8 +83,10 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">ncsd_python</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">ncsmc_python</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">1. ncsd_python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raising_lowering/raising_lowering.html">2. raising_lowering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trdens_python/trdens_python.html">3. trdens_python</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. ncsmc_python</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="fitter.html">fitter.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="flipper.html">flipper.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="output_simplifier.html">output_simplifier.py</a></li>
@@ -97,8 +99,6 @@
 <li class="toctree-l2"><a class="reference internal" href="utils.html">utils.py</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../raising_lowering/raising_lowering.html">raising_lowering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trdens_python/trdens_python.html">trdens_python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cross_sections/cross_sections.html">cross_sections</a></li>
 </ul>
 
@@ -145,7 +145,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>ncsmc_python</li>
+      <li>4. ncsmc_python</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -165,7 +165,27 @@
            <div itemprop="articleBody">
             
   <div class="section" id="ncsmc-python">
-<h1>ncsmc_python<a class="headerlink" href="#ncsmc-python" title="Permalink to this headline">¶</a></h1>
+<h1>4. ncsmc_python<a class="headerlink" href="#ncsmc-python" title="Permalink to this headline">¶</a></h1>
+<p>Now that you have the coupling kernels, RGM kernels,
+and E/M “kernels” from trdens, as well as eigenvector files from ncsd,
+you’re ready to run ncsmc.</p>
+<p>The main concept here is to think about your problem in terms of scattering.</p>
+<p>You have some target nucleus, a projectile,
+and a resultant nucleus that is made when the target and projectile meet.</p>
+<p>Think of scattering a neutron off of lithium 8.</p>
+<p>The neutron has one wavefunction going in, and another wavefunction after
+being scattered. By math, the only difference between the pre- and post-
+scattered wavefunctions should be a phase shift.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Partial_wave_analysis">See here for the math</a>.</p>
+<p>But the idea of ncsmc is to take a look at what kind of phase shifts happen
+for different interactions of states, and at different energies.</p>
+<dl class="simple">
+<dt>Missing Feature:</dt><dd><p>We don’t currently have a script to run ncsmc. Please make one if possible!</p>
+</dd>
+</dl>
+<p>But once you’ve run it, transfer the output to a local machine
+(if you’re not already there) and run <code class="docutils literal notranslate"><span class="pre">process_ncsmc_output.py</span></code>.
+It’ll walk you through the process of how to deal with the output.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="fitter.html">fitter.py</a></li>
@@ -193,7 +213,7 @@
         <a href="fitter.html" class="btn btn-neutral float-right" title="fitter.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../ncsd_python/plot_modules/scraper.html" class="btn btn-neutral float-left" title="scraper.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../trdens_python/e_and_m.html" class="btn btn-neutral float-left" title="e_and_m.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
