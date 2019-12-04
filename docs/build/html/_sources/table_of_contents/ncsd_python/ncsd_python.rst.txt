@@ -1,13 +1,20 @@
-============
-ncsd_python
-============
+==============
+1. ncsd_python
+==============
 
-There are two top-level modules here and two sub-modules.
+NCSD is short for No Core Slater Determinant.
+
+ncsd is the code that, given details about a nucleus, finds its wavefunction
+by solving the many-body Schrödinger equation using an expansion in
+harmonic oscillator basis states.
+
+It uses Slater determinants to ensure that the end result is antisymmetric
+with respect to particle exchange as required by symmetry properties of QCD.
+
+There are two top-level modules here, and each has some sub-modules
+full of helper functions.
 
 .. automodule:: ncsd_python.ncsd_multi
-   :members:
-
-.. automodule:: ncsd_python.output_exporter
    :members:
 
 multi_modules
@@ -22,6 +29,9 @@ multi_modules
    multi_modules/formats
    multi_modules/ncsd_multi_run
    multi_modules/parameter_calculations
+
+.. automodule:: ncsd_python.output_exporter
+   :members:
 
 plot_modules
 =============
