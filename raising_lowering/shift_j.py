@@ -2,26 +2,36 @@
 This script makes applying the J raising / lowering operator a little easier,
 and it puts the J-shifted output in the same spot as the original file.
 
-Note this must be run in an interactive session on Cedar.
+Note:
+    this must be run in an interactive session on cedar.
 """
 import os
 from os.path import exists, lexists, dirname, realpath, join
 os.chdir(realpath(dirname(__file__)))
 
-# path to the eigenvector file you wish to shift. Can be .gz if desired
 eig_path = "/scratch/callum/Li8Li9/ncsd/output/mfdp.egv"
+"""
+The path to the eigenvector file you wish to shift.
+Can be .gz if desired, so you don't have to worry about unzipping.
+"""
 
-# path to raising / lowering program
 exe_path = "eigv_Jplus.exe"
+"""path to raising / lowering executable"""
 
-# number of neutrons, number of protons
 N = 6
-Z = 3
+"""number of neutrons"""
 
-# max_2J (>=0) controls how many times we raise / lower.
-# if your initial 2J value is 1 and max_2J = 5,
-# you'll get files for 2J = -5, -3, -1, 1, 3, 5
+Z = 3
+"""number of protons"""
+
 max_2J = 5
+"""
+The value of ``max_2J`` (≥0) controls how many times we raise / lower.
+
+E.g. if your initial ``2J`` value is ``1`` and ``max_2J = 5``,
+you'll get files for ``2J = -5, -3, -1, 1, 3, 5``.
+
+"""
 
 # stop editing things here!
 
@@ -34,13 +44,16 @@ def raise_lower(eig_path):
     Apply the raising / lowering operator for the parameters defined near
     the top of this file.
 
+    eig_path:
+        path to eigenvector file (ncsd output)
+
     After running the exe file once, we obtain:
 
-    - ``mfdp.egv_2J_2T`` for ``delta_J = -1, +1``
-    - For example if we start with ``2J=0``, ``2T=-2``, we'll get
-        ``mfdp.egv_2_-2`` and ``mfdp.egv_-2_-2``
-    - we also get a file for ``delta_J = 0``, but ignore that one
-    - ``eigv_Jplus.out`` file
+    - ``mfdp.egv_2J_2T`` for ``ΔJ = -1, +1``.
+      For example, if we start with ``2J=0``, ``2T=-2``, we'll get
+      ``mfdp.egv_2_-2`` and ``mfdp.egv_-2_-2``
+    - We also get a file for ``ΔJ = 0``, but ignore that one
+    - Lastly, an ``eigv_Jplus.out`` file
 
     Then we just run the program a few more times, using those output files
     as input for subsequent runs.

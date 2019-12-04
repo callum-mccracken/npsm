@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>raising_lowering &mdash; NPSM 0.0.1 documentation</title>
+  <title>2. raising_lowering &mdash; NPSM 0.0.1 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="trdens_python" href="../trdens_python/trdens_python.html" />
-    <link rel="prev" title="utils.py" href="../ncsmc_python/utils.html" />
+    <link rel="prev" title="scraper.py" href="../ncsd_python/plot_modules/scraper.html" />
     <link href="../../_static/style.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -83,13 +83,13 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">ncsd_python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ncsmc_python/ncsmc_python.html">ncsmc_python</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">raising_lowering</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">1. ncsd_python</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. raising_lowering</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-raising_lowering.shift_j">shift_j.py</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../trdens_python/trdens_python.html">trdens_python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ncsmc_python/ncsmc_python.html">ncsmc_python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cross_sections/cross_sections.html">cross_sections</a></li>
 </ul>
 
@@ -136,7 +136,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>raising_lowering</li>
+      <li>2. raising_lowering</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -156,27 +156,74 @@
            <div itemprop="articleBody">
             
   <div class="section" id="raising-lowering">
-<h1>raising_lowering<a class="headerlink" href="#raising-lowering" title="Permalink to this headline">¶</a></h1>
+<h1>2. raising_lowering<a class="headerlink" href="#raising-lowering" title="Permalink to this headline">¶</a></h1>
+<p>Once you’ve run ncsd, you have eigenvectors of nuclei in one particular
+angular momentum state. For the next few calculations, you’re going to need
+more angular momentum states.</p>
+<p>So we could run ncsd again and again, but that would take forever, so instead
+we apply <a class="reference external" href="https://en.wikipedia.org/wiki/Ladder_operator">the raising/lowering opperators for J</a>
+to our state.</p>
+<p>There’s just one module here, open it, adjust a few parameters, and run it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">shift_j</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
 <div class="section" id="module-raising_lowering.shift_j">
 <span id="shift-j-py"></span><h2>shift_j.py<a class="headerlink" href="#module-raising_lowering.shift_j" title="Permalink to this headline">¶</a></h2>
 <p>This script makes applying the J raising / lowering operator a little easier,
 and it puts the J-shifted output in the same spot as the original file.</p>
-<p>Note this must be run in an interactive session on Cedar.</p>
+<dl class="simple">
+<dt>Note:</dt><dd><p>this must be run in an interactive session on cedar.</p>
+</dd>
+</dl>
+<dl class="data">
+<dt id="raising_lowering.shift_j.N">
+<code class="sig-prename descclassname">raising_lowering.shift_j.</code><code class="sig-name descname">N</code><em class="property"> = 6</em><a class="headerlink" href="#raising_lowering.shift_j.N" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of neutrons</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="raising_lowering.shift_j.Z">
+<code class="sig-prename descclassname">raising_lowering.shift_j.</code><code class="sig-name descname">Z</code><em class="property"> = 3</em><a class="headerlink" href="#raising_lowering.shift_j.Z" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of protons</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="raising_lowering.shift_j.eig_path">
+<code class="sig-prename descclassname">raising_lowering.shift_j.</code><code class="sig-name descname">eig_path</code><em class="property"> = '/scratch/callum/Li8Li9/ncsd/output/mfdp.egv'</em><a class="headerlink" href="#raising_lowering.shift_j.eig_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path to the eigenvector file you wish to shift.
+Can be .gz if desired, so you don’t have to worry about unzipping.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="raising_lowering.shift_j.exe_path">
+<code class="sig-prename descclassname">raising_lowering.shift_j.</code><code class="sig-name descname">exe_path</code><em class="property"> = 'eigv_Jplus.exe'</em><a class="headerlink" href="#raising_lowering.shift_j.exe_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>path to raising / lowering executable</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="raising_lowering.shift_j.max_2J">
+<code class="sig-prename descclassname">raising_lowering.shift_j.</code><code class="sig-name descname">max_2J</code><em class="property"> = 5</em><a class="headerlink" href="#raising_lowering.shift_j.max_2J" title="Permalink to this definition">¶</a></dt>
+<dd><p>The value of <code class="docutils literal notranslate"><span class="pre">max_2J</span></code> (≥0) controls how many times we raise / lower.</p>
+<p>E.g. if your initial <code class="docutils literal notranslate"><span class="pre">2J</span></code> value is <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">max_2J</span> <span class="pre">=</span> <span class="pre">5</span></code>,
+you’ll get files for <code class="docutils literal notranslate"><span class="pre">2J</span> <span class="pre">=</span> <span class="pre">-5,</span> <span class="pre">-3,</span> <span class="pre">-1,</span> <span class="pre">1,</span> <span class="pre">3,</span> <span class="pre">5</span></code>.</p>
+</dd></dl>
+
 <dl class="function">
 <dt id="raising_lowering.shift_j.raise_lower">
 <code class="sig-prename descclassname">raising_lowering.shift_j.</code><code class="sig-name descname">raise_lower</code><span class="sig-paren">(</span><em class="sig-param">eig_path</em><span class="sig-paren">)</span><a class="headerlink" href="#raising_lowering.shift_j.raise_lower" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply the raising / lowering operator for the parameters defined near
 the top of this file.</p>
-<p>After running the exe file once, we obtain:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">mfdp.egv_2J_2T</span></code> for <code class="docutils literal notranslate"><span class="pre">delta_J</span> <span class="pre">=</span> <span class="pre">-1,</span> <span class="pre">+1</span></code></p></li>
-<li><dl class="simple">
-<dt>For example if we start with <code class="docutils literal notranslate"><span class="pre">2J=0</span></code>, <code class="docutils literal notranslate"><span class="pre">2T=-2</span></code>, we’ll get</dt><dd><p><code class="docutils literal notranslate"><span class="pre">mfdp.egv_2_-2</span></code> and <code class="docutils literal notranslate"><span class="pre">mfdp.egv_-2_-2</span></code></p>
+<dl class="simple">
+<dt>eig_path:</dt><dd><p>path to eigenvector file (ncsd output)</p>
 </dd>
 </dl>
-</li>
-<li><p>we also get a file for <code class="docutils literal notranslate"><span class="pre">delta_J</span> <span class="pre">=</span> <span class="pre">0</span></code>, but ignore that one</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">eigv_Jplus.out</span></code> file</p></li>
+<p>After running the exe file once, we obtain:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mfdp.egv_2J_2T</span></code> for <code class="docutils literal notranslate"><span class="pre">ΔJ</span> <span class="pre">=</span> <span class="pre">-1,</span> <span class="pre">+1</span></code>.
+For example, if we start with <code class="docutils literal notranslate"><span class="pre">2J=0</span></code>, <code class="docutils literal notranslate"><span class="pre">2T=-2</span></code>, we’ll get
+<code class="docutils literal notranslate"><span class="pre">mfdp.egv_2_-2</span></code> and <code class="docutils literal notranslate"><span class="pre">mfdp.egv_-2_-2</span></code></p></li>
+<li><p>We also get a file for <code class="docutils literal notranslate"><span class="pre">ΔJ</span> <span class="pre">=</span> <span class="pre">0</span></code>, but ignore that one</p></li>
+<li><p>Lastly, an <code class="docutils literal notranslate"><span class="pre">eigv_Jplus.out</span></code> file</p></li>
 </ul>
 <p>Then we just run the program a few more times, using those output files
 as input for subsequent runs.</p>
@@ -196,7 +243,7 @@ as input for subsequent runs.</p>
         <a href="../trdens_python/trdens_python.html" class="btn btn-neutral float-right" title="trdens_python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../ncsmc_python/utils.html" class="btn btn-neutral float-left" title="utils.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../ncsd_python/plot_modules/scraper.html" class="btn btn-neutral float-left" title="scraper.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
