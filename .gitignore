@@ -4,12 +4,15 @@
 **.pyc
 **.pyo
 # folders containing data, half-fininshed calculations, ...
-**/_eigenvectors/**
-**/_interactions/**
-**/_trdens_input_files/**
-**/_ncsd_output/**
-**/_sample_cross_section_files/**
-**/_Nmax4_ncsmc_output/**
-**/_Nmax6_ncsmc_output/**
+_eigenvectors/**
+_interactions/**
+_trdens_input_files/**
+_ncsd_output/**
+_sample_cross_section_files/**
+_Nmax4_ncsmc_output/**
+_Nmax6_ncsmc_output/**
+cross_sections/*/**
+
 experiment_Li9.txt
+
 # code in progress, not ready to be added

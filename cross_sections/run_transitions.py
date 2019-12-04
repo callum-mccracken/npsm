@@ -83,14 +83,15 @@ def make_dir(res_state):
     return join(run_dir, basename(exe_path))
 
 
-executables = []
-for res_state in resultant_states:
-    executables.append(make_dir(res_state))
+if __name__ == "__main__":
+    executables = []
+    for res_state in resultant_states:
+        executables.append(make_dir(res_state))
 
-def run_exe(exe):
-    os.system(". " + exe + " > " + join(dirname(exe), "output.txt"))
+    def run_exe(exe):
+        os.system(". " + exe + " > " + join(dirname(exe), "output.txt"))
 
-print("Running executables in parallel")
-for exe in executables:
-    print(realpath(exe))
-    Process(target=run_exe(exe)).start()
+    print("Running executables in parallel")
+    for exe in executables:
+        print(realpath(exe))
+        Process(target=run_exe(exe)).start()
