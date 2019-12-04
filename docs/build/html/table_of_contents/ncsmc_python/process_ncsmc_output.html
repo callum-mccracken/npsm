@@ -53,6 +53,29 @@ feed it the NCSMC output, and it gives you a bunch of useful stuff:</p>
 <dd><p>Use eigenphase file to find details about resonances (widths, energies)</p>
 </dd></dl>
 
+<dl class="data">
+<dt id="ncsmc_python.process_ncsmc_output.experiment">
+<code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">experiment</code><em class="property"> = '../experiment_Li9.txt'</em><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.experiment" title="Permalink to this definition">¶</a></dt>
+<dd><p>the experiment.txt file should contain look something like this:</p>
+<p>[start of file]
+Data is from the TUNL images and widths are eyeballed
+(<a class="reference external" href="http://www.tunl.duke.edu/nucldata/figures/09figs/09_03_2004.gif">http://www.tunl.duke.edu/nucldata/figures/09figs/09_03_2004.gif</a>)</p>
+<p>States are given in the form
+“Energy Width J parity T” but with commas.
+Don’t want to mess up the parsing by using commas elsewhere!)</p>
+<p>Li9
+THRESH 4.0639
+0,0,1.5,-,1.5
+2.691,0,0.5,-,?
+4.296,0.2,2.5,-,?
+5.38,0.4,?,?,?
+6.43,0,?,?,?
+[end of file]</p>
+<p>The stuff at the top of the file isn’t necessary, just helpful for a reader.
+The program just looks for the THRESH line, and all lines with commas.
+Use question marks for values that are not known experimentally.</p>
+</dd></dl>
+
 <dl class="function">
 <dt id="ncsmc_python.process_ncsmc_output.get_experimental">
 <code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">get_experimental</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.get_experimental" title="Permalink to this definition">¶</a></dt>
