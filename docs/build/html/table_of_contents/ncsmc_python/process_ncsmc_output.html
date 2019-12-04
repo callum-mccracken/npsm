@@ -99,7 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="utils.html">utils.py</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../cross_sections/cross_sections.html">cross_sections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cross_sections/cross_sections.html">5. cross_sections</a></li>
 </ul>
 
             
@@ -243,6 +243,7 @@ Use question marks for values that are not known experimentally.</p>
 <code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">help_str</code><em class="property"> = &quot;\nFirst, take a look at the phase_PNG files, to figure out which\nchannels are interesting\n\n(just look at the graph, if you see a swoop up, it's interesting)\n\nThen, figure out which columns in the eigenphase file those match with.\n(they should have the same J, pi, T, but may have a different column #)\n\nThen, open up resonances_eigenphase_Nmax_[#].csv and copy the lines\nassociated with those channels.\n\nWhen you're done, the file should look\nsomething like this:\n\n3,+,3,1,strong\n3,+,3,3,strong\n3,-,3,3,strong\n5,-,3,4,none\n5,+,3,4,strong\n\n[lines copied from the eigenphase csv file, one blank line at the end]\n\n&quot;</em><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.help_str" title="Permalink to this definition">¶</a></dt>
 <dd><p><code class="docutils literal notranslate"><span class="pre">help_str</span></code> is the help text displayed to the user when they have to look
 at the phase shift plots and select which channels are important.</p>
+<p>Note that it looks a whole lot better in the python file than online.</p>
 </dd></dl>
 
 <dl class="function">

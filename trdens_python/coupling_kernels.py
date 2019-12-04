@@ -28,7 +28,6 @@ run_word = "srun"
 # make link to eigenvector file
 real_eig = f"mfdp_{N}.egv_{nuc}_{potential}_Nmax{Nmax}.{freq}{sufegv}"
 eig_link = f"{real_eig}_{Jz2}_{Tz2}"
-symlink(real_eig, eig_link)
 
 Jzf_list = [0, 1, -1, 2, -2]
 
@@ -58,4 +57,5 @@ def run_coupling():
         remove("mfdf.egv")
 
 if __name__ == "__main__":
+    symlink(real_eig, eig_link)
     run_coupling()

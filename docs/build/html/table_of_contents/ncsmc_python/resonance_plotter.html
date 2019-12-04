@@ -99,7 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="utils.html">utils.py</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../cross_sections/cross_sections.html">cross_sections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cross_sections/cross_sections.html">5. cross_sections</a></li>
 </ul>
 
             
@@ -173,10 +173,12 @@
 <p>Can be run with</p>
 <p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">resonance_plotter.py</span> <span class="pre">-f</span> <span class="pre">/path/to/some/file</span></code></p>
 <p>(assumes file is not flipped)</p>
-<p>It will:
-- flip the file (output saved in same directory as original file)
-- detect which channels have resonances (saved in resonances directory)
-- plot all channels</p>
+<p>It will:</p>
+<ul class="simple">
+<li><p>flip the file (output saved in same directory as original file)</p></li>
+<li><p>detect which channels have resonances (saved in resonances directory)</p></li>
+<li><p>plot all channels</p></li>
+</ul>
 <dl class="data">
 <dt id="ncsmc_python.resonance_plotter.Nmax">
 <code class="sig-prename descclassname">ncsmc_python.resonance_plotter.</code><code class="sig-name descname">Nmax</code><em class="property"> = 4</em><a class="headerlink" href="#ncsmc_python.resonance_plotter.Nmax" title="Permalink to this definition">¶</a></dt>
@@ -199,9 +201,11 @@ Just paste into the space between the pair of triple quotes above</p>
 <dl class="data">
 <dt id="ncsmc_python.resonance_plotter.energy_bounds">
 <code class="sig-prename descclassname">ncsmc_python.resonance_plotter.</code><code class="sig-name descname">energy_bounds</code><em class="property"> = (-inf, inf)</em><a class="headerlink" href="#ncsmc_python.resonance_plotter.energy_bounds" title="Permalink to this definition">¶</a></dt>
-<dd><p>energy_bounds: the bounds to use for the energy (x) axis,
-- e.g. if you have 0-10 but only want 0-5, set this to (0, 5)
-- If you don’t want bounds set this to (-inf, inf)</p>
+<dd><p>energy_bounds: the bounds to use for the energy (x) axis</p>
+<ul class="simple">
+<li><p>e.g. if you have 0-10 but only want 0-5, set this to (0, 5)</p></li>
+<li><p>If you don’t want bounds set this to (-inf, inf)</p></li>
+</ul>
 </dd></dl>
 
 <dl class="data">
@@ -219,9 +223,11 @@ Just paste into the space between the pair of triple quotes above</p>
 <dl class="function">
 <dt id="ncsmc_python.resonance_plotter.plot">
 <code class="sig-prename descclassname">ncsmc_python.resonance_plotter.</code><code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">flipped=False</em>, <em class="sig-param">e_bounds=(-inf</em>, <em class="sig-param">inf)</em>, <em class="sig-param">res_types='all'</em>, <em class="sig-param">channels=''</em>, <em class="sig-param">Nmax=None</em>, <em class="sig-param">dpi=90</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.resonance_plotter.plot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Makes a whole bunch of plots.
-- one for each of the user-specified channels
-- one with all channels on the same plot</p>
+<dd><p>Makes a whole bunch of plots.</p>
+<ul class="simple">
+<li><p>one for each of the user-specified channels</p></li>
+<li><p>one with all channels on the same plot</p></li>
+</ul>
 <dl class="simple">
 <dt>filename:</dt><dd><p>string, an eigenphase_shift / phase_shift file path</p>
 </dd>
