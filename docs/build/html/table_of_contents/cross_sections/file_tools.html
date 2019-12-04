@@ -1,0 +1,244 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>file_tools.py &mdash; NPSM 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="ncsm_e1.py" href="ncsm_e1.html" />
+    <link rel="prev" title="dot_in.py" href="dot_in.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NPSM
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">ncsd_python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ncsmc_python/ncsmc_python.html">ncsmc_python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raising_lowering/raising_lowering.html">raising_lowering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trdens_python/trdens_python.html">trdens_python</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="cross_sections.html">cross_sections</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dot_in.html">dot_in.py</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">file_tools.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ncsm_e1.html">ncsm_e1.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run_transitions.html">run_transitions.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils.py</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NPSM</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="cross_sections.html">cross_sections</a> &raquo;</li>
+        
+      <li>file_tools.py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/table_of_contents/cross_sections/file_tools.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-cross_sections.file_tools">
+<span id="file-tools-py"></span><h1>file_tools.py<a class="headerlink" href="#module-cross_sections.file_tools" title="Permalink to this headline">¶</a></h1>
+<p>A module for processing <code class="docutils literal notranslate"><span class="pre">observ.out</span></code> files from NCSMC output.</p>
+<dl class="function">
+<dt id="cross_sections.file_tools.make_wf_file">
+<code class="sig-prename descclassname">cross_sections.file_tools.</code><code class="sig-name descname">make_wf_file</code><span class="sig-paren">(</span><em class="sig-param">wavefunction_NCSMC_file</em>, <em class="sig-param">res_state</em>, <em class="sig-param">run_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.file_tools.make_wf_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a wavefunction_NCSMC file for the resultant nucleus state given by
+res_state, and puts it in the directory run_dir.</p>
+<p>res_state is of the form “2J parity 2T”, and the other variables are paths</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cross_sections.file_tools.simplify_observ">
+<code class="sig-prename descclassname">cross_sections.file_tools.</code><code class="sig-name descname">simplify_observ</code><span class="sig-paren">(</span><em class="sig-param">desired_state</em>, <em class="sig-param">transitions</em>, <em class="sig-param">filename</em>, <em class="sig-param">function=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.file_tools.simplify_observ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a simplified version of an <code class="docutils literal notranslate"><span class="pre">observ.out</span></code> file.</p>
+<p>Params:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">desired_state</span></code>: string, of the form 2J, pi, 2T, e.g. “3 -1 3”</p>
+<p><code class="docutils literal notranslate"><span class="pre">transitions</span></code>: a list of transitions to keep in the file, e.g. [“E1”]</p>
+<p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: string, the path to the observ.out file.</p>
+<p><code class="docutils literal notranslate"><span class="pre">function</span></code>: string, name of function calling this function</p>
+</div></blockquote>
+<p>Returns:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">simp_path</span></code>: the path to the simplified file</p>
+<p>if function == “make_ncsm_e1”, also returns</p>
+<p><code class="docutils literal notranslate"><span class="pre">num_desired_state</span></code>: the number of states with the same quantum
+numbers as the desired state</p>
+</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ncsm_e1.html" class="btn btn-neutral float-right" title="ncsm_e1.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dot_in.html" class="btn btn-neutral float-left" title="dot_in.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Callum McCracken
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

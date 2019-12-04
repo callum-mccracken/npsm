@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>output_simplifier.py &mdash; NPSM 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="pheno.py" href="pheno.html" />
+    <link rel="prev" title="flipper.py" href="flipper.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NPSM
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">ncsd_python</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="ncsmc_python.html">ncsmc_python</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fitter.html">fitter.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flipper.html">flipper.py</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">output_simplifier.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pheno.html">pheno.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process_ncsmc_output.html">process_ncsmc_output.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rename_post_ncsmc.html">rename_post_ncsmc.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resonance_info.html">resonance_info.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resonance_plotter.html">resonance_plotter.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scheme_plot.html">scheme_plot.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../raising_lowering/raising_lowering.html">raising_lowering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trdens_python/trdens_python.html">trdens_python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cross_sections/cross_sections.html">cross_sections</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NPSM</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="ncsmc_python.html">ncsmc_python</a> &raquo;</li>
+        
+      <li>output_simplifier.py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/table_of_contents/ncsmc_python/output_simplifier.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-ncsmc_python.output_simplifier">
+<span id="output-simplifier-py"></span><h1>output_simplifier.py<a class="headerlink" href="#module-ncsmc_python.output_simplifier" title="Permalink to this headline">¶</a></h1>
+<p>Takes ncsmc output (.out) files, grabs info about bound states,
+and outputs a “.out_simplified” file in the same spot as the original.</p>
+<p>Can be run by editing the filename parameter in this file,
+or just running the file with the command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">output_simplifier.py</span> <span class="pre">-f</span> <span class="pre">[filename]</span></code></p>
+<dl class="function">
+<dt id="ncsmc_python.output_simplifier.bound_state_line">
+<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">bound_state_line</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.bound_state_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if line is of the form</p>
+<p><code class="docutils literal notranslate"><span class="pre">Bound</span> <span class="pre">state</span> <span class="pre">found</span> <span class="pre">at</span> <span class="pre">E_b=[energy]</span> <span class="pre">[unit]</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsmc_python.output_simplifier.get_e">
+<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">get_e</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.get_e" title="Permalink to this definition">¶</a></dt>
+<dd><p>assuming bound_state_line(line) == True, return E</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsmc_python.output_simplifier.get_ground_e">
+<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">get_ground_e</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.get_ground_e" title="Permalink to this definition">¶</a></dt>
+<dd><p>The line looks like:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Ground-state</span> <span class="pre">E=</span> <span class="pre">-68.4838</span>&#160; <span class="pre">T_rel=</span>&#160;&#160; <span class="pre">9.3033</span>&#160; <span class="pre">[...]</span></code></p>
+<p>Get E.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsmc_python.output_simplifier.get_j_parity">
+<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">get_j_parity</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.get_j_parity" title="Permalink to this definition">¶</a></dt>
+<dd><p>assuming j_parity_line(line) == True, return J, parity</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsmc_python.output_simplifier.get_t">
+<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">get_t</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.get_t" title="Permalink to this definition">¶</a></dt>
+<dd><p>assuming t_line(line) == True, return T</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsmc_python.output_simplifier.get_thresh_e">
+<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">get_thresh_e</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.get_thresh_e" title="Permalink to this definition">¶</a></dt>
+<dd><p>line looks like:
+Threshold E= -69.0645 MeV</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsmc_python.output_simplifier.groud_e_line">
+<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">groud_e_line</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.groud_e_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if line contains <code class="docutils literal notranslate"><span class="pre">Ground-state</span> <span class="pre">E=</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsmc_python.output_simplifier.j_parity_line">
+<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">j_parity_line</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.j_parity_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>checks if line is of the form</p>
+<p>2*J=  6    parity=-1</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsmc_python.output_simplifier.simplify">
+<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">simplify</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.simplify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a simpler version of ncsmc .out files,
+no more scrolling through 100000 line files!</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsmc_python.output_simplifier.t_line">
+<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">t_line</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.t_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if line is of the form <code class="docutils literal notranslate"><span class="pre">2*T=</span> <span class="pre">0</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsmc_python.output_simplifier.thresh_e_line">
+<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">thresh_e_line</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.thresh_e_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if line contains <code class="docutils literal notranslate"><span class="pre">Threshold</span> <span class="pre">E=</span></code></p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pheno.html" class="btn btn-neutral float-right" title="pheno.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="flipper.html" class="btn btn-neutral float-left" title="flipper.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Callum McCracken
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

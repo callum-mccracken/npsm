@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>process_ncsmc_output.py &mdash; NPSM 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="rename_post_ncsmc.py" href="rename_post_ncsmc.html" />
+    <link rel="prev" title="pheno.py" href="pheno.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NPSM
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">ncsd_python</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="ncsmc_python.html">ncsmc_python</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fitter.html">fitter.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flipper.html">flipper.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_simplifier.html">output_simplifier.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pheno.html">pheno.py</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">process_ncsmc_output.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rename_post_ncsmc.html">rename_post_ncsmc.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resonance_info.html">resonance_info.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resonance_plotter.html">resonance_plotter.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scheme_plot.html">scheme_plot.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../raising_lowering/raising_lowering.html">raising_lowering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trdens_python/trdens_python.html">trdens_python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cross_sections/cross_sections.html">cross_sections</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NPSM</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="ncsmc_python.html">ncsmc_python</a> &raquo;</li>
+        
+      <li>process_ncsmc_output.py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/table_of_contents/ncsmc_python/process_ncsmc_output.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-ncsmc_python.process_ncsmc_output">
+<span id="process-ncsmc-output-py"></span><h1>process_ncsmc_output.py<a class="headerlink" href="#module-ncsmc_python.process_ncsmc_output" title="Permalink to this headline">¶</a></h1>
+<p>A module to consolidate all functions in ncsmc_python, so you can just
+feed it the NCSMC output, and it gives you a bunch of useful stuff:</p>
+<ul class="simple">
+<li><p>plots of all resonances</p></li>
+<li><p>spaghetti plot with interesting resonances</p></li>
+<li><p>level scheme plot</p></li>
+</ul>
+<dl class="function">
+<dt id="ncsmc_python.process_ncsmc_output.add_nmax_data">
+<code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">add_nmax_data</code><span class="sig-paren">(</span><em class="sig-param">Nmax_list</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.add_nmax_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add data to be plotted on the level scheme for each Nmax in Nmax_list</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsmc_python.process_ncsmc_output.add_resonances">
+<code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">add_resonances</code><span class="sig-paren">(</span><em class="sig-param">Nmax</em>, <em class="sig-param">eigenphase_flipped</em>, <em class="sig-param">channels_str</em>, <em class="sig-param">channel_titles</em>, <em class="sig-param">bound_energies</em>, <em class="sig-param">bound_titles</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.add_resonances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use eigenphase file to find details about resonances (widths, energies)</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ncsmc_python.process_ncsmc_output.experiment">
+<code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">experiment</code><em class="property"> = '../experiment_Li9.txt'</em><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.experiment" title="Permalink to this definition">¶</a></dt>
+<dd><p>the experiment.txt file should contain look something like this:</p>
+<p>[start of file]
+Data is from the TUNL images and widths are eyeballed
+(<a class="reference external" href="http://www.tunl.duke.edu/nucldata/figures/09figs/09_03_2004.gif">http://www.tunl.duke.edu/nucldata/figures/09figs/09_03_2004.gif</a>)</p>
+<p>States are given in the form
+“Energy Width J parity T” but with commas.
+Don’t want to mess up the parsing by using commas elsewhere!)</p>
+<p>Li9
+THRESH 4.0639
+0,0,1.5,-,1.5
+2.691,0,0.5,-,?
+4.296,0.2,2.5,-,?
+5.38,0.4,?,?,?
+6.43,0,?,?,?
+[end of file]</p>
+<p>The stuff at the top of the file isn’t necessary, just helpful for a reader.
+The program just looks for the THRESH line, and all lines with commas.
+Use question marks for values that are not known experimentally.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsmc_python.process_ncsmc_output.get_experimental">
+<code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">get_experimental</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.get_experimental" title="Permalink to this definition">¶</a></dt>
+<dd><p>Grab experimental data from a file which must be prepared in advance.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsmc_python.process_ncsmc_output.plot_scheme">
+<code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">plot_scheme</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.plot_scheme" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot a level scheme!</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsmc_python.process_ncsmc_output.select_interesting_channels">
+<code class="sig-prename descclassname">ncsmc_python.process_ncsmc_output.</code><code class="sig-name descname">select_interesting_channels</code><span class="sig-paren">(</span><em class="sig-param">Nmax</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.process_ncsmc_output.select_interesting_channels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get interesting channels (i.e. those channels which contain resonances)
+by using human input in a file.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rename_post_ncsmc.html" class="btn btn-neutral float-right" title="rename_post_ncsmc.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pheno.html" class="btn btn-neutral float-left" title="pheno.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Callum McCracken
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
