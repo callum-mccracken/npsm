@@ -1,0 +1,1508 @@
+ Nucleus:
+ A=  8   Z=  3   N=  5
+ 2*MJ=  2   2*MT= -2  parity= +
+ hbar Omega= 20.0000   Nhw= 10   dimension= 1569556   nhme=         0
+ k1max=  7   mxnwd=  4   mxsps=     256   major= 2   iparity= 0
+
+ J= 2.0000    T= 1.0001     Energy=    -34.8845     Ex=      0.0000
+ J= 1.0000    T= 1.0001     Energy=    -33.7694     Ex=      1.1151
+ J= 3.0000    T= 1.0001     Energy=    -32.1944     Ex=      2.6901
+ J= 2.0000    T= 1.0001     Energy=    -29.8607     Ex=      5.0238
+ J= 1.0000    T= 1.0001     Energy=    -29.4625     Ex=      5.4220
+ J= 2.0000    T= 1.0001     Energy=    -28.6251     Ex=      6.2594
+ J= 1.0001    T= 1.0001     Energy=    -28.2351     Ex=      6.6494
+ J= 4.0000    T= 1.0001     Energy=    -27.2808     Ex=      7.6037
+ J= 3.0000    T= 1.0001     Energy=    -26.2739     Ex=      8.6106
+
+ N1_max=   7   N12_max=   8   Nasps= 236
+
+ wave functions of the states #  1- #  9 used
+
+ wave functions of the states #  1- #  9 used
+ 
+ number of single-nucleon states =  36
+
+ *** Transition matrix elements for states: ***
+ #  1 [2*(J,T),Ex]_f=  4 2  0.0000   #  1 [2*(J,T),Ex]_i=  4 2  0.0000
+
+ Occupation Numbers for N=2n+l:
+ N=  0    p=  1.8654    n=  1.8841
+ N=  1    p=  0.9925    n=  2.8334
+ N=  2    p=  0.0916    n=  0.1305
+ N=  3    p=  0.0396    n=  0.1185
+ N=  4    p=  0.0070    n=  0.0164
+ N=  5    p=  0.0030    n=  0.0141
+ N=  6    p=  0.0007    n=  0.0017
+ N=  7    p=  0.0002    n=  0.0013
+
+ Occupation Numbers for nlj-levels:
+ n,l,2j=  0  0  1    p=  1.8654    n=  1.8841
+ n,l,2j=  0  1  1    p=  0.2264    n=  0.3640
+ n,l,2j=  0  1  3    p=  0.7661    n=  2.4694
+ n,l,2j=  1  0  1    p=  0.0207    n=  0.0375
+ n,l,2j=  0  2  3    p=  0.0396    n=  0.0477
+ n,l,2j=  0  2  5    p=  0.0313    n=  0.0453
+ n,l,2j=  1  1  1    p=  0.0090    n=  0.0184
+ n,l,2j=  1  1  3    p=  0.0158    n=  0.0672
+ n,l,2j=  0  3  5    p=  0.0087    n=  0.0176
+ n,l,2j=  0  3  7    p=  0.0061    n=  0.0154
+ n,l,2j=  2  0  1    p=  0.0010    n=  0.0048
+ n,l,2j=  1  2  3    p=  0.0019    n=  0.0028
+ n,l,2j=  1  2  5    p=  0.0012    n=  0.0048
+ n,l,2j=  0  4  7    p=  0.0026    n=  0.0035
+ n,l,2j=  0  4  9    p=  0.0004    n=  0.0004
+ n,l,2j=  2  1  1    p=  0.0004    n=  0.0009
+ n,l,2j=  2  1  3    p=  0.0011    n=  0.0107
+ n,l,2j=  1  3  5    p=  0.0007    n=  0.0009
+ n,l,2j=  1  3  7    p=  0.0002    n=  0.0004
+ n,l,2j=  0  5  9    p=  0.0006    n=  0.0011
+ n,l,2j=  0  5 11    p=  0.0000    n=  0.0000
+ n,l,2j=  3  0  1    p=  0.0002    n=  0.0006
+ n,l,2j=  2  2  3    p=  0.0002    n=  0.0002
+ n,l,2j=  2  2  5    p=  0.0001    n=  0.0006
+ n,l,2j=  1  4  7    p=  0.0001    n=  0.0001
+ n,l,2j=  1  4  9    p=  0.0000    n=  0.0000
+ n,l,2j=  0  6 11    p=  0.0001    n=  0.0001
+ n,l,2j=  0  6 13    p=  0.0000    n=  0.0000
+ n,l,2j=  3  1  1    p=  0.0001    n=  0.0001
+ n,l,2j=  3  1  3    p=  0.0001    n=  0.0011
+ n,l,2j=  2  3  5    p=  0.0000    n=  0.0000
+ n,l,2j=  2  3  7    p=  0.0000    n=  0.0000
+ n,l,2j=  1  5  9    p=  0.0000    n=  0.0000
+ n,l,2j=  1  5 11    p=  0.0000    n=  0.0000
+ n,l,2j=  0  7 13    p=  0.0000    n=  0.0000
+ n,l,2j=  0  7 15    p=  0.0000    n=  0.0000
+
+ BE0 matrix elements:
+ L= 0 E0p=  0.8463   E0n=  1.4105     B(E0)=  0.7162
+
+ M1 moments:
+ pl=  0.3075   nl=  0.8977   ps=  0.4542   ns=  0.3406     M1=  1.5417
+
+ BM1 matrix elements:
+ pl=  0.1840   nl=  0.5372   ps=  0.2718   ns=  0.2038 M1=  0.9226 B(M1)=  0.8511
+
+ E2 moments:
+ Q2p=  2.5167   Q2n=  4.1404     Q2=  2.5167
+
+ BE2 matrix elements:
+ L= 2 E2p=  1.4850   E2n=  2.4430     B(E2)=  2.2052
+
+ BE4 matrix elements:
+ L= 4 E4p=  0.3334   E4n=  0.9697     B(E4)=  0.1112
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  2 [2*(J,T),Ex]_f=  2 2  1.1151   #  1 [2*(J,T),Ex]_i=  4 2  0.0000
+
+ BM1 matrix elements:
+ pl=  0.0456   nl= -0.2920   ps=  0.2633   ns= -0.0169 M1=  1.5811 B(M1)=  2.4999
+
+ BE2 matrix elements:
+ L= 2 E2p= -0.7626   E2n= -1.5856     B(E2)=  0.5816
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  3 [2*(J,T),Ex]_f=  6 2  2.6901   #  1 [2*(J,T),Ex]_i=  4 2  0.0000
+
+ BM1 matrix elements:
+ pl=  0.2652   nl= -0.1311   ps= -0.0092   ns= -0.1248 M1=  0.6912 B(M1)=  0.4777
+
+ BE2 matrix elements:
+ L= 2 E2p= -2.1327   E2n= -2.9268     B(E2)=  4.5486
+
+ BE4 matrix elements:
+ L= 4 E4p= -1.4410   E4n= -1.1959     B(E4)=  2.0766
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  4 [2*(J,T),Ex]_f=  4 2  5.0238   #  1 [2*(J,T),Ex]_i=  4 2  0.0000
+
+ BE0 matrix elements:
+ L= 0 E0p= -0.0000   E0n= -0.0000     B(E0)=  0.0000
+
+ BM1 matrix elements:
+ pl= -0.0167   nl=  0.1284   ps= -0.0211   ns= -0.0906 M1=  0.2118 B(M1)=  0.0449
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.9810   E2n=  0.4377     B(E2)=  0.9624
+
+ BE4 matrix elements:
+ L= 4 E4p=  1.2082   E4n=  2.1177     B(E4)=  1.4598
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  5 [2*(J,T),Ex]_f=  2 2  5.4220   #  1 [2*(J,T),Ex]_i=  4 2  0.0000
+
+ BM1 matrix elements:
+ pl= -0.0537   nl=  0.1900   ps=  0.0687   ns= -0.2050 M1=  1.1140 B(M1)=  1.2410
+
+ BE2 matrix elements:
+ L= 2 E2p= -0.1184   E2n=  1.1968     B(E2)=  0.0140
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  6 [2*(J,T),Ex]_f=  4 2  6.2594   #  1 [2*(J,T),Ex]_i=  4 2  0.0000
+
+ BE0 matrix elements:
+ L= 0 E0p= -0.0000   E0n= -0.0000     B(E0)=  0.0000
+
+ BM1 matrix elements:
+ pl= -0.1030   nl= -0.0116   ps= -0.0206   ns=  0.1351 M1= -0.7349 B(M1)=  0.5401
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.5365   E2n=  1.7023     B(E2)=  0.2878
+
+ BE4 matrix elements:
+ L= 4 E4p=  1.5300   E4n=  2.8694     B(E4)=  2.3409
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  7 [2*(J,T),Ex]_f=  2 2  6.6494   #  1 [2*(J,T),Ex]_i=  4 2  0.0000
+
+ BM1 matrix elements:
+ pl=  0.1555   nl= -0.0022   ps=  0.0036   ns= -0.1569 M1=  0.7755 B(M1)=  0.6013
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.2756   E2n= -0.4313     B(E2)=  0.0760
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  8 [2*(J,T),Ex]_f=  8 2  7.6037   #  1 [2*(J,T),Ex]_i=  4 2  0.0000
+
+ BE2 matrix elements:
+ L= 2 E2p=  1.3051   E2n=  2.5000     B(E2)=  1.7034
+
+ BE4 matrix elements:
+ L= 4 E4p=  3.5989   E4n=  6.6941     B(E4)= 12.9518
+
+ BE6 matrix elements:
+ L= 6 E6p=  4.1703   E6n=  7.9382     B(E6)= 17.3912
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  9 [2*(J,T),Ex]_f=  6 2  8.6106   #  1 [2*(J,T),Ex]_i=  4 2  0.0000
+
+ BM1 matrix elements:
+ pl=  0.1842   nl= -0.2369   ps= -0.0017   ns=  0.0543 M1= -0.0330 B(M1)=  0.0011
+
+ BE2 matrix elements:
+ L= 2 E2p= -0.8004   E2n= -1.0514     B(E2)=  0.6407
+
+ BE4 matrix elements:
+ L= 4 E4p= -2.1111   E4n= -4.1455     B(E4)=  4.4568
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  1 [2*(J,T),Ex]_f=  4 2  0.0000   #  2 [2*(J,T),Ex]_i=  2 2  1.1151
+
+ BM1 matrix elements:
+ pl= -0.0589   nl=  0.3770   ps= -0.3400   ns=  0.0218 M1= -2.0412 B(M1)=  4.1665
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.9845   E2n=  2.0470     B(E2)=  0.9693
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  2 [2*(J,T),Ex]_f=  2 2  1.1151   #  2 [2*(J,T),Ex]_i=  2 2  1.1151
+
+ Occupation Numbers for N=2n+l:
+ N=  0    p=  1.8616    n=  1.8818
+ N=  1    p=  0.9904    n=  2.8151
+ N=  2    p=  0.0966    n=  0.1394
+ N=  3    p=  0.0403    n=  0.1295
+ N=  4    p=  0.0074    n=  0.0169
+ N=  5    p=  0.0030    n=  0.0142
+ N=  6    p=  0.0006    n=  0.0018
+ N=  7    p=  0.0002    n=  0.0014
+
+ Occupation Numbers for nlj-levels:
+ n,l,2j=  0  0  1    p=  1.8616    n=  1.8818
+ n,l,2j=  0  1  1    p=  0.3230    n=  0.3591
+ n,l,2j=  0  1  3    p=  0.6674    n=  2.4559
+ n,l,2j=  1  0  1    p=  0.0243    n=  0.0421
+ n,l,2j=  0  2  3    p=  0.0414    n=  0.0480
+ n,l,2j=  0  2  5    p=  0.0309    n=  0.0492
+ n,l,2j=  1  1  1    p=  0.0127    n=  0.0178
+ n,l,2j=  1  1  3    p=  0.0149    n=  0.0807
+ n,l,2j=  0  3  5    p=  0.0094    n=  0.0184
+ n,l,2j=  0  3  7    p=  0.0033    n=  0.0125
+ n,l,2j=  2  0  1    p=  0.0011    n=  0.0051
+ n,l,2j=  1  2  3    p=  0.0019    n=  0.0027
+ n,l,2j=  1  2  5    p=  0.0013    n=  0.0052
+ n,l,2j=  0  4  7    p=  0.0028    n=  0.0036
+ n,l,2j=  0  4  9    p=  0.0003    n=  0.0003
+ n,l,2j=  2  1  1    p=  0.0005    n=  0.0010
+ n,l,2j=  2  1  3    p=  0.0011    n=  0.0112
+ n,l,2j=  1  3  5    p=  0.0007    n=  0.0009
+ n,l,2j=  1  3  7    p=  0.0002    n=  0.0004
+ n,l,2j=  0  5  9    p=  0.0005    n=  0.0007
+ n,l,2j=  0  5 11    p=  0.0000    n=  0.0000
+ n,l,2j=  3  0  1    p=  0.0002    n=  0.0007
+ n,l,2j=  2  2  3    p=  0.0002    n=  0.0003
+ n,l,2j=  2  2  5    p=  0.0001    n=  0.0007
+ n,l,2j=  1  4  7    p=  0.0001    n=  0.0001
+ n,l,2j=  1  4  9    p=  0.0000    n=  0.0000
+ n,l,2j=  0  6 11    p=  0.0000    n=  0.0000
+ n,l,2j=  0  6 13    p=  0.0000    n=  0.0000
+ n,l,2j=  3  1  1    p=  0.0001    n=  0.0002
+ n,l,2j=  3  1  3    p=  0.0001    n=  0.0012
+ n,l,2j=  2  3  5    p=  0.0000    n=  0.0000
+ n,l,2j=  2  3  7    p=  0.0000    n=  0.0000
+ n,l,2j=  1  5  9    p=  0.0000    n=  0.0000
+ n,l,2j=  1  5 11    p=  0.0000    n=  0.0000
+ n,l,2j=  0  7 13    p=  0.0000    n=  0.0000
+ n,l,2j=  0  7 15    p=  0.0000    n=  0.0000
+
+ BE0 matrix elements:
+ L= 0 E0p=  0.8463   E0n=  1.4105     B(E0)=  0.7162
+
+ M1 moments:
+ pl=  0.2367   nl=  0.5381   ps= -0.1735   ns=  0.3988     M1= -2.2583
+
+ BM1 matrix elements:
+ pl=  0.1636   nl=  0.3718   ps= -0.1199   ns=  0.2755 M1= -1.5605 B(M1)=  2.4351
+
+ E2 moments:
+ Q2p=  1.0401   Q2n=  0.8998     Q2=  1.0401
+
+ BE2 matrix elements:
+ L= 2 E2p=  1.0374   E2n=  0.8974     B(E2)=  1.0761
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  3 [2*(J,T),Ex]_f=  6 2  2.6901   #  2 [2*(J,T),Ex]_i=  2 2  1.1151
+
+ BE2 matrix elements:
+ L= 2 E2p= -1.0213   E2n= -1.7432     B(E2)=  1.0431
+
+ BE4 matrix elements:
+ L= 4 E4p= -1.3005   E4n= -1.4789     B(E4)=  1.6914
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  4 [2*(J,T),Ex]_f=  4 2  5.0238   #  2 [2*(J,T),Ex]_i=  2 2  1.1151
+
+ BM1 matrix elements:
+ pl=  0.1829   nl= -0.0938   ps=  0.0239   ns= -0.1130 M1=  0.7488 B(M1)=  0.5607
+
+ BE2 matrix elements:
+ L= 2 E2p= -1.9157   E2n= -3.1534     B(E2)=  3.6697
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  5 [2*(J,T),Ex]_f=  2 2  5.4220   #  2 [2*(J,T),Ex]_i=  2 2  1.1151
+
+ BE0 matrix elements:
+ L= 0 E0p=  0.0000   E0n=  0.0000     B(E0)=  0.0000
+
+ BM1 matrix elements:
+ pl= -0.0152   nl=  0.2212   ps= -0.1042   ns= -0.1017 M1= -0.2080 B(M1)=  0.0433
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.6284   E2n=  1.8991     B(E2)=  0.3949
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  6 [2*(J,T),Ex]_f=  4 2  6.2594   #  2 [2*(J,T),Ex]_i=  2 2  1.1151
+
+ BM1 matrix elements:
+ pl=  0.1279   nl= -0.0979   ps=  0.0025   ns= -0.0326 M1=  0.2670 B(M1)=  0.0713
+
+ BE2 matrix elements:
+ L= 2 E2p= -1.4687   E2n= -1.0616     B(E2)=  2.1570
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  7 [2*(J,T),Ex]_f=  2 2  6.6494   #  2 [2*(J,T),Ex]_i=  2 2  1.1151
+
+ BE0 matrix elements:
+ L= 0 E0p= -0.0000   E0n= -0.0000     B(E0)=  0.0000
+
+ BM1 matrix elements:
+ pl= -0.0260   nl= -0.0631   ps= -0.0259   ns=  0.1150 M1= -0.6110 B(M1)=  0.3733
+
+ BE2 matrix elements:
+ L= 2 E2p= -0.2493   E2n=  1.0489     B(E2)=  0.0622
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  8 [2*(J,T),Ex]_f=  8 2  7.6037   #  2 [2*(J,T),Ex]_i=  2 2  1.1151
+
+ BE4 matrix elements:
+ L= 4 E4p=  2.9326   E4n=  6.9755     B(E4)=  8.6001
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  9 [2*(J,T),Ex]_f=  6 2  8.6106   #  2 [2*(J,T),Ex]_i=  2 2  1.1151
+
+ BE2 matrix elements:
+ L= 2 E2p=  1.0108   E2n=  1.5342     B(E2)=  1.0218
+
+ BE4 matrix elements:
+ L= 4 E4p= -0.0942   E4n= -2.1658     B(E4)=  0.0089
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  1 [2*(J,T),Ex]_f=  4 2  0.0000   #  3 [2*(J,T),Ex]_i=  6 2  2.6901
+
+ BM1 matrix elements:
+ pl= -0.2241   nl=  0.1108   ps=  0.0078   ns=  0.1055 M1= -0.5841 B(M1)=  0.3412
+
+ BE2 matrix elements:
+ L= 2 E2p=  1.8025   E2n=  2.4736     B(E2)=  3.2490
+
+ BE4 matrix elements:
+ L= 4 E4p=  1.2179   E4n=  1.0108     B(E4)=  1.4833
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  2 [2*(J,T),Ex]_f=  2 2  1.1151   #  3 [2*(J,T),Ex]_i=  6 2  2.6901
+
+ BE2 matrix elements:
+ L= 2 E2p= -0.6686   E2n= -1.1412     B(E2)=  0.4470
+
+ BE4 matrix elements:
+ L= 4 E4p= -0.8514   E4n= -0.9681     B(E4)=  0.7249
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  3 [2*(J,T),Ex]_f=  6 2  2.6901   #  3 [2*(J,T),Ex]_i=  6 2  2.6901
+
+ Occupation Numbers for N=2n+l:
+ N=  0    p=  1.8717    n=  1.8902
+ N=  1    p=  0.9973    n=  2.8355
+ N=  2    p=  0.0794    n=  0.1224
+ N=  3    p=  0.0387    n=  0.1158
+ N=  4    p=  0.0078    n=  0.0173
+ N=  5    p=  0.0040    n=  0.0154
+ N=  6    p=  0.0008    n=  0.0020
+ N=  7    p=  0.0003    n=  0.0014
+
+ Occupation Numbers for nlj-levels:
+ n,l,2j=  0  0  1    p=  1.8717    n=  1.8902
+ n,l,2j=  0  1  1    p=  0.0706    n=  0.3533
+ n,l,2j=  0  1  3    p=  0.9267    n=  2.4822
+ n,l,2j=  1  0  1    p=  0.0164    n=  0.0353
+ n,l,2j=  0  2  3    p=  0.0350    n=  0.0436
+ n,l,2j=  0  2  5    p=  0.0280    n=  0.0435
+ n,l,2j=  1  1  1    p=  0.0036    n=  0.0204
+ n,l,2j=  1  1  3    p=  0.0165    n=  0.0653
+ n,l,2j=  0  3  5    p=  0.0096    n=  0.0146
+ n,l,2j=  0  3  7    p=  0.0089    n=  0.0155
+ n,l,2j=  2  0  1    p=  0.0012    n=  0.0051
+ n,l,2j=  1  2  3    p=  0.0021    n=  0.0032
+ n,l,2j=  1  2  5    p=  0.0014    n=  0.0050
+ n,l,2j=  0  4  7    p=  0.0026    n=  0.0035
+ n,l,2j=  0  4  9    p=  0.0005    n=  0.0006
+ n,l,2j=  2  1  1    p=  0.0003    n=  0.0012
+ n,l,2j=  2  1  3    p=  0.0018    n=  0.0114
+ n,l,2j=  1  3  5    p=  0.0007    n=  0.0009
+ n,l,2j=  1  3  7    p=  0.0002    n=  0.0004
+ n,l,2j=  0  5  9    p=  0.0009    n=  0.0014
+ n,l,2j=  0  5 11    p=  0.0000    n=  0.0000
+ n,l,2j=  3  0  1    p=  0.0002    n=  0.0007
+ n,l,2j=  2  2  3    p=  0.0002    n=  0.0003
+ n,l,2j=  2  2  5    p=  0.0002    n=  0.0007
+ n,l,2j=  1  4  7    p=  0.0002    n=  0.0002
+ n,l,2j=  1  4  9    p=  0.0000    n=  0.0000
+ n,l,2j=  0  6 11    p=  0.0002    n=  0.0001
+ n,l,2j=  0  6 13    p=  0.0000    n=  0.0000
+ n,l,2j=  3  1  1    p=  0.0000    n=  0.0001
+ n,l,2j=  3  1  3    p=  0.0002    n=  0.0012
+ n,l,2j=  2  3  5    p=  0.0000    n=  0.0000
+ n,l,2j=  2  3  7    p=  0.0000    n=  0.0000
+ n,l,2j=  1  5  9    p=  0.0000    n=  0.0001
+ n,l,2j=  1  5 11    p=  0.0000    n=  0.0000
+ n,l,2j=  0  7 13    p=  0.0000    n=  0.0000
+ n,l,2j=  0  7 15    p=  0.0000    n=  0.0000
+
+ BE0 matrix elements:
+ L= 0 E0p=  0.8463   E0n=  1.4105     B(E0)=  0.7162
+
+ M1 moments:
+ pl=  0.9106   nl=  1.2678   ps=  0.4703   ns=  0.3512     M1=  2.1939
+
+ BM1 matrix elements:
+ pl=  0.5138   nl=  0.7153   ps=  0.2653   ns=  0.1982 M1=  1.2378 B(M1)=  1.5321
+
+ E2 moments:
+ Q2p= -1.8335   Q2n= -1.1926     Q2= -1.8335
+
+ BE2 matrix elements:
+ L= 2 E2p= -0.8959   E2n= -0.5827     B(E2)=  0.8026
+
+ BE4 matrix elements:
+ L= 4 E4p= -2.9724   E4n= -4.0108     B(E4)=  8.8351
+
+ BE6 matrix elements:
+ L= 6 E6p= 11.1931   E6n= 17.2093     B(E6)=125.2863
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  4 [2*(J,T),Ex]_f=  4 2  5.0238   #  3 [2*(J,T),Ex]_i=  6 2  2.6901
+
+ BM1 matrix elements:
+ pl= -0.1039   nl= -0.2137   ps=  0.2142   ns=  0.1034 M1=  0.6968 B(M1)=  0.4856
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.2917   E2n=  0.7773     B(E2)=  0.0851
+
+ BE4 matrix elements:
+ L= 4 E4p=  1.6282   E4n=  1.7423     B(E4)=  2.6510
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  5 [2*(J,T),Ex]_f=  2 2  5.4220   #  3 [2*(J,T),Ex]_i=  6 2  2.6901
+
+ BE2 matrix elements:
+ L= 2 E2p= -0.2369   E2n= -0.4110     B(E2)=  0.0561
+
+ BE4 matrix elements:
+ L= 4 E4p= -0.5771   E4n= -0.9590     B(E4)=  0.3330
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  6 [2*(J,T),Ex]_f=  4 2  6.2594   #  3 [2*(J,T),Ex]_i=  6 2  2.6901
+
+ BM1 matrix elements:
+ pl=  0.0537   nl= -0.0361   ps=  0.1793   ns= -0.1969 M1=  1.8087 B(M1)=  3.2714
+
+ BE2 matrix elements:
+ L= 2 E2p= -0.0279   E2n= -1.0204     B(E2)=  0.0008
+
+ BE4 matrix elements:
+ L= 4 E4p=  2.0053   E4n=  3.7677     B(E4)=  4.0214
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  7 [2*(J,T),Ex]_f=  2 2  6.6494   #  3 [2*(J,T),Ex]_i=  6 2  2.6901
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.3773   E2n=  0.0890     B(E2)=  0.1423
+
+ BE4 matrix elements:
+ L= 4 E4p=  0.2494   E4n= -1.2498     B(E4)=  0.0622
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  8 [2*(J,T),Ex]_f=  8 2  7.6037   #  3 [2*(J,T),Ex]_i=  6 2  2.6901
+
+ BM1 matrix elements:
+ pl=  0.1580   nl= -0.0314   ps=  0.0301   ns= -0.1567 M1=  0.9254 B(M1)=  0.8564
+
+ BE2 matrix elements:
+ L= 2 E2p= -1.1966   E2n= -3.2861     B(E2)=  1.4319
+
+ BE4 matrix elements:
+ L= 4 E4p=  2.9055   E4n=  3.1385     B(E4)=  8.4419
+
+ BE6 matrix elements:
+ L= 6 E6p=  2.2537   E6n=  2.3946     B(E6)=  5.0793
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  9 [2*(J,T),Ex]_f=  6 2  8.6106   #  3 [2*(J,T),Ex]_i=  6 2  2.6901
+
+ BE0 matrix elements:
+ L= 0 E0p= -0.0000   E0n= -0.0000     B(E0)=  0.0000
+
+ BM1 matrix elements:
+ pl=  0.0235   nl=  0.1113   ps=  0.0199   ns= -0.1547 M1=  0.7263 B(M1)=  0.5276
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.2048   E2n=  2.2732     B(E2)=  0.0419
+
+ BE4 matrix elements:
+ L= 4 E4p= -2.3804   E4n= -3.7887     B(E4)=  5.6662
+
+ BE6 matrix elements:
+ L= 6 E6p= -2.4080   E6n= -4.5140     B(E6)=  5.7984
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  1 [2*(J,T),Ex]_f=  4 2  0.0000   #  4 [2*(J,T),Ex]_i=  4 2  5.0238
+
+ BE0 matrix elements:
+ L= 0 E0p= -0.0000   E0n= -0.0000     B(E0)=  0.0000
+
+ BM1 matrix elements:
+ pl= -0.0167   nl=  0.1284   ps= -0.0211   ns= -0.0906 M1=  0.2118 B(M1)=  0.0449
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.9810   E2n=  0.4377     B(E2)=  0.9624
+
+ BE4 matrix elements:
+ L= 4 E4p=  1.2082   E4n=  2.1177     B(E4)=  1.4598
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  2 [2*(J,T),Ex]_f=  2 2  1.1151   #  4 [2*(J,T),Ex]_i=  4 2  5.0238
+
+ BM1 matrix elements:
+ pl= -0.1417   nl=  0.0726   ps= -0.0185   ns=  0.0876 M1= -0.5800 B(M1)=  0.3364
+
+ BE2 matrix elements:
+ L= 2 E2p=  1.4839   E2n=  2.4426     B(E2)=  2.2018
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  3 [2*(J,T),Ex]_f=  6 2  2.6901   #  4 [2*(J,T),Ex]_i=  4 2  5.0238
+
+ BM1 matrix elements:
+ pl=  0.1229   nl=  0.2528   ps= -0.2534   ns= -0.1223 M1= -0.8245 B(M1)=  0.6798
+
+ BE2 matrix elements:
+ L= 2 E2p= -0.3451   E2n= -0.9197     B(E2)=  0.1191
+
+ BE4 matrix elements:
+ L= 4 E4p= -1.9265   E4n= -2.0615     B(E4)=  3.7115
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  4 [2*(J,T),Ex]_f=  4 2  5.0238   #  4 [2*(J,T),Ex]_i=  4 2  5.0238
+
+ Occupation Numbers for N=2n+l:
+ N=  0    p=  1.8587    n=  1.8783
+ N=  1    p=  0.9818    n=  2.7812
+ N=  2    p=  0.1016    n=  0.1521
+ N=  3    p=  0.0457    n=  0.1513
+ N=  4    p=  0.0076    n=  0.0178
+ N=  5    p=  0.0035    n=  0.0157
+ N=  6    p=  0.0007    n=  0.0020
+ N=  7    p=  0.0003    n=  0.0016
+
+ Occupation Numbers for nlj-levels:
+ n,l,2j=  0  0  1    p=  1.8587    n=  1.8783
+ n,l,2j=  0  1  1    p=  0.5180    n=  0.6030
+ n,l,2j=  0  1  3    p=  0.4638    n=  2.1783
+ n,l,2j=  1  0  1    p=  0.0283    n=  0.0496
+ n,l,2j=  0  2  3    p=  0.0420    n=  0.0543
+ n,l,2j=  0  2  5    p=  0.0312    n=  0.0482
+ n,l,2j=  1  1  1    p=  0.0212    n=  0.0435
+ n,l,2j=  1  1  3    p=  0.0092    n=  0.0762
+ n,l,2j=  0  3  5    p=  0.0106    n=  0.0185
+ n,l,2j=  0  3  7    p=  0.0048    n=  0.0130
+ n,l,2j=  2  0  1    p=  0.0013    n=  0.0057
+ n,l,2j=  1  2  3    p=  0.0020    n=  0.0041
+ n,l,2j=  1  2  5    p=  0.0015    n=  0.0044
+ n,l,2j=  0  4  7    p=  0.0026    n=  0.0033
+ n,l,2j=  0  4  9    p=  0.0003    n=  0.0004
+ n,l,2j=  2  1  1    p=  0.0010    n=  0.0051
+ n,l,2j=  2  1  3    p=  0.0012    n=  0.0086
+ n,l,2j=  1  3  5    p=  0.0007    n=  0.0009
+ n,l,2j=  1  3  7    p=  0.0002    n=  0.0005
+ n,l,2j=  0  5  9    p=  0.0004    n=  0.0006
+ n,l,2j=  0  5 11    p=  0.0000    n=  0.0000
+ n,l,2j=  3  0  1    p=  0.0002    n=  0.0007
+ n,l,2j=  2  2  3    p=  0.0002    n=  0.0005
+ n,l,2j=  2  2  5    p=  0.0001    n=  0.0006
+ n,l,2j=  1  4  7    p=  0.0001    n=  0.0001
+ n,l,2j=  1  4  9    p=  0.0000    n=  0.0000
+ n,l,2j=  0  6 11    p=  0.0000    n=  0.0000
+ n,l,2j=  0  6 13    p=  0.0000    n=  0.0000
+ n,l,2j=  3  1  1    p=  0.0002    n=  0.0006
+ n,l,2j=  3  1  3    p=  0.0000    n=  0.0009
+ n,l,2j=  2  3  5    p=  0.0000    n=  0.0000
+ n,l,2j=  2  3  7    p=  0.0000    n=  0.0000
+ n,l,2j=  1  5  9    p=  0.0000    n=  0.0000
+ n,l,2j=  1  5 11    p=  0.0000    n=  0.0000
+ n,l,2j=  0  7 13    p=  0.0000    n=  0.0000
+ n,l,2j=  0  7 15    p=  0.0000    n=  0.0000
+
+ BE0 matrix elements:
+ L= 0 E0p=  0.8463   E0n=  1.4105     B(E0)=  0.7162
+
+ M1 moments:
+ pl=  0.6920   nl=  1.0678   ps=  0.0333   ns=  0.2069     M1=  0.0860
+
+ BM1 matrix elements:
+ pl=  0.4141   nl=  0.6390   ps=  0.0199   ns=  0.1238 M1=  0.0514 B(M1)=  0.0026
+
+ E2 moments:
+ Q2p= -1.5595   Q2n= -0.5466     Q2= -1.5595
+
+ BE2 matrix elements:
+ L= 2 E2p= -0.9201   E2n= -0.3225     B(E2)=  0.8467
+
+ BE4 matrix elements:
+ L= 4 E4p= -1.6511   E4n= -4.4847     B(E4)=  2.7261
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  5 [2*(J,T),Ex]_f=  2 2  5.4220   #  4 [2*(J,T),Ex]_i=  4 2  5.0238
+
+ BM1 matrix elements:
+ pl= -0.0233   nl= -0.1886   ps=  0.0531   ns=  0.1590 M1= -0.3352 B(M1)=  0.1124
+
+ BE2 matrix elements:
+ L= 2 E2p= -0.2841   E2n=  0.0208     B(E2)=  0.0807
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  6 [2*(J,T),Ex]_f=  4 2  6.2594   #  4 [2*(J,T),Ex]_i=  4 2  5.0238
+
+ BE0 matrix elements:
+ L= 0 E0p= -0.0000   E0n= -0.0000     B(E0)=  0.0000
+
+ BM1 matrix elements:
+ pl=  0.0411   nl=  0.1107   ps= -0.2243   ns=  0.0726 M1= -1.4895 B(M1)=  2.2187
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.2931   E2n=  0.8299     B(E2)=  0.0859
+
+ BE4 matrix elements:
+ L= 4 E4p= -2.2033   E4n= -1.8988     B(E4)=  4.8544
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  7 [2*(J,T),Ex]_f=  2 2  6.6494   #  4 [2*(J,T),Ex]_i=  4 2  5.0238
+
+ BM1 matrix elements:
+ pl=  0.1581   nl=  0.0895   ps= -0.1447   ns= -0.1029 M1= -0.2569 B(M1)=  0.0660
+
+ BE2 matrix elements:
+ L= 2 E2p= -0.5914   E2n= -2.1225     B(E2)=  0.3497
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  8 [2*(J,T),Ex]_f=  8 2  7.6037   #  4 [2*(J,T),Ex]_i=  4 2  5.0238
+
+ BE2 matrix elements:
+ L= 2 E2p= -1.0670   E2n= -2.4674     B(E2)=  1.1384
+
+ BE4 matrix elements:
+ L= 4 E4p=  2.6887   E4n=  3.0420     B(E4)=  7.2292
+
+ BE6 matrix elements:
+ L= 6 E6p=  3.1976   E6n=  7.6532     B(E6)= 10.2246
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  9 [2*(J,T),Ex]_f=  6 2  8.6106   #  4 [2*(J,T),Ex]_i=  4 2  5.0238
+
+ BM1 matrix elements:
+ pl=  0.1258   nl= -0.0587   ps= -0.0304   ns= -0.0367 M1=  0.0962 B(M1)=  0.0093
+
+ BE2 matrix elements:
+ L= 2 E2p= -0.9556   E2n= -1.0712     B(E2)=  0.9131
+
+ BE4 matrix elements:
+ L= 4 E4p=  1.5285   E4n=  0.8801     B(E4)=  2.3363
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  1 [2*(J,T),Ex]_f=  4 2  0.0000   #  5 [2*(J,T),Ex]_i=  2 2  5.4220
+
+ BM1 matrix elements:
+ pl=  0.0693   nl= -0.2453   ps= -0.0886   ns=  0.2646 M1= -1.4382 B(M1)=  2.0684
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.1528   E2n= -1.5451     B(E2)=  0.0233
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  2 [2*(J,T),Ex]_f=  2 2  1.1151   #  5 [2*(J,T),Ex]_i=  2 2  5.4220
+
+ BE0 matrix elements:
+ L= 0 E0p=  0.0000   E0n=  0.0000     B(E0)=  0.0000
+
+ BM1 matrix elements:
+ pl= -0.0152   nl=  0.2212   ps= -0.1042   ns= -0.1017 M1= -0.2080 B(M1)=  0.0433
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.6284   E2n=  1.8991     B(E2)=  0.3949
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  3 [2*(J,T),Ex]_f=  6 2  2.6901   #  5 [2*(J,T),Ex]_i=  2 2  5.4220
+
+ BE2 matrix elements:
+ L= 2 E2p= -0.3618   E2n= -0.6279     B(E2)=  0.1309
+
+ BE4 matrix elements:
+ L= 4 E4p= -0.8815   E4n= -1.4649     B(E4)=  0.7771
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  4 [2*(J,T),Ex]_f=  4 2  5.0238   #  5 [2*(J,T),Ex]_i=  2 2  5.4220
+
+ BM1 matrix elements:
+ pl=  0.0301   nl=  0.2435   ps= -0.0685   ns= -0.2053 M1=  0.4328 B(M1)=  0.1873
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.3667   E2n= -0.0269     B(E2)=  0.1345
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  5 [2*(J,T),Ex]_f=  2 2  5.4220   #  5 [2*(J,T),Ex]_i=  2 2  5.4220
+
+ Occupation Numbers for N=2n+l:
+ N=  0    p=  1.8510    n=  1.8681
+ N=  1    p=  0.9840    n=  2.7198
+ N=  2    p=  0.1071    n=  0.1805
+ N=  3    p=  0.0480    n=  0.1868
+ N=  4    p=  0.0065    n=  0.0204
+ N=  5    p=  0.0026    n=  0.0198
+ N=  6    p=  0.0005    n=  0.0024
+ N=  7    p=  0.0002    n=  0.0021
+
+ Occupation Numbers for nlj-levels:
+ n,l,2j=  0  0  1    p=  1.8510    n=  1.8681
+ n,l,2j=  0  1  1    p=  0.2143    n=  0.9344
+ n,l,2j=  0  1  3    p=  0.7697    n=  1.7854
+ n,l,2j=  1  0  1    p=  0.0282    n=  0.0650
+ n,l,2j=  0  2  3    p=  0.0458    n=  0.0623
+ n,l,2j=  0  2  5    p=  0.0331    n=  0.0533
+ n,l,2j=  1  1  1    p=  0.0108    n=  0.0832
+ n,l,2j=  1  1  3    p=  0.0228    n=  0.0771
+ n,l,2j=  0  3  5    p=  0.0089    n=  0.0147
+ n,l,2j=  0  3  7    p=  0.0055    n=  0.0118
+ n,l,2j=  2  0  1    p=  0.0011    n=  0.0068
+ n,l,2j=  1  2  3    p=  0.0015    n=  0.0061
+ n,l,2j=  1  2  5    p=  0.0012    n=  0.0037
+ n,l,2j=  0  4  7    p=  0.0023    n=  0.0033
+ n,l,2j=  0  4  9    p=  0.0004    n=  0.0005
+ n,l,2j=  2  1  1    p=  0.0003    n=  0.0103
+ n,l,2j=  2  1  3    p=  0.0010    n=  0.0072
+ n,l,2j=  1  3  5    p=  0.0006    n=  0.0010
+ n,l,2j=  1  3  7    p=  0.0002    n=  0.0003
+ n,l,2j=  0  5  9    p=  0.0005    n=  0.0009
+ n,l,2j=  0  5 11    p=  0.0000    n=  0.0000
+ n,l,2j=  3  0  1    p=  0.0001    n=  0.0010
+ n,l,2j=  2  2  3    p=  0.0001    n=  0.0008
+ n,l,2j=  2  2  5    p=  0.0001    n=  0.0005
+ n,l,2j=  1  4  7    p=  0.0001    n=  0.0001
+ n,l,2j=  1  4  9    p=  0.0000    n=  0.0000
+ n,l,2j=  0  6 11    p=  0.0001    n=  0.0001
+ n,l,2j=  0  6 13    p=  0.0000    n=  0.0000
+ n,l,2j=  3  1  1    p=  0.0001    n=  0.0012
+ n,l,2j=  3  1  3    p=  0.0001    n=  0.0008
+ n,l,2j=  2  3  5    p=  0.0000    n=  0.0000
+ n,l,2j=  2  3  7    p=  0.0000    n=  0.0000
+ n,l,2j=  1  5  9    p=  0.0000    n=  0.0000
+ n,l,2j=  1  5 11    p=  0.0000    n=  0.0000
+ n,l,2j=  0  7 13    p=  0.0000    n=  0.0000
+ n,l,2j=  0  7 15    p=  0.0000    n=  0.0000
+
+ BE0 matrix elements:
+ L= 0 E0p=  0.8463   E0n=  1.4105     B(E0)=  0.7162
+
+ M1 moments:
+ pl=  0.4511   nl=  0.3683   ps=  0.3461   ns= -0.1655     M1=  3.0174
+
+ BM1 matrix elements:
+ pl=  0.3117   nl=  0.2545   ps=  0.2392   ns= -0.1143 M1=  2.0850 B(M1)=  4.3471
+
+ E2 moments:
+ Q2p= -1.0816   Q2n= -0.4569     Q2= -1.0816
+
+ BE2 matrix elements:
+ L= 2 E2p= -1.0787   E2n= -0.4557     B(E2)=  1.1636
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  6 [2*(J,T),Ex]_f=  4 2  6.2594   #  5 [2*(J,T),Ex]_i=  2 2  5.4220
+
+ BM1 matrix elements:
+ pl=  0.0632   nl= -0.1949   ps=  0.0828   ns=  0.0487 M1=  0.3392 B(M1)=  0.1151
+
+ BE2 matrix elements:
+ L= 2 E2p= -1.1162   E2n= -1.1363     B(E2)=  1.2458
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  7 [2*(J,T),Ex]_f=  2 2  6.6494   #  5 [2*(J,T),Ex]_i=  2 2  5.4220
+
+ BE0 matrix elements:
+ L= 0 E0p= -0.0001   E0n= -0.0001     B(E0)=  0.0000
+
+ BM1 matrix elements:
+ pl= -0.1328   nl=  0.0779   ps=  0.1183   ns= -0.0635 M1=  0.7710 B(M1)=  0.5945
+
+ BE2 matrix elements:
+ L= 2 E2p=  1.5533   E2n=  2.1274     B(E2)=  2.4127
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  8 [2*(J,T),Ex]_f=  8 2  7.6037   #  5 [2*(J,T),Ex]_i=  2 2  5.4220
+
+ BE4 matrix elements:
+ L= 4 E4p= -0.8428   E4n= -3.3970     B(E4)=  0.7104
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  9 [2*(J,T),Ex]_f=  6 2  8.6106   #  5 [2*(J,T),Ex]_i=  2 2  5.4220
+
+ BE2 matrix elements:
+ L= 2 E2p= -1.6533   E2n= -3.2092     B(E2)=  2.7335
+
+ BE4 matrix elements:
+ L= 4 E4p=  3.1873   E4n=  5.7801     B(E4)= 10.1591
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  1 [2*(J,T),Ex]_f=  4 2  0.0000   #  6 [2*(J,T),Ex]_i=  4 2  6.2594
+
+ BE0 matrix elements:
+ L= 0 E0p= -0.0000   E0n= -0.0000     B(E0)=  0.0000
+
+ BM1 matrix elements:
+ pl= -0.1030   nl= -0.0116   ps= -0.0206   ns=  0.1351 M1= -0.7349 B(M1)=  0.5401
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.5365   E2n=  1.7023     B(E2)=  0.2878
+
+ BE4 matrix elements:
+ L= 4 E4p=  1.5300   E4n=  2.8694     B(E4)=  2.3409
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  2 [2*(J,T),Ex]_f=  2 2  1.1151   #  6 [2*(J,T),Ex]_i=  4 2  6.2594
+
+ BM1 matrix elements:
+ pl= -0.0991   nl=  0.0758   ps= -0.0020   ns=  0.0253 M1= -0.2068 B(M1)=  0.0428
+
+ BE2 matrix elements:
+ L= 2 E2p=  1.1376   E2n=  0.8223     B(E2)=  1.2942
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  3 [2*(J,T),Ex]_f=  6 2  2.6901   #  6 [2*(J,T),Ex]_i=  4 2  6.2594
+
+ BM1 matrix elements:
+ pl= -0.0635   nl=  0.0428   ps= -0.2122   ns=  0.2329 M1= -2.1401 B(M1)=  4.5800
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.0330   E2n=  1.2074     B(E2)=  0.0011
+
+ BE4 matrix elements:
+ L= 4 E4p= -2.3727   E4n= -4.4580     B(E4)=  5.6299
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  4 [2*(J,T),Ex]_f=  4 2  5.0238   #  6 [2*(J,T),Ex]_i=  4 2  6.2594
+
+ BE0 matrix elements:
+ L= 0 E0p= -0.0000   E0n= -0.0000     B(E0)=  0.0000
+
+ BM1 matrix elements:
+ pl=  0.0411   nl=  0.1107   ps= -0.2243   ns=  0.0726 M1= -1.4895 B(M1)=  2.2187
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.2931   E2n=  0.8299     B(E2)=  0.0859
+
+ BE4 matrix elements:
+ L= 4 E4p= -2.2033   E4n= -1.8988     B(E4)=  4.8544
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  5 [2*(J,T),Ex]_f=  2 2  5.4220   #  6 [2*(J,T),Ex]_i=  4 2  6.2594
+
+ BM1 matrix elements:
+ pl= -0.0489   nl=  0.1510   ps= -0.0641   ns= -0.0377 M1= -0.2628 B(M1)=  0.0691
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.8646   E2n=  0.8801     B(E2)=  0.7475
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  6 [2*(J,T),Ex]_f=  4 2  6.2594   #  6 [2*(J,T),Ex]_i=  4 2  6.2594
+
+ Occupation Numbers for N=2n+l:
+ N=  0    p=  1.8635    n=  1.8804
+ N=  1    p=  0.9850    n=  2.7601
+ N=  2    p=  0.0934    n=  0.1535
+ N=  3    p=  0.0461    n=  0.1626
+ N=  4    p=  0.0073    n=  0.0198
+ N=  5    p=  0.0037    n=  0.0193
+ N=  6    p=  0.0007    n=  0.0024
+ N=  7    p=  0.0003    n=  0.0019
+
+ Occupation Numbers for nlj-levels:
+ n,l,2j=  0  0  1    p=  1.8635    n=  1.8804
+ n,l,2j=  0  1  1    p=  0.2030    n=  0.6281
+ n,l,2j=  0  1  3    p=  0.7821    n=  2.1319
+ n,l,2j=  1  0  1    p=  0.0221    n=  0.0498
+ n,l,2j=  0  2  3    p=  0.0413    n=  0.0550
+ n,l,2j=  0  2  5    p=  0.0301    n=  0.0488
+ n,l,2j=  1  1  1    p=  0.0101    n=  0.0539
+ n,l,2j=  1  1  3    p=  0.0178    n=  0.0807
+ n,l,2j=  0  3  5    p=  0.0118    n=  0.0156
+ n,l,2j=  0  3  7    p=  0.0065    n=  0.0124
+ n,l,2j=  2  0  1    p=  0.0014    n=  0.0065
+ n,l,2j=  1  2  3    p=  0.0020    n=  0.0052
+ n,l,2j=  1  2  5    p=  0.0013    n=  0.0044
+ n,l,2j=  0  4  7    p=  0.0022    n=  0.0032
+ n,l,2j=  0  4  9    p=  0.0004    n=  0.0006
+ n,l,2j=  2  1  1    p=  0.0006    n=  0.0071
+ n,l,2j=  2  1  3    p=  0.0018    n=  0.0097
+ n,l,2j=  1  3  5    p=  0.0007    n=  0.0010
+ n,l,2j=  1  3  7    p=  0.0002    n=  0.0004
+ n,l,2j=  0  5  9    p=  0.0005    n=  0.0010
+ n,l,2j=  0  5 11    p=  0.0000    n=  0.0000
+ n,l,2j=  3  0  1    p=  0.0002    n=  0.0009
+ n,l,2j=  2  2  3    p=  0.0001    n=  0.0006
+ n,l,2j=  2  2  5    p=  0.0002    n=  0.0006
+ n,l,2j=  1  4  7    p=  0.0001    n=  0.0001
+ n,l,2j=  1  4  9    p=  0.0000    n=  0.0000
+ n,l,2j=  0  6 11    p=  0.0001    n=  0.0001
+ n,l,2j=  0  6 13    p=  0.0000    n=  0.0000
+ n,l,2j=  3  1  1    p=  0.0001    n=  0.0008
+ n,l,2j=  3  1  3    p=  0.0002    n=  0.0011
+ n,l,2j=  2  3  5    p=  0.0000    n=  0.0000
+ n,l,2j=  2  3  7    p=  0.0000    n=  0.0000
+ n,l,2j=  1  5  9    p=  0.0000    n=  0.0000
+ n,l,2j=  1  5 11    p=  0.0000    n=  0.0000
+ n,l,2j=  0  7 13    p=  0.0000    n=  0.0000
+ n,l,2j=  0  7 15    p=  0.0000    n=  0.0000
+
+ BE0 matrix elements:
+ L= 0 E0p=  0.8463   E0n=  1.4105     B(E0)=  0.7162
+
+ M1 moments:
+ pl=  0.7584   nl=  1.2353   ps=  0.1553   ns= -0.1490     M1=  2.1958
+
+ BM1 matrix elements:
+ pl=  0.4538   nl=  0.7392   ps=  0.0929   ns= -0.0891 M1=  1.3140 B(M1)=  1.7266
+
+ E2 moments:
+ Q2p= -2.1797   Q2n= -3.8546     Q2= -2.1797
+
+ BE2 matrix elements:
+ L= 2 E2p= -1.2861   E2n= -2.2744     B(E2)=  1.6541
+
+ BE4 matrix elements:
+ L= 4 E4p= -0.5255   E4n=  1.1954     B(E4)=  0.2762
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  7 [2*(J,T),Ex]_f=  2 2  6.6494   #  6 [2*(J,T),Ex]_i=  4 2  6.2594
+
+ BM1 matrix elements:
+ pl=  0.0552   nl= -0.1322   ps=  0.1831   ns= -0.1053 M1=  1.4810 B(M1)=  2.1933
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.5643   E2n=  0.7158     B(E2)=  0.3184
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  8 [2*(J,T),Ex]_f=  8 2  7.6037   #  6 [2*(J,T),Ex]_i=  4 2  6.2594
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.7602   E2n=  1.0434     B(E2)=  0.5779
+
+ BE4 matrix elements:
+ L= 4 E4p= -0.4404   E4n= -0.4660     B(E4)=  0.1940
+
+ BE6 matrix elements:
+ L= 6 E6p=  5.3915   E6n=  9.4352     B(E6)= 29.0684
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  9 [2*(J,T),Ex]_f=  6 2  8.6106   #  6 [2*(J,T),Ex]_i=  4 2  6.2594
+
+ BM1 matrix elements:
+ pl=  0.0188   nl=  0.2447   ps= -0.0656   ns= -0.1979 M1=  0.4096 B(M1)=  0.1678
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.0372   E2n=  0.2670     B(E2)=  0.0014
+
+ BE4 matrix elements:
+ L= 4 E4p= -0.9153   E4n= -2.3973     B(E4)=  0.8378
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  1 [2*(J,T),Ex]_f=  4 2  0.0000   #  7 [2*(J,T),Ex]_i=  2 2  6.6494
+
+ BM1 matrix elements:
+ pl= -0.2007   nl=  0.0028   ps= -0.0046   ns=  0.2025 M1= -1.0011 B(M1)=  1.0022
+
+ BE2 matrix elements:
+ L= 2 E2p= -0.3559   E2n=  0.5568     B(E2)=  0.1266
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  2 [2*(J,T),Ex]_f=  2 2  1.1151   #  7 [2*(J,T),Ex]_i=  2 2  6.6494
+
+ BE0 matrix elements:
+ L= 0 E0p= -0.0000   E0n= -0.0000     B(E0)=  0.0000
+
+ BM1 matrix elements:
+ pl= -0.0260   nl= -0.0631   ps= -0.0259   ns=  0.1150 M1= -0.6110 B(M1)=  0.3733
+
+ BE2 matrix elements:
+ L= 2 E2p= -0.2493   E2n=  1.0489     B(E2)=  0.0622
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  3 [2*(J,T),Ex]_f=  6 2  2.6901   #  7 [2*(J,T),Ex]_i=  2 2  6.6494
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.5763   E2n=  0.1360     B(E2)=  0.3321
+
+ BE4 matrix elements:
+ L= 4 E4p=  0.3810   E4n= -1.9091     B(E4)=  0.1452
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  4 [2*(J,T),Ex]_f=  4 2  5.0238   #  7 [2*(J,T),Ex]_i=  2 2  6.6494
+
+ BM1 matrix elements:
+ pl= -0.2041   nl= -0.1155   ps=  0.1868   ns=  0.1328 M1=  0.3316 B(M1)=  0.1100
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.7635   E2n=  2.7401     B(E2)=  0.5829
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  5 [2*(J,T),Ex]_f=  2 2  5.4220   #  7 [2*(J,T),Ex]_i=  2 2  6.6494
+
+ BE0 matrix elements:
+ L= 0 E0p= -0.0001   E0n= -0.0001     B(E0)=  0.0000
+
+ BM1 matrix elements:
+ pl= -0.1328   nl=  0.0779   ps=  0.1183   ns= -0.0635 M1=  0.7710 B(M1)=  0.5945
+
+ BE2 matrix elements:
+ L= 2 E2p=  1.5533   E2n=  2.1274     B(E2)=  2.4127
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  6 [2*(J,T),Ex]_f=  4 2  6.2594   #  7 [2*(J,T),Ex]_i=  2 2  6.6494
+
+ BM1 matrix elements:
+ pl= -0.0712   nl=  0.1706   ps= -0.2364   ns=  0.1360 M1= -1.9120 B(M1)=  3.6556
+
+ BE2 matrix elements:
+ L= 2 E2p= -0.7285   E2n= -0.9241     B(E2)=  0.5307
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  7 [2*(J,T),Ex]_f=  2 2  6.6494   #  7 [2*(J,T),Ex]_i=  2 2  6.6494
+
+ Occupation Numbers for N=2n+l:
+ N=  0    p=  1.8535    n=  1.8708
+ N=  1    p=  0.9834    n=  2.7348
+ N=  2    p=  0.1056    n=  0.1718
+ N=  3    p=  0.0469    n=  0.1799
+ N=  4    p=  0.0070    n=  0.0199
+ N=  5    p=  0.0029    n=  0.0187
+ N=  6    p=  0.0005    n=  0.0023
+ N=  7    p=  0.0003    n=  0.0020
+
+ Occupation Numbers for nlj-levels:
+ n,l,2j=  0  0  1    p=  1.8535    n=  1.8708
+ n,l,2j=  0  1  1    p=  0.4545    n=  0.8961
+ n,l,2j=  0  1  3    p=  0.5288    n=  1.8387
+ n,l,2j=  1  0  1    p=  0.0318    n=  0.0628
+ n,l,2j=  0  2  3    p=  0.0431    n=  0.0605
+ n,l,2j=  0  2  5    p=  0.0307    n=  0.0485
+ n,l,2j=  1  1  1    p=  0.0202    n=  0.0809
+ n,l,2j=  1  1  3    p=  0.0140    n=  0.0742
+ n,l,2j=  0  3  5    p=  0.0099    n=  0.0165
+ n,l,2j=  0  3  7    p=  0.0028    n=  0.0083
+ n,l,2j=  2  0  1    p=  0.0013    n=  0.0067
+ n,l,2j=  1  2  3    p=  0.0017    n=  0.0060
+ n,l,2j=  1  2  5    p=  0.0014    n=  0.0036
+ n,l,2j=  0  4  7    p=  0.0025    n=  0.0031
+ n,l,2j=  0  4  9    p=  0.0002    n=  0.0004
+ n,l,2j=  2  1  1    p=  0.0007    n=  0.0105
+ n,l,2j=  2  1  3    p=  0.0010    n=  0.0064
+ n,l,2j=  1  3  5    p=  0.0006    n=  0.0009
+ n,l,2j=  1  3  7    p=  0.0002    n=  0.0004
+ n,l,2j=  0  5  9    p=  0.0004    n=  0.0004
+ n,l,2j=  0  5 11    p=  0.0000    n=  0.0000
+ n,l,2j=  3  0  1    p=  0.0002    n=  0.0009
+ n,l,2j=  2  2  3    p=  0.0002    n=  0.0008
+ n,l,2j=  2  2  5    p=  0.0001    n=  0.0004
+ n,l,2j=  1  4  7    p=  0.0001    n=  0.0001
+ n,l,2j=  1  4  9    p=  0.0000    n=  0.0000
+ n,l,2j=  0  6 11    p=  0.0000    n=  0.0000
+ n,l,2j=  0  6 13    p=  0.0000    n=  0.0000
+ n,l,2j=  3  1  1    p=  0.0002    n=  0.0012
+ n,l,2j=  3  1  3    p=  0.0001    n=  0.0007
+ n,l,2j=  2  3  5    p=  0.0000    n=  0.0000
+ n,l,2j=  2  3  7    p=  0.0000    n=  0.0000
+ n,l,2j=  1  5  9    p=  0.0000    n=  0.0000
+ n,l,2j=  1  5 11    p=  0.0000    n=  0.0000
+ n,l,2j=  0  7 13    p=  0.0000    n=  0.0000
+ n,l,2j=  0  7 15    p=  0.0000    n=  0.0000
+
+ BE0 matrix elements:
+ L= 0 E0p=  0.8463   E0n=  1.4105     B(E0)=  0.7162
+
+ M1 moments:
+ pl=  0.2161   nl=  0.9205   ps= -0.0463   ns= -0.0902     M1=  0.3027
+
+ BM1 matrix elements:
+ pl=  0.1493   nl=  0.6360   ps= -0.0320   ns= -0.0624 M1=  0.2091 B(M1)=  0.0437
+
+ E2 moments:
+ Q2p=  0.0200   Q2n=  0.7410     Q2=  0.0200
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.0199   E2n=  0.7391     B(E2)=  0.0004
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  8 [2*(J,T),Ex]_f=  8 2  7.6037   #  7 [2*(J,T),Ex]_i=  2 2  6.6494
+
+ BE4 matrix elements:
+ L= 4 E4p= -1.6225   E4n= -2.9897     B(E4)=  2.6326
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  9 [2*(J,T),Ex]_f=  6 2  8.6106   #  7 [2*(J,T),Ex]_i=  2 2  6.6494
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.4748   E2n=  0.9574     B(E2)=  0.2254
+
+ BE4 matrix elements:
+ L= 4 E4p= -2.6429   E4n= -3.1765     B(E4)=  6.9850
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  1 [2*(J,T),Ex]_f=  4 2  0.0000   #  8 [2*(J,T),Ex]_i=  8 2  7.6037
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.9728   E2n=  1.8634     B(E2)=  0.9463
+
+ BE4 matrix elements:
+ L= 4 E4p=  2.6824   E4n=  4.9895     B(E4)=  7.1954
+
+ BE6 matrix elements:
+ L= 6 E6p=  3.1083   E6n=  5.9168     B(E6)=  9.6618
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  2 [2*(J,T),Ex]_f=  2 2  1.1151   #  8 [2*(J,T),Ex]_i=  8 2  7.6037
+
+ BE4 matrix elements:
+ L= 4 E4p= -1.6931   E4n= -4.0273     B(E4)=  2.8667
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  3 [2*(J,T),Ex]_f=  6 2  2.6901   #  8 [2*(J,T),Ex]_i=  8 2  7.6037
+
+ BM1 matrix elements:
+ pl= -0.1393   nl=  0.0277   ps= -0.0265   ns=  0.1382 M1= -0.8161 B(M1)=  0.6661
+
+ BE2 matrix elements:
+ L= 2 E2p=  1.0553   E2n=  2.8980     B(E2)=  1.1137
+
+ BE4 matrix elements:
+ L= 4 E4p= -2.5624   E4n= -2.7679     B(E4)=  6.5659
+
+ BE6 matrix elements:
+ L= 6 E6p= -1.9876   E6n= -2.1118     B(E6)=  3.9506
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  4 [2*(J,T),Ex]_f=  4 2  5.0238   #  8 [2*(J,T),Ex]_i=  8 2  7.6037
+
+ BE2 matrix elements:
+ L= 2 E2p= -0.7953   E2n= -1.8391     B(E2)=  0.6324
+
+ BE4 matrix elements:
+ L= 4 E4p=  2.0040   E4n=  2.2674     B(E4)=  4.0162
+
+ BE6 matrix elements:
+ L= 6 E6p=  2.3833   E6n=  5.7044     B(E6)=  5.6803
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  5 [2*(J,T),Ex]_f=  2 2  5.4220   #  8 [2*(J,T),Ex]_i=  8 2  7.6037
+
+ BE4 matrix elements:
+ L= 4 E4p=  0.4866   E4n=  1.9613     B(E4)=  0.2368
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  6 [2*(J,T),Ex]_f=  4 2  6.2594   #  8 [2*(J,T),Ex]_i=  8 2  7.6037
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.5666   E2n=  0.7777     B(E2)=  0.3210
+
+ BE4 matrix elements:
+ L= 4 E4p= -0.3283   E4n= -0.3473     B(E4)=  0.1078
+
+ BE6 matrix elements:
+ L= 6 E6p=  4.0186   E6n=  7.0326     B(E6)= 16.1491
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  7 [2*(J,T),Ex]_f=  2 2  6.6494   #  8 [2*(J,T),Ex]_i=  8 2  7.6037
+
+ BE4 matrix elements:
+ L= 4 E4p=  0.9368   E4n=  1.7261     B(E4)=  0.8775
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  8 [2*(J,T),Ex]_f=  8 2  7.6037   #  8 [2*(J,T),Ex]_i=  8 2  7.6037
+
+ Occupation Numbers for N=2n+l:
+ N=  0    p=  1.8682    n=  1.8811
+ N=  1    p=  0.9954    n=  2.7565
+ N=  2    p=  0.0830    n=  0.1532
+ N=  3    p=  0.0404    n=  0.1658
+ N=  4    p=  0.0080    n=  0.0196
+ N=  5    p=  0.0040    n=  0.0193
+ N=  6    p=  0.0007    n=  0.0026
+ N=  7    p=  0.0002    n=  0.0020
+
+ Occupation Numbers for nlj-levels:
+ n,l,2j=  0  0  1    p=  1.8682    n=  1.8811
+ n,l,2j=  0  1  1    p=  0.0565    n=  0.8729
+ n,l,2j=  0  1  3    p=  0.9390    n=  1.8837
+ n,l,2j=  1  0  1    p=  0.0179    n=  0.0500
+ n,l,2j=  0  2  3    p=  0.0352    n=  0.0526
+ n,l,2j=  0  2  5    p=  0.0299    n=  0.0506
+ n,l,2j=  1  1  1    p=  0.0027    n=  0.0685
+ n,l,2j=  1  1  3    p=  0.0158    n=  0.0629
+ n,l,2j=  0  3  5    p=  0.0093    n=  0.0140
+ n,l,2j=  0  3  7    p=  0.0125    n=  0.0204
+ n,l,2j=  2  0  1    p=  0.0013    n=  0.0061
+ n,l,2j=  1  2  3    p=  0.0016    n=  0.0054
+ n,l,2j=  1  2  5    p=  0.0015    n=  0.0039
+ n,l,2j=  0  4  7    p=  0.0030    n=  0.0034
+ n,l,2j=  0  4  9    p=  0.0006    n=  0.0007
+ n,l,2j=  2  1  1    p=  0.0001    n=  0.0079
+ n,l,2j=  2  1  3    p=  0.0020    n=  0.0084
+ n,l,2j=  1  3  5    p=  0.0006    n=  0.0011
+ n,l,2j=  1  3  7    p=  0.0002    n=  0.0004
+ n,l,2j=  0  5  9    p=  0.0011    n=  0.0014
+ n,l,2j=  0  5 11    p=  0.0000    n=  0.0001
+ n,l,2j=  3  0  1    p=  0.0001    n=  0.0009
+ n,l,2j=  2  2  3    p=  0.0001    n=  0.0007
+ n,l,2j=  2  2  5    p=  0.0001    n=  0.0006
+ n,l,2j=  1  4  7    p=  0.0002    n=  0.0002
+ n,l,2j=  1  4  9    p=  0.0000    n=  0.0000
+ n,l,2j=  0  6 11    p=  0.0001    n=  0.0001
+ n,l,2j=  0  6 13    p=  0.0000    n=  0.0000
+ n,l,2j=  3  1  1    p=  0.0000    n=  0.0009
+ n,l,2j=  3  1  3    p=  0.0002    n=  0.0010
+ n,l,2j=  2  3  5    p=  0.0000    n=  0.0001
+ n,l,2j=  2  3  7    p=  0.0000    n=  0.0000
+ n,l,2j=  1  5  9    p=  0.0000    n=  0.0000
+ n,l,2j=  1  5 11    p=  0.0000    n=  0.0000
+ n,l,2j=  0  7 13    p=  0.0000    n=  0.0000
+ n,l,2j=  0  7 15    p=  0.0000    n=  0.0000
+
+ BE0 matrix elements:
+ L= 0 E0p=  0.8463   E0n=  1.4105     B(E0)=  0.7162
+
+ M1 moments:
+ pl=  1.0328   nl=  1.9972   ps=  0.4774   ns=  0.4926     M1=  1.8151
+
+ BM1 matrix elements:
+ pl=  0.5642   nl=  1.0910   ps=  0.2608   ns=  0.2691 M1=  0.9915 B(M1)=  0.9831
+
+ E2 moments:
+ Q2p= -2.7040   Q2n= -0.6958     Q2= -2.7040
+
+ BE2 matrix elements:
+ L= 2 E2p= -1.1952   E2n= -0.3075     B(E2)=  1.4286
+
+ BE4 matrix elements:
+ L= 4 E4p= -0.3631   E4n= -2.2156     B(E4)=  0.1318
+
+ BE6 matrix elements:
+ L= 6 E6p= -1.5349   E6n= -1.8860     B(E6)=  2.3560
+
+ BE8 matrix elements:
+ L= 8 E8p=  9.1548   E8n= 23.2267     B(E8)= 83.8106
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  9 [2*(J,T),Ex]_f=  6 2  8.6106   #  8 [2*(J,T),Ex]_i=  8 2  7.6037
+
+ BM1 matrix elements:
+ pl=  0.0509   nl= -0.3830   ps=  0.1381   ns=  0.1940 M1=  0.0801 B(M1)=  0.0064
+
+ BE2 matrix elements:
+ L= 2 E2p= -0.2418   E2n= -0.4605     B(E2)=  0.0584
+
+ BE4 matrix elements:
+ L= 4 E4p=  0.1674   E4n=  3.1669     B(E4)=  0.0280
+
+ BE6 matrix elements:
+ L= 6 E6p=-15.3948   E6n=-23.9974     B(E6)=236.9989
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  1 [2*(J,T),Ex]_f=  4 2  0.0000   #  9 [2*(J,T),Ex]_i=  6 2  8.6106
+
+ BM1 matrix elements:
+ pl= -0.1557   nl=  0.2002   ps=  0.0014   ns= -0.0459 M1=  0.0279 B(M1)=  0.0008
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.6765   E2n=  0.8886     B(E2)=  0.4576
+
+ BE4 matrix elements:
+ L= 4 E4p=  1.7842   E4n=  3.5036     B(E4)=  3.1834
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  2 [2*(J,T),Ex]_f=  2 2  1.1151   #  9 [2*(J,T),Ex]_i=  6 2  8.6106
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.6617   E2n=  1.0044     B(E2)=  0.4379
+
+ BE4 matrix elements:
+ L= 4 E4p= -0.0617   E4n= -1.4179     B(E4)=  0.0038
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  3 [2*(J,T),Ex]_f=  6 2  2.6901   #  9 [2*(J,T),Ex]_i=  6 2  8.6106
+
+ BE0 matrix elements:
+ L= 0 E0p= -0.0000   E0n= -0.0000     B(E0)=  0.0000
+
+ BM1 matrix elements:
+ pl=  0.0235   nl=  0.1113   ps=  0.0199   ns= -0.1547 M1=  0.7263 B(M1)=  0.5276
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.2048   E2n=  2.2732     B(E2)=  0.0419
+
+ BE4 matrix elements:
+ L= 4 E4p= -2.3804   E4n= -3.7887     B(E4)=  5.6662
+
+ BE6 matrix elements:
+ L= 6 E6p= -2.4080   E6n= -4.5140     B(E6)=  5.7984
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  4 [2*(J,T),Ex]_f=  4 2  5.0238   #  9 [2*(J,T),Ex]_i=  6 2  8.6106
+
+ BM1 matrix elements:
+ pl= -0.1063   nl=  0.0496   ps=  0.0257   ns=  0.0310 M1= -0.0813 B(M1)=  0.0066
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.8076   E2n=  0.9053     B(E2)=  0.6522
+
+ BE4 matrix elements:
+ L= 4 E4p= -1.2918   E4n= -0.7438     B(E4)=  1.6688
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  5 [2*(J,T),Ex]_f=  2 2  5.4220   #  9 [2*(J,T),Ex]_i=  6 2  8.6106
+
+ BE2 matrix elements:
+ L= 2 E2p= -1.0823   E2n= -2.1009     B(E2)=  1.1715
+
+ BE4 matrix elements:
+ L= 4 E4p=  2.0866   E4n=  3.7839     B(E4)=  4.3539
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  6 [2*(J,T),Ex]_f=  4 2  6.2594   #  9 [2*(J,T),Ex]_i=  6 2  8.6106
+
+ BM1 matrix elements:
+ pl= -0.0158   nl= -0.2068   ps=  0.0554   ns=  0.1672 M1= -0.3462 B(M1)=  0.1198
+
+ BE2 matrix elements:
+ L= 2 E2p= -0.0315   E2n= -0.2256     B(E2)=  0.0010
+
+ BE4 matrix elements:
+ L= 4 E4p=  0.7736   E4n=  2.0261     B(E4)=  0.5984
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  7 [2*(J,T),Ex]_f=  2 2  6.6494   #  9 [2*(J,T),Ex]_i=  6 2  8.6106
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.3108   E2n=  0.6268     B(E2)=  0.0966
+
+ BE4 matrix elements:
+ L= 4 E4p= -1.7302   E4n= -2.0795     B(E4)=  2.9936
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  8 [2*(J,T),Ex]_f=  8 2  7.6037   #  9 [2*(J,T),Ex]_i=  6 2  8.6106
+
+ BM1 matrix elements:
+ pl= -0.0577   nl=  0.4342   ps= -0.1566   ns= -0.2200 M1= -0.0908 B(M1)=  0.0082
+
+ BE2 matrix elements:
+ L= 2 E2p=  0.2741   E2n=  0.5222     B(E2)=  0.0751
+
+ BE4 matrix elements:
+ L= 4 E4p= -0.1898   E4n= -3.5909     B(E4)=  0.0360
+
+ BE6 matrix elements:
+ L= 6 E6p= 17.4560   E6n= 27.2104     B(E6)=304.7128
+ ***************************************************************
+
+ *** Transition matrix elements for states: ***
+ #  9 [2*(J,T),Ex]_f=  6 2  8.6106   #  9 [2*(J,T),Ex]_i=  6 2  8.6106
+
+ Occupation Numbers for N=2n+l:
+ N=  0    p=  1.8587    n=  1.8734
+ N=  1    p=  0.9956    n=  2.7483
+ N=  2    p=  0.0905    n=  0.1645
+ N=  3    p=  0.0429    n=  0.1702
+ N=  4    p=  0.0076    n=  0.0197
+ N=  5    p=  0.0036    n=  0.0192
+ N=  6    p=  0.0007    n=  0.0026
+ N=  7    p=  0.0003    n=  0.0021
+
+ Occupation Numbers for nlj-levels:
+ n,l,2j=  0  0  1    p=  1.8587    n=  1.8734
+ n,l,2j=  0  1  1    p=  0.1235    n=  0.9800
+ n,l,2j=  0  1  3    p=  0.8722    n=  1.7682
+ n,l,2j=  1  0  1    p=  0.0247    n=  0.0620
+ n,l,2j=  0  2  3    p=  0.0398    n=  0.0554
+ n,l,2j=  0  2  5    p=  0.0260    n=  0.0472
+ n,l,2j=  1  1  1    p=  0.0053    n=  0.0806
+ n,l,2j=  1  1  3    p=  0.0238    n=  0.0591
+ n,l,2j=  0  3  5    p=  0.0081    n=  0.0142
+ n,l,2j=  0  3  7    p=  0.0057    n=  0.0163
+ n,l,2j=  2  0  1    p=  0.0013    n=  0.0065
+ n,l,2j=  1  2  3    p=  0.0018    n=  0.0056
+ n,l,2j=  1  2  5    p=  0.0015    n=  0.0040
+ n,l,2j=  0  4  7    p=  0.0025    n=  0.0030
+ n,l,2j=  0  4  9    p=  0.0005    n=  0.0006
+ n,l,2j=  2  1  1    p=  0.0002    n=  0.0087
+ n,l,2j=  2  1  3    p=  0.0015    n=  0.0080
+ n,l,2j=  1  3  5    p=  0.0007    n=  0.0009
+ n,l,2j=  1  3  7    p=  0.0002    n=  0.0004
+ n,l,2j=  0  5  9    p=  0.0009    n=  0.0012
+ n,l,2j=  0  5 11    p=  0.0000    n=  0.0000
+ n,l,2j=  3  0  1    p=  0.0002    n=  0.0010
+ n,l,2j=  2  2  3    p=  0.0001    n=  0.0009
+ n,l,2j=  2  2  5    p=  0.0002    n=  0.0005
+ n,l,2j=  1  4  7    p=  0.0001    n=  0.0001
+ n,l,2j=  1  4  9    p=  0.0000    n=  0.0000
+ n,l,2j=  0  6 11    p=  0.0001    n=  0.0001
+ n,l,2j=  0  6 13    p=  0.0000    n=  0.0000
+ n,l,2j=  3  1  1    p=  0.0000    n=  0.0012
+ n,l,2j=  3  1  3    p=  0.0003    n=  0.0008
+ n,l,2j=  2  3  5    p=  0.0000    n=  0.0000
+ n,l,2j=  2  3  7    p=  0.0000    n=  0.0000
+ n,l,2j=  1  5  9    p=  0.0000    n=  0.0000
+ n,l,2j=  1  5 11    p=  0.0000    n=  0.0000
+ n,l,2j=  0  7 13    p=  0.0000    n=  0.0000
+ n,l,2j=  0  7 15    p=  0.0000    n=  0.0000
+
+ BE0 matrix elements:
+ L= 0 E0p=  0.8463   E0n=  1.4105     B(E0)=  0.7162
+
+ M1 moments:
+ pl=  0.9781   nl=  1.5481   ps=  0.2951   ns=  0.1787     M1=  1.9430
+
+ BM1 matrix elements:
+ pl=  0.5518   nl=  0.8734   ps=  0.1665   ns=  0.1008 M1=  1.0962 B(M1)=  1.2017
+
+ E2 moments:
+ Q2p= -2.8829   Q2n= -2.5380     Q2= -2.8829
+
+ BE2 matrix elements:
+ L= 2 E2p= -1.4086   E2n= -1.2401     B(E2)=  1.9841
+
+ BE4 matrix elements:
+ L= 4 E4p=  1.2423   E4n=  4.6514     B(E4)=  1.5434
+
+ BE6 matrix elements:
+ L= 6 E6p= -2.6759   E6n= -7.8481     B(E6)=  7.1603
+ ***************************************************************

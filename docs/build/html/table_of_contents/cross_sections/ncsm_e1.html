@@ -32,8 +32,38 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="ncsm-e1-py">
-<h1>ncsm_e1.py<a class="headerlink" href="#ncsm-e1-py" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-cross_sections.ncsm_e1">
+<span id="ncsm-e1-py"></span><h1>ncsm_e1.py<a class="headerlink" href="#module-cross_sections.ncsm_e1" title="Permalink to this headline">¶</a></h1>
+<p>A script to take files from the <code class="docutils literal notranslate"><span class="pre">observ.out</span></code> format of NCSMC output,
+to the <code class="docutils literal notranslate"><span class="pre">NCSM_E1_Afi</span></code> format needed for cross-section calculations.</p>
+<dl class="function">
+<dt id="cross_sections.ncsm_e1.make_ncsm_e1">
+<code class="sig-prename descclassname">cross_sections.ncsm_e1.</code><code class="sig-name descname">make_ncsm_e1</code><span class="sig-paren">(</span><em class="sig-param">desired_states</em>, <em class="sig-param">transitions</em>, <em class="sig-param">run_name</em>, <em class="sig-param">files</em>, <em class="sig-param">out_dir=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.ncsm_e1.make_ncsm_e1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes NCSM_E1_Afi.dat files for the given parameters.</p>
+<dl class="simple">
+<dt>Params:</dt><dd><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">desired_states</span></code>: a list of initial states we want to consider,</dt><dd><p>e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;1</span> <span class="pre">-1</span> <span class="pre">3&quot;,</span> <span class="pre">&quot;3</span> <span class="pre">-1</span> <span class="pre">3&quot;]</span></code></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">transitions</span></code>: a list of transitions to consider,</dt><dd><p>e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;E1&quot;,</span> <span class="pre">&quot;E2&quot;,</span> <span class="pre">&quot;M1&quot;]</span></code></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">run_name</span></code>: a string to use for output naming,</dt><dd><p>e.g. <code class="docutils literal notranslate"><span class="pre">&quot;nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6_2p1p&quot;</span></code></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">files</span></code>: a list of strings with paths to observ.out files</dt><dd><p>e.g. <code class="docutils literal notranslate"><span class="pre">files</span> <span class="pre">=</span> <span class="pre">[&quot;/path/to/observ1.out&quot;,</span> <span class="pre">&quot;/path/to/observ2.out&quot;]</span></code></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="cross_sections.ncsm_e1.transition_parameter">
+<code class="sig-prename descclassname">cross_sections.ncsm_e1.</code><code class="sig-name descname">transition_parameter</code><span class="sig-paren">(</span><em class="sig-param">trans_str</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.ncsm_e1.transition_parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Which parameter should we take from lines of data?</p>
+<p>trans_str = “E1” or something of that sort</p>
+<p>e.g. in the line <code class="docutils literal notranslate"><span class="pre">L=</span> <span class="pre">1</span> <span class="pre">E1p=</span> <span class="pre">-0.0102</span>&#160;&#160; <span class="pre">E1n=</span>&#160; <span class="pre">0.0102</span>&#160;&#160;&#160;&#160; <span class="pre">B(E1)=</span>&#160; <span class="pre">0.0001</span></code>,</p>
+<p>we want E1p.</p>
+</dd></dl>
+
 </div>
 
 

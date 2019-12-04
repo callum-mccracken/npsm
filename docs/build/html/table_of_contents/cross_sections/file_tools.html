@@ -32,8 +32,37 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="file-tools-py">
-<h1>file_tools.py<a class="headerlink" href="#file-tools-py" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-cross_sections.file_tools">
+<span id="file-tools-py"></span><h1>file_tools.py<a class="headerlink" href="#module-cross_sections.file_tools" title="Permalink to this headline">¶</a></h1>
+<p>A module for processing <code class="docutils literal notranslate"><span class="pre">observ.out</span></code> files from NCSMC output.</p>
+<dl class="function">
+<dt id="cross_sections.file_tools.make_wf_file">
+<code class="sig-prename descclassname">cross_sections.file_tools.</code><code class="sig-name descname">make_wf_file</code><span class="sig-paren">(</span><em class="sig-param">wavefunction_NCSMC_file</em>, <em class="sig-param">res_state</em>, <em class="sig-param">run_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.file_tools.make_wf_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a wavefunction_NCSMC file for the resultant nucleus state given by
+res_state, and puts it in the directory run_dir.</p>
+<p>res_state is of the form “2J parity 2T”, and the other variables are paths</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cross_sections.file_tools.simplify_observ">
+<code class="sig-prename descclassname">cross_sections.file_tools.</code><code class="sig-name descname">simplify_observ</code><span class="sig-paren">(</span><em class="sig-param">desired_state</em>, <em class="sig-param">transitions</em>, <em class="sig-param">filename</em>, <em class="sig-param">function=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.file_tools.simplify_observ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a simplified version of an <code class="docutils literal notranslate"><span class="pre">observ.out</span></code> file.</p>
+<p>Params:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">desired_state</span></code>: string, of the form 2J, pi, 2T, e.g. “3 -1 3”</p>
+<p><code class="docutils literal notranslate"><span class="pre">transitions</span></code>: a list of transitions to keep in the file, e.g. [“E1”]</p>
+<p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: string, the path to the observ.out file.</p>
+<p><code class="docutils literal notranslate"><span class="pre">function</span></code>: string, name of function calling this function</p>
+</div></blockquote>
+<p>Returns:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">simp_path</span></code>: the path to the simplified file</p>
+<p>if function == “make_ncsm_e1”, also returns</p>
+<p><code class="docutils literal notranslate"><span class="pre">num_desired_state</span></code>: the number of states with the same quantum
+numbers as the desired state</p>
+</div></blockquote>
+</dd></dl>
+
 </div>
 
 

@@ -1,0 +1,77 @@
+#!/bin/bash
+#SBATCH --account=rrg-navratil
+#SBATCH --ntasks=1024            # number of MPI processes
+#SBATCH --mem-per-cpu=4096M      # memory; default unit is megabytes
+#SBATCH --time=1-00:00           # time (DD-HH:MM)
+#SBATCH --output=trdens-%J.out
+
+cd /scratch/navratil/N12
+
+#potential='N2LOsat-srg2.0'
+#potential='NN3N400-srg2.0'
+#potential='n3lo-NN3Nlnl-srg2.0'
+#potential='NNn4lo500_3Nlnl-srg1.8'
+potential='NNn3lo3Nlnl-srg2.0'
+nuc='Li8'
+Ngs=4
+Tz2=-2
+freq=20
+Nmax=4
+proj='n'
+
+sufegv='_10st'
+suffile='_2p1p_10m'
+
+nucA='Li9'
+Nmaxi=4
+
+Jz2=0
+
+N=$[$Nmax+$Ngs]
+
+ln -sf mfdp_${N}.egv_${nuc}_${potential}_Nmax${Nmax}.${freq}${sufegv}  mfdp_${N}.egv_${nuc}_${potential}_Nmax${Nmax}.${freq}${sufegv}_${Jz2}_${Tz2}
+
+for Jzf in 0 1 -1 2 -2
+
+do
+
+#if [ $Jzi -eq -1 ]  && [ $Jzf -eq 0 ]
+#then
+#    continue
+#fi
+
+    Jzf2=$[$Jzf+$Jzf]
+#    Jzf2=$[$Jzf]
+
+    if [ $Jzf -eq 0 ] 
+    then
+        nkf=2
+    elif [ $Jzf -eq 1 ] || [ $Jzf -eq -1 ]
+    then
+        nkf=2
+    else
+        nkf=1
+    fi
+
+#    if [ $Jzf -eq 0 ]
+#    then
+#	nkf=2
+#    else
+#	nkf=1
+#    fi
+
+    cp -f trdens.in_${Nmax}_${nkf} trdens.in
+
+    ln -sf mfdp_${N}.egv_${nuc}_${potential}_Nmax${Nmax}.${freq}${sufegv}_${Jzf2}_${Tz2} mfdf.egv
+
+    srun  ../trdens_kernels_Oeff_devel.exe > t.o_${nucA}_${nuc}_${potential}_Nmax${Nmaxi}_Nmax${Nmax}.${freq}${suffile}_${Jzf2}
+
+    mv trdens.out trdens.out_${nucA}_${nuc}_${potential}_Nmax${Nmaxi}_Nmax${Nmax}.${freq}${suffile}_Jz${Jzf}
+    mv NCSMC_kernels.dat NCSMC_kernels.dat_${nucA}_${nuc}_${potential}_Nmax${Nmaxi}_Nmax${Nmax}.${freq}${suffile}_Jz${Jzf}
+
+    rm -f mfdf.egv
+
+done
+
+
+
