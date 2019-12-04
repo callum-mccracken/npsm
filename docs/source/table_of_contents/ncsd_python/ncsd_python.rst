@@ -17,6 +17,9 @@ full of helper functions.
 .. automodule:: ncsd_python.ncsd_multi
    :members:
 
+.. automodule:: ncsd_python.output_plotter
+   :members:
+
 multi_modules
 =============
 
@@ -31,9 +34,6 @@ Helper modules for ncsd_multi.py
    multi_modules/formats_multi
    multi_modules/ncsd_multi_run
    multi_modules/parameter_calculations
-
-.. automodule:: ncsd_python.output_plotter
-   :members:
 
 plot_modules
 =============

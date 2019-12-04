@@ -36,7 +36,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="plotter.py" href="plotter.html" />
-    <link rel="prev" title="formats.py" href="formats.html" />
+    <link rel="prev" title="formats_plot.py" href="formats_plot.html" />
     <link href="../../../_static/style.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -83,12 +83,12 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../ncsd_python.html">ncsd_python</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../ncsd_python.html">1. ncsd_python</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../ncsd_python.html#ncsd-multi-py">ncsd_multi.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ncsd_python.html#output-exporter-py">output_exporter.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ncsd_python.html#output-plotter-py">output_plotter.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ncsd_python.html#multi-modules">multi_modules</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../ncsd_python.html#plot-modules">plot_modules</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="formats.html">formats.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="formats_plot.html">formats_plot.py</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">ncsd_output_reader.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plotter.html">plotter.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scraper.html">scraper.py</a></li>
@@ -145,7 +145,7 @@
     
       <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../ncsd_python.html">ncsd_python</a> &raquo;</li>
+          <li><a href="../ncsd_python.html">1. ncsd_python</a> &raquo;</li>
         
       <li>ncsd_output_reader.py</li>
     
@@ -168,32 +168,58 @@
             
   <div class="section" id="module-ncsd_python.plot_modules.ncsd_output_reader">
 <span id="ncsd-output-reader-py"></span><h1>ncsd_output_reader.py<a class="headerlink" href="#module-ncsd_python.plot_modules.ncsd_output_reader" title="Permalink to this headline">¶</a></h1>
-<p>Contains function which reads data from ncsd output files.
-Also contains a couple small functions for getting names of nuclei.</p>
+<p>Contains a function which reads data from ncsd output files.</p>
+<p>Also contains a couple small functions for getting names of nuclei.</p>
 <dl class="function">
 <dt id="ncsd_python.plot_modules.ncsd_output_reader.element_name">
 <code class="sig-prename descclassname">ncsd_python.plot_modules.ncsd_output_reader.</code><code class="sig-name descname">element_name</code><span class="sig-paren">(</span><em class="sig-param">Z</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.ncsd_output_reader.element_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the name of an element, e.g. element_name(1) = “H”.</p>
+<dd><p>Gets the name of an element. Currently only works up to Z=30.</p>
+<dl class="simple">
+<dt>Z:</dt><dd><p>integer, number of protons</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">element_name</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">H</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsd_python.plot_modules.ncsd_output_reader.nucleus_name">
 <code class="sig-prename descclassname">ncsd_python.plot_modules.ncsd_output_reader.</code><code class="sig-name descname">nucleus_name</code><span class="sig-paren">(</span><em class="sig-param">Z</em>, <em class="sig-param">N</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.ncsd_output_reader.nucleus_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the name of a nucleus in ‘Li8’ style</p>
+<dd><p>Returns the name of a nucleus.</p>
+<dl class="simple">
+<dt>Z:</dt><dd><p>integer, number of protons</p>
+</dd>
+<dt>N:</dt><dd><p>integer, number of neutrons</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">nucleus_name</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">Li8</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsd_python.plot_modules.ncsd_output_reader.read_all_ncsd_output">
 <code class="sig-prename descclassname">ncsd_python.plot_modules.ncsd_output_reader.</code><code class="sig-name descname">read_all_ncsd_output</code><span class="sig-paren">(</span><em class="sig-param">real_paths</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.ncsd_output_reader.read_all_ncsd_output" title="Permalink to this definition">¶</a></dt>
-<dd><p>Runs read_ncsd_output for many paths in case you have a few different files,
-tries to merge data at the end.</p>
+<dd><p>Runs read_ncsd_output for many paths in case you have a few different files
+then tries to merge data at the end.</p>
+<dl class="simple">
+<dt>real_paths:</dt><dd><p>absolute paths to ncsd output files</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncsd_python.plot_modules.ncsd_output_reader.read_ncsd_output">
 <code class="sig-prename descclassname">ncsd_python.plot_modules.ncsd_output_reader.</code><code class="sig-name descname">read_ncsd_output</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.ncsd_output_reader.read_ncsd_output" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parses ncsd output.</p>
-<p>Eventually returns a dict of the form:</p>
+<dl class="simple">
+<dt>filename:</dt><dd><p>path to ncsd output file</p>
+</dd>
+</dl>
+<p>Eventually returns a dictionary of the form:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;element_name&quot;</span><span class="p">:</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span>
     <span class="s2">&quot;nucleus_name&quot;</span><span class="p">:</span> <span class="s2">&quot;B11&quot;</span><span class="p">,</span>
@@ -231,7 +257,7 @@ tries to merge data at the end.</p>
         <a href="plotter.html" class="btn btn-neutral float-right" title="plotter.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="formats.html" class="btn btn-neutral float-left" title="formats.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="formats_plot.html" class="btn btn-neutral float-left" title="formats_plot.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

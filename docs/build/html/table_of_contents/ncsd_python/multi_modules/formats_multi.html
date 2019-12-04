@@ -171,9 +171,46 @@
   <div class="section" id="module-ncsd_python.multi_modules.formats_multi">
 <span id="formats-multi-py"></span><h1>formats_multi.py<a class="headerlink" href="#module-ncsd_python.multi_modules.formats_multi" title="Permalink to this headline">¶</a></h1>
 <p>Contains long strings representing file types, to de-clutter other modules.</p>
-<p>Note: double curly braces tell Python you mean a literal curly brace
+<p>PS: if you’re reading this online, this looks way better in the actual file</p>
+<p>PPS: double curly braces tell Python you mean a literal curly brace
 when you’re formatting a string.
 E.g. “{a}, {b}, {{a}}”.format(a=1, b=2) produces the string “1, 2, {a}”</p>
+<dl class="data">
+<dt id="ncsd_python.multi_modules.formats_multi.cedar_batch_format">
+<code class="sig-prename descclassname">ncsd_python.multi_modules.formats_multi.</code><code class="sig-name descname">cedar_batch_format</code><em class="property"> = '#!/bin/bash\n#SBATCH --account={account}\n#SBATCH --nodes={nodes}               # number of 48-cpu nodes\n#SBATCH --tasks-per-node={tasks_per_node}      # mpi tasks per node (max 48)\n#SBATCH --mem={mem}                 # to use full nodes, set this to zero\n#SBATCH --mem-per-cpu={mem_per_core}G     # memory per CPU\n#SBATCH --time={time}           # time (DD-HH:MM)\n#SBATCH --output={output}\n\nmodule load python/3.7.0\n\ncd {run_directory}\n\npotential=&quot;{potential}&quot;\n\niNu=&quot;{nucleus_name}&quot;\nfreq=&quot;{hbar_omega}&quot;\nsuf=&quot;{suffix}&quot;\nNgs={Ngs}\n\n\nsrun {ncsd_path}\n\nfor Nmax in {non_IT_Nmax}\n\ndo\n\nN=$[$Nmax+$Ngs]\n\nmv mfdp_${{N}}.egv mfdp_${{N}}.egv_${{iNu}}_${{potential}}_Nmax${{Nmax}}.${{freq}}${{suf}}\n\ndone\n{potential_end_bit}\n\nmv mfd.log mfd.log_{output_file}\n\npython {output_plotter} -f {output_file}\n'</em><a class="headerlink" href="#ncsd_python.multi_modules.formats_multi.cedar_batch_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format for cedar batch file</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ncsd_python.multi_modules.formats_multi.kappa_rename_format">
+<code class="sig-prename descclassname">ncsd_python.multi_modules.formats_multi.</code><code class="sig-name descname">kappa_rename_format</code><em class="property"> = 'mv mfdp_${{N}}_{kappa_D}.egv mfdp_${{N}}_{kappa_D}.egv_${{iNu}}_${{potential}}_Nmax${{Nmax}}.${{freq}}_IT_kmin{kappa_em}${{suf}}'</em><a class="headerlink" href="#ncsd_python.multi_modules.formats_multi.kappa_rename_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>format for lines with the kappa renaming scheme</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ncsd_python.multi_modules.formats_multi.local_batch_format">
+<code class="sig-prename descclassname">ncsd_python.multi_modules.formats_multi.</code><code class="sig-name descname">local_batch_format</code><em class="property"> = '#!/bin/bash\ncd {run_directory}\n\npotential=&quot;{potential}&quot;\n\niNu=&quot;{nucleus_name}&quot;\nfreq=&quot;{hbar_omega}&quot;\nsuf=&quot;{suffix}&quot;\nNgs={Ngs}\n\n\n{ncsd_path}\n\nfor Nmax in {non_IT_Nmax}\n\ndo\n\nN=$[$Nmax+$Ngs]\n\nmv mfdp_${{N}}.egv mfdp_${{N}}.egv_${{iNu}}_${{potential}}_Nmax${{Nmax}}.${{freq}}${{suf}}\n\ndone\n{potential_end_bit}\n\nmv mfd.log mfd.log_{output_file}\n\npython {output_plotter} -f {output_file}\n'</em><a class="headerlink" href="#ncsd_python.multi_modules.formats_multi.local_batch_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format for local batch file</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ncsd_python.multi_modules.formats_multi.mfdp_format">
+<code class="sig-prename descclassname">ncsd_python.multi_modules.formats_multi.</code><code class="sig-name descname">mfdp_format</code><em class="property"> = &quot;  ==== Input file for the shell model code =====\nINT filename and output file name:\n{two_body_interaction}\n{two_body_file_type}     &lt;- TBME file: a b c d  J T  Trel  Hrel  Clmb   V ...\n{output_file}\n  {Z:2d} {N:2d} {hbar_omega:2.1f}         ! Z, N, hbar*Omega\n  {Nhw:2d} {parity:2d} {total_2Jz:2d}           ! Nhw, Parity, Total 2Jz\n  {N_min:2d} {N_1max:2d} {N_12max:2d}           ! N_min,N_1max,N_2max\n  {iham}  {iclmb}    {strcm}       ! iham(1: H=Trel+V, 2: H=Hrel+V, 3: H=SPE+V), iclmb, strcm\n  {interaction_type}                 ! NN=2, NN+3N=3, (NN+3N &amp; NN:IT)=-3\n  {major}                 ! major (0 for subshells, 1 for major shells)\n  {nshll}                 ! nshll/jorder (norb (major=0) OR orbital order)\nMajor or subshell occupation restrictions for protons, neutrons and (p+n):\n{occupation_string}\nControl parameters for multiple-G calculations:\n  {nsets}  {min_nesp}  {nskip}  {iset1}         ! nsets (# of G's), min(nesp), nskip, iset1 (see below)\nControl parameters for initial and final state vectors:\n  {ki}  {kf:2d}  {n_states:2d}          ! ki,kf,nf (Initial, 1st final state, # of final states)\n  {gs_energy:.5f}             ! the g.s. energy (0 if not available)\nOther control parameters:\n  {iterations_required:&lt;5d}               ! Number of lanczos iterations\n  {igt}                  ! igt = 1 to calculate sum GT+ and sum GT-, = 0 not to.\nRestart option:\n  {irest}                  ! irest = 0 for new calc., = 4 to restart.  See code for more options.\n  {nhme}                  ! memsave = 1 for a memory saving\nImportance truncation:\n  {nhw0}  {nhw_min:2d}  {Nhw:2d}  {nhw_restart:2d}      ! nhw0, nhw_min (start IT), nhw_max=nhw, nhw_restart\n  {kappa_points}  {cmin}  {kappa_restart}         !kappa_points,cmin=factor*kappa,kappa_restart=-1 for new calc.\n  {kappa_vals}  ! kappa(1E-5)\n  {convergence_delta}          \t     ! convergence delta in keV (not implemented)\n{three_body_interaction}\n{N_1max:2d} {N_12max:2d} {N_123max:2d}             ! N1B N2B N3B\nEffective operators:\n    {eff_charge_p:.3f}    {eff_charge_n:.3f}    &lt;- effective charges: ep and en\n    {glp:.3f}    {gln:.3f}    {gsp:.3f}   {gsn:.3f}    &lt;- glp,gln,gsp,gsn\n{saved_pivot}                    ! pivot_saved\n{rmemavail:3f}               ! memory per rank in GB in real(8)\n*******************************  End of input  *******************************\n&quot;</em><a class="headerlink" href="#ncsd_python.multi_modules.formats_multi.mfdp_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format for mfdp.dat file</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ncsd_python.multi_modules.formats_multi.potential_end_bit_format">
+<code class="sig-prename descclassname">ncsd_python.multi_modules.formats_multi.</code><code class="sig-name descname">potential_end_bit_format</code><em class="property"> = '\nfor Nmax in {IT_Nmax}\n\ndo\n\nN=$[$Nmax+$Ngs]\n\n{kappa_rename}\ndone\n'</em><a class="headerlink" href="#ncsd_python.multi_modules.formats_multi.potential_end_bit_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>the <code class="docutils literal notranslate"><span class="pre">potential_end_bit</span></code> of batch files</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ncsd_python.multi_modules.formats_multi.summit_batch_format">
+<code class="sig-prename descclassname">ncsd_python.multi_modules.formats_multi.</code><code class="sig-name descname">summit_batch_format</code><em class="property"> = '#!/bin/bash\n\n#BSUB -P {account}\n#BSUB -W {time}\n#BSUB -nnodes {nnodes}\n#BSUB -J {output}\n#BSUB -eo {output}.%J\n\ncd {run_directory}\ndate\n\n#module loading needs cuda and for some\n#reason also lapack as a separate load\nmodule load cuda\nmodule load netlib-lapack/3.8.0\nmodule load gcc\nmodule load python/3.7.0-anaconda3-5.3.0\n\n#SUMMIT job submission is based on &quot;resource sets&quot;\n#so the main thing you submit is &quot;number of resource sets&quot;\n#to run efficiently, each resource set has 1 gpu and 7 cpus\n#and we run with 6 resource sets per node. This is forced\n#by the fact that there are 6 gpus per node and we want each\n#to go to a separate resource set.\n\n#full load of node 7 x 6 = 42\nexport OMP_NUM_THREADS=7\n\n#options:\n# -n : number of resource sets TOTAL (nodes x resoure sets per node)\n# -a : number of MPI tasks per resource set\n# -c : number of CPUs per resource set\n# -g : number og GPUs per resource set\n# -r : number of resource sets per node\n# -l CPU-CPU : optimize CPU memory latency\n# -d packed -b rs: pack the resource sets on the node\n\njsrun -n {resource_sets} -a 1 -c 7 -g 1 -r 6 -l CPU-CPU -d packed -b rs {ncsd_path}\n\ndate\n\npotential=\'{potential}\'\niNu=\'{nucleus_name}\'\nfreq=\'{hbar_omega}\'\nsuf=\'{suffix}\'\nNgs={Ngs}\n\nfor Nmax in {non_IT_Nmax}\n\ndo\n\nN=$[$Nmax+$Ngs]\n\nmv mfdp_${{N}}.egv mfdp_${{N}}.egv_${{iNu}}_${{potential}}_Nmax${{Nmax}}.${{freq}}${{suf}}\n\ndone\n\n{potential_end_bit}\n\nmv mfd.log mfd.log_{output_file}\n\npython {output_plotter} -f {output_file}\n'</em><a class="headerlink" href="#ncsd_python.multi_modules.formats_multi.summit_batch_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format for summit batch file</p>
+</dd></dl>
+
 </div>
 
 

@@ -168,9 +168,40 @@
   <div class="section" id="module-ncsd_python.plot_modules.formats_plot">
 <span id="formats-plot-py"></span><h1>formats_plot.py<a class="headerlink" href="#module-ncsd_python.plot_modules.formats_plot" title="Permalink to this headline">¶</a></h1>
 <p>Contains long strings to make writing files easier.</p>
-<p>Note: double curly braces tell Python you mean a literal curly brace
+<p>PS: if you’re reading this online, this looks way better in the actual file</p>
+<p>PPS: double curly braces tell Python you mean a literal curly brace
 when you’re formatting a string.
 E.g. “{a}, {b}, {{a}}”.format(a=1, b=2) produces the string “1, 2, {a}”</p>
+<dl class="data">
+<dt id="ncsd_python.plot_modules.formats_plot.xmgrace_Nmax_title_format">
+<code class="sig-prename descclassname">ncsd_python.plot_modules.formats_plot.</code><code class="sig-name descname">xmgrace_Nmax_title_format</code><em class="property"> = 'N\\smax\\N = {Nmax}'</em><a class="headerlink" href="#ncsd_python.plot_modules.formats_plot.xmgrace_Nmax_title_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>format of xmgrace Nmax title</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ncsd_python.plot_modules.formats_plot.xmgrace_axis_label_line">
+<code class="sig-prename descclassname">ncsd_python.plot_modules.formats_plot.</code><code class="sig-name descname">xmgrace_axis_label_line</code><em class="property"> = '{Nmax}h\\h{{-.6}}\\v{{.3}}- \\v{{-.3}}\\xW\\f{{}}\n'</em><a class="headerlink" href="#ncsd_python.plot_modules.formats_plot.xmgrace_axis_label_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>format of an xmgrace axis label</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ncsd_python.plot_modules.formats_plot.xmgrace_data_line_format">
+<code class="sig-prename descclassname">ncsd_python.plot_modules.formats_plot.</code><code class="sig-name descname">xmgrace_data_line_format</code><em class="property"> = '{j} {repetition} {parity}   {energy:.4f}\n'</em><a class="headerlink" href="#ncsd_python.plot_modules.formats_plot.xmgrace_data_line_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>format of xmgrace line of data</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ncsd_python.plot_modules.formats_plot.xmgrace_dataset_format">
+<code class="sig-prename descclassname">ncsd_python.plot_modules.formats_plot.</code><code class="sig-name descname">xmgrace_dataset_format</code><em class="property"> = '{title}\n{lines}'</em><a class="headerlink" href="#ncsd_python.plot_modules.formats_plot.xmgrace_dataset_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>xmgrace files are made of datasets, which are a title + data lines</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ncsd_python.plot_modules.formats_plot.xmgrace_format">
+<code class="sig-prename descclassname">ncsd_python.plot_modules.formats_plot.</code><code class="sig-name descname">xmgrace_format</code><em class="property"> = '\nE\\sx\\N [MeV]\nlin lin\n{num_spectra_plus_2} {num_states} {num_spectra} {num_plots}              !       num_strings num_states num_specs num_plots\n\\S{Z_plus_N}\\N{element}\n{interaction_name}\n{axis_labels}\n dotted off rotate\n{data}\n\n'</em><a class="headerlink" href="#ncsd_python.plot_modules.formats_plot.xmgrace_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>overall format of xmgrace file</p>
+</dd></dl>
+
 </div>
 
 
