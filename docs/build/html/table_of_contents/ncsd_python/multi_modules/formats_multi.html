@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ncsd_multi_run.py &mdash; NPSM 0.0.1 documentation</title>
+  <title>formats_multi.py &mdash; NPSM 0.0.1 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="parameter_calculations.py" href="parameter_calculations.html" />
-    <link rel="prev" title="formats_multi.py" href="formats_multi.html" />
+    <link rel="next" title="ncsd_multi_run.py" href="ncsd_multi_run.html" />
+    <link rel="prev" title="file_manager.py" href="file_manager.html" />
     <link href="../../../_static/style.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -89,8 +89,8 @@
 <li class="toctree-l3"><a class="reference internal" href="data_checker.html">data_checker.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html">data_structures.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="file_manager.html">file_manager.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="formats_multi.html">formats_multi.py</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">ncsd_multi_run.py</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">formats_multi.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ncsd_multi_run.html">ncsd_multi_run.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="parameter_calculations.html">parameter_calculations.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ncsd_python.html#output-plotter-py">output_plotter.py</a></li>
 </ul>
@@ -149,13 +149,13 @@
         
           <li><a href="../ncsd_python.html">1. ncsd_python</a> &raquo;</li>
         
-      <li>ncsd_multi_run.py</li>
+      <li>formats_multi.py</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../_sources/table_of_contents/ncsd_python/multi_modules/ncsd_multi_run.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/table_of_contents/ncsd_python/multi_modules/formats_multi.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -168,29 +168,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ncsd_python.multi_modules.ncsd_multi_run">
-<span id="ncsd-multi-run-py"></span><h1>ncsd_multi_run.py<a class="headerlink" href="#module-ncsd_python.multi_modules.ncsd_multi_run" title="Permalink to this headline">¶</a></h1>
-<p>Once we grab input from <code class="docutils literal notranslate"><span class="pre">ncsd_multi.py</span></code>, this module actually processes it.</p>
-<dl class="function">
-<dt id="ncsd_python.multi_modules.ncsd_multi_run.create_dirs">
-<code class="sig-prename descclassname">ncsd_python.multi_modules.ncsd_multi_run.</code><code class="sig-name descname">create_dirs</code><span class="sig-paren">(</span><em class="sig-param">defaults</em>, <em class="sig-param">dict_list</em>, <em class="sig-param">paths</em>, <em class="sig-param">machine</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.ncsd_multi_run.create_dirs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates directories which hold ncsd run files.</p>
-<p>Returns paths to batch scripts in each directory. Run these to run ncsd.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="ncsd_python.multi_modules.ncsd_multi_run.ncsd_multi_run">
-<code class="sig-prename descclassname">ncsd_python.multi_modules.ncsd_multi_run.</code><code class="sig-name descname">ncsd_multi_run</code><span class="sig-paren">(</span><em class="sig-param">man_params</em>, <em class="sig-param">paths</em>, <em class="sig-param">machine</em>, <em class="sig-param">run=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.ncsd_multi_run.ncsd_multi_run" title="Permalink to this definition">¶</a></dt>
-<dd><p>Run ncsd multiple times with given parameters.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="ncsd_python.multi_modules.ncsd_multi_run.prepare_input">
-<code class="sig-prename descclassname">ncsd_python.multi_modules.ncsd_multi_run.</code><code class="sig-name descname">prepare_input</code><span class="sig-paren">(</span><em class="sig-param">m_params</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.ncsd_multi_run.prepare_input" title="Permalink to this definition">¶</a></dt>
-<dd><p>Takes manual input (ManParams instance), and parses it into a format
-that is usable by the functions that run the ncsd code.</p>
-</dd></dl>
-
+  <div class="section" id="module-ncsd_python.multi_modules.formats_multi">
+<span id="formats-multi-py"></span><h1>formats_multi.py<a class="headerlink" href="#module-ncsd_python.multi_modules.formats_multi" title="Permalink to this headline">¶</a></h1>
+<p>Contains long strings representing file types, to de-clutter other modules.</p>
+<p>Note: double curly braces tell Python you mean a literal curly brace
+when you’re formatting a string.
+E.g. “{a}, {b}, {{a}}”.format(a=1, b=2) produces the string “1, 2, {a}”</p>
 </div>
 
 
@@ -201,10 +184,10 @@ that is usable by the functions that run the ncsd code.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="parameter_calculations.html" class="btn btn-neutral float-right" title="parameter_calculations.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ncsd_multi_run.html" class="btn btn-neutral float-right" title="ncsd_multi_run.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="formats_multi.html" class="btn btn-neutral float-left" title="formats_multi.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="file_manager.html" class="btn btn-neutral float-left" title="file_manager.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

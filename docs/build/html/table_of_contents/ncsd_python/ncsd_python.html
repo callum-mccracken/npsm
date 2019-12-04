@@ -89,14 +89,14 @@
 <li class="toctree-l3"><a class="reference internal" href="multi_modules/data_checker.html">data_checker.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="multi_modules/data_structures.html">data_structures.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="multi_modules/file_manager.html">file_manager.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="multi_modules/formats.html">formats.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multi_modules/formats_multi.html">formats_multi.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="multi_modules/ncsd_multi_run.html">ncsd_multi_run.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="multi_modules/parameter_calculations.html">parameter_calculations.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#output-exporter-py">output_exporter.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-plotter-py">output_plotter.py</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#plot-modules">plot_modules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="plot_modules/formats.html">formats.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_modules/formats_plot.html">formats_plot.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_modules/ncsd_output_reader.html">ncsd_output_reader.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_modules/plotter.html">plotter.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_modules/scraper.html">scraper.py</a></li>
@@ -184,41 +184,100 @@ with respect to particle exchange as required by symmetry properties of QCD.</p>
 full of helper functions.</p>
 <span class="target" id="module-ncsd_python.ncsd_multi"></span><div class="section" id="ncsd-multi-py">
 <h2>ncsd_multi.py<a class="headerlink" href="#ncsd-multi-py" title="Permalink to this headline">¶</a></h2>
-<p>A module to facilitate running <code class="docutils literal notranslate"><span class="pre">ncsd</span></code> with many nuclei</p>
+<p>A module to facilitate running ncsd with many nuclei.</p>
+<p>It takes sets of inputs for multiple ncsd runs. Then, for each run:</p>
+<ol class="arabic simple">
+<li><p>It makes a folder so each run’s output is contained, copies <code class="docutils literal notranslate"><span class="pre">.exe</span></code> file.</p></li>
+<li><p>In each folder, creates a <code class="docutils literal notranslate"><span class="pre">mfdp.dat</span></code> file and a batch script.</p></li>
+<li><p>Runs each bash script at the end, if desired. Otherwise you run them.</p></li>
+</ol>
+<p>To run this file, manually change the values in this file then run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">ncsd_multi</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<dl class="data">
+<dt id="ncsd_python.ncsd_multi.int_dir">
+<code class="sig-prename descclassname">ncsd_python.ncsd_multi.</code><code class="sig-name descname">int_dir</code><em class="property"> = '/Users/callum/Desktop/npsm/interactions'</em><a class="headerlink" href="#ncsd_python.ncsd_multi.int_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Paths: change the values as needed, but don’t remove the <code class="docutils literal notranslate"><span class="pre">realpath</span></code>.
+Empty string = current working directory, relative paths are relative to there.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ncsd_python.ncsd_multi.machine">
+<code class="sig-prename descclassname">ncsd_python.ncsd_multi.</code><code class="sig-name descname">machine</code><em class="property"> = 'cedar'</em><a class="headerlink" href="#ncsd_python.ncsd_multi.machine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Machine: must be one of “cedar”, “summit”, “local”.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ncsd_python.ncsd_multi.man_params">
+<code class="sig-prename descclassname">ncsd_python.ncsd_multi.</code><code class="sig-name descname">man_params</code><em class="property"> = &lt;multi_modules.data_structures.ManParams object&gt;</em><a class="headerlink" href="#ncsd_python.ncsd_multi.man_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manual Parameters:</p>
 <ul class="simple">
-<li><dl class="simple">
-<dt>takes sets of inputs for multiple <code class="docutils literal notranslate"><span class="pre">ncsd</span></code> runs. Then, for each run:</dt><dd><ul>
-<li><p>makes a folder so each run’s output is contained, copies <code class="docutils literal notranslate"><span class="pre">.exe</span></code> file</p></li>
-<li><p>makes a bunch of <code class="docutils literal notranslate"><span class="pre">mfdp.dat</span></code> files to complete each run</p></li>
-<li><p>runs each process at the end, if desired.</p></li>
+<li><p>specify all as single parameter or list []</p></li>
+<li><p>if you use a list, we’ll make N ncsd runs, where N is the maximum length
+of a list made here.</p></li>
+<li><p>list of attributes is in multi_modules/data_structures.py, <code class="docutils literal notranslate"><span class="pre">man_keys</span></code>.</p></li>
+<li><p>default parameters are at the bottom of multi_modules/data_structures.py</p></li>
 </ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsd_python.ncsd_multi.run">
+<code class="sig-prename descclassname">ncsd_python.ncsd_multi.</code><code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">man_params</em>, <em class="sig-param">int_dir</em>, <em class="sig-param">ncsd_path</em>, <em class="sig-param">working_dir</em>, <em class="sig-param">machine</em>, <em class="sig-param">run=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.ncsd_multi.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs NCSD code. The real heavy lifting is done in ncsd_multi_run.py.</p>
+<p>Params:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>man_params: a data_structures.ManParams instance,</dt><dd><p>containing all the manual parameters you want to enter</p>
 </dd>
 </dl>
-</li>
-</ul>
+<p>int_dir: a path to the directory where you keep interaction files</p>
+<p>ncsd_path: the path to the ncsd executable file</p>
+<dl class="simple">
+<dt>working_dir: the path to the directory in which you want to create</dt><dd><p>new directories for each run</p>
+</dd>
+</dl>
+<p>machine: the name of the machine you’re using, e.g. “cedar”, “summit”</p>
+</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="multi-modules">
 <h2>multi_modules<a class="headerlink" href="#multi-modules" title="Permalink to this headline">¶</a></h2>
+<p>Helper modules for ncsd_multi.py</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="multi_modules/data_checker.html">data_checker.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="multi_modules/data_structures.html">data_structures.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="multi_modules/file_manager.html">file_manager.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="multi_modules/formats.html">formats.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multi_modules/formats_multi.html">formats_multi.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="multi_modules/ncsd_multi_run.html">ncsd_multi_run.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="multi_modules/parameter_calculations.html">parameter_calculations.py</a></li>
 </ul>
 </div>
-<span class="target" id="module-ncsd_python.output_exporter"></span><div class="section" id="output-exporter-py">
-<h3>output_exporter.py<a class="headerlink" href="#output-exporter-py" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="module-ncsd_python.output_plotter"></span><div class="section" id="output-plotter-py">
+<h3>output_plotter.py<a class="headerlink" href="#output-plotter-py" title="Permalink to this headline">¶</a></h3>
 <p>A module for helping to deal with data from NCSD output files,
-and export that data to different formats (e.g. png plots, xmgrace files).</p>
-<p>You can run this file by adjusting some parameters within it first,
-or by just running <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">output_exporter.py</span> <span class="pre">-f</span> <span class="pre">filename</span></code>, if you’re okay
-with default values.</p>
+and saving that data to various formats (e.g. png plots, xmgrace files).</p>
+<p>You can run this file by adjusting some parameters within it, and then running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">output_plotter</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>If you’re okay with default values, you can run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">output_plotter</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">f</span> <span class="n">filename</span>
+</pre></div>
+</div>
+<p>And if you ran ncsd with ncsd_multi.py, this file will be automatically
+called at the end of the batch script.</p>
+<dl class="data">
+<dt id="ncsd_python.output_plotter.grace_plotter_path">
+<code class="sig-prename descclassname">ncsd_python.output_plotter.</code><code class="sig-name descname">grace_plotter_path</code><em class="property"> = '/Users/callum/Desktop/npsm/docs/grace_spectra_plotter.exe'</em><a class="headerlink" href="#ncsd_python.output_plotter.grace_plotter_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>path to grace_spectra_plotter.exe</p>
+</dd></dl>
+
 <dl class="function">
-<dt id="ncsd_python.output_exporter.make_plot_files">
-<code class="sig-prename descclassname">ncsd_python.output_exporter.</code><code class="sig-name descname">make_plot_files</code><span class="sig-paren">(</span><em class="sig-param">output_paths=[], save_dir=None, out_types=['xmgrace'], skip_Nmax=[], max_state=1e+100, get_online_data=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.output_exporter.make_plot_files" title="Permalink to this definition">¶</a></dt>
+<dt id="ncsd_python.output_plotter.make_plot_files">
+<code class="sig-prename descclassname">ncsd_python.output_plotter.</code><code class="sig-name descname">make_plot_files</code><span class="sig-paren">(</span><em class="sig-param">output_paths=[], save_dir=None, out_types=['xmgrace'], skip_Nmax=[], max_state=1e+100, get_online_data=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.output_plotter.make_plot_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>This takes ncsd output filenames,
 and exports the data to each format listed in out_types.</p>
 <p>skip_Nmax = list of Nmax values to skip</p>
@@ -229,9 +288,10 @@ and exports the data to each format listed in out_types.</p>
 </div>
 <div class="section" id="plot-modules">
 <h2>plot_modules<a class="headerlink" href="#plot-modules" title="Permalink to this headline">¶</a></h2>
+<p>Helper modules for output_plotter.py</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="plot_modules/formats.html">formats.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_modules/formats_plot.html">formats_plot.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_modules/ncsd_output_reader.html">ncsd_output_reader.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_modules/plotter.html">plotter.py</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_modules/scraper.html">scraper.py</a></li>

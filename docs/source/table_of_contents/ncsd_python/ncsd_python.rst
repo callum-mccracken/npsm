@@ -20,26 +20,30 @@ full of helper functions.
 multi_modules
 =============
 
+Helper modules for ncsd_multi.py
+
 .. toctree::
    :maxdepth: 1
 
    multi_modules/data_checker
    multi_modules/data_structures
    multi_modules/file_manager
-   multi_modules/formats
+   multi_modules/formats_multi
    multi_modules/ncsd_multi_run
    multi_modules/parameter_calculations
 
-.. automodule:: ncsd_python.output_exporter
+.. automodule:: ncsd_python.output_plotter
    :members:
 
 plot_modules
 =============
 
+Helper modules for output_plotter.py
+
 .. toctree::
    :maxdepth: 1
 
-   plot_modules/formats
+   plot_modules/formats_plot
    plot_modules/ncsd_output_reader
    plot_modules/plotter
    plot_modules/scraper

@@ -1,11 +1,10 @@
 [See the Detailed Docs](https://callum-mccracken.github.io/npsm/build/html)
 
-# What Is npsm?
+# Why Use NPSM?
 
 We have a lot of codes to run when doing No Core Shell Model
 work, a lot of which require non-standard input files, etc.
-
-This code attemps to take the pain out of running NCSM code.
+This code tries to make that a less painful experience.
 
 # Getting Started
 
