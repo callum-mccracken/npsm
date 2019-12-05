@@ -1,5 +1,5 @@
 ==============
-1. ncsd_python
+ncsd_python
 ==============
 
 NCSD is short for No Core Slater Determinant.

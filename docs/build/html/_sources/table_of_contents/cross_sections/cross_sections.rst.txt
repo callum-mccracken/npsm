@@ -1,5 +1,5 @@
 ==================
-5. cross_sections
+cross_sections
 ==================
 
 Now it's time to calculate a number for the nuclear cross-section

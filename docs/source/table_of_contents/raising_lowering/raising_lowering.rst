@@ -1,5 +1,5 @@
 ===================
-2. raising_lowering
+raising_lowering
 ===================
 
 Once you've run ncsd, you have eigenvectors of nuclei in one particular

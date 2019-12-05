@@ -1,5 +1,5 @@
 =================
-3. trdens_python
+trdens_python
 =================
 
 So now you know the wavefunctions of your nuclei (you have eigenvector files).

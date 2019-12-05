@@ -1,5 +1,5 @@
 ================
-4. ncsmc_python
+ncsmc_python
 ================
 
 Now that you have the coupling kernels, RGM kernels,
