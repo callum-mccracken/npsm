@@ -57,5 +57,6 @@ the code will do the following things:
 - link the executable
 
 Then at the end all the executables will be run in parallel
+and write output to ``output.txt`` in their respective directories
 while you sip champagne and think about how convenient this code is.
 

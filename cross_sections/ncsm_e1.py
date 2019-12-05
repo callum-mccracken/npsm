@@ -102,18 +102,18 @@ def make_ncsm_e1(desired_states, transitions, run_name, files, out_dir=None):
                     state_f, state_i = line.split("   ")  # 3 spaces
                     # ignore the bit at the start, and write state as a tuple
                     # which contains (2J, pi, 2T). Record state # too
-                    state_f = state_f.split()[2:5]  # indices 2 3 4
+                    state_f_jpt = tuple(state_f.split()[2:5])  # indices 2 3 4
                     f_num = state_f.split()[6]
-                    state_i = state_i.split()[2:5]
-                    i_num = state_f.split()[6]
+                    # state_i_jpt = state_i.split()[2:5]
+                    i_num = state_i.split()[6]
                     transition = lines[i+1]
                     trans_type = transition[1]
                     param = lines[i+2]
-                    if state_f not in transition_bank.keys():
-                        transition_bank[state_f] = {}
-                    if trans_type not in transition_bank[state_f].keys():
-                        transition_bank[state_f][trans_type] = []
-                    transition_bank[state_f][trans_type].append(
+                    if state_f_jpt not in transition_bank.keys():
+                        transition_bank[state_f_jpt] = {}
+                    if trans_type not in transition_bank[state_f_jpt].keys():
+                        transition_bank[state_f_jpt][trans_type] = []
+                    transition_bank[state_f_jpt][trans_type].append(
                         (i_num, f_num, param))
 
             # now turn the data in transition_bank into writable lines
