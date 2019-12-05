@@ -1,3 +1,7 @@
+"""
+Useful functions that didn't really fit anywhere.
+"""
+
 ptable = {
     "n": 0,
     "H": 1,
@@ -119,19 +123,31 @@ ptable = {
     "Ts": 117,
     "Og": 118
 }
+"""The periodic table, well just the Z values"""
+
 
 def is_float(string):
+    """
+    Check if a string can be cast to a float
+
+    string:
+        a string *shocking, I know*
+    """
     try:
         _ = float(string)
         return True
-    except:
+    except ValueError:
         return False
+
 
 def get_state_name(state):
     """
     if state = e.g., "3 -1 3"
     this will return the corresponding state_name,
     e.g., state_name = "3m"
+
+    state:
+        string, of the form "3 -1 3"
     """
     J2, pi, _ = map(int, state.split())
     pi_str = "p" if pi > 0 else "m"
@@ -140,10 +156,15 @@ def get_state_name(state):
 
 
 def get_A_Z(name):
-    # name is something like Li8
+    """
+    Get A and Z for a given atomic name
+
+    name:
+        string, of the form "Li8"
+    """
+
     # first assume the name only has 1 letter like H2
     n_chars = 1
-    
     while not is_float(name[n_chars:]):
         n_chars += 1
     A = float(name[n_chars:])
@@ -151,7 +172,7 @@ def get_A_Z(name):
     return A, Z
 
 
-transitions_fmt = """{run_name} ! Naming convention used in input files
+dot_in_fmt = """{run_name} ! Naming convention used in input files
 {state_name} ! State of reaction product
 {naming_str} ! Something to use to rename your output
 {n_targets} ! Number of target nuclei
@@ -175,3 +196,4 @@ transitions_fmt = """{run_name} ! Naming convention used in input files
 {Emin} {Emax} {Estep} ! Emin, Emax, dE
 {Eexpt} ! Eexpt
 """
+"""The format of the transitions_NCSMC.in format"""

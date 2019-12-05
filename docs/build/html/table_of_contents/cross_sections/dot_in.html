@@ -163,11 +163,157 @@
             
   <div class="section" id="module-cross_sections.dot_in">
 <span id="dot-in-py"></span><h1>dot_in.py<a class="headerlink" href="#module-cross_sections.dot_in" title="Permalink to this headline">¶</a></h1>
+<p>A module for making transitions_NCSMC.in files</p>
+<dl class="function">
+<dt id="cross_sections.dot_in.get_bound_state_str">
+<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">get_bound_state_str</code><span class="sig-paren">(</span><em class="sig-param">target_bound_states</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_bound_state_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>The .in file has a few lines dedicated to describing target bound states,
+this file makes those.</p>
+<dl class="simple">
+<dt>target_bound_states:</dt><dd><p>list of bound states, formatted like
+<code class="docutils literal notranslate"><span class="pre">[[J2,</span> <span class="pre">parity,</span> <span class="pre">T2,</span> <span class="pre">energy],</span> <span class="pre">...]</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="cross_sections.dot_in.get_e_m_transitions">
+<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">get_e_m_transitions</code><span class="sig-paren">(</span><em class="sig-param">simp_file_text</em>, <em class="sig-param">target_bound_states</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_e_m_transitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a simplified observ.out file and the bound states of the target,
+get lists containg the values to be printed for E and M transitions
+between those bound states.</p>
+<dl class="simple">
+<dt>simp_file_text:</dt><dd><p>string, the text of a simplified observ.out file</p>
+</dd>
+<dt>target_bound_states:</dt><dd><p>list of bound states, formatted like
+<code class="docutils literal notranslate"><span class="pre">[[J2,</span> <span class="pre">parity,</span> <span class="pre">T2,</span> <span class="pre">energy],</span> <span class="pre">...]</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="cross_sections.dot_in.get_freq">
+<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">get_freq</code><span class="sig-paren">(</span><em class="sig-param">observ_file</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_freq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the frequency (Nhw) used for the calculation</p>
+<dl class="simple">
+<dt>observ_file:</dt><dd><p>path to observ.out file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="cross_sections.dot_in.get_proj_info">
+<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">get_proj_info</code><span class="sig-paren">(</span><em class="sig-param">projectile</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_proj_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>get A, Z, 2J, parity, 2T for a projectile</p>
+<dl class="simple">
+<dt>projectile:</dt><dd><p>string, e.g. “n” or “p”</p>
+</dd>
+<dt>Warning:</dt><dd><p>currently “n” and “p” are supported, I haven’t got around to a
+more general implementation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="cross_sections.dot_in.get_target_info">
+<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">get_target_info</code><span class="sig-paren">(</span><em class="sig-param">observ_file</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_target_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets A, Z, J2, parity, T2 for the target.</p>
+<dl class="simple">
+<dt>observ_file:</dt><dd><p>path to observ.out file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="cross_sections.dot_in.get_transition_lines">
+<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">get_transition_lines</code><span class="sig-paren">(</span><em class="sig-param">e_transitions</em>, <em class="sig-param">m_transitions</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_transition_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>The .in file has lines which describe E/M transitions between bound states
+of the target.</p>
+<p>Givem e_transitions, m_transitions, make those lines.</p>
+<dl class="simple">
+<dt>e_transitions:</dt><dd><p>list of lists of floats, format: [[m, i, f, Mp, Mn], …]</p>
+</dd>
+<dt>m_transitions:</dt><dd><p>list of lists of floats, format: [[i, f, Mlp, Mln, Msp, Msn], …]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="cross_sections.dot_in.make_dot_in">
+<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">make_dot_in</code><span class="sig-paren">(</span><em class="sig-param">proj</em>, <em class="sig-param">target_bound_states</em>, <em class="sig-param">run_name</em>, <em class="sig-param">state_name</em>, <em class="sig-param">naming_str</em>, <em class="sig-param">observ_file</em>, <em class="sig-param">transitions</em>, <em class="sig-param">out_dir=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.make_dot_in" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a transitions_NCSMC.in file.</p>
+<dl class="simple">
+<dt>proj:</dt><dd><p>string, the projectile, e.g. “n”</p>
+</dd>
+<dt>target_bound_states:</dt><dd><p>list, info about bound states of the target.
+Formatted like <code class="docutils literal notranslate"><span class="pre">[[J2,</span> <span class="pre">parity,</span> <span class="pre">T2,</span> <span class="pre">energy],</span> <span class="pre">...]</span></code></p>
+</dd>
+<dt>run_name:</dt><dd><p>string, name of directory where we’ll put files</p>
+</dd>
+<dt>state_name:</dt><dd><p>string, state of resultant nucleus, in “2Jparity” format, e.g. “1m”</p>
+</dd>
+<dt>naming_str:</dt><dd><p>string, for naming stuff after the run is complete</p>
+</dd>
+<dt>observ_file:</dt><dd><p>string, path to the observ.out file for the target nucleus</p>
+</dd>
+<dt>transitions:</dt><dd><p>list of strings, transitions we’ll consider, e.g. [“E2”, “M1”]</p>
+</dd>
+<dt>out_dir:</dt><dd><p>string, directory where we’ll save the file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="data">
+<dt id="cross_sections.dot_in.naming_str">
+<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">naming_str</code><em class="property"> = 'NCSMC_E1M1E2_Li9_2J_3'</em><a class="headerlink" href="#cross_sections.dot_in.naming_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>a string for naming things, but TODO: what exactly?</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="cross_sections.dot_in.observ_file">
+<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">observ_file</code><em class="property"> = '/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output/Li8_observ_Nmax6_Jz1'</em><a class="headerlink" href="#cross_sections.dot_in.observ_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>the observ.out file for the target</p>
+</dd></dl>
+
 <dl class="function">
 <dt id="cross_sections.dot_in.parameter_list">
 <code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">parameter_list</code><span class="sig-paren">(</span><em class="sig-param">transition</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.parameter_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the parameters we should take from the observ.out file,
-for each type of transition.</p>
+for each type of transition. E.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">parameter_list</span><span class="p">(</span><span class="s2">&quot;E2&quot;</span><span class="p">)</span>
+<span class="p">[</span><span class="s2">&quot;E2p&quot;</span><span class="p">,</span> <span class="s2">&quot;E2n&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="data">
+<dt id="cross_sections.dot_in.proj">
+<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">proj</code><em class="property"> = 'n'</em><a class="headerlink" href="#cross_sections.dot_in.proj" title="Permalink to this definition">¶</a></dt>
+<dd><p>the projectile we’re using, curently only “n” and “p” are supported</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="cross_sections.dot_in.run_name">
+<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">run_name</code><em class="property"> = 'nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6'</em><a class="headerlink" href="#cross_sections.dot_in.run_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>TODO: what actually is this</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="cross_sections.dot_in.state_name">
+<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">state_name</code><em class="property"> = '3m'</em><a class="headerlink" href="#cross_sections.dot_in.state_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>the state name of a bound state in the resultant nucleus</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="cross_sections.dot_in.target_bound_states">
+<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">target_bound_states</code><em class="property"> = [[4, 1, 2, -34.8845], [2, 1, 2, -33.7694]]</em><a class="headerlink" href="#cross_sections.dot_in.target_bound_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>bound states of the target nucleus.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="cross_sections.dot_in.transitions">
+<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">transitions</code><em class="property"> = ['E2', 'M1']</em><a class="headerlink" href="#cross_sections.dot_in.transitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>the transitions we want to keep track of</p>
 </dd></dl>
 
 </div>

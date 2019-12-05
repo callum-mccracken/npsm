@@ -1,37 +1,41 @@
 """
-A script to take files from the ``observ.out`` format of NCSMC output,
-to the ``NCSM_E1_Afi`` format needed for cross-section calculations.
+A script to take files from the observ.out format of NCSMC output,
+and make the NCSM_E1_Afi files needed for cross-section calculations.
 """
-
 import file_tools
 import os
 import re
-# state we care about, 2J, pi, 2T
+
 desired_states = ["1 -1 3", "3 -1 3"]
-# transitions we care about
+"""resultant nucleus states we care about, 2J, pi, 2T"""
+
 transitions = ["E1", "E2", "M1"]
+"""transitions we care about"""
 
-# this variable is for naming of output files
 run_name = "nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6"
+"""this variable is for naming of output files"""
 
-# names of observ.out files from which to read data
+
 files = [
     "/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output/Li9_observ_Nmax6_Jz1",
     "/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output/Li9_observ_Nmax7_Nmax6_Jz1"
 ]
+"""names of observ.out files from which to read data"""
 
 
 def transition_parameter(trans_str):
     """
     Which parameter should we take from lines of data?
-    
-    trans_str = "E1" or something of that sort
 
     e.g. in the line ``L= 1 E1p= -0.0102   E1n=  0.0102     B(E1)=  0.0001``,
-
     we want E1p.
+
+    trans_str:
+        string, "E1" or something of that sort
     """
-    kind, order = trans_str[0], trans_str[1]
+
+    kind = trans_str[0]
+
     if kind == "E":
         return trans_str+"p"
     elif kind == "M":
@@ -44,23 +48,23 @@ def make_ncsm_e1(desired_states, transitions, run_name, files, out_dir=None):
     """
     Makes NCSM_E1_Afi.dat files for the given parameters.
 
-    Params:
-        ``desired_states``: a list of initial states we want to consider,
-            e.g. ``["1 -1 3", "3 -1 3"]``
-        
-        ``transitions``: a list of transitions to consider,
-            e.g. ``["E1", "E2", "M1"]``
-        
-        ``run_name``: a string to use for output naming,
-            e.g. ``"nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6_2p1p"``
-        
-        ``files``: a list of strings with paths to observ.out files
-            e.g. ``files = ["/path/to/observ1.out", "/path/to/observ2.out"]``
+    desired_states:
+        list, initial resultant nucleus states we want to consider,
+        e.g. ["1 -1 3", "3 -1 3"]
+
+    transitions:
+        list, types of transitions to consider,
+        e.g. ["E1", "E2", "M1"]
+
+    run_name:
+        string, to use for output naming,
+        e.g. "nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6_2p1p"
+
+    files:
+        list of strings, paths to observ.out files for resultant nucleus,
+        e.g. files = ["/path/to/observ1.out", "/path/to/observ2.out"]
     """
-    # multipolarity of each transition
-    multipolarity = [int(tr[1]) for tr in transitions]
-    # what kind of matrix elements should we save in the ncsm_e1 file?
-    mtx_elements = ["B" + tr for tr in transitions]
+
     # make one file for each state
     for desired_state in desired_states:
         # get the "3m" name of the state
@@ -74,7 +78,8 @@ def make_ncsm_e1(desired_states, transitions, run_name, files, out_dir=None):
             simp, num = file_tools.simplify_observ(
                 desired_state, transitions, filename, function="make_ncsm_e1")
             num_desired_state = num
-            # now get the useful info out of the data lines, e.g. E2p number
+
+            # get the useful info out of the data lines, e.g. E2p number
             with open(simp, "r+") as simp_file:
                 text = simp_file.read()
             lines = text.splitlines()
@@ -88,7 +93,8 @@ def make_ncsm_e1(desired_states, transitions, run_name, files, out_dir=None):
                         words = lines[i].split()
                         lines[i] = words[1]
             text = "\n".join(lines)
-            # now get all transitions from the state of interest to other states
+
+            # get all transitions from the state of interest to other states
             transition_bank = {}
             lines = text.splitlines()
             for i, line in enumerate(lines):
@@ -96,12 +102,10 @@ def make_ncsm_e1(desired_states, transitions, run_name, files, out_dir=None):
                     state_f, state_i = line.split("   ")  # 3 spaces
                     # ignore the bit at the start, and write state as a tuple
                     # which contains (2J, pi, 2T). Record state # too
-                    l = state_f.split()
-                    state_f = (l[2], l[3], l[4])
-                    f_num = l[6]
-                    l = state_i.split()
-                    state_i = (l[2], l[3], l[4])
-                    i_num = l[6]
+                    state_f = state_f.split()[2:5]  # indices 2 3 4
+                    f_num = state_f.split()[6]
+                    state_i = state_i.split()[2:5]
+                    i_num = state_f.split()[6]
                     transition = lines[i+1]
                     trans_type = transition[1]
                     param = lines[i+2]
@@ -123,7 +127,6 @@ def make_ncsm_e1(desired_states, transitions, run_name, files, out_dir=None):
             for state_f in sorted(transition_bank.keys()):
                 for trans_type in sorted(transition_bank[state_f].keys()):
                     # how many blocks will we need for this transition?
-                    total_trans = len(transition_bank[state_f][trans_type])
                     blocks = {}
                     for transition in transition_bank[state_f][trans_type]:
                         i, f, param = transition
@@ -155,6 +158,7 @@ def make_ncsm_e1(desired_states, transitions, run_name, files, out_dir=None):
         out_path = os.path.join(out_dir, out_name)
         with open(out_path, "w+") as done_file:
             done_file.write("\n".join(data)+"\n")
+
 
 if __name__ == "__main__":
     make_ncsm_e1(desired_states, transitions, run_name, files, out_dir="")

@@ -1,5 +1,5 @@
 """
-A module for processing ``observ.out`` files from NCSMC output.
+A module for processing files from NCSMC output.
 """
 import re
 from os.path import basename, join
@@ -7,26 +7,29 @@ import utils
 
 def simplify_observ(desired_state, transitions, filename, function=None):
     """
-    Makes a simplified version of an ``observ.out`` file.
+    Makes a "simplified" version of an ``observ.out`` file.
 
-    Params:
+    desired_state:
+        string, of the form 2J, pi, 2T, e.g. "3 -1 3"
 
-        ``desired_state``: string, of the form 2J, pi, 2T, e.g. "3 -1 3"
+    transitions:
+        a list of transitions to keep in the file, e.g. ["E1"]
 
-        ``transitions``: a list of transitions to keep in the file, e.g. ["E1"]
+    filename:
+        string, the path to the observ.out file.
 
-        ``filename``: string, the path to the observ.out file.
-
-        ``function``: string, name of function calling this function
+    function:
+        string, name of function calling this function
 
     Returns:
+        simp_path:
+            the path to the simplified file
 
-        ``simp_path``: the path to the simplified file
+        if function == "make_ncsm_e1", this also returns
 
-        if function == "make_ncsm_e1", also returns
-
-        ``num_desired_state``: the number of states with the same quantum
-        numbers as the desired state
+        num_desired_state:
+            the number of states with the same quantum
+            numbers as the desired state
     """
     # get all text from file
     with open(filename, "r+") as open_file:
@@ -35,7 +38,7 @@ def simplify_observ(desired_state, transitions, filename, function=None):
     # remove blank spaces in front of lines, e.g. \n Line1\n Line2
     if text[0] == " ":
         text = text[1:]
-    text = text.replace("\n ","\n")
+    text = text.replace("\n ", "\n")
 
     # remove blank lines
     text = text.replace("\n\n", "\n")
@@ -214,7 +217,7 @@ def simplify_observ(desired_state, transitions, filename, function=None):
     simp_path = filename+"_simp"
     with open(simp_path, "w+") as simp_file:
         simp_file.write(text)
-    
+
     if function == "make_ncsm_e1":
         return simp_path, num_desired_state
     elif function == "transitions":
@@ -225,10 +228,16 @@ def simplify_observ(desired_state, transitions, filename, function=None):
 
 def make_wf_file(wavefunction_NCSMC_file, res_state, run_dir):
     """
-    Makes a wavefunction_NCSMC file for the resultant nucleus state given by
-    res_state, and puts it in the directory run_dir.
+    Makes a wavefunction_NCSMC file for the resultant nucleus
 
-    res_state is of the form "2J parity 2T", and the other variables are paths
+    wavefunction_NCSMC_file:
+        string, path to the original wavefunction_NCSMC file
+
+    res_state:
+        string, of the form "2J parity 2T", state of resultant nucleus
+
+    run_dir:
+        string, directory where we'll save the new file
     """
     with open(wavefunction_NCSMC_file, "r+") as wf_file:
         lines = wf_file.readlines()
@@ -241,7 +250,7 @@ def make_wf_file(wavefunction_NCSMC_file, res_state, run_dir):
         if "#" in line:
             # if it's one of the lines related to a section break, it should
             # have #words < 5
-            # TODO: 
+            # TODO: is this a good criterion?
             if len(line.split()) < 5:
                 hashtag_counter += 1
         if hashtag_counter == 5:

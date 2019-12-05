@@ -1,12 +1,23 @@
+"""
+Main module of cross_sections
+
+- you input some variables, like paths to files
+- then for each bound state of the resultant nucleus, we make a directory with
+  - transitions_NCSMC.in
+  - wavefunction_NCSMC file
+  - link to executable transitions code
+  - norm_sqrt file
+  - form_factors file
+  - scattering_wf_NCSMC file
+"""
+
 import ncsm_e1
 import dot_in
 import file_tools
 import utils
-import shutil
 import os
-from os.path import join, dirname, lexists, exists, split, basename, realpath
+from os.path import join, dirname, lexists, exists, basename, realpath
 from multiprocessing import Process
-import sys
 
 # path to executable file
 exe_path = realpath("transitions_NCSMC.exe")
@@ -29,7 +40,7 @@ form_factors = join(ncsmc_out_dir, "NCSMC_form_factors_g_h_nLi8_n3lo-NN3Nlnl-srg
 scattering_wf_NCSMC = join(ncsmc_out_dir, "scattering_wf_NCSMC_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6.agr")
 wavefunction_NCSMC = join(ncsmc_out_dir, "wavefunction_NCSMC_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6.agr")
 
-# bound states of the target nucleus.
+# bound states of the target nucleus. TODO: can we get these automatically?
 target_bound_states = [
     # Format: 2J, parity, 2T, binding energy. First entry = ground state.
     [4, 1, 2, -34.8845],
@@ -52,7 +63,14 @@ naming_str = "NCSMC_E1M1E2_Li9_2J_3"
 # the projectile we're using, curently only "n" and "p" are supported
 proj = "n"
 
+
 def make_dir(res_state):
+    """
+    Makes a directory for the given state of the resultant nucleus.
+
+    res_state:
+        string, of the form "1 -1 3"
+    """
     # the 3m version of a state with 2J = 3, parity = -1
     res_state_name = utils.get_state_name(res_state)
     run_dir = run_name+"_"+res_state_name
@@ -60,9 +78,13 @@ def make_dir(res_state):
         os.mkdir(run_dir)
 
     # make NCSM_E1 file
-    ncsm_e1.make_ncsm_e1([res_state], transitions_we_want, run_name, resultant_files, out_dir=run_dir)
+    ncsm_e1.make_ncsm_e1(
+        [res_state], transitions_we_want, run_name, resultant_files,
+        out_dir=run_dir)
     # make transitions_NCSMC.in file
-    dot_in.make_transitions(proj, target_bound_states, run_name, res_state_name, naming_str, target_file, transitions_we_want, out_dir=run_dir)
+    dot_in.make_dot_in(
+        proj, target_bound_states, run_name, res_state_name, naming_str,
+        target_file, transitions_we_want, out_dir=run_dir)
 
     # link the executable
     if not lexists(join(run_dir, basename(exe_path))):
@@ -74,7 +96,8 @@ def make_dir(res_state):
     if not exists(join(run_dir, basename(form_factors))):
         os.symlink(form_factors, join(run_dir, basename(form_factors)))
     if not exists(join(run_dir, basename(scattering_wf_NCSMC))):
-        os.symlink(scattering_wf_NCSMC, join(run_dir, basename(scattering_wf_NCSMC)))
+        os.symlink(
+            scattering_wf_NCSMC, join(run_dir, basename(scattering_wf_NCSMC)))
 
     # and finally split up the wavefunction_NCSMC file
     file_tools.make_wf_file(wavefunction_NCSMC, res_state, run_dir)
@@ -83,13 +106,22 @@ def make_dir(res_state):
     return join(run_dir, basename(exe_path))
 
 
+def run_exe(exe):
+    """
+    Runs an executable file, writes output to output.txt in the same
+    directory as the executable.
+
+    exe:
+        the path to an executable file
+    """
+    os.system(". " + exe + " > " + join(dirname(exe), "output.txt"))
+
+
 if __name__ == "__main__":
+    # make run directories
     executables = []
     for res_state in resultant_states:
         executables.append(make_dir(res_state))
-
-    def run_exe(exe):
-        os.system(". " + exe + " > " + join(dirname(exe), "output.txt"))
 
     print("Running executables in parallel")
     for exe in executables:
