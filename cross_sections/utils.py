@@ -1,5 +1,5 @@
 """
-Useful functions that didn't really fit anywhere.
+Useful things that didn't really fit anywhere.
 """
 
 ptable = {
@@ -196,4 +196,4 @@ dot_in_fmt = """{run_name} ! Naming convention used in input files
 {Emin} {Emax} {Estep} ! Emin, Emax, dE
 {Eexpt} ! Eexpt
 """
-"""The format of the transitions_NCSMC.in format"""
+"""The format of the transitions_NCSMC.in file"""
