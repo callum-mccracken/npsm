@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Running Cross-Section Code &mdash; NPSM 0.0.1 documentation</title>
+  <title>Cross-Sections &mdash; NPSM 0.0.1 documentation</title>
   
 
   
@@ -90,7 +90,12 @@
 <li class="toctree-l2"><a class="reference internal" href="running_raising_lowering.html">Raising/Lowering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running_trdens.html">TRDENS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running_ncsmc.html">NCSMC</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Running Cross-Section Code</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Cross-Sections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#edit-run-transitions-py">1. Edit run_transitions.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-run-transitions-py">2. Run run_transitions.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#that-s-it">3. That’s it</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ncsd_python/ncsd_python.html">ncsd_python</a></li>
@@ -145,7 +150,7 @@
         
           <li><a href="walkthrough.html">Walkthrough</a> &raquo;</li>
         
-      <li>Running Cross-Section Code</li>
+      <li>Cross-Sections</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -164,8 +169,61 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="running-cross-section-code">
-<h1>Running Cross-Section Code<a class="headerlink" href="#running-cross-section-code" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="cross-sections">
+<h1>Cross-Sections<a class="headerlink" href="#cross-sections" title="Permalink to this headline">¶</a></h1>
+<p>Now that you’ve run NCSMC and you’ve looked at the output with
+<a class="reference internal" href="running_ncsmc.html#ncsmc-python"><span class="std std-ref">NCSMC</span></a>, it’s time to calculate the cross-section of the reaction.</p>
+<p>This one is pretty simple.</p>
+<div class="section" id="edit-run-transitions-py">
+<h2>1. Edit run_transitions.py<a class="headerlink" href="#edit-run-transitions-py" title="Permalink to this headline">¶</a></h2>
+<p>If you head to the cross_sections directory and open run_transitions.py,
+you’ll see some variables at the top that look like this, but with comments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">exe_path</span> <span class="o">=</span> <span class="n">realpath</span><span class="p">(</span><span class="s2">&quot;transitions_NCSMC.exe&quot;</span><span class="p">)</span>
+<span class="n">ncsmc_out_dir</span> <span class="o">=</span> <span class="s2">&quot;/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output&quot;</span>
+<span class="n">resultant_files</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">join</span><span class="p">(</span><span class="n">ncsmc_out_dir</span><span class="p">,</span> <span class="s2">&quot;Li9_observ_Nmax6_Jz1&quot;</span><span class="p">),</span>
+    <span class="n">join</span><span class="p">(</span><span class="n">ncsmc_out_dir</span><span class="p">,</span> <span class="s2">&quot;Li9_observ_Nmax7_Nmax6_Jz1&quot;</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">target_file</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">ncsmc_out_dir</span><span class="p">,</span> <span class="s2">&quot;Li8_observ_Nmax6_Jz1&quot;</span><span class="p">)</span>
+<span class="n">norm_sqrt</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">ncsmc_out_dir</span><span class="p">,</span> <span class="s2">&quot;norm_sqrt_r_rp_RGM_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6.dat&quot;</span><span class="p">)</span>
+<span class="n">form_factors</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">ncsmc_out_dir</span><span class="p">,</span> <span class="s2">&quot;NCSMC_form_factors_g_h_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6.dat&quot;</span><span class="p">)</span>
+<span class="n">scattering_wf_NCSMC</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">ncsmc_out_dir</span><span class="p">,</span> <span class="s2">&quot;scattering_wf_NCSMC_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6.agr&quot;</span><span class="p">)</span>
+<span class="n">wavefunction_NCSMC</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">ncsmc_out_dir</span><span class="p">,</span> <span class="s2">&quot;wavefunction_NCSMC_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6.agr&quot;</span><span class="p">)</span>
+<span class="n">target_bound_states</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># Format: 2J, parity, 2T, binding energy. First entry = ground state.</span>
+    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">34.8845</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">33.7694</span><span class="p">]</span>
+<span class="p">]</span>
+<span class="n">resultant_states</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1 -1 3&quot;</span><span class="p">,</span> <span class="s2">&quot;3 -1 3&quot;</span><span class="p">]</span>
+<span class="n">transitions_we_want</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;E1&quot;</span><span class="p">,</span> <span class="s2">&quot;E2&quot;</span><span class="p">,</span> <span class="s2">&quot;M1&quot;</span><span class="p">]</span>
+<span class="n">run_name</span> <span class="o">=</span> <span class="s2">&quot;nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6&quot;</span>
+<span class="n">naming_str</span> <span class="o">=</span> <span class="s2">&quot;NCSMC_E1M1E2_Li9_2J_3&quot;</span>
+<span class="n">proj</span> <span class="o">=</span> <span class="s2">&quot;n&quot;</span>
+</pre></div>
+</div>
+<p>Edit the variables to suit your needs.</p>
+</div>
+<div class="section" id="run-run-transitions-py">
+<h2>2. Run run_transitions.py<a class="headerlink" href="#run-run-transitions-py" title="Permalink to this headline">¶</a></h2>
+<p>Like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">run_transitions</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="that-s-it">
+<h2>3. That’s it<a class="headerlink" href="#that-s-it" title="Permalink to this headline">¶</a></h2>
+<p>For each bound state of the resultant nucleus desribed in resultant_states,
+the code will do the following things:</p>
+<ul class="simple">
+<li><p>make a transitions_NCSMC.in file</p></li>
+<li><p>make a NCSMC_E1_Afi file</p></li>
+<li><p>make a wavefunction_NCSMC file</p></li>
+<li><p>link the other required NCSMC output files</p></li>
+<li><p>link the executable</p></li>
+</ul>
+<p>Then at the end all the executables will be run in parallel
+while you sip champagne and think about how convenient this code is.</p>
+</div>
 </div>
 
 
