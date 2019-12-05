@@ -225,23 +225,7 @@ of a list made here.</p></li>
 <dl class="function">
 <dt id="ncsd_python.ncsd_multi.run">
 <code class="sig-prename descclassname">ncsd_python.ncsd_multi.</code><code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">man_params</em>, <em class="sig-param">int_dir</em>, <em class="sig-param">ncsd_path</em>, <em class="sig-param">working_dir</em>, <em class="sig-param">machine</em>, <em class="sig-param">run=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.ncsd_multi.run" title="Permalink to this definition">¶</a></dt>
-<dd><p>Runs NCSD code. The real heavy lifting is done in ncsd_multi_run.py.</p>
-<dl class="simple">
-<dt>man_params:</dt><dd><p>a data_structures.ManParams instance,
-containing all the manual parameters you want to enter</p>
-</dd>
-<dt>int_dir:</dt><dd><p>a path to the directory where you keep interaction files</p>
-</dd>
-<dt>ncsd_path:</dt><dd><p>the path to the ncsd executable file</p>
-</dd>
-<dt>working_dir:</dt><dd><p>the path to the directory in which you want to create
-new directories for each run</p>
-</dd>
-<dt>machine:</dt><dd><p>the name of the machine you’re using, e.g. “cedar”, “summit”</p>
-</dd>
-<dt>Returns:</dt><dd><p>Nothing, but does create files and optinally runs batch scripts.</p>
-</dd>
-</dl>
+<dd><p>Do you want to run the code automatically? If so, set run=True</p>
 </dd></dl>
 
 </div>
@@ -302,7 +286,7 @@ If you don’t want a max state, set max_state to a huge number, e.g. 1e100</p>
 
 <dl class="data">
 <dt id="ncsd_python.output_plotter.output_paths">
-<code class="sig-prename descclassname">ncsd_python.output_plotter.</code><code class="sig-name descname">output_paths</code><em class="property"> = ['/Users/callum/Desktop/rough_code/ncsd_python/example_files/Li8_n3lo-NN3Nlnl-srg2.0_Nmax0-10.20']</em><a class="headerlink" href="#ncsd_python.output_plotter.output_paths" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ncsd_python.output_plotter.</code><code class="sig-name descname">output_paths</code><em class="property"> = ['/Users/callum/Desktop/npsm/_ncsd_output/Li8_n3lo-NN3Nlnl-srg2.0_Nmax0-10.20']</em><a class="headerlink" href="#ncsd_python.output_plotter.output_paths" title="Permalink to this definition">¶</a></dt>
 <dd><p>List of paths to ncsd output files</p>
 </dd></dl>
 
