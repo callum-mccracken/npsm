@@ -15,14 +15,10 @@ Here's a video
 
 
 
+Here's an image
 
+.. raw:: html
 
-
-
-.. _ImageLink: https://i.imgur.com/tuFZCCj.png
-
-   Caption goes here.
-
-|
-
-Text after the image goes here.
+    <a href="https://i.imgur.com/tuFZCCj.png" >
+        <img src="https://i.imgur.com/tuFZCCj.png"/>
+    </a>

@@ -15,12 +15,10 @@ Here's a video
 
 
 
-
+Here's an image
 
 .. raw:: html
 
-   <p style="height:22px">
-     <a href="https://i.imgur.com/tuFZCCj.png" >
-       <img src="https://i.imgur.com/tuFZCCj.png"/>
-     </a>
-   </p>
+    <a href="https://i.imgur.com/tuFZCCj.png" >
+        <img src="https://i.imgur.com/tuFZCCj.png"/>
+    </a>
