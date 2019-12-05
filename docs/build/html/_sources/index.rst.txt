@@ -4,12 +4,13 @@ No Pain Shell Model
 
 .. mdinclude:: ../../README.md
 
-All Modules
+Links
 -----------
 
 .. toctree::
    :maxdepth: 1
 
+   table_of_contents/walkthrough/walkthrough
    table_of_contents/ncsd_python/ncsd_python
    table_of_contents/raising_lowering/raising_lowering
    table_of_contents/trdens_python/trdens_python
