@@ -163,6 +163,38 @@
             
   <div class="section" id="module-cross_sections.run_transitions">
 <span id="run-transitions-py"></span><h1>run_transitions.py<a class="headerlink" href="#module-cross_sections.run_transitions" title="Permalink to this headline">¶</a></h1>
+<p>Main module of cross_sections</p>
+<ul class="simple">
+<li><p>you input some variables, like paths to files</p></li>
+<li><p>then for each bound state of the resultant nucleus, we make a directory with
+- transitions_NCSMC.in
+- wavefunction_NCSMC file
+- link to executable transitions code
+- norm_sqrt file
+- form_factors file
+- scattering_wf_NCSMC file</p></li>
+</ul>
+<dl class="function">
+<dt id="cross_sections.run_transitions.make_dir">
+<code class="sig-prename descclassname">cross_sections.run_transitions.</code><code class="sig-name descname">make_dir</code><span class="sig-paren">(</span><em class="sig-param">res_state</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.run_transitions.make_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a directory for the given state of the resultant nucleus.</p>
+<dl class="simple">
+<dt>res_state:</dt><dd><p>string, of the form “1 -1 3”</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="cross_sections.run_transitions.run_exe">
+<code class="sig-prename descclassname">cross_sections.run_transitions.</code><code class="sig-name descname">run_exe</code><span class="sig-paren">(</span><em class="sig-param">exe</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.run_transitions.run_exe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs an executable file, writes output to output.txt in the same
+directory as the executable.</p>
+<dl class="simple">
+<dt>exe:</dt><dd><p>the path to an executable file</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 
 

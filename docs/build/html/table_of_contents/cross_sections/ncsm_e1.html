@@ -163,34 +163,62 @@
             
   <div class="section" id="module-cross_sections.ncsm_e1">
 <span id="ncsm-e1-py"></span><h1>ncsm_e1.py<a class="headerlink" href="#module-cross_sections.ncsm_e1" title="Permalink to this headline">¶</a></h1>
-<p>A script to take files from the <code class="docutils literal notranslate"><span class="pre">observ.out</span></code> format of NCSMC output,
-to the <code class="docutils literal notranslate"><span class="pre">NCSM_E1_Afi</span></code> format needed for cross-section calculations.</p>
+<p>A script to take files from the observ.out format of NCSMC output,
+and make the NCSM_E1_Afi files needed for cross-section calculations.</p>
+<dl class="data">
+<dt id="cross_sections.ncsm_e1.desired_states">
+<code class="sig-prename descclassname">cross_sections.ncsm_e1.</code><code class="sig-name descname">desired_states</code><em class="property"> = ['1 -1 3', '3 -1 3']</em><a class="headerlink" href="#cross_sections.ncsm_e1.desired_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>resultant nucleus states we care about, 2J, pi, 2T</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="cross_sections.ncsm_e1.files">
+<code class="sig-prename descclassname">cross_sections.ncsm_e1.</code><code class="sig-name descname">files</code><em class="property"> = ['/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output/Li9_observ_Nmax6_Jz1', '/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output/Li9_observ_Nmax7_Nmax6_Jz1']</em><a class="headerlink" href="#cross_sections.ncsm_e1.files" title="Permalink to this definition">¶</a></dt>
+<dd><p>names of observ.out files from which to read data</p>
+</dd></dl>
+
 <dl class="function">
 <dt id="cross_sections.ncsm_e1.make_ncsm_e1">
 <code class="sig-prename descclassname">cross_sections.ncsm_e1.</code><code class="sig-name descname">make_ncsm_e1</code><span class="sig-paren">(</span><em class="sig-param">desired_states</em>, <em class="sig-param">transitions</em>, <em class="sig-param">run_name</em>, <em class="sig-param">files</em>, <em class="sig-param">out_dir=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.ncsm_e1.make_ncsm_e1" title="Permalink to this definition">¶</a></dt>
 <dd><p>Makes NCSM_E1_Afi.dat files for the given parameters.</p>
 <dl class="simple">
-<dt>Params:</dt><dd><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">desired_states</span></code>: a list of initial states we want to consider,</dt><dd><p>e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;1</span> <span class="pre">-1</span> <span class="pre">3&quot;,</span> <span class="pre">&quot;3</span> <span class="pre">-1</span> <span class="pre">3&quot;]</span></code></p>
+<dt>desired_states:</dt><dd><p>list, initial resultant nucleus states we want to consider,
+e.g. [“1 -1 3”, “3 -1 3”]</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">transitions</span></code>: a list of transitions to consider,</dt><dd><p>e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;E1&quot;,</span> <span class="pre">&quot;E2&quot;,</span> <span class="pre">&quot;M1&quot;]</span></code></p>
+<dt>transitions:</dt><dd><p>list, types of transitions to consider,
+e.g. [“E1”, “E2”, “M1”]</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">run_name</span></code>: a string to use for output naming,</dt><dd><p>e.g. <code class="docutils literal notranslate"><span class="pre">&quot;nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6_2p1p&quot;</span></code></p>
+<dt>run_name:</dt><dd><p>string, to use for output naming,
+e.g. “nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6_2p1p”</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">files</span></code>: a list of strings with paths to observ.out files</dt><dd><p>e.g. <code class="docutils literal notranslate"><span class="pre">files</span> <span class="pre">=</span> <span class="pre">[&quot;/path/to/observ1.out&quot;,</span> <span class="pre">&quot;/path/to/observ2.out&quot;]</span></code></p>
+<dt>files:</dt><dd><p>list of strings, paths to observ.out files for resultant nucleus,
+e.g. files = [“/path/to/observ1.out”, “/path/to/observ2.out”]</p>
 </dd>
 </dl>
-</dd>
-</dl>
+</dd></dl>
+
+<dl class="data">
+<dt id="cross_sections.ncsm_e1.run_name">
+<code class="sig-prename descclassname">cross_sections.ncsm_e1.</code><code class="sig-name descname">run_name</code><em class="property"> = 'nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6'</em><a class="headerlink" href="#cross_sections.ncsm_e1.run_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>this variable is for naming of output files</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="cross_sections.ncsm_e1.transition_parameter">
 <code class="sig-prename descclassname">cross_sections.ncsm_e1.</code><code class="sig-name descname">transition_parameter</code><span class="sig-paren">(</span><em class="sig-param">trans_str</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.ncsm_e1.transition_parameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Which parameter should we take from lines of data?</p>
-<p>trans_str = “E1” or something of that sort</p>
-<p>e.g. in the line <code class="docutils literal notranslate"><span class="pre">L=</span> <span class="pre">1</span> <span class="pre">E1p=</span> <span class="pre">-0.0102</span>&#160;&#160; <span class="pre">E1n=</span>&#160; <span class="pre">0.0102</span>&#160;&#160;&#160;&#160; <span class="pre">B(E1)=</span>&#160; <span class="pre">0.0001</span></code>,</p>
-<p>we want E1p.</p>
+<p>e.g. in the line <code class="docutils literal notranslate"><span class="pre">L=</span> <span class="pre">1</span> <span class="pre">E1p=</span> <span class="pre">-0.0102</span>&#160;&#160; <span class="pre">E1n=</span>&#160; <span class="pre">0.0102</span>&#160;&#160;&#160;&#160; <span class="pre">B(E1)=</span>&#160; <span class="pre">0.0001</span></code>,
+we want E1p.</p>
+<dl class="simple">
+<dt>trans_str:</dt><dd><p>string, “E1” or something of that sort</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="data">
+<dt id="cross_sections.ncsm_e1.transitions">
+<code class="sig-prename descclassname">cross_sections.ncsm_e1.</code><code class="sig-name descname">transitions</code><em class="property"> = ['E1', 'E2', 'M1']</em><a class="headerlink" href="#cross_sections.ncsm_e1.transitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>transitions we care about</p>
 </dd></dl>
 
 </div>
