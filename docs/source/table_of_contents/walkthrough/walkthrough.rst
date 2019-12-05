@@ -12,7 +12,6 @@ the code.
 .. toctree::
    :maxdepth: 1
 
-   random
    the_basics
    running_ncsd
    running_raising_lowering
