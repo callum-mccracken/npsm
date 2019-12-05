@@ -3,10 +3,15 @@ This script makes applying the J raising / lowering operator a little easier,
 and it puts the J-shifted output in the same spot as the original file.
 
 Note:
-    this must be run in an interactive session on cedar.
+    This must be run in an interactive session on cedar.
+    To enter an interactive session, try something like this:
+
+::
+
+    salloc --account=rrg-navratil --time=0-08:00 --ntasks=1 --mem-per-cpu=4G
 """
 import os
-from os.path import exists, lexists, dirname, realpath, join
+from os.path import exists, lexists, dirname, realpath
 os.chdir(realpath(dirname(__file__)))
 
 eig_path = "/scratch/callum/Li8Li9/ncsd/output/mfdp.egv"
@@ -30,7 +35,6 @@ The value of ``max_2J`` (≥0) controls how many times we raise / lower.
 
 E.g. if your initial ``2J`` value is ``1`` and ``max_2J = 5``,
 you'll get files for ``2J = -5, -3, -1, 1, 3, 5``.
-
 """
 
 # stop editing things here!
@@ -38,6 +42,7 @@ you'll get files for ``2J = -5, -3, -1, 1, 3, 5``.
 # initial values of 2J and 2T
 init_2J = 0 if (Z + N) % 2 == 0 else 1  # (usually)
 init_2T = Z - N
+
 
 def raise_lower(eig_path):
     """
@@ -116,6 +121,7 @@ def raise_lower(eig_path):
             os.rename("mfdp.egv" + new_suffix, eig_path + new_suffix)
             os.rename("eigv_Jplus.out", "eigv_Jplus.out_J="+str(two_J/2))
             print("renamed relevant output file")
+
 
 if __name__ == "__main__":
     raise_lower(eig_path)
