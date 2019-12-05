@@ -173,11 +173,222 @@
 that would be appreciated. Currently, we only deal with
 processing / plotting the output from NCSMC.</p>
 </div>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Once you have your NCSMC output, copy it to a local machine, where you
-have followed the setup instructions for Python etc. See <a class="reference internal" href="the_basics.html#basics"><span class="std std-ref">The Basics</span></a>.</p></li>
-<li></li>
+have followed the setup instructions for Python. See <a class="reference internal" href="the_basics.html#basics"><span class="std std-ref">The Basics</span></a>.
+Also ensure any columns in eigenphase_shift and phase_shift files are
+rearranged as needed, this code does not touch column order.</p></li>
+<li><p>Head into <code class="docutils literal notranslate"><span class="pre">ncsmc_python</span></code>, where you’ll see a bunch of .py files. You only
+need to worry about one of them for now, <code class="docutils literal notranslate"><span class="pre">process_ncsmc_output.py</span></code>.</p>
+<p>Open that one up and take a look!</p>
+</li>
+<li><p>You should see some parameters to edit:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">high_res_dpi</span> <span class="o">=</span> <span class="mi">900</span>
+<span class="n">Nmax_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">file_dir</span> <span class="o">=</span> <span class="s2">&quot;../where_ncsmc_output_is_kept&quot;</span>
+<span class="n">phase_shift_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">file_dir</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="p">[</span>
+    <span class="s2">&quot;Nmax4/phase_shift_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax4.agr&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Nmax6/phase_shift_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6.agr&quot;</span><span class="p">]]</span>
+<span class="n">eigenphase_shift_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">file_dir</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="p">[</span>
+    <span class="s2">&quot;Nmax4/eigenphase_shift_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax4.agr&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Nmax6/eigenphase_shift_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6.agr&quot;</span><span class="p">]]</span>
+<span class="n">ncsmc_dot_out_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">file_dir</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="p">[</span>
+    <span class="s2">&quot;Nmax4/ncsm_rgm_Am2_1_1.out_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax4&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Nmax6/ncsm_rgm_Am2_1_1.out_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6&quot;</span><span class="p">]]</span>
+<span class="n">experiment</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">file_dir</span><span class="p">,</span> <span class="s2">&quot;experiment_Li9.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you’re not familiar with the <code class="docutils literal notranslate"><span class="pre">os.path.join</span></code> function, it joins paths,
+without making you worry about trailing slashes, i.e.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="s2">&quot;x/y&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;x/&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="s2">&quot;x/y&quot;</span>
+</pre></div>
+</div>
+<p>I assume those parameters are mostly self-explanatory, but we all
+know what happens when I assume.</p>
+<p>They’re mostly to do with paths to ncsmc output. The <code class="docutils literal notranslate"><span class="pre">Nmax_list</span></code> up top
+says which Nmax values you used, and the order of this list must match the
+order of the lists of paths down below.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">high_res_dpi</span></code> is the resolution of your plots, 300 is poster quality.</p>
+<p><code class="docutils literal notranslate"><span class="pre">file_dir</span></code> will be added to the front of every file in the lists of paths.</p>
+<p>And finally, <code class="docutils literal notranslate"><span class="pre">experiment</span></code> references an <code class="docutils literal notranslate"><span class="pre">experiment.txt</span></code> file, which
+is not a NCSMC output file. You have to make this!</p>
+<p>It’s something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>I can put anything up here as long as it does not contain commas
+or the word thresh in all caps!
+
+Data is from the TUNL images and widths are eyeballed
+(http://www.tunl.duke.edu/nucldata/figures/09figs/09_03_2004.gif)
+
+States are given in the form
+&quot;Energy Width J parity T&quot; but with commas.
+Don&#39;t mess up the parsing by using commas elsewhere!
+
+Li9
+THRESH 4.0639
+0,0,1.5,-,1.5
+2.691,0,0.5,-,?
+4.296,0.2,2.5,-,?
+5.38,0.4,?,?,?
+6.43,0,?,?,?
+</pre></div>
+</div>
+<p>Again, the part up top is whatever you want it to be, except <code class="docutils literal notranslate"><span class="pre">THRESH</span></code>
+or commas. The data at the bottom is from some experimental source,
+usually <a class="reference external" href="http://www.tunl.duke.edu/nucldata/index.shtml">TUNL</a>.</p>
+</li>
+<li><p>Once you’ve edited those parameters, run the file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">process_ncsmc_output</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>You should get some output that looks something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) callum@itheory10 ncsmc_python % python process_ncsmc_output.py
+working on Nmax = 4
+Analyzed all channels, saved CSV with info to /Users/callum/Desktop/npsm/ncsmc_python/resonances_Nmax_4/resonances_phase_Nmax_4.csv
+Working on resonance plotting
+Done plotting! Saved main plot(s) to:
+/Users/callum/Desktop/npsm/ncsmc_python/resonances_Nmax_4/PNGs_phase/phase_Nmax_4_auto.png
+/Users/callum/Desktop/npsm/ncsmc_python/resonances_Nmax_4/PNGs_phase/phase_Nmax_4_auto.svg
+/Users/callum/Desktop/npsm/ncsmc_python/resonances_Nmax_4/grace_files_phase/phase_plot_Nmax_4_auto.grdt
+Analyzed all channels, saved CSV with info to /Users/callum/Desktop/npsm/ncsmc_python/resonances_Nmax_4/resonances_eigenphase_Nmax_4.csv
+Working on resonance plotting
+Done plotting! Saved main plot(s) to:
+/Users/callum/Desktop/npsm/ncsmc_python/resonances_Nmax_4/PNGs_eigenphase/eigenphase_Nmax_4_auto.png
+/Users/callum/Desktop/npsm/ncsmc_python/resonances_Nmax_4/PNGs_eigenphase/eigenphase_Nmax_4_auto.svg
+/Users/callum/Desktop/npsm/ncsmc_python/resonances_Nmax_4/grace_files_eigenphase/eigenphase_plot_Nmax_4_auto.grdt
+Enter all interesting channels in resonances_Nmax_4/interesting.txt
+
+First, take a look at the PNGs_phase files, to figure out which
+channels are interesting
+
+(just look at the graph, if you see a swoop up, it&#39;s interesting)
+
+Then, figure out which columns in the eigenphase file those match with.
+(they should have the same J, pi, T, but may have a different column #)
+
+Then, open up resonances_eigenphase_Nmax_[#].csv and copy the lines
+associated with those channels.
+
+When you&#39;re done, the file should look
+something like this:
+
+3,+,3,1,strong
+3,+,3,3,strong
+3,-,3,3,strong
+5,-,3,4,none
+5,+,3,4,strong
+
+[lines copied from the eigenphase csv file, one blank line at the end]
+
+
+Hit enter once you&#39;ve had enough time to enter the rightlines. Don&#39;t forget to SAVE the file!
+</pre></div>
+</div>
+</li>
 </ol>
+<div class="admonition-don-t-hit-enter-yet admonition">
+<p class="admonition-title">Don’t hit enter yet!</p>
+<p>If you do, I think things will break, but if you accidentally do,
+just delete the <code class="docutils literal notranslate"><span class="pre">resonances_Nmax_X</span></code> folder that got created,
+and start over.</p>
+</div>
+<ol class="arabic" start="5">
+<li><p>By this point in the code, here’s what’s been done:</p>
+<ul class="simple">
+<li><p>so far we’re only considering the first Nmax value in Nmax_list</p></li>
+<li><p>we created plots of phase vs energy for all channels in the phase_shift
+and eigenphase_shift files.</p></li>
+<li><p>now the program is waiting for you to tell it which channels are
+interesting enough to make it to the final level scheme plot.</p></li>
+</ul>
+<p>So now you have to look at all the different resonances, and do that.</p>
+<p>A new directory has been created called <code class="docutils literal notranslate"><span class="pre">resonances_Nmax_X</span></code>
+where X is replaced by the first Nmax value of course.</p>
+<p>Inside that directory, there are a bunch of plots (and other files).
+Take a peek at the <code class="docutils literal notranslate"><span class="pre">PNGs_phase</span></code> directory.</p>
+<p>At the same time, open a window with the file called
+<code class="docutils literal notranslate"><span class="pre">resonances_eigenphase_Nmax_X.csv</span></code> (in the resonances_Nmax directory).</p>
+<p>Also open the file called <code class="docutils literal notranslate"><span class="pre">interesting.txt</span></code> (same directory).</p>
+<p>Figure out which channels are interesting using the images made with
+phase_shift data, then use the csv file made from eigenphase_shift data
+to select channels.</p>
+<p>For example, if you see a 2J=2, parity=1, 2T=3 state that looks interesting
+in the phase_shift plots, try to find a corresponding channel in the
+eigenphase_shift file. Copy that line into <code class="docutils literal notranslate"><span class="pre">interesting.txt</span></code></p>
+</li>
+</ol>
+ <a href="https://imgur.com/Vm9m3Wi.jpg" >
+     <img src="https://imgur.com/Vm9m3Wi.jpg"/>
+ </a>
+
+Once you've got all the interesting channels selected, double-check
+that they're actually interesting by looking at the PNGs_eigenphase files.
+
+Then save ``interesting.txt`` and hit enter in your terminal.<ol class="arabic simple" start="6">
+<li><p>Soon after you hit enter, you should see something like this:</p></li>
+</ol>
+ <a href="https://imgur.com/DEbKkEc.jpg" >
+     <img src="https://imgur.com/DEbKkEc.jpg"/>
+ </a>
+
+Welcome to the interactive resonance fitter!
+
+Adjust the two sliders until you get a good fit, then hit ``Done``
+and close the window. The sliders are adjustable by clicking/dragging,
+by double-clicking, and by using arrow keys for fine adjustment.
+
+Eventually, you should have something like this: <a href="https://imgur.com/9T0Hjn4.jpg" >
+     <img src="https://imgur.com/9T0Hjn4.jpg"/>
+ </a>
+
+You'll get one of these windows for each resonance, and by the way,
+the data you're seeing here is from the eigenphase_shift file.
+
+After the last one (don't be alarmed if the window doesn't close this time),
+it's on to the next Nmax value!
+
+Repeat steps 5 and 6 for all following Nmax values.<ol class="arabic" start="7">
+<li><p>When you’re done the last Nmax value, wait for a few seconds,
+and then the code should be finished!</p>
+<p>You should get some final output that looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Working on resonance plotting
+Done plotting! Saved main plot(s) to:
+/Users/callum/Desktop/npsm/ncsmc_python/resonances_Nmax_6/PNGs_eigenphase/eigenphase_Nmax_6_custom.png
+/Users/callum/Desktop/npsm/ncsmc_python/resonances_Nmax_6/PNGs_eigenphase/eigenphase_Nmax_6_custom.svg
+/Users/callum/Desktop/npsm/ncsmc_python/resonances_Nmax_6/grace_files_eigenphase/eigenphase_plot_Nmax_6_custom.grdt
+got experimental data
+Saved level scheme plot as level_schemes/level_scheme.png
+</pre></div>
+</div>
+<p>At this point, what has been done?</p>
+<ul class="simple">
+<li><p>For each Nmax:
+- made plots of phase vs energy for all channels
+- created high-res plots of the interesting resonances
+- made some spaghetti plots of multiple resonances
+- take a look in the resonances_Nmax_X directories to see everything
+- got the energies and widths of all interesting resonances</p></li>
+<li><p>then we made a plot of the level scheme of this nucleus
+- includes data from each Nmax we considered
+- resonances that were too large to fit on the graph are red</p></li>
+</ul>
+</li>
+<li><p>Give youself a medal, you did it!</p>
+<p>I’d love to make this less manual,
+but I don’t think we’re able to detect / fit resonances automatically yet.</p>
+<p>Note that if you run this code again, it won’t make you select channels
+and fit curves again, unless you delete the <code class="docutils literal notranslate"><span class="pre">interesting.txt</span></code>
+and <code class="docutils literal notranslate"><span class="pre">eigenphase_info.csv</span></code> files, respectively.</p>
+</li>
+</ol>
+<div class="admonition-note-about-level-scheme-plots admonition">
+<p class="admonition-title">Note about level scheme plots</p>
+<p>Level scheme plots are saved as .png image files as well as .svg
+(scalable vector graphics) files.</p>
+<p>In the event that there are misplaced titles or something in the image,
+you can edit .svg files with many programs, for example
+<a class="reference external" href="https://inkscape.org/">Inkscape</a>.</p>
+</div>
 </div>
 
 
