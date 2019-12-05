@@ -1,6 +1,8 @@
-=========================
+.. _basics:
+
+=================================
 The Basics
-=========================
+=================================
 
 These are the instructions to get you ready to run the code.
 

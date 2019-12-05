@@ -22,8 +22,8 @@ Run ncsd
         ...
     )
 
-Edit them for your specific case. If you want to have multiple runs, you
-can use lists for the ``ManParams`` parameters, e.g.::
+   Edit them for your specific case. If you want to have multiple runs, you
+   can use lists for the ``ManParams`` parameters, e.g.::
 
     man_params = ManParams(
         Z=3,  # number of protons
@@ -31,19 +31,19 @@ can use lists for the ``ManParams`` parameters, e.g.::
         ...
     )
 
-That would run ncsd 4 times, for lithium 6, 7, 8, and 9.
+   That would run ncsd 4 times, for lithium 6, 7, 8, and 9.
 
 3. Once you have finished with all that, just run the file::
 
     python ncsd_multi.py
 
-This will create a directory for each run, and put all the necessary files
-inside. Then depending on the value of ``run``, it will run the batch file
-in the directory. If ``run=False``, you'll have to do that yourself.
+   This will create a directory for each run, and put all the necessary files
+   inside. Then depending on the value of ``run``, it will run the batch file
+   in the directory. If ``run=False``, you'll have to do that yourself.
 
-The batch script was created such that the output from ncsd gets plotted
-automatically, i.e. the next section should already be done, but you may
-want to edit those plots so still read the next section.
+   The batch script was created such that the output from ncsd gets plotted
+   automatically, i.e. the next section should already be done, but you may
+   want to edit those plots so still read the next section.
 
 Plot NCSD Output
 ----------------
@@ -75,6 +75,3 @@ The xmgrace version plots channel titles too.
 If you want your plot to exclude certain Nmax values or something,
 there are parameters in the ``output_plotter.py`` file that you can edit,
 and then re-run, same kind of idea as with ``ncsd_multi.py``.
-
-
-

@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Running Raising/Lowering Code" href="running_raising_lowering.html" />
+    <link rel="next" title="Raising/Lowering" href="running_raising_lowering.html" />
     <link rel="prev" title="The Basics" href="the_basics.html" />
     <link href="../../_static/style.css" rel="stylesheet" type="text/css">
 
@@ -91,9 +91,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#plot-ncsd-output">Plot NCSD Output</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="running_raising_lowering.html">Running Raising/Lowering Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running_trdens.html">Running TRDENS Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running_ncsmc.html">Running NCSMC Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running_raising_lowering.html">Raising/Lowering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running_trdens.html">TRDENS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running_ncsmc.html">NCSMC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running_cross_sections.html">Running Cross-Section Code</a></li>
 </ul>
 </li>
@@ -188,8 +188,6 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-</li>
-</ol>
 <p>Edit them for your specific case. If you want to have multiple runs, you
 can use lists for the <code class="docutils literal notranslate"><span class="pre">ManParams</span></code> parameters, e.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">man_params</span> <span class="o">=</span> <span class="n">ManParams</span><span class="p">(</span>
@@ -200,19 +198,19 @@ can use lists for the <code class="docutils literal notranslate"><span class="pr
 </pre></div>
 </div>
 <p>That would run ncsd 4 times, for lithium 6, 7, 8, and 9.</p>
-<ol class="arabic" start="3">
+</li>
 <li><p>Once you have finished with all that, just run the file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">ncsd_multi</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-</li>
-</ol>
 <p>This will create a directory for each run, and put all the necessary files
 inside. Then depending on the value of <code class="docutils literal notranslate"><span class="pre">run</span></code>, it will run the batch file
 in the directory. If <code class="docutils literal notranslate"><span class="pre">run=False</span></code>, you’ll have to do that yourself.</p>
 <p>The batch script was created such that the output from ncsd gets plotted
 automatically, i.e. the next section should already be done, but you may
 want to edit those plots so still read the next section.</p>
+</li>
+</ol>
 </div>
 <div class="section" id="plot-ncsd-output">
 <h2>Plot NCSD Output<a class="headerlink" href="#plot-ncsd-output" title="Permalink to this headline">¶</a></h2>
@@ -245,7 +243,7 @@ and then re-run, same kind of idea as with <code class="docutils literal notrans
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="running_raising_lowering.html" class="btn btn-neutral float-right" title="Running Raising/Lowering Code" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="running_raising_lowering.html" class="btn btn-neutral float-right" title="Raising/Lowering" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="the_basics.html" class="btn btn-neutral float-left" title="The Basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
