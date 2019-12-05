@@ -2,10 +2,9 @@
 
 # Why Does NPSM Exist?
 
-We have a lot of codes to run when doing No Core Shell Model
-work, a lot of which require non-standard input files, etc.
-
-This code tries to make that a less painful experience.
+There are many codes to run when doing No Core Shell Model
+work, and historically it's been a bit of a pain to figure out
+how each one works. This is an attempt to simplify that process.
 
 # Getting Started
 
