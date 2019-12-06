@@ -19,6 +19,8 @@ import os
 from os.path import join, dirname, lexists, exists, basename, realpath
 from multiprocessing import Process
 
+# NOTE: some parameters are set by default, in dot_in.py!
+
 # path to executable file
 exe_path = realpath("transitions_NCSMC.exe")
 

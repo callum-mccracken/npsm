@@ -8,6 +8,23 @@ import shutil
 import os
 import re
 
+# some manual input / default values
+
+r_matching = 18.0
+r_zero = 50.0
+n_points = 10000
+n_bound_resultant = 1
+n_scattering_resultant = 1
+n_bound_proj = 1
+Eexpt = 0.0
+nsig_min = 0
+nsig_max = 1
+Rp = 2.1961
+Rn = 2.3077
+Rm = 2.2605
+
+# other parameters to adjust if you want to run this file on its own
+
 observ_file = "/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output/Li8_observ_Nmax6_Jz1"
 """the observ.out file for the target"""
 
@@ -36,19 +53,7 @@ target_bound_states = [
 ]
 """bound states of the target nucleus."""
 
-# some manual input / default values
-r_matching = 18.0
-r_zero = 50.0
-n_points = 10000
-n_bound_resultant = 1
-n_scattering_resultant = 1
-n_bound_proj = 1
-Eexpt = 0.0
-nsig_min = 0
-nsig_max = 1
-Rp = 2.1961
-Rn = 2.3077
-Rm = 2.2605
+
 
 def parameter_list(transition):
     """
