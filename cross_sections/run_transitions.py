@@ -56,8 +56,9 @@ transitions_we_want = ["E1", "E2", "M1"]
 # this string is contained in input files
 run_name = "nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6"
 
-# another string for parts of naming of output files
-naming_str = "NCSMC_E1M1E2_Li9_2J_3"
+# another string for parts of naming of output files,
+# we'll append "_2J" at the end, e.g. "_1", based on resultant_states
+naming_str = "NCSMC_E1M1E2_Li9_2J"
 
 
 # the projectile we're using, curently only "n" and "p" are supported
@@ -77,13 +78,15 @@ def make_dir(res_state):
     if not exists(run_dir):
         os.mkdir(run_dir)
 
+    J2, _, _ = res_state.split()
+
     # make NCSM_E1 file
     ncsm_e1.make_ncsm_e1(
         [res_state], transitions_we_want, run_name, resultant_files,
         out_dir=run_dir)
     # make transitions_NCSMC.in file
     dot_in.make_dot_in(
-        proj, target_bound_states, run_name, res_state_name, naming_str,
+        proj, target_bound_states, run_name, res_state_name, naming_str+"_"+J2,
         target_file, transitions_we_want, out_dir=run_dir)
 
     # link the executable

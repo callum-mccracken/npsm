@@ -36,6 +36,19 @@ target_bound_states = [
 ]
 """bound states of the target nucleus."""
 
+# some manual input / default values
+r_matching = 18.0
+r_zero = 50.0
+n_points = 10000
+n_bound_resultant = 1
+n_scattering_resultant = 1
+n_bound_proj = 1
+Eexpt = 0.0
+nsig_min = 0
+nsig_max = 1
+Rp = 2.1961
+Rn = 2.3077
+Rm = 2.2605
 
 def parameter_list(transition):
     """
@@ -52,7 +65,7 @@ def parameter_list(transition):
     return param_dict[transition]
 
 
-def get_e_m_transitions(simp_file_text, target_bound_states):
+def get_e_m_transitions(simp_file_text, target_bound_states, lamb_max):
     """
     Given a simplified observ.out file and the bound states of the target,
     get lists containg the values to be printed for E and M transitions
@@ -64,8 +77,21 @@ def get_e_m_transitions(simp_file_text, target_bound_states):
     target_bound_states:
         list of bound states, formatted like
         ``[[J2, parity, T2, energy], ...]``
+
+    lamb_max:
+        integer, lambda = multipolarity of a transition. If we have some block
+        of e transitions that looks like this::
+
+            2 1 1 1.4850 2.4430 ! targ E mul i f  Mp Mn
+            2 1 2 -0.7626 -1.5856 ! targ E mul i f  Mp Mn
+            2 2 1 0.9845 2.0470 ! targ E mul i f  Mp Mn
+            2 2 2 1.0374 0.8974 ! targ E mul i f  Mp Mn
+
+        we're going to have a problem, since the code needs to read lines with
+        all possible values from 1 to lamb_max as the first number.
+
     """
-    e_transitions = []
+    e_transitions = {}
     m_transitions = []
     for state in target_bound_states:
         J2, parity, T2, energy = state
@@ -113,16 +139,28 @@ def get_e_m_transitions(simp_file_text, target_bound_states):
                         value = data_line_hunks[j+1]
                         data[var] = value
             if e_or_m == "E":
-                t = [multipolarity, num_i, num_f, data["E2p"], data["E2n"]]
+                t = (multipolarity, num_i, num_f)
+                d = (data["E2p"], data["E2n"])
                 if t not in e_transitions:
-                    e_transitions.append(t)
+                    e_transitions[t] = d
             else:
                 t = [num_i, num_f, data["pl"],
                      data["nl"], data["ps"], data["ns"]]
                 if t not in m_transitions:
                     m_transitions.append(t)
-    # TODO: should I add other lines with zeros?
-    return e_transitions, m_transitions
+
+    # ensure that e_transitions has the correct form
+    new_e_trans = []
+    for l in range(1, lamb_max+1):
+        for i in range(1, len(target_bound_states) + 1):
+            for j in range(1, len(target_bound_states) + 1):
+                if (l, i, j) not in e_transitions.keys():
+                    E2p, E2n = "0.d0", "0.d0"
+                else:
+                    E2p, E2n = e_transitions[(l, i, j)]
+                new_e_trans.append([l, i, j, E2p, E2n])
+
+    return new_e_trans, m_transitions
 
 
 def get_bound_state_str(target_bound_states):
@@ -303,22 +341,19 @@ def make_dot_in(proj, target_bound_states, run_name,
         string, directory where we'll save the file
 
     """
+    multipolarities = [int(t[1]) for t in transitions]
+    lamb_min = min(multipolarities)
+    lamb_max = max(multipolarities)
+
+
     # get info abount reactants, t = target, p = projectile
     t_A, t_Z, t_gs_J2, t_gs_parity, t_gs_T2 = get_target_info(observ_file)
     p_A, p_Z, p_gs_J2, p_gs_parity, p_gs_T2 = get_proj_info(proj)
 
-    # some variables that are always the same by default
-    r_matching = 18.0
-    r_zero = 50.0
-    n_points = 10000
-    n_targets = 1  # TODO: what do I do if there are more than 1?
-    n_projectiles = 1
-    n_bound_proj = 1  # TODO: is this safe to assume?
     n_bound_target = len(target_bound_states)
 
     # in your ncsmc run, what were the min/max energy values and step size?
     Emin, Emax, Estep = get_energy_info(shift_file)
-    Eexpt = 0.0  # TODO: experimental energy? What is this?
 
     # simplify observ file, get text
     shutil.copyfile(observ_file, os.path.split(observ_file)[1])
@@ -330,7 +365,7 @@ def make_dot_in(proj, target_bound_states, run_name,
     hw = get_freq(observ_file)
 
     e_transitions, m_transitions = get_e_m_transitions(
-        text, target_bound_states)
+        text, target_bound_states, lamb_max)
     targ_bound_str = get_bound_state_str(target_bound_states)
     e_lines, m_lines = get_transition_lines(e_transitions, m_transitions)
 
@@ -338,8 +373,8 @@ def make_dot_in(proj, target_bound_states, run_name,
         run_name=run_name,
         state_name=state_name,
         naming_str=naming_str,
-        n_targets=n_targets,
-        n_projectiles=n_projectiles,
+        n_bound_resultant=n_bound_resultant,
+        n_scattering_resultant=n_scattering_resultant,
         target_A=t_A,
         target_Z=t_Z,
         target_gs_J2=t_gs_J2,
@@ -357,8 +392,13 @@ def make_dot_in(proj, target_bound_states, run_name,
         r_matching=r_matching,
         r_zero=r_zero,
         n_points=n_points,
-        # 0 1 1 2 = ,
-        # 2.1961 2.3077 2.2605 = ,
+        nsig_min=nsig_min,
+        nsig_max=nsig_max,
+        lamb_min=lamb_min,
+        lamb_max=lamb_max,
+        Rp=Rp,
+        Rn=Rn,
+        Rm=Rm,
         e_lines=e_lines,
         m_lines=m_lines,
         Emin=Emin,
