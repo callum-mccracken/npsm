@@ -8,32 +8,32 @@ import shutil
 import os
 import re
 
-#observ_file = "/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output/Li8_observ_Nmax6_Jz1"
+observ_file = "/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output/Li8_observ_Nmax6_Jz1"
 """the observ.out file for the target"""
 
-#shift_file = "/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output/phase_shift_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6.agr"
+shift_file = "/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output/phase_shift_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6.agr"
 """the eigenphase_shift or phase_shift file, for getting energy bounds"""
 
-#run_name = "nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6"
+run_name = "nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6"
 """a string that input files contain"""
 
-#state_name = "3m"
+state_name = "3m"
 """the state name of a bound state in the resultant nucleus"""
 
-#naming_str = "NCSMC_E1M1E2_Li9_2J_3"
+naming_str = "NCSMC_E1M1E2_Li9_2J_3"
 """a string for naming output files"""
 
-#transitions = ["E2", "M1"]
+transitions = ["E2", "M1"]
 """the transitions we want to keep track of"""
 
-#proj = "n"
+proj = "n"
 """the projectile we're using, curently only "n" and "p" are supported"""
 
-#target_bound_states = [
+target_bound_states = [
     # Format: 2J, parity, 2T, binding energy. First entry = ground state.
-#    [4, 1, 2, -34.8845],
-#    [2, 1, 2, -33.7694]
-#]
+    [4, 1, 2, -34.8845],
+    [2, 1, 2, -33.7694]
+]
 """bound states of the target nucleus."""
 
 # some manual input / default values
@@ -311,7 +311,7 @@ def get_energy_info(shift_file):
 
 def make_dot_in(proj, target_bound_states, run_name,
                 state_name, naming_str, observ_file, transitions,
-                out_dir=None):
+                shift_file, out_dir=None):
     """
     Makes a transitions_NCSMC.in file.
 
@@ -336,6 +336,9 @@ def make_dot_in(proj, target_bound_states, run_name,
 
     transitions:
         list of strings, transitions we'll consider, e.g. ["E2", "M1"]
+
+    shift_file:
+        string, path to a phase_shift or eigenphase_shift file
 
     out_dir:
         string, directory where we'll save the file

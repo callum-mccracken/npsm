@@ -34,6 +34,9 @@ resultant_files = [
 # observ.out file for the target nucleus
 target_file = join(ncsmc_out_dir, "Li8_observ_Nmax6_Jz1")
 
+#the eigenphase_shift or phase_shift file, for getting energy bounds
+shift_file = join(ncsmc_out_dir, "phase_shift_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6.agr")
+
 # you also need these files, which are produced by ncsmc:
 norm_sqrt = join(ncsmc_out_dir, "norm_sqrt_r_rp_RGM_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6.dat")
 form_factors = join(ncsmc_out_dir, "NCSMC_form_factors_g_h_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6.dat")
@@ -87,7 +90,7 @@ def make_dir(res_state):
     # make transitions_NCSMC.in file
     dot_in.make_dot_in(
         proj, target_bound_states, run_name, res_state_name, naming_str+"_"+J2,
-        target_file, transitions_we_want, out_dir=run_dir)
+        target_file, transitions_we_want, shift_file, out_dir=run_dir)
 
     # link the executable
     if not lexists(join(run_dir, basename(exe_path))):
