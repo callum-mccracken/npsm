@@ -132,4 +132,5 @@ if __name__ == "__main__":
     print("Running executables in parallel")
     for exe in executables:
         print(realpath(exe))
+        os.chmod(exe, 777)
         Process(target=run_exe(exe)).start()
