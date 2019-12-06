@@ -249,8 +249,7 @@ def make_wf_file(wavefunction_NCSMC_file, res_state, run_dir):
     for line in lines:
         if "#" in line:
             # if it's one of the lines related to a section break, it should
-            # have #words < 5
-            # TODO: is this a good criterion?
+            # have #words < 5 (I'm pretty sure this should always work, right?)
             if len(line.split()) < 5:
                 hashtag_counter += 1
         if hashtag_counter == 5:

@@ -53,10 +53,10 @@ resultant_states = ["1 -1 3", "3 -1 3"]
 # transitions we care about
 transitions_we_want = ["E1", "E2", "M1"]
 
-# this variable is for naming of output files TODO: what actually is this
+# this string is contained in input files
 run_name = "nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6"
 
-# another string for naming things, but TODO: what exactly?
+# another string for parts of naming of output files
 naming_str = "NCSMC_E1M1E2_Li9_2J_3"
 
 

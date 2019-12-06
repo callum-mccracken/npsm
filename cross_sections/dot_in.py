@@ -11,14 +11,17 @@ import re
 observ_file = "/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output/Li8_observ_Nmax6_Jz1"
 """the observ.out file for the target"""
 
+shift_file = "/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output/phase_shift_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6.agr"
+"""the eigenphase_shift or phase_shift file, for getting energy bounds"""
+
 run_name = "nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6"
-"""TODO: what actually is this"""
+"""a string that input files contain"""
 
 state_name = "3m"
 """the state name of a bound state in the resultant nucleus"""
 
 naming_str = "NCSMC_E1M1E2_Li9_2J_3"
-"""a string for naming things, but TODO: what exactly?"""
+"""a string for naming output files"""
 
 transitions = ["E2", "M1"]
 """the transitions we want to keep track of"""
@@ -118,6 +121,7 @@ def get_e_m_transitions(simp_file_text, target_bound_states):
                      data["nl"], data["ps"], data["ns"]]
                 if t not in m_transitions:
                     m_transitions.append(t)
+    # TODO: should I add other lines with zeros?
     return e_transitions, m_transitions
 
 
@@ -229,6 +233,44 @@ def get_proj_info(projectile):
         raise ValueError("I'm not sure how to process this projectile!")
 
 
+def get_energy_info(shift_file):
+    """
+    The shift_file is a path to a file that looks something like this::
+
+        @ s0 legend "1\\S-\\N3"
+        0.02000      -0.05754   0.00000   0.00001
+        0.04000      -0.15804   0.00000   0.00005
+        ...
+        10.00000     -0.73485   0.00000   0.00066
+        &
+
+    Let's get the minimum energy, maximum energy, and energy step
+
+    """
+    with open(shift_file, "r+") as f:
+        lines = f.readlines()
+    counter = 0
+    for line in lines:
+        words = line.split()
+        if line == "&":  # end case
+            break
+        elif all([utils.is_float(word) for word in words]):
+            # the line contains only numbers --> first number is energy
+            energy = float(words[0])
+            if counter == 0:
+                Emin = energy
+            elif counter == 1:
+                Emax = energy
+                Estep = energy - Emin
+            else:
+                Emax = energy
+            counter += 1
+        else:
+            # could be a title, maybe a blank line?
+            continue
+    return Emin, Emax, Estep
+
+
 def make_dot_in(proj, target_bound_states, run_name,
                 state_name, naming_str, observ_file, transitions,
                 out_dir=None):
@@ -275,10 +317,7 @@ def make_dot_in(proj, target_bound_states, run_name,
     n_bound_target = len(target_bound_states)
 
     # in your ncsmc run, what were the min/max energy values and step size?
-    # TODO: get these automatically
-    Emin = 0.02
-    Emax = 10.0
-    Estep = 0.02
+    Emin, Emax, Estep = get_energy_info(shift_file)
     Eexpt = 0.0  # TODO: experimental energy? What is this?
 
     # simplify observ file, get text
