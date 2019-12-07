@@ -16,6 +16,7 @@ import dot_in
 import file_tools
 import utils
 import os
+import shutil
 from os.path import join, dirname, lexists, exists, basename, realpath
 from multiprocessing import Process
 
@@ -79,7 +80,7 @@ def make_dir(res_state):
     """
     # the 3m version of a state with 2J = 3, parity = -1
     res_state_name = utils.get_state_name(res_state)
-    run_dir = run_name+"_"+res_state_name
+    run_dir = realpath(run_name+"_"+res_state_name)
     if not exists(run_dir):
         os.mkdir(run_dir)
 
@@ -94,9 +95,9 @@ def make_dir(res_state):
         proj, target_bound_states, run_name, res_state_name, naming_str+"_"+J2,
         target_file, transitions_we_want, shift_file, out_dir=run_dir)
 
-    # link the executable
-    if not lexists(join(run_dir, basename(exe_path))):
-        os.symlink(exe_path, join(run_dir, basename(exe_path)))
+    # copy the executable
+    #if not lexists(join(run_dir, basename(exe_path))):
+    shutil.copyfile(exe_path, join(run_dir, basename(exe_path)))
 
     # copy / link the other files, as needed
     if not exists(join(run_dir, basename(norm_sqrt))):
@@ -111,7 +112,8 @@ def make_dir(res_state):
     file_tools.make_wf_file(wavefunction_NCSMC, res_state, run_dir)
 
     # then return the executable to be run
-    return join(run_dir, basename(exe_path))
+    exe = realpath(join(run_dir, basename(exe_path)))
+    return exe
 
 
 def run_exe(exe):
@@ -122,17 +124,16 @@ def run_exe(exe):
     exe:
         the path to an executable file
     """
-    os.system(". " + exe + " > " + join(dirname(exe), "output.txt"))
-
+    dirname, filename = os.path.split(exe)
+    cwd = os.getcwd()
+    os.chdir(os.path.realpath(dirname))
+    os.system("chmod 777 "+filename)
+    os.system("./"+filename)
+    os.system("ls -l")
+    os.chdir(cwd)
 
 if __name__ == "__main__":
     # make run directories
-    executables = []
     for res_state in resultant_states:
-        executables.append(make_dir(res_state))
-
-    print("Running executables in parallel")
-    for exe in executables:
-        print(realpath(exe))
-        os.system("chmod 777 "+exe)
-        Process(target=run_exe(exe)).start()
+        executable = make_dir(res_state)
+        Process(target=run_exe(executable)).start()
