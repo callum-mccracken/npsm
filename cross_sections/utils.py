@@ -177,12 +177,12 @@ dot_in_fmt = """{run_name} ! Naming convention used in input files
 {naming_str} ! Something to use to rename your output
 {n_bound_resultant} ! Number of bound states for composite nucleus
 {n_scattering_resultant} ! Number of scattering states for composite nucleus
-{target_A} {target_Z} {target_gs_J2} {target_gs_parity} {target_gs_T2} {n_bound_target} ! Target info
+{target_A} {target_Z} {target_gs_J2} {target_gs_parity} {target_gs_T2} {n_bound_target} ! Target info: A, Z, ground state 2J, parity, 2T
 {targ_bound_str}
-{proj_A} {proj_Z} {proj_gs_J2} {proj_gs_parity} {proj_gs_T2} {n_bound_proj} ! Projectile info
-{target_A} {target_Z} {target_gs_J2} {target_gs_parity} {target_gs_T2} {n_bound_target} ! Target info
+{proj_A} {proj_Z} {proj_gs_J2} {proj_gs_parity} {proj_gs_T2} {n_bound_proj} ! Projectile info: A, Z, ground state 2J, parity, 2T
+{target_A} {target_Z} {target_gs_J2} {target_gs_parity} {target_gs_T2} {n_bound_target} ! Target info: A, Z, ground state 2J, parity, 2T
 {targ_bound_str}
-{proj_A} {proj_Z} {proj_gs_J2} {proj_gs_parity} {proj_gs_T2} {n_bound_proj} ! Projectile info
+{proj_A} {proj_Z} {proj_gs_J2} {proj_gs_parity} {proj_gs_T2} {n_bound_proj} ! Projectile info: A, Z, ground state 2J, parity, 2T
 {hw} ! Frequency used in NCSM calculation
 {r_matching} ! Matching radius
 {r_zero} ! Cutoff radius, after which wavefunction ~0

@@ -177,7 +177,7 @@ def get_bound_state_str(target_bound_states):
         list of bound states, formatted like
         ``[[J2, parity, T2, energy], ...]``
     """
-    bound_state_fmt = "{E}   {J2}  {parity}  {T2}     ! E, J, pi, T"
+    bound_state_fmt = "{E}   {J2}  {parity}  {T2}     ! E, 2J, pi, 2T"
     targ_bound_str = ""
     for i, state in enumerate(target_bound_states):
         J2, p, T2, E = state
