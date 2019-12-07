@@ -48,8 +48,8 @@ wavefunction_NCSMC = join(ncsmc_out_dir, "wavefunction_NCSMC_nLi8_n3lo-NN3Nlnl-s
 # bound states of the target nucleus. TODO: can we get these automatically?
 target_bound_states = [
     # Format: 2J, parity, 2T, binding energy. First entry = ground state.
-    [4, 1, 2, -34.8845],
-    [2, 1, 2, -33.7694]
+    [4, 1, 2, "-34.8845d0"],
+    [2, 1, 2, "-33.7694d0"]
 ]
 
 # resultant nucleus states we care about, in "2J pi 2T" format
