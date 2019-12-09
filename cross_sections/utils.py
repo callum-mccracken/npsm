@@ -172,9 +172,9 @@ def get_A_Z(name):
     return A, Z
 
 
-dot_in_fmt = """{run_name} ! Naming convention used in input files
-{state_name} ! State of reaction product
-{naming_str} ! Something to use to rename your output
+dot_in_fmt = """{run_name}
+{state_name}
+{naming_str}
 {n_bound_resultant} ! Number of bound states for composite nucleus
 {n_scattering_resultant} ! Number of scattering states for composite nucleus
 {target_A} {target_Z} {target_gs_J2} {target_gs_parity} {target_gs_T2} {n_bound_target} ! Target info: A, Z, ground state 2J, parity, 2T

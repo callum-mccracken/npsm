@@ -146,7 +146,7 @@ def get_e_m_transitions(simp_file_text, target_bound_states, lamb_max):
             if e_or_m == "E":
                 t = (multipolarity, num_i, num_f)
                 d = (data["E2p"], data["E2n"])
-                if t not in e_transitions:
+                if t not in e_transitions.keys():
                     e_transitions[t] = d
             else:
                 t = [num_i, num_f, data["pl"],
@@ -177,7 +177,7 @@ def get_bound_state_str(target_bound_states):
         list of bound states, formatted like
         ``[[J2, parity, T2, energy], ...]``
     """
-    bound_state_fmt = "{E}   {J2}  {parity}  {T2}     ! E, 2J, pi, 2T"
+    bound_state_fmt = "{E}d0   {J2}  {parity}  {T2}     ! E, 2J, pi, 2T"
     targ_bound_str = ""
     for i, state in enumerate(target_bound_states):
         J2, p, T2, E = state
@@ -245,8 +245,8 @@ def get_target_info(observ_file):
     ground_state_line = state_lines[0]
     """ J= 2.0000    T= 1.0001     Energy=    -34.8845     Ex=      0.0000"""
     gs_words = ground_state_line.split()
-    J2 = round(float(gs_words[1]))
-    T2 = round(float(gs_words[3]))
+    J2 = 2 * round(float(gs_words[1]))
+    T2 = 2 * round(float(gs_words[3]))
     # get A, Z
     A_Z_line = lines[1]
     A_Z_words = A_Z_line.split()
@@ -423,4 +423,4 @@ def make_dot_in(proj, target_bound_states, run_name,
 
 if __name__ == "__main__":
     make_dot_in(proj, target_bound_states, run_name, state_name, naming_str,
-                observ_file, transitions, out_dir="")
+                observ_file, transitions, shift_file, out_dir="")

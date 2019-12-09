@@ -26,7 +26,7 @@ from multiprocessing import Process
 exe_path = realpath("transitions_NCSMC.exe")
 
 # where are your output files stored?
-ncsmc_out_dir = "/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output"
+ncsmc_out_dir = "/global/scratch/ccmccracken/Li8Li9/ncsmc/Nmax6"
 
 # observ.out files for the resultant nucleus
 resultant_files = [
@@ -49,8 +49,8 @@ wavefunction_NCSMC = join(ncsmc_out_dir, "wavefunction_NCSMC_nLi8_n3lo-NN3Nlnl-s
 # bound states of the target nucleus. TODO: can we get these automatically?
 target_bound_states = [
     # Format: 2J, parity, 2T, binding energy. First entry = ground state.
-    [4, 1, 2, "-34.8845d0"],
-    [2, 1, 2, "-33.7694d0"]
+    [4, 1, 2, -34.8845],
+    [2, 1, 2, -33.7694]
 ]
 
 # resultant nucleus states we care about, in "2J pi 2T" format
@@ -129,7 +129,6 @@ def run_exe(exe):
     os.chdir(os.path.realpath(dirname))
     os.system("chmod 777 "+filename)
     os.system("./"+filename)
-    os.system("ls -l")
     os.chdir(cwd)
 
 if __name__ == "__main__":
