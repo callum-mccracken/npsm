@@ -67,7 +67,7 @@ run_name = "nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6"
 naming_str = "NCSMC_E1M1E2_Li9_2J"
 
 
-# the projectile we're using, curently only "n" and "p" are supported
+# the projectile we're using, "n", "p", or a list of the form [A, Z, 2J, pi, 2T]
 proj = "n"
 
 

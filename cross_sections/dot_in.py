@@ -16,7 +16,7 @@ n_points = 10000
 n_bound_resultant = 1
 n_scattering_resultant = 1
 n_bound_proj = 1
-Eexpt = "0.d0"
+Eexpt = 0.0
 nsig_min = 0
 nsig_max = 1
 Rp = 2.1961
@@ -356,7 +356,8 @@ def make_dot_in(proj, target_bound_states, run_name,
 
     # get info abount reactants, t = target, p = projectile
     t_A, t_Z, t_gs_J2, t_gs_parity, t_gs_T2 = get_target_info(observ_file)
-    p_A, p_Z, p_gs_J2, p_gs_parity, p_gs_T2 = get_proj_info(proj)
+    proj_info = proj if type(proj) == list else get_proj_info(proj)
+    p_A, p_Z, p_gs_J2, p_gs_parity, p_gs_T2 = proj_info
 
     n_bound_target = len(target_bound_states)
 
