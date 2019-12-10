@@ -26,7 +26,7 @@ from multiprocessing import Process
 exe_path = realpath("transitions_NCSMC.exe")
 
 # where are your output files stored?
-ncsmc_out_dir = "/global/scratch/ccmccracken/Li8Li9/ncsmc/Nmax6"
+ncsmc_out_dir = "/global/scratch/ccmccracken/npsm/pheno/"
 
 # observ.out files for the resultant nucleus
 resultant_files = [
@@ -38,13 +38,13 @@ resultant_files = [
 target_file = join(ncsmc_out_dir, "Li8_observ_Nmax6_Jz1")
 
 #the eigenphase_shift or phase_shift file, for getting energy bounds
-shift_file = join(ncsmc_out_dir, "phase_shift_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6.agr")
+shift_file = join(ncsmc_out_dir, "phase_shift_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6__pheno_all_adjusted.agr")
 
 # you also need these files, which are produced by ncsmc:
-norm_sqrt = join(ncsmc_out_dir, "norm_sqrt_r_rp_RGM_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6.dat")
-form_factors = join(ncsmc_out_dir, "NCSMC_form_factors_g_h_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6.dat")
-scattering_wf_NCSMC = join(ncsmc_out_dir, "scattering_wf_NCSMC_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6.agr")
-wavefunction_NCSMC = join(ncsmc_out_dir, "wavefunction_NCSMC_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6.agr")
+norm_sqrt = join(ncsmc_out_dir, "norm_sqrt_r_rp_RGM_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6__pheno_all_adjusted.dat")
+form_factors = join(ncsmc_out_dir, "NCSMC_form_factors_g_h_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6__pheno_all_adjusted.dat")
+scattering_wf_NCSMC = join(ncsmc_out_dir, "scattering_wf_NCSMC_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6__pheno_all_adjusted.agr")
+wavefunction_NCSMC = join(ncsmc_out_dir, "wavefunction_NCSMC_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6__pheno_all_adjusted.agr")
 
 # bound states of the target nucleus. TODO: can we get these automatically?
 target_bound_states = [
@@ -60,7 +60,7 @@ resultant_states = ["1 -1 3", "3 -1 3"]
 transitions_we_want = ["E1", "E2", "M1"]
 
 # this string is contained in input files
-run_name = "nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6"
+run_name = "nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6__pheno_all_adjusted"
 
 # another string for parts of naming of output files,
 # we'll append "_2J" at the end, e.g. "_1", based on resultant_states
