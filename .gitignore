@@ -12,7 +12,7 @@ _sample_cross_section_files/**
 _Nmax4_ncsmc_output/**
 _Nmax6_ncsmc_output/**
 cross_sections/*/**
-
+pheno/**
 experiment_Li9.txt
 
 # code in progress, not ready to be added
