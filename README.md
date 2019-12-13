@@ -8,7 +8,13 @@ how each one works. This is an attempt to simplify that process.
 
 # Getting Started
 
-First clone the [github repository](https://github.com/callum-mccracken/npsm.git).
+First clone the
+[github repository](https://github.com/callum-mccracken/npsm.git).
+
+You'll want to use the ``--recurse-submodules``
+flag so all submodules are created properly, i.e. do this:
+
+``git clone --recurse-submodules https://github.com/callum-mccracken/npsm``
 
 Make sure you have some kind of way to download python packages, e.g. pip.
 We won't need much, but we will need numpy and matplotlib for sure.

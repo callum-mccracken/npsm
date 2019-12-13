@@ -1,3 +1,5 @@
+"""Quick script to plot cross section values from sigma_gamma_integ file"""
+
 import matplotlib.pyplot as plt
 
 sigma_gamma_integ = "/global/scratch/ccmccracken/npsm/cross_sections/nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6_pheno_all_adjusted_1m/sigma_gamma_integ_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6_pheno_all_adjusted_1m_NCSMC_E1M1E2_Li9_2J_1.agr"
@@ -17,7 +19,6 @@ for line in lines:
     energies.append(e)
     c = float(words[2]) * 10000
     cross_sections.append(c)
-
 
 plt.plot(energies, cross_sections)
 plt.title("Cross-Section for The $^8Li(n, \\gamma) ^9Li$ Reaction, $6\\hbar \\Omega$")
