@@ -87,11 +87,10 @@ def make_ncsm_e1(desired_states, transitions, run_name, files, out_dir=None):
                 var = transition_parameter(t)
                 for i, line in enumerate(lines):
                     if var in line and line != var:
-                        # remove stuff before it
-                        lines[i] = re.sub(r'.*'+var, '', line)
-                        # then the variable of interest is the second word
-                        words = lines[i].split()
-                        lines[i] = words[1]
+                        # get the word after var=, i.e. the value
+                        words = line.split()
+                        index = words.index(var+"=")
+                        lines[i] = words[index+1]
             text = "\n".join(lines)
 
             # get all transitions from the state of interest to other states
