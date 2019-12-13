@@ -89,7 +89,11 @@ def make_ncsm_e1(desired_states, transitions, run_name, files, out_dir=None):
                     if var in line and line != var:
                         # get the word after var=, i.e. the value
                         words = line.split()
-                        index = words.index(var+"=")
+                        try:
+                            index = words.index(var+"=")
+                        except ValueError:
+                            print(line)
+                            raise ValueError("Could not find variable "+var)
                         lines[i] = words[index+1]
             text = "\n".join(lines)
 
