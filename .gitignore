@@ -14,5 +14,6 @@ _Nmax6_ncsmc_output/**
 cross_sections/*/**
 *pheno*/**
 experiment_Li9.txt
+**.exe
 
 # code in progress, not ready to be added
