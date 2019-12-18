@@ -215,13 +215,16 @@
 <dd><p>Takes manual input m_params (a ManParams instance),
 and parses it into a format that is usable by the functions
 that make the run directories.</p>
-<p>Makes lists of length num_runs (longest length list in m_params) with
-duplicates of the last element if there aren’t enough.</p>
-<p>For example, if num_runs is 4…</p>
-<p>1 –&gt; [1,1,1,1]</p>
-<p>[1,2] –&gt; [1,2,2,2]</p>
-<p>This may be useful to know, in case if you thought</p>
-<p>[1,2] –&gt; [1,1,2,2] (wrong!)</p>
+<p>If any parameters are lists, we take all possible combinations of
+parameters</p>
+<p>For example, if ZN = [(3,4),(3,5)], hw = [15, 20] and all other variables
+are not lists, we’ll do runs for:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">hw</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">hw</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">hw</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">hw</span> <span class="o">=</span> <span class="mi">20</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>

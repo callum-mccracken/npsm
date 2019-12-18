@@ -200,7 +200,7 @@ full of helper functions.</p>
 </div>
 <dl class="data">
 <dt id="ncsd_python.ncsd_multi.int_dir">
-<code class="sig-prename descclassname">ncsd_python.ncsd_multi.</code><code class="sig-name descname">int_dir</code><em class="property"> = '/Users/callum/Desktop/npsm/interactions'</em><a class="headerlink" href="#ncsd_python.ncsd_multi.int_dir" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ncsd_python.ncsd_multi.</code><code class="sig-name descname">int_dir</code><em class="property"> = '/Users/callum/Desktop/8Li-9Li/random_code_files'</em><a class="headerlink" href="#ncsd_python.ncsd_multi.int_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p>Paths: change the values as needed, but don’t remove the <code class="docutils literal notranslate"><span class="pre">realpath</span></code>
 (it converts relative –&gt; absolute paths).
 Relative paths = relative to current working directory.</p>
@@ -216,10 +216,18 @@ Relative paths = relative to current working directory.</p>
 <dt id="ncsd_python.ncsd_multi.man_params">
 <code class="sig-prename descclassname">ncsd_python.ncsd_multi.</code><code class="sig-name descname">man_params</code><em class="property"> = &lt;multi_modules.data_structures.ManParams object&gt;</em><a class="headerlink" href="#ncsd_python.ncsd_multi.man_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Manual Parameters:</p>
-<ul class="simple">
+<ul>
 <li><p>specify all as single parameter or list []</p></li>
-<li><p>if you use a list, we’ll make N ncsd runs, where N is the maximum length
-of a list made here.</p></li>
+<li><p>if there are lists, we will make runs with all possible combinations,
+e.g. if ZN=[(3,5), (3,6)] and hbar_omega = [15, 20]
+we will make runs for:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span><span class="o">=</span><span class="mi">3</span> <span class="n">N</span><span class="o">=</span><span class="mi">5</span> <span class="n">hw</span><span class="o">=</span><span class="mi">15</span>
+<span class="n">Z</span><span class="o">=</span><span class="mi">3</span> <span class="n">N</span><span class="o">=</span><span class="mi">5</span> <span class="n">hw</span><span class="o">=</span><span class="mi">20</span>
+<span class="n">Z</span><span class="o">=</span><span class="mi">3</span> <span class="n">N</span><span class="o">=</span><span class="mi">6</span> <span class="n">hw</span><span class="o">=</span><span class="mi">15</span>
+<span class="n">Z</span><span class="o">=</span><span class="mi">3</span> <span class="n">N</span><span class="o">=</span><span class="mi">6</span> <span class="n">hw</span><span class="o">=</span><span class="mi">20</span>
+</pre></div>
+</div>
+</li>
 <li><p>list of attributes is in multi_modules/data_structures.py, <code class="docutils literal notranslate"><span class="pre">man_keys</span></code>.</p></li>
 <li><p>default parameters are at the bottom of multi_modules/data_structures.py</p></li>
 </ul>
@@ -227,7 +235,7 @@ of a list made here.</p></li>
 
 <dl class="data">
 <dt id="ncsd_python.ncsd_multi.run">
-<code class="sig-prename descclassname">ncsd_python.ncsd_multi.</code><code class="sig-name descname">run</code><em class="property"> = True</em><a class="headerlink" href="#ncsd_python.ncsd_multi.run" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ncsd_python.ncsd_multi.</code><code class="sig-name descname">run</code><em class="property"> = False</em><a class="headerlink" href="#ncsd_python.ncsd_multi.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do you want to run jobs automatically? If so, set run=True</p>
 </dd></dl>
 

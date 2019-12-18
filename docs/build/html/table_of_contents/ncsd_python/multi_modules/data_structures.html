@@ -209,10 +209,10 @@
 <em class="property">class </em><code class="sig-prename descclassname">ncsd_python.multi_modules.data_structures.</code><code class="sig-name descname">Params</code><span class="sig-paren">(</span><em class="sig-param">filetype</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.data_structures.Params" title="Permalink to this definition">¶</a></dt>
 <dd><p>The Params class is pretty much just an argparse.Namespace,
 except you can only have certain variables.</p>
-<p>For example, mfdp.dat files have a field for Z,
+<p>For example, mfdp.dat files have a field for ZN,
 so a Params object for that file type should have an attribute
-self.Z.</p>
-<p>But if you tried to set self.z by accident it should raise an error.</p>
+self.ZN.</p>
+<p>But if you tried to set self.Z by accident it should raise an error.</p>
 <p>This prevents accidentally setting the wrong attributes for a file type,
 or too many parameters, or too few.</p>
 <dl class="method">
@@ -231,13 +231,13 @@ or too many parameters, or too few.</p>
 
 <dl class="data">
 <dt id="ncsd_python.multi_modules.data_structures.cedar_batch_keys">
-<code class="sig-prename descclassname">ncsd_python.multi_modules.data_structures.</code><code class="sig-name descname">cedar_batch_keys</code><em class="property"> = ['run_directory', 'account', 'nodes', 'tasks_per_node', 'mem_per_core', 'mem', 'time', 'output', 'potential', 'nucleus_name', 'hbar_omega', 'suffix', 'Ngs', 'ncsd_path', 'non_IT_Nmax', 'potential_end_bit', 'output_file', 'output_plotter']</em><a class="headerlink" href="#ncsd_python.multi_modules.data_structures.cedar_batch_keys" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ncsd_python.multi_modules.data_structures.</code><code class="sig-name descname">cedar_batch_keys</code><em class="property"> = ['run_directory', 'account', 'nodes', 'tasks_per_node', 'mem_per_core', 'time', 'output', 'potential', 'nucleus_name', 'hbar_omega', 'suffix', 'Ngs', 'ncsd_path', 'non_IT_Nmax', 'potential_end_bit', 'output_file', 'output_plotter']</em><a class="headerlink" href="#ncsd_python.multi_modules.data_structures.cedar_batch_keys" title="Permalink to this definition">¶</a></dt>
 <dd><p>all variables for batch file on cedar</p>
 </dd></dl>
 
 <dl class="data">
 <dt id="ncsd_python.multi_modules.data_structures.default_keys">
-<code class="sig-prename descclassname">ncsd_python.multi_modules.data_structures.</code><code class="sig-name descname">default_keys</code><em class="property"> = ['two_body_file_type', 'N_min', 'iham', 'iclmb', 'strcm', 'major', 'nshll', 'nsets', 'min_nesp', 'nskip', 'iset1', 'ki', 'kf', 'gs_energy', 'igt', 'nhme', 'nhw_restart', 'cmin', 'convergence_delta', 'eff_charge_p', 'eff_charge_n', 'glp', 'gln', 'gsp', 'gsn', 'mem', 'tasks_per_node']</em><a class="headerlink" href="#ncsd_python.multi_modules.data_structures.default_keys" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ncsd_python.multi_modules.data_structures.</code><code class="sig-name descname">default_keys</code><em class="property"> = ['two_body_file_type', 'N_min', 'iham', 'iclmb', 'strcm', 'major', 'nshll', 'nsets', 'min_nesp', 'nskip', 'iset1', 'ki', 'kf', 'gs_energy', 'igt', 'nhme', 'nhw_restart', 'cmin', 'convergence_delta', 'eff_charge_p', 'eff_charge_n', 'glp', 'gln', 'gsp', 'gsn', 'tasks_per_node']</em><a class="headerlink" href="#ncsd_python.multi_modules.data_structures.default_keys" title="Permalink to this definition">¶</a></dt>
 <dd><p>all variables that are set by default</p>
 </dd></dl>
 
@@ -249,7 +249,7 @@ or too many parameters, or too few.</p>
 
 <dl class="data">
 <dt id="ncsd_python.multi_modules.data_structures.man_keys">
-<code class="sig-prename descclassname">ncsd_python.multi_modules.data_structures.</code><code class="sig-name descname">man_keys</code><em class="property"> = ['two_body_interaction', 'Z', 'N', 'hbar_omega', 'N_1max', 'N_12max', 'N_123max', 'three_body_interaction', 'Nmax_min', 'Nmax_max', 'Nmax_IT', 'interaction_type', 'n_states', 'iterations_required', 'irest', 'nhw_restart', 'kappa_points', 'kappa_vals', 'kappa_restart', 'saved_pivot', 'mem', 'time', 'potential_name', 'n_nodes']</em><a class="headerlink" href="#ncsd_python.multi_modules.data_structures.man_keys" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ncsd_python.multi_modules.data_structures.</code><code class="sig-name descname">man_keys</code><em class="property"> = ['two_body_interaction', 'ZN', 'hbar_omega', 'N_1max', 'N_12max', 'N_123max', 'three_body_interaction', 'Nmax_min', 'Nmax_max', 'Nmax_IT', 'interaction_type', 'n_states', 'iterations_required', 'irest', 'nhw_restart', 'kappa_points', 'kappa_vals', 'kappa_restart', 'saved_pivot', 'mem', 'time', 'potential_name', 'n_nodes']</em><a class="headerlink" href="#ncsd_python.multi_modules.data_structures.man_keys" title="Permalink to this definition">¶</a></dt>
 <dd><p>all manual input variables</p>
 </dd></dl>
 

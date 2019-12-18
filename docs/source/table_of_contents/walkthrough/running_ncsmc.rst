@@ -88,6 +88,10 @@ Again, the part up top is whatever you want it to be, except ``THRESH``
 or commas. The data at the bottom is from some experimental source,
 usually `TUNL <http://www.tunl.duke.edu/nucldata/index.shtml>`_.
 
+.. admonition:: Note:
+
+    Energy values here are relative to the ground state of your nucleus.
+
 3. Run the File
 ----------------
 
