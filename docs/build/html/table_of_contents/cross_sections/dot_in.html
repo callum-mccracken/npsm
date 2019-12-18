@@ -181,15 +181,26 @@ this file makes those.</p>
 
 <dl class="function">
 <dt id="cross_sections.dot_in.get_e_m_transitions">
-<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">get_e_m_transitions</code><span class="sig-paren">(</span><em class="sig-param">simp_file_text</em>, <em class="sig-param">target_bound_states</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_e_m_transitions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">get_e_m_transitions</code><span class="sig-paren">(</span><em class="sig-param">simp_file_text</em>, <em class="sig-param">target_bound_states</em>, <em class="sig-param">lamb_max</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_e_m_transitions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a simplified observ.out file and the bound states of the target,
 get lists containg the values to be printed for E and M transitions
 between those bound states.</p>
-<dl class="simple">
+<dl>
 <dt>simp_file_text:</dt><dd><p>string, the text of a simplified observ.out file</p>
 </dd>
 <dt>target_bound_states:</dt><dd><p>list of bound states, formatted like
 <code class="docutils literal notranslate"><span class="pre">[[J2,</span> <span class="pre">parity,</span> <span class="pre">T2,</span> <span class="pre">energy],</span> <span class="pre">...]</span></code></p>
+</dd>
+<dt>lamb_max:</dt><dd><p>integer, lambda = multipolarity of a transition. If we have some block
+of e transitions that looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>2 1 1 1.4850 2.4430 ! targ E mul i f  Mp Mn
+2 1 2 -0.7626 -1.5856 ! targ E mul i f  Mp Mn
+2 2 1 0.9845 2.0470 ! targ E mul i f  Mp Mn
+2 2 2 1.0374 0.8974 ! targ E mul i f  Mp Mn
+</pre></div>
+</div>
+<p>we’re going to have a problem, since the code needs to read lines with
+all possible values from 1 to lamb_max as the first number.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -258,7 +269,7 @@ of the target.</p>
 
 <dl class="function">
 <dt id="cross_sections.dot_in.make_dot_in">
-<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">make_dot_in</code><span class="sig-paren">(</span><em class="sig-param">proj</em>, <em class="sig-param">target_bound_states</em>, <em class="sig-param">run_name</em>, <em class="sig-param">state_name</em>, <em class="sig-param">naming_str</em>, <em class="sig-param">observ_file</em>, <em class="sig-param">transitions</em>, <em class="sig-param">out_dir=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.make_dot_in" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">make_dot_in</code><span class="sig-paren">(</span><em class="sig-param">proj</em>, <em class="sig-param">target_bound_states</em>, <em class="sig-param">run_name</em>, <em class="sig-param">state_name</em>, <em class="sig-param">naming_str</em>, <em class="sig-param">observ_file</em>, <em class="sig-param">transitions</em>, <em class="sig-param">shift_file</em>, <em class="sig-param">out_dir=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.make_dot_in" title="Permalink to this definition">¶</a></dt>
 <dd><p>Makes a transitions_NCSMC.in file.</p>
 <dl class="simple">
 <dt>proj:</dt><dd><p>string, the projectile, e.g. “n”</p>
@@ -275,6 +286,8 @@ Formatted like <code class="docutils literal notranslate"><span class="pre">[[J2
 <dt>observ_file:</dt><dd><p>string, path to the observ.out file for the target nucleus</p>
 </dd>
 <dt>transitions:</dt><dd><p>list of strings, transitions we’ll consider, e.g. [“E2”, “M1”]</p>
+</dd>
+<dt>shift_file:</dt><dd><p>string, path to a phase_shift or eigenphase_shift file</p>
 </dd>
 <dt>out_dir:</dt><dd><p>string, directory where we’ll save the file</p>
 </dd>

@@ -165,10 +165,18 @@ how each one works. This is an attempt to simplify that process.</p>
 </div>
 <div class="section" id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
-<p>First clone the <a class="reference external" href="https://github.com/callum-mccracken/npsm.git">github repository</a>.</p>
-<p>Make sure you have some kind of way to download python packages, e.g. pip.
-We won’t need much, but we will need numpy and matplotlib for sure.</p>
-<p>Then for each step in your calculation, run the files in each submodule.</p>
+<p>First clone the
+<a class="reference external" href="https://github.com/callum-mccracken/npsm.git">github repository</a>.</p>
+<p>You’ll want to use the <code class="docutils literal notranslate"><span class="pre">--recurse-submodules</span></code>
+flag so all submodules are created properly, i.e. do this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">--recurse-submodules</span> <span class="pre">https://github.com/callum-mccracken/npsm</span></code></p>
+<p>Then, make sure you have some kind of way to download python packages,
+e.g. Anaconda. We won’t need much, but we will need numpy and matplotlib
+for sure.</p>
+<p>The first page of the Walkthrough,
+called “<a class="reference external" href="https://callum-mccracken.github.io/npsm/build/html">The Basics</a>”,
+walks you through how to get set up in more detail.</p>
+<p>Read the rest of the Walkthrough to see how to run each script.</p>
 </div>
 <div class="section" id="main-things-that-npsm-should-do">
 <h2>Main Things That npsm Should Do<a class="headerlink" href="#main-things-that-npsm-should-do" title="Permalink to this headline">¶</a></h2>
@@ -214,8 +222,9 @@ We won’t need much, but we will need numpy and matplotlib for sure.</p>
 <div class="section" id="to-edit-these-docs">
 <h3>To Edit these Docs<a class="headerlink" href="#to-edit-these-docs" title="Permalink to this headline">¶</a></h3>
 <p>These docs were created by sphinx, which pulls docstrings from Python modules.
-It’s not fully automatic though, so if you add a new file don’t expect it to
-be added! This was intentional since it forced me to actually look at the docs
+It’s not fully automatic though, so if you add a new file to the file structure,
+don’t expect it to be added to the docs!
+This was intentional since it forced me to actually look at the docs
 and make sure they looked decent, but if you want to make it more automatic,
 go ahead!</p>
 <p>To generate new HTML files:</p>
@@ -229,6 +238,13 @@ go ahead!</p>
 <li><p>Create <code class="docutils literal notranslate"><span class="pre">docs/source/your_filename.rst</span></code>, just copy &amp; edit one that’s there.</p></li>
 <li><p>Edit <code class="docutils literal notranslate"><span class="pre">docs/source/index.rst</span></code> so it includes your new file.</p></li>
 <li><p>Then generate new HTML files, see above.</p></li>
+</ol>
+<p>To look at the docs locally without pushing to GitHub:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">http.server</span> <span class="pre">1234</span></code>.</p></li>
+<li><p>Go to this url: <code class="docutils literal notranslate"><span class="pre">http://localhost:1234/docs/build/html/</span></code>.</p></li>
+<li><p>You may have to force a hard reset to see your changes,
+<code class="docutils literal notranslate"><span class="pre">cmd</span> <span class="pre">+</span> <span class="pre">shift</span> <span class="pre">+</span> <span class="pre">R</span></code> on Chrome for OSX.</p></li>
 </ol>
 </div>
 </div>
