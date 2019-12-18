@@ -16,10 +16,15 @@ flag so all submodules are created properly, i.e. do this:
 
 ``git clone --recurse-submodules https://github.com/callum-mccracken/npsm``
 
-Make sure you have some kind of way to download python packages, e.g. pip.
-We won't need much, but we will need numpy and matplotlib for sure.
+Then, make sure you have some kind of way to download python packages,
+e.g. Anaconda. We won't need much, but we will need numpy and matplotlib
+for sure.
 
-Then for each step in your calculation, run the files in each submodule.
+The first page of the Walkthrough,
+called "[The Basics](https://callum-mccracken.github.io/npsm/build/html)",
+walks you through how to get set up in more detail.
+
+Read the rest of the Walkthrough to see how to run each script.
 
 # Main Things That npsm Should Do
 (should != does, this is just the outline of what I'd like it to eventually do)
