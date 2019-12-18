@@ -88,8 +88,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="walkthrough.html">Walkthrough</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="the_basics.html">The Basics</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">NCSD</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#run-ncsd">Run ncsd</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#plot-ncsd-output">Plot NCSD Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-ncsd">Running NCSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plotting-ncsd-output">Plotting NCSD Output</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="running_raising_lowering.html">Raising/Lowering</a></li>
@@ -171,12 +171,13 @@
             
   <div class="section" id="ncsd">
 <h1>NCSD<a class="headerlink" href="#ncsd" title="Permalink to this headline">¶</a></h1>
-<p>The ncsd_python module has 2 main uses. I’ll walk you through each.</p>
-<div class="section" id="run-ncsd">
-<h2>Run ncsd<a class="headerlink" href="#run-ncsd" title="Permalink to this headline">¶</a></h2>
+<p>The ncsd_python module makes it easy to run NCSD multiple times
+and to plot output from those NCSD runs.</p>
+<div class="section" id="running-ncsd">
+<h2>Running NCSD<a class="headerlink" href="#running-ncsd" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p>Open the <code class="docutils literal notranslate"><span class="pre">ncsd_python</span></code> directory, and the <code class="docutils literal notranslate"><span class="pre">ncsd_multi.py</span></code> file within.</p></li>
-<li><p>You’ll see a bunch of parameters to adjust:</p>
+<li><p>Adjust all the parameters near the top as needed:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ncsd_path</span> <span class="o">=</span> <span class="n">realpath</span><span class="p">(</span><span class="s2">&quot;ncsd-it.exe&quot;</span><span class="p">)</span>
 <span class="n">working_dir</span> <span class="o">=</span> <span class="n">realpath</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 <span class="n">int_dir</span> <span class="o">=</span> <span class="n">realpath</span><span class="p">(</span><span class="s2">&quot;../interactions/&quot;</span><span class="p">)</span>
@@ -189,8 +190,16 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>Edit them for your specific case. If you want to have multiple runs, you
-can use lists for the <code class="docutils literal notranslate"><span class="pre">ManParams</span></code> parameters, e.g.:</p>
+<ul class="simple">
+<li><p>Enter the necessary paths</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">machine</span></code> should be either <code class="docutils literal notranslate"><span class="pre">cedar</span></code>, <code class="docutils literal notranslate"><span class="pre">summit</span></code>, or <code class="docutils literal notranslate"><span class="pre">local</span></code>
+(or some other machine if you add a way to make batch files for it)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run</span></code> controls whether or not to run all batch files automatically
+at the end of this script</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">ManParams</span></code> instance is where you put nucleus info, etc.</p></li>
+<li><p>Inside <code class="docutils literal notranslate"><span class="pre">ncsd_multi.py</span></code>, each parameter is further explained in a comment</p></li>
+</ul>
+<p>For example, to do an NCSD run for lithium 6, 7, 8, and 9, enter this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">man_params</span> <span class="o">=</span> <span class="n">ManParams</span><span class="p">(</span>
     <span class="n">Z</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>  <span class="c1"># number of protons</span>
     <span class="n">N</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>  <span class="c1"># number of neutrons</span>
@@ -198,41 +207,40 @@ can use lists for the <code class="docutils literal notranslate"><span class="pr
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>That would run ncsd 4 times, for lithium 6, 7, 8, and 9.</p>
 </li>
-<li><p>Once you have finished with all that, just run the file:</p>
+<li><p>Run the file, like so:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">ncsd_multi</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>This will create a directory for each run, and put all the necessary files
-inside. Then depending on the value of <code class="docutils literal notranslate"><span class="pre">run</span></code>, it will run the batch file
-in the directory. If <code class="docutils literal notranslate"><span class="pre">run=False</span></code>, you’ll have to do that yourself.</p>
-<p>The batch script was created such that the output from ncsd gets plotted
-automatically, i.e. the next section should already be done, but you may
-want to edit those plots so still read the next section.</p>
+<p>The script will…</p>
+<ul class="simple">
+<li><p>create a directory for each run</p></li>
+<li><p>put all the necessary files (e.g. mfdp.dat) inside</p></li>
+<li><p>depending on the value of <code class="docutils literal notranslate"><span class="pre">run</span></code>, it will submit the jobs</p></li>
+<li><p>once ncsd’s done running all output will be plotted</p></li>
+</ul>
 </li>
 </ol>
 </div>
-<div class="section" id="plot-ncsd-output">
-<h2>Plot NCSD Output<a class="headerlink" href="#plot-ncsd-output" title="Permalink to this headline">¶</a></h2>
-<p>So now you have ncsd output, but it’s not in a directly plottable format.</p>
-<p>The filename will look something like <code class="docutils literal notranslate"><span class="pre">Li8_n3lo-NN3Nlnl-srg2.0_Nmax0-10.20</span></code>.</p>
-<p>The script <code class="docutils literal notranslate"><span class="pre">output_plotter.py</span></code> will plot the energies of various states
-for your nucleus of interest.</p>
-<p>For example, the file listed above produced the following plot
-(using filler data for experimental values, our calculation wasn’t THAT good):</p>
-<a href="https://i.imgur.com/JcXMeMW.jpg" >
-    <img src="https://i.imgur.com/JcXMeMW.jpg"/>
-</a><p>This is just the auto-generated matplotlib plot, which could use some work
-in terms of beauty, but it illustrates what gets plotted.
-The xmgrace version plots channel titles too.</p>
-<div class="admonition-future-work admonition">
-<p class="admonition-title">Future Work</p>
-<p>The matplotlib graph could be better, with channel titles etc.</p>
+<div class="section" id="plotting-ncsd-output">
+<h2>Plotting NCSD Output<a class="headerlink" href="#plotting-ncsd-output" title="Permalink to this headline">¶</a></h2>
+<p>Now you have ncsd output files, and you want to make a plot
+of energies vs Nmax. Something like this:</p>
+<a href="https://i.imgur.com/nw1HBUW.png" >
+    <img src="https://i.imgur.com/nw1HBUW.png"/>
+</a><p>The file containing the relevant output will have a name like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Li8_n3lo</span><span class="o">-</span><span class="n">NN3Nlnl</span><span class="o">-</span><span class="n">srg2</span><span class="o">.</span><span class="mi">0</span><span class="n">_Nmax0</span><span class="o">-</span><span class="mf">10.20</span>
+</pre></div>
 </div>
-<p>If you want your plot to exclude certain Nmax values or something,
+<p>The script <code class="docutils literal notranslate"><span class="pre">output_plotter.py</span></code> will read that file, then plot the energies
+of the states it finds. It produces .grdt, .csv, .png, and .svg output files.</p>
+<p>The image I showed above is just the auto-generated matplotlib plot,
+which could use some work in terms of beauty. If you want to edit the plots
+afterwards, e.g. to rearrange titles, either use the xmgrace files or
+edit the .svg file with Inkscape or a similar program.</p>
+<p>If you want your plot to exclude certain <code class="docutils literal notranslate"><span class="pre">Nmax</span></code> values or something,
 there are parameters in the <code class="docutils literal notranslate"><span class="pre">output_plotter.py</span></code> file that you can edit,
-and then re-run, same kind of idea as with <code class="docutils literal notranslate"><span class="pre">ncsd_multi.py</span></code>.</p>
+and then re-run. Those parameters are better explained inside the actual file.</p>
 </div>
 </div>
 

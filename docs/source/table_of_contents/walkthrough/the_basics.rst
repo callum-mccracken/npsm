@@ -6,10 +6,6 @@ The Basics
 
 These are the instructions to get you ready to run the code.
 
-If you're not a super-noob like I was a couple months ago,
-you might want to skip this section.
-
-
 Before We Download the Code
 --------------------------------
 
@@ -31,9 +27,7 @@ If so, you're good.
 
 If not, fix that.
 
-**Then, you'll need Python and a package manager.**
-
-I recommend Anaconda.
+**Then, you'll need Python and Anaconda.**
 
 - If you're on a local machine, download it from `here <https://www.anaconda.com/distribution/>`_
   - Here's a `quickstart guide <https://docs.anaconda.com/anaconda/user-guide/getting-started/>`_
@@ -50,51 +44,23 @@ You should see something like this when you run Python::
     Type "help", "copyright", "credits" or "license" for more information.
     >>>
 
-Also ensure you have a way to download packages, e.g. ``numpy``.
+Now you can just create a conda environment with all required packages::
 
-For example, this is how to install ``numpy`` using Anaconda
-(I already had it downloaded, but it updated some stuff)::
+    conda env create -f environment.yml
 
-    (base) [callum@cedar5 Nmax8]$ conda install numpy
-    Collecting package metadata (current_repodata.json): done
-    Solving environment: -
-    done
+If somehow you're unable to use Anaconda and have to manually install
+packages like a caveman, this should be a complete list of what you'll need::
 
-    ## Package Plan ##
+    matplotlib v. 3.1.1
+    numpy v. 1.17.2
+    scipy v. 1.3.1
 
-    environment location: /home/callum/.local/easybuild/software/2017/Core/miniconda3/4.3.27
+And these last 3 are only necessary if you want to edit the docs::
 
-    added / updated specs:
-        - numpy
+    sphinx v. 2.2.0
+    m2r v. 0.2.1
+    sphinx-rtd-theme v. 0.4.3
 
-
-    The following packages will be downloaded:
-
-        package                    |            build
-        ---------------------------|-----------------
-        ca-certificates-2019.11.27 |                0         132 KB
-        certifi-2019.11.28         |           py37_0         156 KB
-        ------------------------------------------------------------
-                                            Total:         288 KB
-
-    The following packages will be UPDATED:
-
-    ca-certificates                              2019.10.16-0 --> 2019.11.27-0
-    certifi                                  2019.9.11-py37_0 --> 2019.11.28-py37_0
-
-
-    Proceed ([y]/n)? y
-
-
-    Downloading and Extracting Packages
-    certifi-2019.11.28   | 156 KB    | ########################################################################################################### | 100%
-    ca-certificates-2019 | 132 KB    | ########################################################################################################### | 100%
-    Preparing transaction: done
-    Verifying transaction: done
-    Executing transaction: done
-    (base) [callum@cedar5 Nmax8]$
-
-All good up to here?
 
 **Now do yourself a favour and download these programs.**
 
@@ -102,12 +68,9 @@ You don't have to, but I've found them helpful.
 
 1. `Visual Studio Code <https://code.visualstudio.com/>`_
 
-- It's a good editor on it's own, so it's recommended on that front,
-  but the real power is in the extensions.
-- Install the ``Remote - SSH`` extension and you'll be able to edit/run code
-  on remote machines as if they were local.
-- The downside to this is that it can refuse to connect sometimes, which
-  means you'll be stuck with the terminal or something while it's down.
+- It's the `most popular editor in the world <https://insights.stackoverflow.com/survey/2019#technology-_-most-popular-development-environments>`_ as of 2019, for good reason.
+- If you install the ``Remote - SSH`` extension, you'll be able to edit/run
+  code on remote machines as if they were local.
 
 2. If you're on a mac, `Cuberduck <https://cyberduck.io/>`_
 
@@ -120,12 +83,12 @@ You don't have to, but I've found them helpful.
 
 
 
-Let's Download That Code
+Now Let's Download That Code
 --------------------------------
 
 Follow these steps::
 
-    (base) callum@itheory10 ~ % cd /path/where/i/want/to/put/files/called/dir/
+    (base) callum@itheory10 ~ % cd /i/want/to/put/files/in/this/dir/
     (base) callum@itheory10 dir %
     (base) callum@itheory10 dir % git clone https://github.com/callum-mccracken/npsm.git
     Cloning into 'npsm'...

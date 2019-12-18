@@ -2,14 +2,15 @@
 NCSD
 ==============================
 
-The ncsd_python module has 2 main uses. I'll walk you through each.
+The ncsd_python module makes it easy to run NCSD multiple times
+and to plot output from those NCSD runs.
 
-Run ncsd
---------
+Running NCSD
+--------------
 
 1. Open the ``ncsd_python`` directory, and the ``ncsd_multi.py`` file within.
 
-2. You'll see a bunch of parameters to adjust::
+2. Adjust all the parameters near the top as needed::
 
     ncsd_path = realpath("ncsd-it.exe")
     working_dir = realpath("")
@@ -22,8 +23,15 @@ Run ncsd
         ...
     )
 
-   Edit them for your specific case. If you want to have multiple runs, you
-   can use lists for the ``ManParams`` parameters, e.g.::
+   - Enter the necessary paths
+   - ``machine`` should be either ``cedar``, ``summit``, or ``local``
+     (or some other machine if you add a way to make batch files for it)
+   - ``run`` controls whether or not to run all batch files automatically
+     at the end of this script
+   - The ``ManParams`` instance is where you put nucleus info, etc.
+   - Inside ``ncsd_multi.py``, each parameter is further explained in a comment
+
+   For example, to do an NCSD run for lithium 6, 7, 8, and 9, enter this::
 
     man_params = ManParams(
         Z=3,  # number of protons
@@ -31,47 +39,41 @@ Run ncsd
         ...
     )
 
-   That would run ncsd 4 times, for lithium 6, 7, 8, and 9.
-
-3. Once you have finished with all that, just run the file::
+3. Run the file, like so::
 
     python ncsd_multi.py
 
-   This will create a directory for each run, and put all the necessary files
-   inside. Then depending on the value of ``run``, it will run the batch file
-   in the directory. If ``run=False``, you'll have to do that yourself.
+   The script will...
 
-   The batch script was created such that the output from ncsd gets plotted
-   automatically, i.e. the next section should already be done, but you may
-   want to edit those plots so still read the next section.
+   - create a directory for each run
+   - put all the necessary files (e.g. mfdp.dat) inside
+   - depending on the value of ``run``, it will submit the jobs
+   - once ncsd's done running all output will be plotted
 
-Plot NCSD Output
-----------------
+Plotting NCSD Output
+---------------------
 
-So now you have ncsd output, but it's not in a directly plottable format.
-
-The filename will look something like ``Li8_n3lo-NN3Nlnl-srg2.0_Nmax0-10.20``.
-
-The script ``output_plotter.py`` will plot the energies of various states
-for your nucleus of interest.
-
-For example, the file listed above produced the following plot
-(using filler data for experimental values, our calculation wasn't THAT good):
+Now you have ncsd output files, and you want to make a plot
+of energies vs Nmax. Something like this:
 
 .. raw:: html
 
-    <a href="https://i.imgur.com/JcXMeMW.jpg" >
-        <img src="https://i.imgur.com/JcXMeMW.jpg"/>
+    <a href="https://i.imgur.com/nw1HBUW.png" >
+        <img src="https://i.imgur.com/nw1HBUW.png"/>
     </a>
 
-This is just the auto-generated matplotlib plot, which could use some work
-in terms of beauty, but it illustrates what gets plotted.
-The xmgrace version plots channel titles too.
+The file containing the relevant output will have a name like this::
 
-.. admonition:: Future Work
+    Li8_n3lo-NN3Nlnl-srg2.0_Nmax0-10.20
 
-    The matplotlib graph could be better, with channel titles etc.
+The script ``output_plotter.py`` will read that file, then plot the energies
+of the states it finds. It produces .grdt, .csv, .png, and .svg output files.
 
-If you want your plot to exclude certain Nmax values or something,
+The image I showed above is just the auto-generated matplotlib plot,
+which could use some work in terms of beauty. If you want to edit the plots
+afterwards, e.g. to rearrange titles, either use the xmgrace files or
+edit the .svg file with Inkscape or a similar program.
+
+If you want your plot to exclude certain ``Nmax`` values or something,
 there are parameters in the ``output_plotter.py`` file that you can edit,
-and then re-run, same kind of idea as with ``ncsd_multi.py``.
+and then re-run. Those parameters are better explained inside the actual file.

@@ -17,8 +17,9 @@ Buckle up for this one, this code is more interactive than the others.
 
 Once you have your NCSMC output, copy it to a local machine, where you
 have followed the setup instructions for Python. See :ref:`basics`.
-Also ensure any columns in eigenphase_shift and phase_shift files are
-rearranged as needed, this code does not touch column order.
+
+Also, ensure the columns in the eigenphase_shift and phase_shift files are
+rearranged as needed, this code does not adjust column order.
 
 2. Edit process_ncsmc_output.py
 ---------------------------------

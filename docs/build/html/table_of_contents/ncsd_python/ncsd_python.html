@@ -201,14 +201,15 @@ full of helper functions.</p>
 <dl class="data">
 <dt id="ncsd_python.ncsd_multi.int_dir">
 <code class="sig-prename descclassname">ncsd_python.ncsd_multi.</code><code class="sig-name descname">int_dir</code><em class="property"> = '/Users/callum/Desktop/npsm/interactions'</em><a class="headerlink" href="#ncsd_python.ncsd_multi.int_dir" title="Permalink to this definition">¶</a></dt>
-<dd><p>Paths: change the values as needed, but don’t remove the <code class="docutils literal notranslate"><span class="pre">realpath</span></code>.
-Empty string = current working directory, relative paths are relative to there.</p>
+<dd><p>Paths: change the values as needed, but don’t remove the <code class="docutils literal notranslate"><span class="pre">realpath</span></code>
+(it converts relative –&gt; absolute paths).
+Relative paths = relative to current working directory.</p>
 </dd></dl>
 
 <dl class="data">
 <dt id="ncsd_python.ncsd_multi.machine">
 <code class="sig-prename descclassname">ncsd_python.ncsd_multi.</code><code class="sig-name descname">machine</code><em class="property"> = 'cedar'</em><a class="headerlink" href="#ncsd_python.ncsd_multi.machine" title="Permalink to this definition">¶</a></dt>
-<dd><p>Machine: must be one of “cedar”, “summit”, “local”.</p>
+<dd><p>machine must be one of “cedar”, “summit”, “local”.</p>
 </dd></dl>
 
 <dl class="data">
@@ -224,10 +225,32 @@ of a list made here.</p></li>
 </ul>
 </dd></dl>
 
-<dl class="function">
+<dl class="data">
 <dt id="ncsd_python.ncsd_multi.run">
-<code class="sig-prename descclassname">ncsd_python.ncsd_multi.</code><code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">man_params</em>, <em class="sig-param">int_dir</em>, <em class="sig-param">ncsd_path</em>, <em class="sig-param">working_dir</em>, <em class="sig-param">machine</em>, <em class="sig-param">run=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.ncsd_multi.run" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do you want to run the code automatically? If so, set run=True</p>
+<code class="sig-prename descclassname">ncsd_python.ncsd_multi.</code><code class="sig-name descname">run</code><em class="property"> = True</em><a class="headerlink" href="#ncsd_python.ncsd_multi.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do you want to run jobs automatically? If so, set run=True</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncsd_python.ncsd_multi.run_ncsd">
+<code class="sig-prename descclassname">ncsd_python.ncsd_multi.</code><code class="sig-name descname">run_ncsd</code><span class="sig-paren">(</span><em class="sig-param">man_params</em>, <em class="sig-param">int_dir</em>, <em class="sig-param">ncsd_path</em>, <em class="sig-param">working_dir</em>, <em class="sig-param">machine</em>, <em class="sig-param">run=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.ncsd_multi.run_ncsd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs NCSD code. The real heavy lifting is done in ncsd_multi_run.py.</p>
+<dl class="simple">
+<dt>man_params:</dt><dd><p>a data_structures.ManParams instance,
+containing all the manual parameters you want to enter</p>
+</dd>
+<dt>int_dir:</dt><dd><p>a path to the directory where you keep interaction files</p>
+</dd>
+<dt>ncsd_path:</dt><dd><p>the path to the ncsd executable file</p>
+</dd>
+<dt>working_dir:</dt><dd><p>the path to the directory in which you want to create
+new directories for each run</p>
+</dd>
+<dt>machine:</dt><dd><p>the name of the machine you’re using, e.g. “cedar”, “summit”</p>
+</dd>
+<dt>Returns:</dt><dd><p>Nothing, but does create files and optinally runs batch scripts.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>

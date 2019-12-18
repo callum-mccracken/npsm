@@ -21,10 +21,10 @@ e.g. Anaconda. We won't need much, but we will need numpy and matplotlib
 for sure.
 
 The first page of the Walkthrough,
-called "[The Basics](https://callum-mccracken.github.io/npsm/build/html)",
+called [The Basics](https://callum-mccracken.github.io/npsm/build/html/table_of_contents/walkthrough/the_basics.html),
 walks you through how to get set up in more detail.
 
-Read the rest of the Walkthrough to see how to run each script.
+Read the rest of the [Walkthrough](https://callum-mccracken.github.io/npsm/build/html/table_of_contents/walkthrough/walkthrough.html) to see how to run each script.
 
 # Main Things That npsm Should Do
 (should != does, this is just the outline of what I'd like it to eventually do)
