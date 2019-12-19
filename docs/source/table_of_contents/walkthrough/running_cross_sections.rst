@@ -5,8 +5,6 @@ Cross-Sections
 Now that you've run NCSMC and you've looked at the output with
 :ref:`ncsmc_python`, it's time to calculate the cross-section of the reaction.
 
-This one is pretty simple.
-
 1. Edit run_transitions.py
 -------------------------------
 

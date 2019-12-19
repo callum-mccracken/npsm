@@ -88,6 +88,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="walkthrough.html">Walkthrough</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="the_basics.html">The Basics</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">NCSD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#important-variables">Important Variables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#running-ncsd">Running NCSD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#plotting-ncsd-output">Plotting NCSD Output</a></li>
 </ul>
@@ -173,6 +174,94 @@
 <h1>NCSD<a class="headerlink" href="#ncsd" title="Permalink to this headline">¶</a></h1>
 <p>The ncsd_python module makes it easy to run NCSD multiple times
 and to plot output from those NCSD runs.</p>
+<div class="section" id="important-variables">
+<h2>Important Variables<a class="headerlink" href="#important-variables" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>ncsd_path:</dt><dd><p>Path to NCSD executable</p>
+</dd>
+<dt>working_dir:</dt><dd><p>Path to directory where you want to put all the ncsd files and run them</p>
+</dd>
+<dt>int_dir:</dt><dd><p>Path to directory where your interaction files are stored</p>
+</dd>
+<dt>machine:</dt><dd><p>One of “cedar”, “summit”, “local”. The machine you’re using to run ncsd.</p>
+</dd>
+<dt>run:</dt><dd><p>Do you want to run the batch files this code creates? If so, set run=True</p>
+</dd>
+<dt>ZN:</dt><dd><p>Pairs of Z, N values, e.g. (3, 5) or [(3, 5), (3, 6)].</p>
+</dd>
+<dt>hbar_omega:</dt><dd><p>Harmonic oscillator frequency</p>
+</dd>
+<dt>N_1max:</dt><dd><p>highest number of harmonic oscillator quanta for 1 nucleon</p>
+</dd>
+<dt>N_12max:</dt><dd><p>highest number of harmonic oscillator quanta for 2 nucleons</p>
+</dd>
+<dt>Nmax:</dt><dd><p>This isn’t a parameter you’ll have to enter here, but you should know what
+<code class="docutils literal notranslate"><span class="pre">Nmax</span></code> is. In contrast to <code class="docutils literal notranslate"><span class="pre">N_1max</span></code> and <code class="docutils literal notranslate"><span class="pre">N_12max</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Nmax</span></code> is the maximum number of oscillator quanta allowed above the
+lowest Pauli-allowed state for the nucleus of interest.
+E.g., <code class="docutils literal notranslate"><span class="pre">Nmax</span> <span class="pre">=</span> <span class="pre">0</span></code> is the ground state of a nucleus.</p>
+</dd>
+<dt>Nmax_min, Nmax_max:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">Nmax_min</span></code> and <code class="docutils literal notranslate"><span class="pre">Nmax_max</span></code> are lower/upper bounds for <code class="docutils literal notranslate"><span class="pre">Nmax</span></code>.
+For example, <code class="docutils literal notranslate"><span class="pre">Nmax_min</span> <span class="pre">=</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">Nmax_max</span> <span class="pre">=</span> <span class="pre">8</span></code> gives eigenvectors for
+<code class="docutils literal notranslate"><span class="pre">Nmax</span> <span class="pre">=</span> <span class="pre">0,</span> <span class="pre">2,</span> <span class="pre">4,</span> <span class="pre">6,</span> <span class="pre">8</span></code>.</p>
+</dd>
+<dt>Nmax_IT:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">Nmax</span></code> value at which importance truncation starts</p>
+</dd>
+<dt>n_states:</dt><dd><p>number of final states of the nucleus that we want to calculate</p>
+</dd>
+<dt>iterations_required:</dt><dd><p>At some point in the calculation, we have to diagonalize the hamiltonian,
+which is a huge matrix, so we have to approximate using the Lanczos
+algorithm. <code class="docutils literal notranslate"><span class="pre">iterations_required</span></code> is the number of steps to use during
+this Lanczos step.</p>
+</dd>
+<dt>irest:</dt><dd><p>If the calculation fails, should we restart?
+4 = yes, 0 = no, and there are a couple more options too.</p>
+</dd>
+<dt>nhw_restart:</dt><dd><p>Either -1 or 1, whether to restart the calculation using partially finished
+data from a previous run</p>
+</dd>
+<dt>kappa:</dt><dd><p>Kappa is a value that’s used for TODO: what?</p>
+</dd>
+<dt>kappa_points:</dt><dd><p>The number of kappa values to use.
+Note that they are entered here such that 1 means 1x10-4.</p>
+</dd>
+<dt>kappa_vals:</dt><dd><p>The values for kappa in increasing order, written as a string so as not
+to confuse the program by giving it a list and looping over the values.</p>
+</dd>
+<dt>kappa_restart:</dt><dd><p>Whether or not to restart the calculation with a certain value of kappa.
+-1 for false, or else some value between 1 and 4.</p>
+</dd>
+<dt>saved_pivot:</dt><dd><p>“T” or “F”, whether or not to use a pivot saved during the Lanczos step
+of a previous run.</p>
+</dd>
+<dt>time:</dt><dd><p>A string of the form “days hours minutes”, that tells how much processor
+time to reserve. This string will be formatted properly later by the
+program, depending on which machine you’re using.</p>
+</dd>
+<dt>mem:</dt><dd><p>How much memory will you need? Integer, denotes memory in GB.</p>
+</dd>
+<dt>n_nodes:</dt><dd><p>number of nodes (integer)</p>
+</dd>
+<dt>potential_name:</dt><dd><p>The name of the potential you used for your interaction,
+for example, “n3lo-NN3Nlnl-srg2.0”.
+This is used as an identifier for output files.</p>
+</dd>
+<dt>two_body_interaction:</dt><dd><p>The name of a 2-body interaction file, e.g.
+“TBMEA2srg-n3lo2.0_14.20_910”.
+Note that this file must be stored inside int_dir!</p>
+</dd>
+<dt>interaction_type:</dt><dd><p>Integer that designates which type of interaction.
+2 means 2-body, 3 means 3-body, -3 means 3-body but only 2-body
+when doing the importance truncated steps.</p>
+</dd>
+<dt>N_123max:</dt><dd><p>ighest number of harmonic oscillator quanta for 3 nucleons</p>
+</dd>
+<dt>three_body_interaction:</dt><dd><p>The name of a 3-body interaction file, e.g.
+“v3trans_J3T3.int_3NFlocnonloc-srg2.0_from24_220_11109.20_comp”.
+Note that this file must be stored inside int_dir!</p>
+</dd>
+</dl>
+</div>
 <div class="section" id="running-ncsd">
 <h2>Running NCSD<a class="headerlink" href="#running-ncsd" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
