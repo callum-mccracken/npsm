@@ -5,7 +5,7 @@ We want to be able to edit the nki, nkf values.
 
 To run this file with command line arguments::
 
-    python edit_dot_in.py -o original/path/trdens.in -n new/path/trdens.in -i 1 -f 2
+    python edit_dot_in.py -o original/trdens.in -n new/trdens.in -i 1 -f 2
 """
 
 import argparse
