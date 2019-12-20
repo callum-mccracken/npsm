@@ -16,6 +16,10 @@ flag so all submodules are created properly, i.e. do this:
 
 ``git clone --recurse-submodules https://github.com/callum-mccracken/npsm``
 
+To get the latest version, do this:
+
+`git pull origin master`
+
 Then, make sure you have some kind of way to download python packages,
 e.g. Anaconda. We won't need much, but we will need numpy and matplotlib
 for sure.
