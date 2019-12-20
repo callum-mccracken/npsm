@@ -5,6 +5,7 @@ import os
 import sys
 sys.path.append(os.path.realpath(".."))
 from ncsmc_python.output_simplifier import simplify
+import re
 
 ptable = {
     "n": 0,
@@ -184,6 +185,38 @@ def get_resultant_state_info(rgm_out_filename):
         T2 = str(int(float(T) * 2))
         state_titles[i] = " ".join([J2, p, T2])
     return state_titles
+
+
+def get_target_state_info(rgm_out_filename):
+    with open(rgm_out_filename, "r+") as rgm_out_file:
+        text = rgm_out_file.read()
+    # first get parity
+    parity_matches = re.findall(r'parity= [+-]', text)
+    # the first parity value in the file should be from the target info up top
+    target_parity = parity_matches[0].split()[1]
+    if target_parity == "+":
+        parity = 1
+    elif target_parity == "-":
+        parity = -1
+    else:
+        raise ValueError("Parity value " + target_parity + " not understood")
+    # I assume all hunks of relevant info look something like this:
+    # J=  4    T=  2    Energy= -34.8845
+    regex = r'J=[ ]*-?[0-9]*[ ]*T=[ ]*-?[0-9]*[ ]*Energy=[ ]-?[0-9]*.?[0-9]*'
+    matches = re.findall(regex, text)
+    states = []
+    for match in matches:
+        words = match.split()
+        J2 = int(words[1])
+        T2 = int(words[3])
+        energy = float(words[5])
+        states.append([J2, parity, T2, energy])
+
+    # Format: 2J, parity, 2T, binding energy. First entry = ground state.
+    # I'm pretty sure that the first state will always be the ground state,
+    # but if that's not the case, you should add some code here to rearrange
+    # the list!
+    return states
 
 
 dot_in_fmt = """{run_name}

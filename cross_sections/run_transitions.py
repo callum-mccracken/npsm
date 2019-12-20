@@ -9,6 +9,7 @@ Main module of cross_sections
   - norm_sqrt file
   - form_factors file
   - scattering_wf_NCSMC file
+- and run transitions_NCSMC.exe
 """
 
 import ncsm_e1
@@ -19,7 +20,7 @@ import os
 import shutil
 from os.path import join, exists, basename, realpath
 
-# NOTE: some parameters are set by default, in dot_in.py!
+# NOTE: some parameters are set by default, in dot_in.py! E.g. matching radius
 
 # path to executable file
 exe_path = realpath("transitions_NCSMC.exe")
@@ -33,27 +34,8 @@ resultant_files = [
     join(ncsmc_out_dir, "Li9_observ_Nmax7_Nmax6_Jz1")
 ]
 
-# ncsm_rgm_out, to get bound states of resultant nucleus
-ncsmc_rgm_out_file = join(ncsmc_out_dir, "ncsm_rgm_Am2_1_1.out_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6_pheno_all_adjusted")
-
 # observ.out file for the target nucleus
 target_file = join(ncsmc_out_dir, "Li8_observ_Nmax6_Jz1")
-
-# the eigenphase_shift or phase_shift file, for getting energy bounds
-shift_file = join(ncsmc_out_dir, "phase_shift_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6_pheno_all_adjusted.agr")
-
-# you also need these files, which are produced by ncsmc:
-norm_sqrt = join(ncsmc_out_dir, "norm_sqrt_r_rp_RGM_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6_pheno_all_adjusted.dat")
-form_factors = join(ncsmc_out_dir, "NCSMC_form_factors_g_h_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6_pheno_all_adjusted.dat")
-scattering_wf_NCSMC = join(ncsmc_out_dir, "scattering_wf_NCSMC_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6_pheno_all_adjusted.agr")
-wavefunction_NCSMC = join(ncsmc_out_dir, "wavefunction_NCSMC_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6_pheno_all_adjusted.agr")
-
-# bound states of the target nucleus. TODO: can we get these automatically?
-target_bound_states = [
-    # Format: 2J, parity, 2T, binding energy. First entry = ground state.
-    [4, 1, 2, -34.8845],
-    [2, 1, 2, -33.7694]
-]
 
 # transitions we care about
 transitions_we_want = ["E1", "E2", "M1"]
@@ -67,6 +49,28 @@ naming_str = "NCSMC_E1M1E2_Li9_2J"
 
 # the projectile we're using, "n", "p", or a list of the form [A, Z, 2J, p, 2T]
 proj = "n"
+
+# STOP EDITING HERE, unless you have strangely named output files or something!
+
+# more ncsmc output file paths
+ncsmc_rgm_out_file = join(ncsmc_out_dir, f"ncsm_rgm_Am2_1_1.out_{run_name}")
+shift_file = join(ncsmc_out_dir, f"phase_shift_{run_name}.agr")
+norm_sqrt = join(ncsmc_out_dir, f"norm_sqrt_r_rp_RGM_{run_name}.dat")
+form_factors = join(
+    ncsmc_out_dir, f"NCSMC_form_factors_g_h_{run_name}.dat")
+scattering_wf_NCSMC = join(
+    ncsmc_out_dir, f"scattering_wf_NCSMC_{run_name}.agr")
+wavefunction_NCSMC = join(
+    ncsmc_out_dir, f"wavefunction_NCSMC_{run_name}.agr")
+
+# resultant nucleus bound states, list of "2J pi 2T" strings
+resultant_states = cross_sections_utils.get_resultant_state_info(
+    ncsmc_rgm_out_file)
+
+# bound states of the target nucleus, lists of numbers, [2J, p, 2T, E]
+# first entry must be the ground state
+target_bound_states = cross_sections_utils.get_target_state_info(
+    ncsmc_rgm_out_file)
 
 
 def make_dir(res_state):
@@ -132,10 +136,6 @@ def run_exe(exe):
 
 
 if __name__ == "__main__":
-    # resultant nucleus bound states, in "2J pi 2T" format
-    resultant_states = cross_sections_utils.get_resultant_state_info(
-        ncsmc_rgm_out_file)
-
     # make run directories
     for res_state in resultant_states:
         executable = make_dir(res_state)
