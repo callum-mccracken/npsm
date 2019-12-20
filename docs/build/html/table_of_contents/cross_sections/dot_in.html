@@ -272,7 +272,7 @@ of the target.</p>
 <code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">make_dot_in</code><span class="sig-paren">(</span><em class="sig-param">proj</em>, <em class="sig-param">target_bound_states</em>, <em class="sig-param">run_name</em>, <em class="sig-param">state_name</em>, <em class="sig-param">naming_str</em>, <em class="sig-param">observ_file</em>, <em class="sig-param">transitions</em>, <em class="sig-param">shift_file</em>, <em class="sig-param">out_dir=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.make_dot_in" title="Permalink to this definition">¶</a></dt>
 <dd><p>Makes a transitions_NCSMC.in file.</p>
 <dl class="simple">
-<dt>proj:</dt><dd><p>string, the projectile, e.g. “n”</p>
+<dt>proj:</dt><dd><p>string, the projectile, e.g. “n”, or list of [A, Z, 2J, pi, 2T]</p>
 </dd>
 <dt>target_bound_states:</dt><dd><p>list, info about bound states of the target.
 Formatted like <code class="docutils literal notranslate"><span class="pre">[[J2,</span> <span class="pre">parity,</span> <span class="pre">T2,</span> <span class="pre">energy],</span> <span class="pre">...]</span></code></p>

@@ -3,7 +3,7 @@ A module for processing files from NCSMC output.
 """
 import re
 from os.path import basename, join
-import utils
+import cross_sections_utils
 
 def simplify_observ(desired_state, transitions, filename, function=None):
     """
@@ -272,7 +272,7 @@ def make_wf_file(wavefunction_NCSMC_file, res_state, run_dir):
     assert the_chosen_one is not None
 
     # save that segment back out to a file
-    state_name = utils.get_state_name(res_state)
+    state_name = cross_sections_utils.get_state_name(res_state)
     # I assume the filename ends with .agr
     filename = basename(wavefunction_NCSMC_file)[:-4]
     out_path = join(run_dir, filename + "_" + state_name + ".agr")

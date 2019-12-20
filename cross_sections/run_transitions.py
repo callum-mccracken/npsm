@@ -14,11 +14,10 @@ Main module of cross_sections
 import ncsm_e1
 import dot_in
 import file_tools
-import utils
+import cross_sections_utils
 import os
 import shutil
-from os.path import join, dirname, lexists, exists, basename, realpath
-from multiprocessing import Process
+from os.path import join, exists, basename, realpath
 
 # NOTE: some parameters are set by default, in dot_in.py!
 
@@ -26,7 +25,7 @@ from multiprocessing import Process
 exe_path = realpath("transitions_NCSMC.exe")
 
 # where are your output files stored?
-ncsmc_out_dir = "/global/scratch/ccmccracken/npsm/_pheno/"
+ncsmc_out_dir = "/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output_pheno/"
 
 # observ.out files for the resultant nucleus
 resultant_files = [
@@ -34,10 +33,13 @@ resultant_files = [
     join(ncsmc_out_dir, "Li9_observ_Nmax7_Nmax6_Jz1")
 ]
 
+# ncsm_rgm_out, to get bound states of resultant nucleus
+ncsmc_rgm_out_file = join(ncsmc_out_dir, "ncsm_rgm_Am2_1_1.out_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6_pheno_all_adjusted")
+
 # observ.out file for the target nucleus
 target_file = join(ncsmc_out_dir, "Li8_observ_Nmax6_Jz1")
 
-#the eigenphase_shift or phase_shift file, for getting energy bounds
+# the eigenphase_shift or phase_shift file, for getting energy bounds
 shift_file = join(ncsmc_out_dir, "phase_shift_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6_pheno_all_adjusted.agr")
 
 # you also need these files, which are produced by ncsmc:
@@ -53,9 +55,6 @@ target_bound_states = [
     [2, 1, 2, -33.7694]
 ]
 
-# resultant nucleus states we care about, in "2J pi 2T" format
-resultant_states = ["1 -1 3", "3 -1 3"]
-
 # transitions we care about
 transitions_we_want = ["E1", "E2", "M1"]
 
@@ -66,8 +65,7 @@ run_name = "nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6_pheno_all_adjusted"
 # we'll append "_2J" at the end, e.g. "_1", based on resultant_states
 naming_str = "NCSMC_E1M1E2_Li9_2J"
 
-
-# the projectile we're using, "n", "p", or a list of the form [A, Z, 2J, pi, 2T]
+# the projectile we're using, "n", "p", or a list of the form [A, Z, 2J, p, 2T]
 proj = "n"
 
 
@@ -78,8 +76,9 @@ def make_dir(res_state):
     res_state:
         string, of the form "1 -1 3"
     """
+
     # the 3m version of a state with 2J = 3, parity = -1
-    res_state_name = utils.get_state_name(res_state)
+    res_state_name = cross_sections_utils.get_state_name(res_state)
     run_dir = realpath(run_name+"_"+res_state_name)
     if not exists(run_dir):
         os.mkdir(run_dir)
@@ -96,7 +95,7 @@ def make_dir(res_state):
         target_file, transitions_we_want, shift_file, out_dir=run_dir)
 
     # copy the executable
-    #if not lexists(join(run_dir, basename(exe_path))):
+    # if not lexists(join(run_dir, basename(exe_path))):
     shutil.copyfile(exe_path, join(run_dir, basename(exe_path)))
 
     # copy / link the other files, as needed
@@ -131,8 +130,13 @@ def run_exe(exe):
     os.system("./"+filename)
     os.chdir(cwd)
 
+
 if __name__ == "__main__":
+    # resultant nucleus bound states, in "2J pi 2T" format
+    resultant_states = cross_sections_utils.get_resultant_state_info(
+        ncsmc_rgm_out_file)
+
     # make run directories
     for res_state in resultant_states:
         executable = make_dir(res_state)
-        Process(target=run_exe(executable)).start()
+        run_exe(executable)

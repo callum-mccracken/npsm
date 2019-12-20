@@ -1,6 +1,10 @@
 """
 Useful things that didn't really fit anywhere.
 """
+import os
+import sys
+sys.path.append(os.path.realpath(".."))
+from ncsmc_python.output_simplifier import simplify
 
 ptable = {
     "n": 0,
@@ -170,6 +174,16 @@ def get_A_Z(name):
     A = float(name[n_chars:])
     Z = ptable[name[:n_chars]]
     return A, Z
+
+
+def get_resultant_state_info(rgm_out_filename):
+    E_list, state_titles = simplify(rgm_out_filename)
+    for i, title in enumerate(state_titles):
+        J, p, T = title.split("_")
+        J2 = str(int(float(J) * 2))
+        T2 = str(int(float(T) * 2))
+        state_titles[i] = " ".join([J2, p, T2])
+    return state_titles
 
 
 dot_in_fmt = """{run_name}

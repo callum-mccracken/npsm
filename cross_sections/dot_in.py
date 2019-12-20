@@ -3,7 +3,7 @@ A module for making transitions_NCSMC.in files
 """
 
 import file_tools
-import utils
+import cross_sections_utils
 import shutil
 import os
 import re
@@ -52,7 +52,6 @@ target_bound_states = [
     [2, 1, 2, -33.7694]
 ]
 """bound states of the target nucleus."""
-
 
 
 def parameter_list(transition):
@@ -271,7 +270,8 @@ def get_proj_info(projectile):
     if projectile == "n":
         return [1, 0, 1, 1, 1]
     elif projectile == "p":
-        return [1, 1, 1, 1, 1]
+        return [1, 1, 1, 1, 1]  # TODO: that's right, right?
+    #elif ... add your own special case here
     else:
         raise ValueError("I'm not sure how to process this projectile!")
 
@@ -297,7 +297,7 @@ def get_energy_info(shift_file):
         words = line.split()
         if line == "&":  # end case
             break
-        elif all([utils.is_float(word) for word in words]):
+        elif all([cross_sections_utils.is_float(word) for word in words]):
             # the line contains only numbers --> first number is energy
             energy = float(words[0])
             if counter == 0:
@@ -321,7 +321,7 @@ def make_dot_in(proj, target_bound_states, run_name,
     Makes a transitions_NCSMC.in file.
 
     proj:
-        string, the projectile, e.g. "n"
+        string, the projectile, e.g. "n", or list of [A, Z, 2J, pi, 2T]
 
     target_bound_states:
         list, info about bound states of the target.
@@ -378,7 +378,7 @@ def make_dot_in(proj, target_bound_states, run_name,
     targ_bound_str = get_bound_state_str(target_bound_states)
     e_lines, m_lines = get_transition_lines(e_transitions, m_transitions)
 
-    file_str = utils.dot_in_fmt.format(
+    file_str = cross_sections_utils.dot_in_fmt.format(
         run_name=run_name,
         state_name=state_name,
         naming_str=naming_str,
