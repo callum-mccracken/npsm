@@ -26,22 +26,22 @@ from os.path import join, exists, basename, realpath
 exe_path = realpath("transitions_NCSMC.exe")
 
 # where are your output files stored?
-ncsmc_out_dir = "/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output_pheno/"
+ncsmc_out_dir = "/home/callum/projects/def-navratil/exch/Li8Li9/Li8Li9_ncsmc_Nmax8/"
 
 # observ.out files for the resultant nucleus
 resultant_files = [
-    join(ncsmc_out_dir, "Li9_observ_Nmax6_Jz1"),
-    join(ncsmc_out_dir, "Li9_observ_Nmax7_Nmax6_Jz1")
+    join(ncsmc_out_dir, "observ_Li9_Nmax8_Jz1.dat"),
+    join(ncsmc_out_dir, "observ_Li9_Nmax8_Nmax9_Jz1.dat")
 ]
 
 # observ.out file for the target nucleus
-target_file = join(ncsmc_out_dir, "Li8_observ_Nmax6_Jz1")
+target_file = join(ncsmc_out_dir, "observ_Li8_Nmax8_Jz1.dat")
 
 # transitions we care about
 transitions_we_want = ["E1", "E2", "M1"]
 
 # this string is contained in input files
-run_name = "nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6_pheno_all_adjusted"
+run_name = "nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax8_pheno"
 
 # another string for parts of naming of output files,
 # we'll append "_2J" at the end, e.g. "_1", based on resultant_states
@@ -51,27 +51,29 @@ naming_str = "NCSMC_E1M1E2_Li9_2J"
 proj = "n"
 
 # STOP EDITING HERE, unless you have strangely named output files or something!
-
 # more ncsmc output file paths
-ncsmc_rgm_out_file = join(ncsmc_out_dir, f"ncsm_rgm_Am2_1_1.out_{run_name}")
-shift_file = join(ncsmc_out_dir, f"phase_shift_{run_name}.agr")
-norm_sqrt = join(ncsmc_out_dir, f"norm_sqrt_r_rp_RGM_{run_name}.dat")
+ncsmc_rgm_out_file = join(ncsmc_out_dir, "ncsm_rgm_Am2_1_1.out_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax8_pheno")
+shift_file = join(ncsmc_out_dir, "phase_shift_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax8_pheno.agr")
+norm_sqrt = join(ncsmc_out_dir, "norm_sqrt_r_rp_RGM_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax8_pheno.dat")
 form_factors = join(
-    ncsmc_out_dir, f"NCSMC_form_factors_g_h_{run_name}.dat")
+    ncsmc_out_dir, "NCSMC_form_factors_g_h_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax8_pheno.dat")
 scattering_wf_NCSMC = join(
-    ncsmc_out_dir, f"scattering_wf_NCSMC_{run_name}.agr")
+    ncsmc_out_dir, "scattering_wf_NCSMC_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax8_pheno.agr")
 wavefunction_NCSMC = join(
-    ncsmc_out_dir, f"wavefunction_NCSMC_{run_name}.agr")
+    ncsmc_out_dir, "wavefunction_NCSMC_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax8_pheno.agr")
 
 # resultant nucleus bound states, list of "2J pi 2T" strings
 resultant_states = cross_sections_utils.get_resultant_state_info(
     ncsmc_rgm_out_file)
+print("resultant bound states (J, pi, T)")
+print(resultant_states)
 
 # bound states of the target nucleus, lists of numbers, [2J, p, 2T, E]
 # first entry must be the ground state
 target_bound_states = cross_sections_utils.get_target_state_info(
     ncsmc_rgm_out_file)
-
+print("target bound states (J, pi, T, E)")
+print(target_bound_states)
 
 def make_dir(res_state):
     """
@@ -131,6 +133,7 @@ def run_exe(exe):
     cwd = os.getcwd()
     os.chdir(os.path.realpath(dirname))
     os.system("chmod 777 "+filename)
+    print("running executable!")
     os.system("./"+filename)
     os.chdir(cwd)
 
