@@ -91,6 +91,7 @@ def simplify_observ(desired_state, transitions, filename, function=None):
         while "J=" == lines[0][:2]:
             # something like this (with different #s of spaces, maybe):
             # J= 2.5000    T= 1.5000  Energy=    -28.4099  Ex=   0.0000
+            # but note that we might have something like J=2.499
             words = lines[0].split()
             J, T, E, Ex = words[1], words[3], words[5], words[7]
             J, T, E, Ex = list(map(float, [J, T, E, Ex]))
@@ -192,11 +193,17 @@ def simplify_observ(desired_state, transitions, filename, function=None):
         # find a matching state in nuclei[0]
         for state in nuclei[0]:
             i_num, i_J2, i_parity, i_T2, state_num, i_Ex, E = state
-            if num == i_num and J2 == i_J2 and T2 == i_T2 and Ex == i_Ex:
+            # I hope this is enough of a condition for matching
+            diff = abs(Ex - i_Ex)
+            if diff < 1e-5:
                 new_name = "{} ++ {} {} {} # {} {}".format(
                     num, J2, i_parity, T2, state_num, E)
                 text = text.replace(title, new_name)
+                #print("found matching state!")
                 break
+            if state == nuclei[0][-1]:
+                raise ValueError("no matching state found for", title)
+
     # replace final state titles
     for title in f_to_replace:
         _, num, _, J2, T2, Ex = title.split()
@@ -208,11 +215,14 @@ def simplify_observ(desired_state, transitions, filename, function=None):
             # replace f_Ex with the actual printed value
             f_Ex = f_E - i_ground_state
             diff = abs(Ex - f_Ex)
-            if num == f_num and J2 == f_J2 and T2 == f_T2 and diff < 1e-5:
+            if diff < 1e-5:
                 new_name = "{} -- {} {} {} # {} {}".format(
                     num, J2, f_parity, T2, state_num, f_E)
                 text = text.replace(title, new_name)
+                #print("found matching state!")
                 break
+            if state == nuclei[1][-1]:
+                raise ValueError("no matching state found for", title)
 
     simp_path = filename+"_simp"
     with open(simp_path, "w+") as simp_file:

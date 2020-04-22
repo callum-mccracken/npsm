@@ -19,11 +19,10 @@ n_bound_proj = 1
 Eexpt = 0.0
 nsig_min = 0
 nsig_max = 1
-Rp = 2.1961
-Rn = 2.3077
-Rm = 2.2605
 
 # other parameters to adjust if you want to run this file on its own
+ncsd_file = "/home/callum/exch/Li8Li9/ncsd/Li8_n3lo-NN3Nlnl-srg2.0_Nmax0-10.20"
+"""the ncsd output file for the target"""
 
 observ_file = "/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output/Li8_observ_Nmax6_Jz1"
 """the observ.out file for the target"""
@@ -97,61 +96,97 @@ def get_e_m_transitions(simp_file_text, target_bound_states, lamb_max):
     """
     e_transitions = {}
     m_transitions = []
-    for state in target_bound_states:
-        J2, parity, T2, energy = state
-        pattern = re.compile(
-            f".* {J2} {parity} {T2} # [0-9]* {energy}.*\n.*\n.*")
-        matches = re.findall(pattern, simp_file_text)
-        for match in matches:
-            lines = match.split("\n")
-            states_line, transition, data_line = lines
-            multipolarity = int(transition[1:])
-            e_or_m = transition[0]
-            # find state #s, i.e. their indices in target_bound_states
-            # the states look like this: 9 -- 6 1 2 # 2 -26.2739
-            state_f, state_i = states_line.split("   ")
-            f_words = state_f.split()
-            J2_f = f_words[2]
-            pi_f = f_words[3]
-            T2_f = f_words[4]
-            E_f = f_words[7]
-            J2_f, pi_f, T2_f = int(J2_f), int(pi_f), int(T2_f)
-            E_f = float(E_f)
-            state_f = [J2_f, pi_f, T2_f, E_f]
-            if state_f in target_bound_states:
-                num_f = target_bound_states.index(state_f) + 1
+
+    # simp_file_text comes in groups of 3 lines:
+    # states, transition, data
+    lines = simp_file_text.split("\n")
+    while lines != []:
+        # get first 3 lines
+        states_line, transition, data_line = lines[0:3]
+        # then cut off the  3 lines
+        lines = lines[3:]
+
+        # now get info about these 3 lines
+        multipolarity = int(transition[1:])  # like 2 for M2
+        e_or_m = transition[0]  # the letter E or M
+        # find state #s, i.e. their indices in target_bound_states
+        # the states look like this: 9 -- 6 1 2 # 2 -26.2739
+        state_f, state_i = states_line.split("   ")
+        _, _, J2_f, pi_f, T2_f, _, _, E_f = state_f.split()
+        _, _, J2_i, pi_i, T2_i, _, _, E_i = state_i.split()
+        
+        J2_f, pi_f, T2_f = int(J2_f), int(pi_f), int(T2_f)
+        J2_i, pi_i, T2_i = int(J2_i), int(pi_i), int(T2_i)
+        
+        E_f = float(E_f)
+        E_i = float(E_i)
+        
+        state_f = [J2_f, pi_f, T2_f, E_f]
+        state_i = [J2_i, pi_i, T2_i, E_i]
+        if state_i == state_f:
+            print("looking at transition:", state_i, state_f)
+        # there was a bit of an issue earlier with having states from
+        # target_bound_states not quite matching with states from the
+        # observ.out files...
+        # I solved this by having it be possible for there to be a little
+        # possible discrepancy in energies from the rgm.out and observ.out files
+
+        thresh = 0.05  # this much energy difference is allowed
+        def one_match(state, bound_states):
+            """
+            returns false if there is no match to state in bound_states.
+            If there is one match, returns the index of that match + 1.
+            If more than one match, raises ValueError.
+            """
+            found_match = False
+            index = None
+            J2_s, pi_s, T2_s, E_s = state
+            for i, bs in enumerate(bound_states):
+                J2_bs, pi_bs, T2_bs, E_bs = bs
+                if J2_s == J2_bs and pi_s == pi_bs and T2_s == T2_bs and abs(E_s- E_bs)<thresh:
+                    if not found_match:
+                        found_match = True
+                        index = i + 1
+                    else:
+                        # more than one match!
+                        raise ValueError("More than one match!")
+            if found_match:
+                return index
             else:
-                continue
-            i_words = state_i.split()
-            J2_i = i_words[2]
-            pi_i = i_words[3]
-            T2_i = i_words[4]
-            E_i = i_words[7]
-            J2_i, pi_i, T2_i = int(J2_i), int(pi_i), int(T2_i)
-            E_i = float(E_i)
-            state_i = [J2_i, pi_i, T2_i, E_i]
-            if state_i in target_bound_states:
-                num_i = target_bound_states.index(state_i) + 1
-            else:
-                continue
-            var_list = parameter_list(transition)
-            data_line_hunks = data_line.split()
-            data = {}
-            for var in var_list:
-                for j, hunk in enumerate(data_line_hunks):
-                    if var+"=" == hunk:
-                        value = data_line_hunks[j+1]
-                        data[var] = value
-            if e_or_m == "E":
-                t = (multipolarity, num_i, num_f)
-                d = (data["E2p"], data["E2n"])
-                if t not in e_transitions.keys():
-                    e_transitions[t] = d
-            else:
-                t = [num_i, num_f, data["pl"],
-                     data["nl"], data["ps"], data["ns"]]
-                if t not in m_transitions:
-                    m_transitions.append(t)
+                return False
+
+        # consider only transitions to a bound state from another bound state
+        match_f = one_match(state_f, target_bound_states)
+        match_i = one_match(state_i, target_bound_states)
+        if match_f and match_i:
+            num_f = match_f
+            num_i = match_i
+        else:
+            #print("this transition is not bound-state to bound-state")
+            #print("ignoring...")
+            continue
+        #print("getting transition info:", state_i, "to", state_f)
+        #print("transition type:", transition)
+        var_list = parameter_list(transition)
+        data_line_hunks = data_line.split()
+        data = {}
+        for var in var_list:
+            for j, hunk in enumerate(data_line_hunks):
+                if var+"=" == hunk:
+                    value = data_line_hunks[j+1]
+                    data[var] = value
+        if e_or_m == "E":
+            t = (multipolarity, num_i, num_f)
+            d = (data["E2p"], data["E2n"])
+            if t not in e_transitions.keys():
+                e_transitions[t] = d
+            #print(t, d)
+        else:
+            t = [num_i, num_f, data["pl"],
+                    data["nl"], data["ps"], data["ns"]]
+            if t not in m_transitions:
+                m_transitions.append(t)
+            #print(t)
 
     # ensure that e_transitions has the correct form
     new_e_trans = []
@@ -313,10 +348,60 @@ def get_energy_info(shift_file):
             continue
     return Emin, Emax, Estep
 
+def get_Rs(ncsd_file, nmax):
+    """
+    Given an ncsd output file, get the values of Rp, Rn, Rm
+
+    ncsd_file:
+        string, path to the ncsd output file for the target nucleus
+    nmax:
+        int, the value of Nmax for which we want to get values
+    
+    """
+    Rp, Rn, Rm = None, None, None
+
+    # split the files into sections using the word "Nmax"
+    with open(ncsd_file, "r") as ncsd:
+        text = ncsd.read()
+    nmax_sections = text.split("Nmax=")
+
+    # select the section we want
+    found_sec = False
+    section = None
+    for sec in nmax_sections[1:]:  # ignore first section, before any Nmax
+        words = sec.split()
+        if int(words[0]) == nmax:  # if we find the section with desired nmax
+            found_sec = True
+            section = sec
+            break
+    if section is None:
+        raise ValueError("this file does'nt seem to contain the right Nmax!")
+
+    # now find the ground state, identified by "State # 1"
+    # TODO: are the R values always the ones from the ground state?
+    found_state = False
+    for line in section.split("\n"):
+        if "State # 1" in line:
+            found_state = True
+
+        # find the first time after "State #1" that "Radius" comes up
+        if found_state and "Radius" in line:
+            # line looks something like this:
+            # Radius: proton=   2.0671  neutron=   2.3067 mass =   2.2199
+            _, _, Rp, _, Rn, _, _, Rm = line.split()
+            Rp, Rn, Rm = float(Rp), float(Rn), float(Rm)
+            break
+
+    if any([Rp is None, Rn is None, Rm is None]):
+        raise ValueError("Rp, Rn, or Rm not found!")
+
+    return Rp, Rn, Rm
+
 
 def make_dot_in(proj, target_bound_states, run_name,
-                state_name, naming_str, observ_file, transitions,
-                shift_file, out_dir=None):
+                state_name, naming_str, ncsd_file, nmax,
+                observ_file, transitions, shift_file,
+                out_dir=None):
     """
     Makes a transitions_NCSMC.in file.
 
@@ -336,6 +421,12 @@ def make_dot_in(proj, target_bound_states, run_name,
     naming_str:
         string, for naming stuff after the run is complete
 
+    ncsd_file:
+        string, path to the ncsd output file for the target nucleus
+
+    nmax:
+        int, value of Nmax (excitations above lowest Pauli state)
+
     observ_file:
         string, path to the observ.out file for the target nucleus
 
@@ -349,6 +440,10 @@ def make_dot_in(proj, target_bound_states, run_name,
         string, directory where we'll save the file
 
     """
+
+    # get Rp, Rn, Rm
+    Rp, Rn, Rm = get_Rs(ncsd_file, nmax)
+
     multipolarities = [int(t[1]) for t in transitions]
     lamb_min = min(multipolarities)
     lamb_max = max(multipolarities)
