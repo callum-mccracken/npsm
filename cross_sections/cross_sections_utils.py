@@ -205,14 +205,23 @@ def get_target_state_info(rgm_out_filename):
     regex = r'J=[ ]*-?[0-9]*[ ]*T=[ ]*-?[0-9]*[ ]*Energy=[ ]-?[0-9]*.?[0-9]*'
     matches = re.findall(regex, text)
     states = []
+    # keep a record of how many times a state with [J2, pi, T2] is entered
+    nums = {}
     for match in matches:
         words = match.split()
         J2 = int(words[1])
         T2 = int(words[3])
         energy = float(words[5])
-        states.append([J2, parity, T2, energy])
+        num_string = f"{J2} {parity} {T2}"
+        if num_string not in nums.keys():
+            nums[num_string] = 1
+        else:
+            nums[num_string] += 1
+        states.append([J2, parity, T2, nums[num_string], energy])
+    #for state in states:
+    #    print(state)
 
-    # Format: 2J, parity, 2T, binding energy. First entry = ground state.
+    # Format: 2J, parity, 2T, num, binding energy. First entry = ground state.
     # I'm pretty sure that the first state will always be the ground state,
     # but if that's not the case, you should add some code here to rearrange
     # the list!

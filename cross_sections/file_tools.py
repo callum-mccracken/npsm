@@ -31,6 +31,7 @@ def simplify_observ(desired_state, transitions, filename, function=None):
             the number of states with the same quantum
             numbers as the desired state
     """
+    print("simplifying", filename)
     # get all text from file
     with open(filename, "r+") as open_file:
         text = open_file.read()
@@ -75,6 +76,8 @@ def simplify_observ(desired_state, transitions, filename, function=None):
         lines = text.splitlines()
         # scroll through until you find Nucleus
         if "Nucleus" in lines[0]:
+            print(lines[0])
+            print(lines[1])
             lines = lines[1:]
         else:
             try:
@@ -88,6 +91,7 @@ def simplify_observ(desired_state, transitions, filename, function=None):
         states = []
         state_nums = {}
         state_counter = 1
+        print("getting state info: state, 2J, pi, 2T, num, Ex, E")
         while "J=" == lines[0][:2]:
             # something like this (with different #s of spaces, maybe):
             # J= 2.5000    T= 1.5000  Energy=    -28.4099  Ex=   0.0000
@@ -103,9 +107,11 @@ def simplify_observ(desired_state, transitions, filename, function=None):
                 state_nums[(J2, T2)] += 1
             num = state_nums[(J2, T2)]
             state = [state_counter, J2, parity, T2, num, Ex, E]
+            print(state)
             state_counter += 1
             states.append(state)
             lines = lines[1:]
+
         # then when you reach the end take the next couple lines
         extra_lines, lines = lines[:2], lines[2:]
         # the second of those should tell you how many states were used
@@ -121,13 +127,13 @@ def simplify_observ(desired_state, transitions, filename, function=None):
     # nuclei[0] = initial, nuclei[1] = final
     # if we only have one nucleus, set initial == final
     if len(nuclei) == 1:
-        nuclei = nuclei + nuclei
+        nuclei.append(nuclei[0])
     # nuclei entries are states
     # nuclei[i][j] = [state_counter, J2, parity, T2, num, Ex, E]
     i_parity = nuclei[0][0][2]
     f_parity = nuclei[1][0][2]
 
-    # find out how many of the desired type of state there are
+    # find out how many of the desired state there are
     num_list = []
     for state in nuclei[0]:
         _, J2, parity, T2, num, _, _ = state
@@ -186,43 +192,42 @@ def simplify_observ(desired_state, transitions, filename, function=None):
         if f_title not in f_to_replace:
             f_to_replace.append(f_title)
     # replace initial state titles
+    print("replacing initial state titles")
+    state_counter = {}
     for title in i_to_replace:
         _, num, _, J2, T2, Ex = title.split()
         num, J2, T2, Ex = list(map(float, [num, J2, T2, Ex]))
         num, J2, T2 = int(num), int(J2), int(T2)
+        if (J2, T2) not in state_counter.keys():
+            state_counter[(J2, T2)] = 1
+        else:
+            state_counter[(J2, T2)] += 1
         # find a matching state in nuclei[0]
-        for state in nuclei[0]:
-            i_num, i_J2, i_parity, i_T2, state_num, i_Ex, E = state
-            # I hope this is enough of a condition for matching
-            diff = abs(Ex - i_Ex)
-            if diff < 1e-5:
-                new_name = "{} ++ {} {} {} # {} {}".format(
-                    num, J2, i_parity, T2, state_num, E)
-                text = text.replace(title, new_name)
-                #print("found matching state!")
-                break
-            if state == nuclei[0][-1]:
-                raise ValueError("no matching state found for", title)
+        i_num, _, i_parity, _, state_num, _, E = nuclei[0][num-1]  # num is 1-based, not 0-based
+        assert num == i_num
+        new_name = "{} ++ {} {} {} # {} {}".format(
+            num, J2, i_parity, T2, state_counter[(J2, T2)], E)
+        print("replacing", title, "with", new_name)
+        text = text.replace(title, new_name)
 
     # replace final state titles
+    print("replacing final state titles")
+    state_counter = {}
     for title in f_to_replace:
         _, num, _, J2, T2, Ex = title.split()
         num, J2, T2, Ex = list(map(float, [num, J2, T2, Ex]))
         num, J2, T2 = int(num), int(J2), int(T2)
-        # find a matching state in nuclei[1]
-        for state in nuclei[1]:
-            f_num, f_J2, f_parity, f_T2, state_num, f_Ex, f_E = state
-            # replace f_Ex with the actual printed value
-            f_Ex = f_E - i_ground_state
-            diff = abs(Ex - f_Ex)
-            if diff < 1e-5:
-                new_name = "{} -- {} {} {} # {} {}".format(
-                    num, J2, f_parity, T2, state_num, f_E)
-                text = text.replace(title, new_name)
-                #print("found matching state!")
-                break
-            if state == nuclei[1][-1]:
-                raise ValueError("no matching state found for", title)
+        if (J2, T2) not in state_counter.keys():
+            state_counter[(J2, T2)] = 1
+        else:
+            state_counter[(J2, T2)] += 1
+        # find a matching state in nuclei[0]
+        f_num, _, f_parity, _, state_num, _, E = nuclei[1][num-1]  # num is 1-based, not 0-based
+        assert num == f_num
+        new_name = "{} ++ {} {} {} # {} {}".format(
+            num, J2, f_parity, T2, state_counter[(J2, T2)], E)
+        print("replacing", title, "with", new_name)
+        text = text.replace(title, new_name)
 
     simp_path = filename+"_simp"
     with open(simp_path, "w+") as simp_file:

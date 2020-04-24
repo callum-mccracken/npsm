@@ -79,7 +79,7 @@ print(resultant_states)
 # first entry must be the ground state
 target_bound_states = cross_sections_utils.get_target_state_info(
     ncsmc_rgm_out_file)
-print("target bound states (J, pi, T, E)")
+print("target bound states (J, pi, T, num, E)")
 print(target_bound_states)
 
 def make_dir(res_state):
@@ -99,11 +99,13 @@ def make_dir(res_state):
     J2, _, T2 = res_state.split()
 
     # make NCSM_E1 file
+    print("making NCSM_E1_Afi file")
     ncsm_e1.make_ncsm_e1(
         [res_state], transitions_we_want, run_name, resultant_files,
         out_dir=run_dir)
     # make transitions_NCSMC.in file
     n_str = naming_str.format(J2=J2, T2=T2)
+    print("making transitions_NCSMC.in file")
     dot_in.make_dot_in(
         proj, target_bound_states, run_name, res_state_name, n_str,
         ncsd_file, nmax, target_file, transitions_we_want, shift_file, out_dir=run_dir)

@@ -46,9 +46,9 @@ proj = "n"
 """the projectile we're using, curently only "n" and "p" are supported"""
 
 target_bound_states = [
-    # Format: 2J, parity, 2T, binding energy. First entry = ground state.
-    [4, 1, 2, -34.8845],
-    [2, 1, 2, -33.7694]
+    # Format: 2J, parity, 2T, num, binding energy. First entry = ground state.
+    [4, 1, 2, 1, -34.8845],
+    [2, 1, 2, 1, -33.7694]
 ]
 """bound states of the target nucleus."""
 
@@ -79,7 +79,7 @@ def get_e_m_transitions(simp_file_text, target_bound_states, lamb_max):
 
     target_bound_states:
         list of bound states, formatted like
-        ``[[J2, parity, T2, energy], ...]``
+        ``[[J2, parity, T2, num, energy], ...]``
 
     lamb_max:
         integer, lambda = multipolarity of a transition. If we have some block
@@ -90,7 +90,7 @@ def get_e_m_transitions(simp_file_text, target_bound_states, lamb_max):
             2 2 1 0.9845 2.0470 ! targ E mul i f  Mp Mn
             2 2 2 1.0374 0.8974 ! targ E mul i f  Mp Mn
 
-        we're going to have a problem, since the code needs to read lines with
+        then we're going to have a problem, since the code needs to read lines with
         all possible values from 1 to lamb_max as the first number.
 
     """
@@ -111,27 +111,27 @@ def get_e_m_transitions(simp_file_text, target_bound_states, lamb_max):
         e_or_m = transition[0]  # the letter E or M
         # find state #s, i.e. their indices in target_bound_states
         # the states look like this: 9 -- 6 1 2 # 2 -26.2739
+        # [num in observ.out] [i/f] [J2, pi, T2] # [num state with J2 pi T2] [Energy]
         state_f, state_i = states_line.split("   ")
-        _, _, J2_f, pi_f, T2_f, _, _, E_f = state_f.split()
-        _, _, J2_i, pi_i, T2_i, _, _, E_i = state_i.split()
-        
-        J2_f, pi_f, T2_f = int(J2_f), int(pi_f), int(T2_f)
-        J2_i, pi_i, T2_i = int(J2_i), int(pi_i), int(T2_i)
-        
+        _, _, J2_f, pi_f, T2_f, _, num_f, E_f = state_f.split()
+        _, _, J2_i, pi_i, T2_i, _, num_i, E_i = state_i.split()
+
+        J2_f, pi_f, T2_f, num_f = int(J2_f), int(pi_f), int(T2_f), int(num_f)
+        J2_i, pi_i, T2_i, num_i = int(J2_i), int(pi_i), int(T2_i), int(num_i)
+
         E_f = float(E_f)
         E_i = float(E_i)
+
+        state_f = [J2_f, pi_f, T2_f, num_f, E_f]
+        state_i = [J2_i, pi_i, T2_i, num_i, E_i]
         
-        state_f = [J2_f, pi_f, T2_f, E_f]
-        state_i = [J2_i, pi_i, T2_i, E_i]
-        if state_i == state_f:
-            print("looking at transition:", state_i, state_f)
+        print("looking at transition:", state_i, state_f)
         # there was a bit of an issue earlier with having states from
         # target_bound_states not quite matching with states from the
         # observ.out files...
         # I solved this by having it be possible for there to be a little
         # possible discrepancy in energies from the rgm.out and observ.out files
 
-        thresh = 0.05  # this much energy difference is allowed
         def one_match(state, bound_states):
             """
             returns false if there is no match to state in bound_states.
@@ -140,10 +140,10 @@ def get_e_m_transitions(simp_file_text, target_bound_states, lamb_max):
             """
             found_match = False
             index = None
-            J2_s, pi_s, T2_s, E_s = state
+            J2_s, pi_s, T2_s, num_s, _ = state
             for i, bs in enumerate(bound_states):
-                J2_bs, pi_bs, T2_bs, E_bs = bs
-                if J2_s == J2_bs and pi_s == pi_bs and T2_s == T2_bs and abs(E_s- E_bs)<thresh:
+                J2_bs, pi_bs, T2_bs, num_bs, _ = bs
+                if J2_s == J2_bs and pi_s == pi_bs and T2_s == T2_bs and num_s == num_bs:
                     if not found_match:
                         found_match = True
                         index = i + 1
@@ -159,8 +159,9 @@ def get_e_m_transitions(simp_file_text, target_bound_states, lamb_max):
         match_f = one_match(state_f, target_bound_states)
         match_i = one_match(state_i, target_bound_states)
         if match_f and match_i:
-            num_f = match_f
-            num_i = match_i
+            #print("both states are bound!")
+            index_f = match_f
+            index_i = match_i
         else:
             #print("this transition is not bound-state to bound-state")
             #print("ignoring...")
@@ -176,13 +177,13 @@ def get_e_m_transitions(simp_file_text, target_bound_states, lamb_max):
                     value = data_line_hunks[j+1]
                     data[var] = value
         if e_or_m == "E":
-            t = (multipolarity, num_i, num_f)
+            t = (multipolarity, index_i, index_f)
             d = (data["E2p"], data["E2n"])
             if t not in e_transitions.keys():
                 e_transitions[t] = d
             #print(t, d)
         else:
-            t = [num_i, num_f, data["pl"],
+            t = [index_i, index_f, data["pl"],
                     data["nl"], data["ps"], data["ns"]]
             if t not in m_transitions:
                 m_transitions.append(t)
@@ -209,12 +210,12 @@ def get_bound_state_str(target_bound_states):
 
     target_bound_states:
         list of bound states, formatted like
-        ``[[J2, parity, T2, energy], ...]``
+        ``[[J2, parity, T2, num, energy], ...]``
     """
     bound_state_fmt = "{E}d0   {J2}  {parity}  {T2}     ! E, 2J, pi, 2T"
     targ_bound_str = ""
     for i, state in enumerate(target_bound_states):
-        J2, p, T2, E = state
+        J2, p, T2, num, E = state
         targ_bound_str += bound_state_fmt.format(E=E, J2=J2, parity=p, T2=T2)
         if i+1 != len(target_bound_states):
             targ_bound_str += "\n"
@@ -366,12 +367,10 @@ def get_Rs(ncsd_file, nmax):
     nmax_sections = text.split("Nmax=")
 
     # select the section we want
-    found_sec = False
     section = None
     for sec in nmax_sections[1:]:  # ignore first section, before any Nmax
         words = sec.split()
         if int(words[0]) == nmax:  # if we find the section with desired nmax
-            found_sec = True
             section = sec
             break
     if section is None:
@@ -410,7 +409,7 @@ def make_dot_in(proj, target_bound_states, run_name,
 
     target_bound_states:
         list, info about bound states of the target.
-        Formatted like ``[[J2, parity, T2, energy], ...]``
+        Formatted like ``[[J2, parity, T2, num, energy], ...]``
 
     run_name:
         string, name of directory where we'll put files
@@ -461,9 +460,11 @@ def make_dot_in(proj, target_bound_states, run_name,
 
     # simplify observ file, get text
     shutil.copyfile(observ_file, os.path.split(observ_file)[1])
-    simp = file_tools.simplify_observ("4 1 2", transitions, observ_file)
+    ground_state = " ".join(map(str, target_bound_states[0][:3]))
+    simp = file_tools.simplify_observ(ground_state, transitions, observ_file)
     with open(simp, "r+") as simp_file:
         text = simp_file.read()
+
 
     # get frequency from observ file
     hw = get_freq(observ_file)
