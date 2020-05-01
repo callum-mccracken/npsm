@@ -3,6 +3,7 @@ A script to take files from the observ.out format of NCSMC output,
 and make the NCSM_E1_Afi files needed for cross-section calculations.
 """
 import file_tools
+import dot_in
 import os
 import re
 
@@ -16,12 +17,16 @@ run_name = "nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6"
 """this variable is for naming of output files"""
 
 
-files = [
+observ_files = [
     "/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output/Li9_observ_Nmax6_Jz1",
     "/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output/Li9_observ_Nmax7_Nmax6_Jz1"
 ]
-"""names of observ.out files from which to read data"""
+"""paths to observ.out files for resultant nucleus"""
 
+ncsd_file = "/home/callum/ncsd/Li9_n3lo-NN3Nlnl-srg2.0_Nmax8.20"
+"""path to ncsd output file for resultant nucleus"""
+
+nmax = 8
 
 def transition_parameter(trans_str):
     """
@@ -43,8 +48,87 @@ def transition_parameter(trans_str):
     else:
         raise ValueError("What? Transition = " + trans_str)
 
+def get_radii(ncsd_file, nmax, state):
+    """
+    Given an ncsd output file, get the values of Rp, Rn, Rm in all
+    the required ways. Very similar to dot_out.get_Rs()
 
-def make_ncsm_e1(desired_states, transitions, run_name, files, out_dir=None):
+    ncsd_file:
+        string, path to the ncsd output file for the resultant nucleus
+    nmax:
+        int, the value of Nmax for which we want to get values
+    state:
+        (J2, p, T2) tuple, descibes the state for which we want to get radii
+    """
+    state_J2, _, state_T2 = state
+    # these should be integers already but this is so you can use strings too
+    state_T2 = int(state_T2)
+    state_J2 = int(state_J2)
+
+    # we'll produce an n by n "matrix" with (Rp Rn Rm) entries.
+    # some entries may be zero
+    r_data = {}
+
+    # split the files into sections using the word "Nmax"
+    with open(ncsd_file, "r") as ncsd:
+        text = ncsd.read()
+    nmax_sections = text.split("Nmax=")
+
+    # select the section we want
+    section = None
+    for sec in nmax_sections[1:]:  # ignore first section, before any Nmax
+        words = sec.split()
+        if int(words[0]) == nmax:  # if we find the section with desired nmax
+            section = sec
+            break
+    if section is None:
+        raise ValueError("this file doesn't seem to contain the right Nmax!")
+
+    # now find all instances of our state and get radii
+    found_state = False
+    state_counter = 1
+    for line in section.split("\n"):
+        if "State #" in line:
+            # see if it's a state we care about. Template line:
+            #  State # 9   Energy =  -28.4504     J =  2.0230      T =  1.5000
+            line = line.replace("State #", "")
+            #   9   Energy =  -28.4504     J =  2.0230      T =  1.5000
+            num, _, _, E, _, _, J, _, _, T = line.split()
+            num = int(num)
+            # note that these J and T may not be exact matches
+            J2 = float(J) * 2
+            T2 = float(T) * 2
+            # we'll only take very close matches
+            if abs(state_J2 - J2) < 1e-3 and abs(state_T2 - T2) < 1e-3:
+                # we found a state with matching J and T!
+                found_state = True
+        # find the first time after "State #" that "Radius" comes up
+        if found_state and "Radius" in line:
+            # line looks something like this:
+            # Radius: proton=   2.0671  neutron=   2.3067 mass =   2.2199
+
+            # get the data
+            _, _, Rp, _, Rn, _, _, Rm = line.split()
+            Rp, Rn, Rm = float(Rp), float(Rn), float(Rm)
+
+            # store it in the dict
+            r_data[(state_counter, state_counter)] = (Rp, Rn, Rm)
+
+            # then look for the next state
+            state_counter += 1
+            found_state = False
+
+    # now format it a bit and return
+    for state_i in range(1, state_counter):  # loop over every matching state
+        for state_f in range(1, state_counter):
+            if (state_i, state_f) not in r_data.keys():
+                r_data[(state_i, state_f)] = (0.0, 0.0, 0.0)  # filler data
+    return r_data
+
+
+
+def make_ncsm_e1(desired_states, transitions, run_name,
+                 observ_files, ncsd_file, nmax, out_dir=None):
     """
     Makes NCSM_E1_Afi.dat files for the given parameters.
 
@@ -60,25 +144,36 @@ def make_ncsm_e1(desired_states, transitions, run_name, files, out_dir=None):
         string, to use for output naming,
         e.g. "nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6_2p1p"
 
-    files:
+    observ_files:
         list of strings, paths to observ.out files for resultant nucleus,
-        e.g. files = ["/path/to/observ1.out", "/path/to/observ2.out"]
+        e.g. ["/path/to/observ1.out", "/path/to/observ2.out"]
+
+    ncsd_file:
+        string, path to ncsd output file for resultant nucleus
+        e.g. "/your_dir_here/Li9_n3lo-NN3Nlnl-srg2.0_Nmax8.20"
+
+    nmax:
+        int, max number of excitations above the lowest Pauli-allowed state
+        e.g. 8
     """
 
-    # make one file for each state
+    # make one ncsm_e1 file for each state
     for desired_state in desired_states:
+        # have we got the radii yet?
+        added_radii = False
+
+        J2, p, T2 = desired_state.split()
+        assert p in ["-1", "1"]
         # get the "3m" name of the state
         # e.g. if 2J=3, parity = 1, name=3p for 3 plus
-        J2, p, _ = desired_state.split()
-        assert p in ["-1", "1"]
         j2_parity = J2 + "m" if p == "-1" else "p"
-        # data stores info from both files, to be written out after the loop
+        # data stores info from observ files, to be written out after the loop
         data = []
-        for file_index, filename in enumerate(files):
+        for file_index, filename in enumerate(observ_files):
+            # simplify observ
             simp, num = file_tools.simplify_observ(
                 desired_state, transitions, filename, function="make_ncsm_e1")
             num_desired_state = num
-
             # get the useful info out of the data lines, e.g. E2p number
             with open(simp, "r+") as simp_file:
                 text = simp_file.read()
@@ -97,15 +192,18 @@ def make_ncsm_e1(desired_states, transitions, run_name, files, out_dir=None):
                         lines[i] = words[index+1]
             text = "\n".join(lines)
 
-            # get all transitions from the state of interest to other states
+            # get transitions from simplified observ.out file
             transition_bank = {}
             lines = text.splitlines()
             for i, line in enumerate(lines):
+                # get all transitions from the state of interest to others
                 if " ++ " + desired_state in line:
+                    
                     state_f, state_i = line.split("   ")  # 3 spaces
                     # ignore the bit at the start, and write state as a tuple
                     # which contains (2J, pi, 2T). Record state # too
                     state_f_jpt = tuple(state_f.split()[2:5])  # indices 2 3 4
+                    # we'll only want transitions to final states of interest
                     f_num = state_f.split()[6]
                     # state_i_jpt = state_i.split()[2:5]
                     i_num = state_i.split()[6]
@@ -117,7 +215,25 @@ def make_ncsm_e1(desired_states, transitions, run_name, files, out_dir=None):
                     if trans_type not in transition_bank[state_f_jpt].keys():
                         transition_bank[state_f_jpt][trans_type] = []
                     transition_bank[state_f_jpt][trans_type].append(
-                        (i_num, f_num, param))
+                            (i_num, f_num, param))
+
+            # get E0 transitions from a state to another state with same Q#s
+            # careful to just do this once!
+            if not added_radii:
+                added_radii = True
+                radii = get_radii(ncsd_file, nmax, (J2, p, T2))
+
+                if (J2, p, T2) not in transition_bank.keys():
+                    transition_bank[(J2, p, T2)] = {}
+                if "0" not in transition_bank[(J2, p, T2)].keys():
+                    transition_bank[(J2, p, T2)]["0"] = []
+
+                for i in range(1, num_desired_state+1):
+                    for j in range(1, num_desired_state+1):
+                        Rp, Rn, Rm = radii[(i, j)]
+                        transition_bank[(J2, p, T2)]["0"].append(
+                            (str(i), str(j), f"{Rp} {Rn} {Rm}"))
+
 
             # now turn the data in transition_bank into writable lines
             # in the input file format
@@ -137,6 +253,7 @@ def make_ncsm_e1(desired_states, transitions, run_name, files, out_dir=None):
                             blocks[i] = 1
                         else:
                             blocks[i] += 1
+                    # then go through and make each block
                     for i_val, n_blocks in blocks.items():
                         # line for the final state quantum numbers
                         lines.append(" ".join(state_f))
@@ -164,4 +281,6 @@ def make_ncsm_e1(desired_states, transitions, run_name, files, out_dir=None):
 
 
 if __name__ == "__main__":
-    make_ncsm_e1(desired_states, transitions, run_name, files, out_dir="")
+    make_ncsm_e1(
+        desired_states, transitions, run_name, observ_files, ncsd_file, nmax,
+        out_dir="")

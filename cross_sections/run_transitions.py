@@ -23,23 +23,24 @@ from os.path import join, exists, basename, realpath
 # NOTE: some parameters are set by default, in dot_in.py! E.g. matching radius
 
 # full path to ncsd output for target nucleus (so we can get Rp, Rn, Rm):
-ncsd_file = "/home/callum/exch/Li8Li9/ncsd/Li8_n3lo-NN3Nlnl-srg2.0_Nmax0-10.20"
+ncsd_file_target = "/home/callum/exch/Li8Li9/ncsd/Li8_n3lo-NN3Nlnl-srg2.0_Nmax0-10.20"
+ncsd_file_resultant = "/home/callum/exch/Li8Li9/ncsd/Li9_n3lo-NN3Nlnl-srg2.0_Nmax8.20"
 nmax = 8
 
 # path to executable file
 exe_path = realpath("transitions_NCSMC.exe")
 
 # where are your ncsmc output files stored?
-ncsmc_out_dir = "/home/callum/projects/def-navratil/exch/Li8Li9/npsm/cross_sections/petr/"
+ncsmc_out_dir = "/home/callum/projects/def-navratil/exch/Li8Li9/npsm/cross_sections/works/"
 
 # observ.out files for the resultant nucleus
-resultant_files = [
+resultant_observ_files = [
     join(ncsmc_out_dir, "observ.Li9_NNn3lo_3NlnlcD0.7cE-0.06-srg2.0_Nmax8.20_8st_1bd"),
     join(ncsmc_out_dir, "observ.Li9_NNn3lo_3NlnlcD0.7cE-0.06-srg2.0_Nmax9_Nmax8.20_6st_8st_1bd")
 ]
 
 # observ.out file for the target nucleus
-target_file = join(ncsmc_out_dir, "observ_Li8_Nmax8_Jz1.dat")
+target_file = join(ncsmc_out_dir, "observ.Li8_NNn3lo3Nlnl-srg2.0_Nmax8.20_3st_Jz1_1bd")
 
 # transitions we care about
 transitions_we_want = ["E1", "E2", "M1"]
@@ -54,11 +55,10 @@ naming_str = "NCSMC_E1M1E2_Li9_{J2}_{T2}"
 # the projectile we're using, "n", "p", or a list of the form [A, Z, 2J, p, 2T]
 proj = "n"
 
-# STOP EDITING HERE, unless you have strangely named output files or something!
-
 # more ncsmc output file paths
-other_files = "/home/callum/exch/Li9_Li8n_ncsmc/ncsmc/Nmax8"
-ncsmc_out_dir = other_files
+ncsmc_out_dir = "/home/callum/exch/Li9_Li8n_ncsmc/ncsmc/Nmax8"
+
+# stop editing here unless you have weirdly named ncsmc output
 ncsmc_rgm_out_file = join(ncsmc_out_dir, f"ncsm_rgm_Am2_1_1.out_{run_name}")
 shift_file = join(ncsmc_out_dir, f"phase_shift_{run_name}.agr")
 norm_sqrt = join(ncsmc_out_dir, f"norm_sqrt_r_rp_RGM_{run_name}.dat")
@@ -101,14 +101,15 @@ def make_dir(res_state):
     # make NCSM_E1 file
     print("making NCSM_E1_Afi file")
     ncsm_e1.make_ncsm_e1(
-        [res_state], transitions_we_want, run_name, resultant_files,
-        out_dir=run_dir)
+        [res_state], transitions_we_want, run_name, resultant_observ_files,
+        ncsd_file_resultant, nmax, out_dir=run_dir)
     # make transitions_NCSMC.in file
     n_str = naming_str.format(J2=J2, T2=T2)
     print("making transitions_NCSMC.in file")
     dot_in.make_dot_in(
         proj, target_bound_states, run_name, res_state_name, n_str,
-        ncsd_file, nmax, target_file, transitions_we_want, shift_file, out_dir=run_dir)
+        ncsd_file_target, nmax, target_file, transitions_we_want, shift_file,
+        out_dir=run_dir)
 
     # copy the executable
     # if not lexists(join(run_dir, basename(exe_path))):

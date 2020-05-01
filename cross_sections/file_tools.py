@@ -76,8 +76,8 @@ def simplify_observ(desired_state, transitions, filename, function=None):
         lines = text.splitlines()
         # scroll through until you find Nucleus
         if "Nucleus" in lines[0]:
-            print(lines[0])
-            print(lines[1])
+            #print(lines[0])
+            #print(lines[1])
             lines = lines[1:]
         else:
             try:
@@ -91,7 +91,7 @@ def simplify_observ(desired_state, transitions, filename, function=None):
         states = []
         state_nums = {}
         state_counter = 1
-        print("getting state info: state, 2J, pi, 2T, num, Ex, E")
+        #print("getting state info: state, 2J, pi, 2T, num, Ex, E")
         while "J=" == lines[0][:2]:
             # something like this (with different #s of spaces, maybe):
             # J= 2.5000    T= 1.5000  Energy=    -28.4099  Ex=   0.0000
@@ -107,7 +107,7 @@ def simplify_observ(desired_state, transitions, filename, function=None):
                 state_nums[(J2, T2)] += 1
             num = state_nums[(J2, T2)]
             state = [state_counter, J2, parity, T2, num, Ex, E]
-            print(state)
+            #print(state)
             state_counter += 1
             states.append(state)
             lines = lines[1:]
@@ -192,7 +192,7 @@ def simplify_observ(desired_state, transitions, filename, function=None):
         if f_title not in f_to_replace:
             f_to_replace.append(f_title)
     # replace initial state titles
-    print("replacing initial state titles")
+    #print("replacing initial state titles")
     state_counter = {}
     for title in i_to_replace:
         _, num, _, J2, T2, Ex = title.split()
@@ -207,11 +207,11 @@ def simplify_observ(desired_state, transitions, filename, function=None):
         assert num == i_num
         new_name = "{} ++ {} {} {} # {} {}".format(
             num, J2, i_parity, T2, state_counter[(J2, T2)], E)
-        print("replacing", title, "with", new_name)
+        #print("replacing", title, "with", new_name)
         text = text.replace(title, new_name)
 
     # replace final state titles
-    print("replacing final state titles")
+    #print("replacing final state titles")
     state_counter = {}
     for title in f_to_replace:
         _, num, _, J2, T2, Ex = title.split()
@@ -224,9 +224,9 @@ def simplify_observ(desired_state, transitions, filename, function=None):
         # find a matching state in nuclei[0]
         f_num, _, f_parity, _, state_num, _, E = nuclei[1][num-1]  # num is 1-based, not 0-based
         assert num == f_num
-        new_name = "{} ++ {} {} {} # {} {}".format(
+        new_name = "{} -- {} {} {} # {} {}".format(
             num, J2, f_parity, T2, state_counter[(J2, T2)], E)
-        print("replacing", title, "with", new_name)
+        #print("replacing", title, "with", new_name)
         text = text.replace(title, new_name)
 
     simp_path = filename+"_simp"

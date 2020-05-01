@@ -125,7 +125,7 @@ def get_e_m_transitions(simp_file_text, target_bound_states, lamb_max):
         state_f = [J2_f, pi_f, T2_f, num_f, E_f]
         state_i = [J2_i, pi_i, T2_i, num_i, E_i]
         
-        print("looking at transition:", state_i, state_f)
+        #print("looking at transition:", state_i, state_f)
         # there was a bit of an issue earlier with having states from
         # target_bound_states not quite matching with states from the
         # observ.out files...
@@ -374,7 +374,7 @@ def get_Rs(ncsd_file, nmax):
             section = sec
             break
     if section is None:
-        raise ValueError("this file does'nt seem to contain the right Nmax!")
+        raise ValueError("this file doesn't seem to contain the right Nmax!")
 
     # now find the ground state, identified by "State # 1"
     # TODO: are the R values always the ones from the ground state?
