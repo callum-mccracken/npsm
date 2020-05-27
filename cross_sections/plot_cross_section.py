@@ -4,14 +4,13 @@ import matplotlib.pyplot as plt
 
 # list of sigma_gamma_integ files (maybe there is only one)
 sigma_gamma_integ_list = [
-    #"/Users/navratil/Projects/rgm_ncsm/NCSMC/Li8_n/nLi8_NNn3lo3Nlnl-srg2.0_20_Nmax9_2p1p_m8p6_pheno_upto1.4MeV_3m/sigma_gamma_integ_nLi8_NNn3lo3Nlnl-srg2.0_20_Nmax9_2p1p_m8p6_pheno_upto1.4MeV_3m_NCSMC_E1M1E2_Li9_3_3_r1.agr",
-    #"/Users/navratil/Projects/rgm_ncsm/NCSMC/Li8_n/nLi8_NNn3lo3Nlnl-srg2.0_20_Nmax9_2p1p_m8p6_pheno_upto1.4MeV_1m/sigma_gamma_integ_nLi8_NNn3lo3Nlnl-srg2.0_20_Nmax9_2p1p_m8p6_pheno_upto1.4MeV_1m_NCSMC_E1M1E2_Li9_1_3.agr"
-    "sigma_gamma_integ_nLi8_NNn3lo3Nlnl-srg2.0_20_Nmax9_2p1p_m8p6_pheno_upto1.4MeV_1m_NCSMC_E1M1E2_Li9_1_3.agr",
+    "/Users/navratil/Projects/rgm_ncsm/NCSMC/Li8_n/sigma_gamma_integ_nLi8_NNn3lo3Nlnl-srg2.0_20_Nmax9_2p1p_m8p6_pheno_upto2MeV_3m_NCSMC_E1M1E2_Li9_3_3.agr",
+    "/Users/navratil/Projects/rgm_ncsm/NCSMC/Li8_n/sigma_gamma_integ_nLi8_NNn3lo3Nlnl-srg2.0_20_Nmax9_2p1p_m8p6_pheno_upto2MeV_1m_NCSMC_E1M1E2_Li9_1_3.agr"
 ]
 
 # name to use as output filename
 # don't include an extension here, we'll save as a bunch of formats at the end
-fig_name = "sigma_gamma_integ_nLi8_NNn3lo3Nlnl-srg2.0_20_Nmax9_2p1p_m8p6_pheno_upto1.4MeV_NCSMC_E1M1E2_Li9_tot"
+fig_name = "sigma_gamma_integ_nLi8_NNn3lo3Nlnl-srg2.0_20_Nmax9_2p1p_m8p6_pheno_upto2MeV_NCSMC_E1M1E2_Li9_tot"
 
 
 # make cross_sections a dictionary, of the form 
@@ -42,7 +41,7 @@ for sigma_gamma_integ_file in sigma_gamma_integ_list:
 ec_pairs = [[e, c] for e, c in sorted(cross_sections.items())]
 
 # xmgrace
-with open('summed_xsect.agr','w') as fileout:
+with open(fig_name+'.agr','w') as fileout:
     for pair in ec_pairs:
         e, c = pair
         line = f"{e} {c} \n"
