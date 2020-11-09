@@ -177,7 +177,7 @@ def make_ncsm_e1(desired_states, transitions, run_name,
         assert p in ["-1", "1"]
         # get the "2Jparity" name of the state
         # e.g. if 2J=3, parity=1, then name="3p" (for "3 plus")
-        j2_parity = J2 + "m" if p == "-1" else "p"
+        j2_parity = J2 + ("m" if p == "-1" else "p")
         # data stores info from observ files, to be written out after the loop
         data = []
         for file_index, filename in enumerate(observ_files):
