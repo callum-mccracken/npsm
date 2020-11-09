@@ -20,43 +20,49 @@ import os
 import shutil
 from os.path import join, exists, basename, realpath
 
+verbose = True
+
 # NOTE: some parameters are set by default, in dot_in.py! E.g. matching radius
 
 # full path to ncsd output for target nucleus (so we can get Rp, Rn, Rm):
-ncsd_file_target = "/home/callum/exch/Li8Li9/ncsd/Li8_n3lo-NN3Nlnl-srg2.0_Nmax0-10.20"
-ncsd_file_resultant = "/home/callum/exch/Li8Li9/ncsd/Li9_n3lo-NN3Nlnl-srg2.0_Nmax8.20"
+ncsd_file_target = "/home/callum/Documents/npsm/input_files/petr_files/Be7_NNn4lo500_3NlnlcD-1.8cE-0.3_E71.8-srg2.0_Nmax0-10.20"
+ncsd_file_resultant = "/home/callum/Documents/npsm/input_files/petr_files/B8_NNn4lo500_3NlnlcD-1.8cE-0.3_E71.8-srg2.0_Nmax0-8.20_5st"
 nmax = 8
 
 # path to executable file
-exe_path = realpath("transitions_NCSMC.exe")
+exe_path = "/home/callum/Documents/npsm/input_files/petr_files/transitions_NCSMC.exe"
 
 # where are your ncsmc output files stored?
-ncsmc_out_dir = "/home/callum/projects/def-navratil/exch/Li8Li9/npsm/cross_sections/works/"
+ncsmc_out_dir = "/home/callum/Documents/npsm/input_files/petr_files/"
 
 # observ.out files for the resultant nucleus
 resultant_observ_files = [
-    join(ncsmc_out_dir, "observ.Li9_NNn3lo_3NlnlcD0.7cE-0.06-srg2.0_Nmax8.20_8st_1bd"),
-    join(ncsmc_out_dir, "observ.Li9_NNn3lo_3NlnlcD0.7cE-0.06-srg2.0_Nmax9_Nmax8.20_6st_8st_1bd")
+    #join(ncsmc_out_dir, "observ.Be7_NNn4lo500_3NlnlcD-1.8cE-0.3_E71.8-srg2.0_Nmax8.20_5st_1bd"),
+    join(ncsmc_out_dir,"observ.B8_n4lo-NN3Nlnl-srg2.0_20_Nmax8_pheno_5st_r2_1bd"),
+    join(ncsmc_out_dir,"observ.B8_n4lo-NN3Nlnl-srg2.0_20_Nmax8_pheno_5st_r2_Jz1_1bd"),
+    join(ncsmc_out_dir,"observ.B8_n4lo-NN3Nlnl-srg2.0_20_Nmax8_Nmax9_pheno_5st_r2_Jz1_1bd"),
+    #join(ncsmc_out_dir, "observ.B8_NNn4lo500_3NlnlcD-1.8cE-0.3_E71.8-srg2.0_Nmax8.20_5st_Jz1_1bd"),
+    #join(ncsmc_out_dir, "observ.B8_NNn4lo500_3NlnlcD-1.8cE-0.3_E71.8-srg2.0_Nmax8_Nmax9.20_5st_Jz1")
 ]
 
 # observ.out file for the target nucleus
-target_file = join(ncsmc_out_dir, "observ.Li8_NNn3lo3Nlnl-srg2.0_Nmax8.20_3st_Jz1_1bd")
+target_file = join(ncsmc_out_dir, "observ.Be7_NNn4lo500_3NlnlcD-1.8cE-0.3_E71.8-srg2.0_Nmax8.20_5st_1bd")
 
 # transitions we care about
 transitions_we_want = ["E1", "E2", "M1"]
 
 # this string is contained in input files
-run_name = "nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax8_pheno"
+run_name = "pBe7_n4lo-NN3Nlnl-srg2.0_20_Nmax8_pheno"
 
 # another string for parts of naming of output files,
 # we'll append "_2J" at the end, e.g. "_1", based on resultant_states
-naming_str = "NCSMC_E1M1E2_Li9_{J2}_{T2}"
+naming_str = "NCSMC_E1M1E2_B8_{J2}_{T2}"
 
 # the projectile we're using, "n", "p", or a list of the form [A, Z, 2J, p, 2T]
-proj = "n"
+proj = "p"
 
 # more ncsmc output file paths
-ncsmc_out_dir = "/home/callum/exch/Li9_Li8n_ncsmc/ncsmc/Nmax8"
+ncsmc_out_dir = "/home/callum/Documents/npsm/input_files/petr_files/"
 
 # stop editing here unless you have weirdly named ncsmc output
 ncsmc_rgm_out_file = join(ncsmc_out_dir, f"ncsm_rgm_Am2_1_1.out_{run_name}")
@@ -69,18 +75,21 @@ scattering_wf_NCSMC = join(
 wavefunction_NCSMC = join(
     ncsmc_out_dir, f"wavefunction_NCSMC_{run_name}.agr")
 
+
 # resultant nucleus bound states, list of "2J pi 2T" strings
 resultant_states = cross_sections_utils.get_resultant_state_info(
-    ncsmc_rgm_out_file)
-print("resultant bound states (J, pi, T)")
-print(resultant_states)
+    ncsmc_rgm_out_file, verbose=verbose)
+if verbose:
+    print("resultant bound states (J, pi, T)")
+    print(resultant_states)  # we should be getting 3,-1,1 rather than 4,1,2
 
 # bound states of the target nucleus, lists of numbers, [2J, p, 2T, E]
 # first entry must be the ground state
 target_bound_states = cross_sections_utils.get_target_state_info(
     ncsmc_rgm_out_file)
-print("target bound states (J, pi, T, num, E)")
-print(target_bound_states)
+if verbose:
+    print("target bound states (J, pi, T, num, E)")
+    print(target_bound_states)
 
 def make_dir(res_state):
     """
@@ -93,9 +102,9 @@ def make_dir(res_state):
     # the 3m version of a state with 2J = 3, parity = -1
     res_state_name = cross_sections_utils.get_state_name(res_state)
     run_dir = realpath(run_name+"_"+res_state_name)
+    print('ensuring directory', run_dir, 'exists')
     if not exists(run_dir):
         os.mkdir(run_dir)
-
     J2, _, T2 = res_state.split()
 
     # make NCSM_E1 file
@@ -145,7 +154,7 @@ def run_exe(exe):
     os.chdir(os.path.realpath(dirname))
     os.system("chmod 777 "+filename)
     print("running executable!")
-    os.system("./"+filename)
+    os.system("source "+filename)
     os.chdir(cwd)
 
 
