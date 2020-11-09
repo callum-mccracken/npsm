@@ -106,6 +106,10 @@ def get_e_m_transitions(simp_file_text, target_bound_states, lamb_max):
     while lines != []:
         # get first 3 lines
         states_line, transition, data_line = lines[0:3]
+        #print(states_line)
+        #print(transition)
+        #print(data_line)
+        #print()
         # then cut off the  3 lines
         lines = lines[3:]
 
@@ -161,6 +165,10 @@ def get_e_m_transitions(simp_file_text, target_bound_states, lamb_max):
         # consider only transitions to a bound state from another bound state
         match_f = one_match(state_f, target_bound_states)
         match_i = one_match(state_i, target_bound_states)
+        #print(state_f)
+        #print(state_i)
+        #print(target_bound_states)
+            
         if match_f and match_i:
             #print("both states are bound!")
             index_f = match_f
@@ -190,10 +198,12 @@ def get_e_m_transitions(simp_file_text, target_bound_states, lamb_max):
             d = (data["pl"],data["nl"], data["ps"], data["ns"])
             if t not in m_transitions.keys():
                 m_transitions[t] = d
+            else:
+                raise ValueError
             #print(t, d)
 
-    for k in m_transitions.keys():
-        print(k, m_transitions[k])
+    #for k in m_transitions.keys():
+    #    print(k, m_transitions[k])
     
 
     # ensure that e_transitions has the correct form
@@ -297,8 +307,8 @@ def get_target_info(observ_file):
     ground_state_line = state_lines[0]
     """ J= 2.0000    T= 1.0001     Energy=    -34.8845     Ex=      0.0000"""
     gs_words = ground_state_line.split()
-    J2 = 2 * round(float(gs_words[1]))
-    T2 = 2 * round(float(gs_words[3]))
+    J2 = round(2 * float(gs_words[1]))
+    T2 = round(2 * float(gs_words[3]))
     # get A, Z
     A_Z_line = lines[1]
     A_Z_words = A_Z_line.split()
