@@ -5,7 +5,7 @@ import re
 from os.path import basename, join
 import cross_sections_utils
 
-def simplify_observ(desired_state, transitions, filename, function=None, verbose=False):
+def simplify_observ(desired_state, transitions, filename, function=None, verbose=True):
     """
     Makes a "simplified" version of an ``observ.out`` file.
 
@@ -45,8 +45,15 @@ def simplify_observ(desired_state, transitions, filename, function=None, verbose
     # remove blank lines
     text = text.replace("\n\n", "\n")
 
-    # remove lines with *** in them
-    text = re.sub(r'\*\*\*.*\n', '', text)
+    # remove lines with *** in them which do not contain =
+    lines = text.splitlines()
+    newlines = []
+    for line in lines:
+        if ("***" in line) and ("=" not in line):
+            pass
+        else:
+            newlines.append(line)
+    text = "\n".join(newlines)
 
     # remove "Occupation ..." lines
     text = re.sub(r'Occupation.*\n', '', text)
@@ -108,7 +115,6 @@ def simplify_observ(desired_state, transitions, filename, function=None, verbose
                 state_nums[(J2, T2)] += 1
             num = state_nums[(J2, T2)]
             state = [state_counter, J2, parity, T2, num, Ex, E]
-            #print(state)
             state_counter += 1
             states.append(state)
             lines = lines[1:]
@@ -141,7 +147,6 @@ def simplify_observ(desired_state, transitions, filename, function=None, verbose
         if "{} {} {}".format(J2, parity, T2) == desired_state:
             num_list.append(num)
     num_desired_state = max(num_list)
-
     # Now note that the Ex numbers in nuclei
     # are not exactly what's printed in the observ.out files.
     # For the final nucleus, their energy is relative to the
@@ -159,19 +164,44 @@ def simplify_observ(desired_state, transitions, filename, function=None, verbose
     # take only data that is relevant to us
     # e.g. if we only have transitions = ["E3"] up top,
     # keep lines with E3 transitions and discard others
+    
+    # we have data lines of the form:
+
+    # #  4 [2*(J,T),Ex]_f=  5 1  7.5177   #  3 [2*(J,T),Ex]_i=  7 1  4.8240
+    #
+    # BM1 matrix elements:
+    # pl= -0.2839   nl=  0.0257   ps= -0.0163   ns=  0.2745 M1= -1.4256 B(M1)=  2.0322
+    #
+    # BE2 matrix elements:
+    # L= 2 E2p=  1.1540   E2n=  0.2056     B(E2)=  1.3318
+    #
+    # BE4 matrix elements:
+    # L= 4 E4p= -5.9098   E4n= -2.9355     B(E4)= 34.9253
+    #
+    # BE6 matrix elements:
+    # L= 6 E6p= 22.9857   E6n= 11.2814     B(E6)=528.3428
+
+    # we want to record what state we're on (top line)
+    # then scroll through taking all relevant data until we hit the next state
+
     lines = text.splitlines()
     interesting_lines = []
-    state_line = ""
+    state_line = None  # this will hold the "top line"
     mtx_elements = ["B" + tr for tr in transitions]
-    for m in mtx_elements:
+    #print(mtx_elements)
+    for m in mtx_elements:  # find each kind of transition we want
+        # the line with the data will look like "BM1 matrix elements: ..."
         line_to_find = m + " matrix elements:"
         for i, line in enumerate(lines):
             if line[0] == "#":
                 state_line = line
+            #elif "#" in line:
+            #    print('noop', line)
             elif line == line_to_find:
                 interesting_lines += [state_line, m[1:], lines[i+1]]
+            #print(interesting_lines)
     text = "\n".join(interesting_lines)
-
+    
     # now we have something that looks mostly like this:
     """
     #  1 [2*(J,T),Ex]_f=  5 3  8.5953   #  1 [2*(J,T),Ex]_i= 3 3 0.0000
@@ -233,8 +263,7 @@ def simplify_observ(desired_state, transitions, filename, function=None, verbose
     simp_path = filename+"_simp"
     with open(simp_path, "w+") as simp_file:
         simp_file.write(text)
-    if verbose:
-        print('wrote output to', simp_path)
+    #print('wrote output to', simp_path)
 
     if function == "make_ncsm_e1":
         return simp_path, num_desired_state
