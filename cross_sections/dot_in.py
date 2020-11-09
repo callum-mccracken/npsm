@@ -21,6 +21,8 @@ nsig_min = 0
 nsig_max = 1
 
 # other parameters to adjust if you want to run this file on its own
+# note these are not used when calling functions externally
+
 ncsd_file = "/home/callum/exch/Li8Li9/ncsd/Li8_n3lo-NN3Nlnl-srg2.0_Nmax0-10.20"
 """the ncsd output file for the target"""
 
@@ -92,10 +94,11 @@ def get_e_m_transitions(simp_file_text, target_bound_states, lamb_max):
 
         then we're going to have a problem, since the code needs to read lines with
         all possible values from 1 to lamb_max as the first number.
+        Same deal with the second and third.
 
     """
     e_transitions = {}
-    m_transitions = []
+    m_transitions = {}
 
     # simp_file_text comes in groups of 3 lines:
     # states, transition, data
@@ -183,11 +186,15 @@ def get_e_m_transitions(simp_file_text, target_bound_states, lamb_max):
                 e_transitions[t] = d
             #print(t, d)
         else:
-            t = [index_i, index_f, data["pl"],
-                    data["nl"], data["ps"], data["ns"]]
-            if t not in m_transitions:
-                m_transitions.append(t)
-            #print(t)
+            t = (index_i, index_f)
+            d = (data["pl"],data["nl"], data["ps"], data["ns"])
+            if t not in m_transitions.keys():
+                m_transitions[t] = d
+            #print(t, d)
+
+    for k in m_transitions.keys():
+        print(k, m_transitions[k])
+    
 
     # ensure that e_transitions has the correct form
     new_e_trans = []
@@ -199,8 +206,18 @@ def get_e_m_transitions(simp_file_text, target_bound_states, lamb_max):
                 else:
                     E2p, E2n = e_transitions[(l, i, j)]
                 new_e_trans.append([l, i, j, E2p, E2n])
+    # and m too
+    new_m_trans = []
+    for l in range(1, len(target_bound_states) + 1):
+        for i in range(1, len(target_bound_states) + 1):
+            if (l, i) not in m_transitions.keys():
+                Mpl, Mnl, Mls, Mns = "0.0000", "0.0000", "0.0000", "0.0000"
+            else:
+                Mpl, Mnl, Mls, Mns = m_transitions[(l, i)]
+            new_m_trans.append([l, i, Mpl, Mnl, Mls, Mns])
 
-    return new_e_trans, m_transitions
+
+    return new_e_trans, new_m_trans
 
 
 def get_bound_state_str(target_bound_states):
@@ -464,7 +481,6 @@ def make_dot_in(proj, target_bound_states, run_name,
     simp = file_tools.simplify_observ(ground_state, transitions, observ_file)
     with open(simp, "r+") as simp_file:
         text = simp_file.read()
-
 
     # get frequency from observ file
     hw = get_freq(observ_file)
