@@ -128,7 +128,7 @@ def get_radii(ncsd_file, nmax, state):
 
 
 def make_ncsm_e1(desired_states, transitions, run_name,
-                 observ_files, ncsd_file, nmax, out_dir=None):
+                 observ_files, ncsd_file, nmax, out_dir=None, verbose=False):
     """
     Makes NCSM_E1_Afi.dat files for the given parameters.
 
@@ -292,7 +292,8 @@ def make_ncsm_e1(desired_states, transitions, run_name,
         out_path = os.path.join(out_dir, out_name)
         with open(out_path, "w+") as done_file:
             done_file.write("\n".join(lines)+"\n")
-        print('wrote', out_path)
+        if verbose:
+            print('wrote', out_path)
 
 
 if __name__ == "__main__":

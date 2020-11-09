@@ -91,7 +91,7 @@ if verbose:
     print("target bound states (J, pi, T, num, E)")
     print(target_bound_states)
 
-def make_dir(res_state):
+def make_dir(res_state, verbose=False):
     """
     Makes a directory for the given state of the resultant nucleus.
 
@@ -100,21 +100,26 @@ def make_dir(res_state):
     """
 
     # the 3m version of a state with 2J = 3, parity = -1
+    if verbose:
+        print('working on resultant state', res_state)
     res_state_name = cross_sections_utils.get_state_name(res_state)
     run_dir = realpath(run_name+"_"+res_state_name)
-    print('ensuring directory', run_dir, 'exists')
+    if verbose:
+        print('ensuring directory', run_dir, 'exists')
     if not exists(run_dir):
         os.mkdir(run_dir)
     J2, _, T2 = res_state.split()
 
     # make NCSM_E1 file
-    print("making NCSM_E1_Afi file")
+    if verbose:
+        print("making NCSM_E1_Afi file")
     ncsm_e1.make_ncsm_e1(
         [res_state], transitions_we_want, run_name, resultant_observ_files,
         ncsd_file_resultant, nmax, out_dir=run_dir)
     # make transitions_NCSMC.in file
     n_str = naming_str.format(J2=J2, T2=T2)
-    print("making transitions_NCSMC.in file")
+    if verbose:
+        print("making transitions_NCSMC.in file")
     dot_in.make_dot_in(
         proj, target_bound_states, run_name, res_state_name, n_str,
         ncsd_file_target, nmax, target_file, transitions_we_want, shift_file,
