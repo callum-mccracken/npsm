@@ -1,0 +1,29 @@
+This is the unofficial file spec documentation for NCSM_E1 files.
+Feel free to add more details if you have them!
+
+Line            Meaning
+4 1 2           2J pi 2T for initial state
+2               Number of states with same quantum numbers
+0 1 2           2J pi 2T for one possible final state
+2               What kind of transition (multipolarity)
+1               How many ways to transition (must preceed this many data lines)
+1 1 1.2387      For each way, transition parameters
+0 1 2           2J pi 2T for another possible state (maybe same as before)
+2               Kind of transition (must be different than before)
+1               Ways to make this transition
+2 1 0.9987      Transition parameters
+2 1 2           2J pi 2T for next state
+1               Type
+1               Ways
+1 1 1.4379      Parameters
+2 1 2           2J pi 2T
+1               Type
+1               Ways
+2 1 0.5553      Parameters
+4 1 2                       2J pi 2T
+0                           Type
+2                           Ways = 2 this time
+1 1 2.3032 2.0368 2.2071    Way 1 parameters
+1 2 0.0 0.0 0.0             Way 2 parameters
+...            Continue until you're done all transitions
+
