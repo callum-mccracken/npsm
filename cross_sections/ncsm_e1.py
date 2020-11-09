@@ -134,6 +134,7 @@ def make_ncsm_e1(desired_states, transitions, run_name,
 
     desired_states:
         list, initial resultant nucleus states we want to consider,
+        transitions go from resultant to target states
         e.g. ["1 -1 3", "3 -1 3"]
 
     transitions:
@@ -157,6 +158,16 @@ def make_ncsm_e1(desired_states, transitions, run_name,
         e.g. 8
     """
 
+    # store all transitions that will be put in the file, to avoid duplicates
+    # if there are two copies of the same transition in multiple files.
+    # also note that duplicates might not have EXACTLY the same parameters,
+    # down to some rounding error tolerance.
+    # I assume the first time we see a transition, that'll be the only one
+    # that matters, and others will be duplicates.
+    # tolerance is controled by tol here:
+    tol = 1e-3
+    transition_bank = {}
+
     # make one ncsm_e1 file for each state
     for desired_state in desired_states:
         # have we got the radii yet?
@@ -164,17 +175,18 @@ def make_ncsm_e1(desired_states, transitions, run_name,
 
         J2, p, T2 = desired_state.split()
         assert p in ["-1", "1"]
-        # get the "3m" name of the state
-        # e.g. if 2J=3, parity = 1, name=3p for 3 plus
+        # get the "2Jparity" name of the state
+        # e.g. if 2J=3, parity=1, then name="3p" (for "3 plus")
         j2_parity = J2 + "m" if p == "-1" else "p"
         # data stores info from observ files, to be written out after the loop
         data = []
         for file_index, filename in enumerate(observ_files):
-            # simplify observ
+            # simplify observ file
             simp, num = file_tools.simplify_observ(
                 desired_state, transitions, filename, function="make_ncsm_e1")
             num_desired_state = num
             # get the useful info out of the data lines, e.g. E2p number
+            # e.g. E1p in the line L= 1 E1p= -0.0102 E1n= 0.0102 B(E1)= 0.0001
             with open(simp, "r+") as simp_file:
                 text = simp_file.read()
             lines = text.splitlines()
@@ -193,7 +205,6 @@ def make_ncsm_e1(desired_states, transitions, run_name,
             text = "\n".join(lines)
 
             # get transitions from simplified observ.out file
-            transition_bank = {}
             lines = text.splitlines()
             for i, line in enumerate(lines):
                 # get all transitions from the state of interest to others
@@ -214,8 +225,14 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                         transition_bank[state_f_jpt] = {}
                     if trans_type not in transition_bank[state_f_jpt].keys():
                         transition_bank[state_f_jpt][trans_type] = []
-                    transition_bank[state_f_jpt][trans_type].append(
-                            (i_num, f_num, param))
+                    already_exists = False
+                    for inum, fnum, paramval in transition_bank[state_f_jpt][trans_type]:
+                        params_are_same = abs(float(paramval) - float(param)) < tol
+                        if inum == i_num and fnum == f_num and params_are_same:
+                            already_exists = True
+                    if not already_exists:
+                        transition_bank[state_f_jpt][trans_type].append(
+                                (i_num, f_num, param))
 
             # get E0 transitions from a state to another state with same Q#s
             # careful to just do this once!
@@ -235,49 +252,47 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                             (str(i), str(j), f"{Rp} {Rn} {Rm}"))
 
 
-            # now turn the data in transition_bank into writable lines
-            # in the input file format
-            lines = []
-            # first 2 lines of the file should be initial state description
-            if file_index == 0:
-                lines.append(desired_state)
-                lines.append(str(num_desired_state))
-            # then go through and write all final states, in the format we need
-            for state_f in sorted(transition_bank.keys()):
-                for trans_type in sorted(transition_bank[state_f].keys()):
-                    # how many blocks will we need for this transition?
-                    blocks = {}
+        # now turn the data in transition_bank into writable lines
+        # in the input file format
+        lines = []
+        # first 2 lines of the file should be initial state description
+        lines.append(desired_state)
+        lines.append(str(num_desired_state))
+        # then go through and write all final states, in the format we need
+        for state_f in sorted(transition_bank.keys()):
+            for trans_type in sorted(transition_bank[state_f].keys()):
+                # how many blocks will we need for this transition?
+                blocks = {}
+                for transition in transition_bank[state_f][trans_type]:
+                    i, f, param = transition
+                    if i not in blocks.keys():
+                        blocks[i] = 1
+                    else:
+                        blocks[i] += 1
+                # then go through and make each block
+                for i_val, n_blocks in blocks.items():
+                    # line for the final state quantum numbers
+                    lines.append(" ".join(state_f))
+                    # line for multipolarity of transition
+                    lines.append(str(trans_type))
+                    # line for how many lines are in this block
+                    line_counter = 0
+                    block_lines = []
                     for transition in transition_bank[state_f][trans_type]:
                         i, f, param = transition
-                        if i not in blocks.keys():
-                            blocks[i] = 1
-                        else:
-                            blocks[i] += 1
-                    # then go through and make each block
-                    for i_val, n_blocks in blocks.items():
-                        # line for the final state quantum numbers
-                        lines.append(" ".join(state_f))
-                        # line for multipolarity of transition
-                        lines.append(str(trans_type))
-                        # line for how many lines are in this block
-                        line_counter = 0
-                        block_lines = []
-                        for transition in transition_bank[state_f][trans_type]:
-                            i, f, param = transition
-                            if i == i_val:
-                                line_counter += 1
-                                block_lines.append(" ".join([i, f, param]))
-                        lines.append(str(line_counter))
-                        lines += block_lines
-            # add the lines from this file to overall set of lines / data
-            data += lines
+                        if i == i_val:
+                            line_counter += 1
+                            block_lines.append(" ".join([i, f, param]))
+                    lines.append(str(line_counter))
+                    lines += block_lines
         # once we've looped over all files, write data to a file for this state
         if out_dir is None:
             out_dir = os.path.dirname(filename)
         out_name = f'NCSM_E1_Afi_{run_name}_{j2_parity}.dat'
         out_path = os.path.join(out_dir, out_name)
         with open(out_path, "w+") as done_file:
-            done_file.write("\n".join(data)+"\n")
+            done_file.write("\n".join(lines)+"\n")
+        print('wrote', out_path)
 
 
 if __name__ == "__main__":
