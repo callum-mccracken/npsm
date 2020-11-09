@@ -177,8 +177,8 @@ def get_A_Z(name):
     return A, Z
 
 
-def get_resultant_state_info(rgm_out_filename):
-    E_list, state_titles = simplify(rgm_out_filename)
+def get_resultant_state_info(rgm_out_filename, verbose=False):
+    _, state_titles = simplify(rgm_out_filename, verbose=verbose)
     for i, title in enumerate(state_titles):
         J, p, T = title.split("_")
         J2 = str(int(float(J) * 2))
