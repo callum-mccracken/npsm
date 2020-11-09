@@ -5,7 +5,7 @@ import re
 from os.path import basename, join
 import cross_sections_utils
 
-def simplify_observ(desired_state, transitions, filename, function=None):
+def simplify_observ(desired_state, transitions, filename, function=None, verbose=False):
     """
     Makes a "simplified" version of an ``observ.out`` file.
 
@@ -31,7 +31,8 @@ def simplify_observ(desired_state, transitions, filename, function=None):
             the number of states with the same quantum
             numbers as the desired state
     """
-    print("simplifying", filename)
+    if verbose:
+        print("simplifying", filename)
     # get all text from file
     with open(filename, "r+") as open_file:
         text = open_file.read()
@@ -232,6 +233,8 @@ def simplify_observ(desired_state, transitions, filename, function=None):
     simp_path = filename+"_simp"
     with open(simp_path, "w+") as simp_file:
         simp_file.write(text)
+    if verbose:
+        print('wrote output to', simp_path)
 
     if function == "make_ncsm_e1":
         return simp_path, num_desired_state
