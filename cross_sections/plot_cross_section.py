@@ -16,22 +16,28 @@ plt.rc('font', size=16)
 
 # list of sigma_gamma_integ files (maybe there is only one)
 sigma_gamma_integ_file_list = [
-    'total.agr',
-    "/home/callum/Documents/Undergrad Work/npsm/input_files/sigma_gamma_integ_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax8_pheno_3m_NCSMC_E1M1E2_Li9_3_3.agr",
-    "/home/callum/Documents/Undergrad Work/npsm/input_files/sigma_gamma_integ_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax8_pheno_1m_NCSMC_E1M1E2_Li9_1_3.agr"
+    'tot.agr',
+    "3m_N8.agr",
+    "3m_N6.agr",
+    "1m_N8.agr",
+    "1m_N6.agr",
 ]
 
 # titles for each file
 title_list = [
     "Total$,$ N$_{\\mathrm{max}}=8$",
     "$3/2^-,$ N$_{\\mathrm{max}}=8$",
+    "$3/2^-,$ N$_{\\mathrm{max}}=6$",
     "$1/2^-,$ N$_{\\mathrm{max}}=8$",
+    "$1/2^-,$ N$_{\\mathrm{max}}=6$",
 ]
 
 styles = [
-    "r-",
-    "b--",
-    "g--"
+    {"color":"r", "linestyle":"-"},
+    {"color":"b", "linestyle":"--"},
+    {"color":"b", "linestyle":"--", "dashes":(2,2)},
+    {"color":"g", "linestyle":"--"},
+    {"color":"g", "linestyle":"--", "dashes":(2,2)},
 ]
 
 
@@ -44,6 +50,7 @@ fig_name = "sigma_gamma_integ_nLi8_NNn3lo3Nlnl-srg2.0_20_Nmax9_2p1p_m8p6_pheno_u
 cross_sections = {}
 
 for sgi_file, title in zip(sigma_gamma_integ_file_list, title_list):
+    print(sgi_file)
     cross_sections[title] = {}
 
     # read lines
@@ -58,7 +65,7 @@ for sgi_file, title in zip(sigma_gamma_integ_file_list, title_list):
         # energy
         e = float(words[0])
         # cross-section * 10000 to convert units
-        c = float(words[2]) * 10000
+        c = float(words[2]) # * 10000
         # if energy not in dict, add it
         if e not in cross_sections[title].keys():
             cross_sections[title][e] = c
@@ -76,7 +83,7 @@ fix, ax = plt.subplots()
 for title, style in zip(title_list, styles):
     ec_pairs = [[e, c] for e, c in sorted(cross_sections[title].items())]
     e, c = list(zip(*ec_pairs))
-    plt.plot(e, c, style, label=title)
+    plt.plot(e, c, label=title, **style)
 
 # plot experimental data
 # points
@@ -107,7 +114,7 @@ ax.tick_params(axis="x", which='both', top=True, bottom=True)
 ax.tick_params(axis="y", which='both', left=True, right=True)
 ax.tick_params(which='both', direction='in', length=6, width=2)
 ax.tick_params(which='minor', width=1.5)
-ax.legend()
+ax.legend(fontsize=13.5, loc='upper right')
 plt.tight_layout()
 for extension in [".pdf", ".svg", ".png"]:
     plt.savefig(fig_name+extension, dpi=300)
