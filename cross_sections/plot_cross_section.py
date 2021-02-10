@@ -89,11 +89,11 @@ for title, style in zip(title_list, styles):
 # points
 plt.scatter([0.25, 0.75], [19.1, 7.9], c='k', s=50)
 # error bars
-plt.annotate("", xy=(0.25, 8), xytext=(0.25, 19.1 + 10.4),
+plt.annotate("", xy=(0.25, 8), xytext=(0.25, 19.1 + 10.4 + 1),
              arrowprops=dict(arrowstyle="-|>", lw=2, color='k'))
 plt.plot([0.25 - 0.03, 0.25 + 0.03], [19.1 + 10.4, 19.1 + 10.4], 'k')
 
-plt.annotate("", xy=(0.75, 2.3), xytext=(0.75, 7.9 + 5.5),
+plt.annotate("", xy=(0.75, 2.3), xytext=(0.75, 7.9 + 5.5 + 0.5),
              arrowprops=dict(arrowstyle="-|>", lw=2, color='k'))
 plt.plot([0.75 - 0.03, 0.75 + 0.03], [7.9 + 5.5, 7.9 + 5.5], 'k')
 
