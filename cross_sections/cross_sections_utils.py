@@ -202,16 +202,16 @@ def get_target_state_info(rgm_out_filename):
         raise ValueError("Parity value " + target_parity + " not understood")
     # I assume all hunks of relevant info look something like this:
     # J=  4    T=  2    Energy= -34.8845
-    regex = r'J=[ ]*-?[0-9]*[ ]*T=[ ]*-?[0-9]*[ ]*Energy=[ ]-?[0-9]*.?[0-9]*'
+    regex = r'J=[ ]*([.0-9]*)[ ]*T=[ ]*([.0-9]*)[ ]*Energy=[ ]*-?([.0-9]*).*'
     matches = re.findall(regex, text)
     states = []
     # keep a record of how many times a state with [J2, pi, T2] is entered
     nums = {}
     for match in matches:
-        words = match.split()
-        J2 = int(words[1])
-        T2 = int(words[3])
-        energy = float(words[5])
+        words = match
+        J2 = int(2.*float(words[0]))
+        T2 = int(2.*float(words[1]))
+        energy = float(words[2])
         num_string = f"{J2} {parity} {T2}"
         if num_string not in nums.keys():
             nums[num_string] = 1
