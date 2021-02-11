@@ -146,6 +146,9 @@ def simplify_observ(desired_state, transitions, filename, function=None, verbose
         _, J2, parity, T2, num, _, _ = state
         if "{} {} {}".format(J2, parity, T2) == desired_state:
             num_list.append(num)
+    if len(num_list)==0:
+        print("Desired state {} {} {}".format(J2, parity, T2), "not found in {}".format(filename))
+        return None, 0
     num_desired_state = max(num_list)
     # Now note that the Ex numbers in nuclei
     # are not exactly what's printed in the observ.out files.

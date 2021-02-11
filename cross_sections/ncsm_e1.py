@@ -185,6 +185,8 @@ def make_ncsm_e1(desired_states, transitions, run_name,
             simp, num = file_tools.simplify_observ(
                 desired_state, transitions, filename, function="make_ncsm_e1")
             num_desired_state = num
+            if simp is None:
+                continue
             # get the useful info out of the data lines, e.g. E2p number
             # e.g. E1p in the line L= 1 E1p= -0.0102 E1n= 0.0102 B(E1)= 0.0001
             with open(simp, "r+") as simp_file:
