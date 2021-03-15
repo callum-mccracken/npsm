@@ -21,6 +21,7 @@ import shutil
 from os.path import join, exists, basename, realpath
 
 verbose = True
+run_executables = False
 
 # NOTE: some parameters are set by default, in dot_in.py! E.g. matching radius
 
@@ -164,7 +165,8 @@ def run_exe(exe):
 
 
 if __name__ == "__main__":
-    # make run directories
     for res_state in resultant_states:
+        # make run directories
         executable = make_dir(res_state)
-        run_exe(executable)
+        if run_executables:  # then run if desired
+            run_exe(executable)
