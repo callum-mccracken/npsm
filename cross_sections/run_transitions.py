@@ -65,6 +65,11 @@ proj = "p"
 # more ncsmc output file paths
 ncsmc_out_dir = "/home/callum/Documents/npsm/input_files/petr_files/"
 
+# if you only want to run for some resultant states,
+# put them in this list (if list is empty, we'll run them all)
+# format of each entry should be a string, "2J +/-1 2T"
+resultant_states_manual = ["2 -1 2"]
+
 # stop editing here unless you have weirdly named ncsmc output
 ncsmc_rgm_out_file = join(ncsmc_out_dir, f"ncsm_rgm_Am2_1_1.out_{run_name}")
 shift_file = join(ncsmc_out_dir, f"phase_shift_{run_name}.agr")
@@ -165,8 +170,14 @@ def run_exe(exe):
 
 
 if __name__ == "__main__":
-    for res_state in resultant_states:
+    # use auto-gathered info if no manual info given
+    if resultant_states_manual == []:
+        r_states = resultant_states
+    else:
+        r_states = resultant_states_manual
+
+    for r_state in r_states:
         # make run directories
-        executable = make_dir(res_state)
+        executable = make_dir(r_state)
         if run_executables:  # then run if desired
             run_exe(executable)
