@@ -303,9 +303,12 @@ def make_wf_file(wavefunction_NCSMC_file, res_state, run_dir):
             # have #words < 5 (I'm pretty sure this should always work, right?)
             if len(line.split()) < 5:
                 hashtag_counter += 1
+        # the top of a segment consists of 4 lines
+        # when the counter reaches 5 we've found the next segment
+        # we need to recount that new line, so counter resets to 1 not 0
         if hashtag_counter == 5:
             # we've started a new segment
-            hashtag_counter = 0
+            hashtag_counter = 1
             segments.append(segment)
             segment = []
         segment.append(line)
