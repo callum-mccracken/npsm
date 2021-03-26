@@ -184,8 +184,46 @@ def get_resultant_state_info(rgm_out_filename, verbose=False):
         J2 = str(int(float(J) * 2))
         T2 = str(int(float(T) * 2))
         state_titles[i] = " ".join([J2, p, T2])
+        print(J2,J,T2)
     return state_titles
 
+##Chloe Modif
+def get_proj_state_info(rgm_out_filename):
+    with open(rgm_out_filename, "r+") as rgm_out_file:
+        text = rgm_out_file.read()
+    # I assume all hunks of relevant info look something like this:
+    # chann,2*J,2*T,parity=
+
+    regex = r'number of channels=[ ]*([0-9]*)'
+    match = re.findall(regex, text)
+    Nchan=match[0]
+    regex = r'chann,2\SJ,2\ST,parity=[ ]*([0-9]*)[ ]*([0-9]*)[ ]*([0-9]*)[ ]*(-?[0-9]*)'    
+    matches = re.findall(regex, text)
+    regex=r'state \#[ ]([0-9])*[ ]*energy=[ ]*(-?[.0-9]*).*'
+    matchstates = re.findall(regex, text)
+    Nst=0
+    ii=0
+    for matchst in matchstates:
+        ist=int(float(matchst[0]))
+        if ist > Nst :
+            Nst=int(float(matchst[0]))
+        ii=ii+1
+        
+    states=[]
+    iimin=0
+    iimax=Nst    
+    for match in matches:
+        ichan=int(float(match[0]))
+        J2 = int(float(match[1]))
+        T2 = int(float(match[2]))
+        parity = int(float(match[3]))
+        for matchst in matchstates[iimin:iimax]: 
+            ist=int(float(matchst[0]))
+            energy=float(matchst[1])   
+            states.append([ichan,ist,J2,parity,T2,energy])    
+        iimin=iimin+Nst
+        iimax=iimax+Nst
+    return states
 
 def get_target_state_info(rgm_out_filename):
     with open(rgm_out_filename, "r+") as rgm_out_file:
@@ -202,16 +240,16 @@ def get_target_state_info(rgm_out_filename):
         raise ValueError("Parity value " + target_parity + " not understood")
     # I assume all hunks of relevant info look something like this:
     # J=  4    T=  2    Energy= -34.8845
-    regex = r'J=[ ]*-?[0-9]*[ ]*T=[ ]*-?[0-9]*[ ]*Energy=[ ]-?[0-9]*.?[0-9]*'
+    regex = r'J=[ ]*([.0-9]*)[ ]*T=[ ]*([.0-9]*)[ ]*Energy=[ ]*-?([.0-9]*).*'
     matches = re.findall(regex, text)
     states = []
     # keep a record of how many times a state with [J2, pi, T2] is entered
     nums = {}
     for match in matches:
-        words = match.split()
-        J2 = int(words[1])
-        T2 = int(words[3])
-        energy = float(words[5])
+        words = match
+        J2 = int(2.*float(words[0]))
+        T2 = int(2.*float(words[1]))
+        energy = float(words[2])
         num_string = f"{J2} {parity} {T2}"
         if num_string not in nums.keys():
             nums[num_string] = 1
@@ -228,7 +266,7 @@ def get_target_state_info(rgm_out_filename):
     return states
 
 
-dot_in_fmt = """{run_name}
+dot_in_fmt_1 = """{run_name}
 {state_name}
 {naming_str}
 {n_bound_resultant} ! Number of bound states for composite nucleus
@@ -249,6 +287,117 @@ dot_in_fmt = """{run_name}
 
 {e_lines}
 {m_lines}
+{Emin} {Emax} {Estep} ! Emin, Emax, dE
+{Eexpt} ! Eexpt
+"""
+
+dot_in_fmt_2 = """{run_name}
+{state_name}
+{naming_str}
+{n_bound_resultant} ! Number of bound states for composite nucleus
+{n_scattering_resultant} ! Number of scattering states for composite nucleus
+{target_A} {target_Z} {target_gs_J2} {target_gs_parity} {target_gs_T2} {n_bound_target} ! Target info: A, Z, ground state 2J, parity, 2T
+{proj_A} {proj_Z} {proj_gs_J2} {proj_gs_parity} {proj_gs_T2} {n_bound_proj} ! Projectile info: A, Z, ground state 2J, parity, 2T
+{target_A} {target_Z} {target_gs_J2} {target_gs_parity} {target_gs_T2} {n_bound_target} ! Target info: A, Z, ground state 2J, parity, 2T
+{proj_A} {proj_Z} {proj_gs_J2} {proj_gs_parity} {proj_gs_T2} {n_bound_proj} ! Projectile info: A, Z, ground state 2J, parity, 2T
+{hw} ! Frequency used in NCSM calculation
+{r_matching} ! Matching radius
+{r_zero} ! Cutoff radius, after which wavefunction ~0
+{n_points} ! Number of points to use for integration
+{nsig_min} {nsig_max} {lamb_min} {lamb_max} ! nsig_min,nsig_max,lamb_min,lamb_max
+
+{Rp} {Rn} {Rm} ! targ Rp, Rn, Rm
+
+{e_lines}
+{m_lines}
+{Emin} {Emax} {Estep} ! Emin, Emax, dE
+{Eexpt} ! Eexpt
+"""
+
+dot_in_fmt_3 = """{run_name}
+{state_name}
+{naming_str}
+{n_bound_resultant} ! Number of bound states for composite nucleus
+{n_scattering_resultant} ! Number of scattering states for composite nucleus
+{target_A} {target_Z} {target_gs_J2} {target_gs_parity} {target_gs_T2} {n_bound_target} ! Target info: A, Z, ground state 2J, parity, 2T
+{targ_bound_str}
+{proj_A} {proj_Z} {proj_gs_J2} {proj_gs_parity} {proj_gs_T2} {n_bound_proj} ! Projectile info: A, Z, ground state 2J, parity, 2T
+{proj_bound_str}
+{target_A} {target_Z} {target_gs_J2} {target_gs_parity} {target_gs_T2} {n_bound_target} ! Target info: A, Z, ground state 2J, parity, 2T
+{targ_bound_str}
+{proj_A} {proj_Z} {proj_gs_J2} {proj_gs_parity} {proj_gs_T2} {n_bound_proj} ! Projectile info: A, Z, ground state 2J, parity, 2T
+{proj_bound_str}
+{hw} ! Frequency used in NCSM calculation
+{r_matching} ! Matching radius
+{r_zero} ! Cutoff radius, after which wavefunction ~0
+{n_points} ! Number of points to use for integration
+{nsig_min} {nsig_max} {lamb_min} {lamb_max} ! nsig_min,nsig_max,lamb_min,lamb_max
+
+{Rptarg} {Rntarg} {Rmtarg} ! targ Rp, Rn, Rm
+
+{e_lines_targ}
+{m_lines_targ}
+{Rpproj} {Rnproj} {Rmproj} ! proj Rp, Rn, Rm
+
+{e_lines_proj}
+{m_lines_proj}
+{Emin} {Emax} {Estep} ! Emin, Emax, dE
+{Eexpt} ! Eexpt
+"""
+
+dot_in_fmt_4 = """{run_name}
+{state_name}
+{naming_str}
+{n_bound_resultant} ! Number of bound states for composite nucleus
+{n_scattering_resultant} ! Number of scattering states for composite nucleus
+{target_A} {target_Z} {target_gs_J2} {target_gs_parity} {target_gs_T2} {n_bound_target} ! Target info: A, Z, ground state 2J, parity, 2T
+{proj_A} {proj_Z} {proj_gs_J2} {proj_gs_parity} {proj_gs_T2} {n_bound_proj} ! Projectile info: A, Z, ground state 2J, parity, 2T
+{proj_bound_str}
+{target_A} {target_Z} {target_gs_J2} {target_gs_parity} {target_gs_T2} {n_bound_target} ! Target info: A, Z, ground state 2J, parity, 2T
+{proj_A} {proj_Z} {proj_gs_J2} {proj_gs_parity} {proj_gs_T2} {n_bound_proj} ! Projectile info: A, Z, ground state 2J, parity, 2T
+{proj_bound_str}
+{hw} ! Frequency used in NCSM calculation
+{r_matching} ! Matching radius
+{r_zero} ! Cutoff radius, after which wavefunction ~0
+{n_points} ! Number of points to use for integration
+{nsig_min} {nsig_max} {lamb_min} {lamb_max} ! nsig_min,nsig_max,lamb_min,lamb_max
+
+{Rptarg} {Rntarg} {Rmtarg} ! targ Rp, Rn, Rm
+
+{e_lines_targ}
+{m_lines_targ}
+{Rpproj} {Rnproj} {Rmproj} ! proj Rp, Rn, Rm
+
+{e_lines_proj}
+{m_lines_proj}
+{Emin} {Emax} {Estep} ! Emin, Emax, dE
+{Eexpt} ! Eexpt
+"""
+
+
+dot_in_fmt_5 = """{run_name}
+{state_name}
+{naming_str}
+{n_bound_resultant} ! Number of bound states for composite nucleus
+{n_scattering_resultant} ! Number of scattering states for composite nucleus
+{target_A} {target_Z} {target_gs_J2} {target_gs_parity} {target_gs_T2} {n_bound_target} ! Target info: A, Z, ground state 2J, parity, 2T
+{proj_A} {proj_Z} {proj_gs_J2} {proj_gs_parity} {proj_gs_T2} {n_bound_proj} ! Projectile info: A, Z, ground state 2J, parity, 2T
+{target_A} {target_Z} {target_gs_J2} {target_gs_parity} {target_gs_T2} {n_bound_target} ! Target info: A, Z, ground state 2J, parity, 2T
+{proj_A} {proj_Z} {proj_gs_J2} {proj_gs_parity} {proj_gs_T2} {n_bound_proj} ! Projectile info: A, Z, ground state 2J, parity, 2T
+{hw} ! Frequency used in NCSM calculation
+{r_matching} ! Matching radius
+{r_zero} ! Cutoff radius, after which wavefunction ~0
+{n_points} ! Number of points to use for integration
+{nsig_min} {nsig_max} {lamb_min} {lamb_max} ! nsig_min,nsig_max,lamb_min,lamb_max
+
+{Rptarg} {Rntarg} {Rmtarg} ! targ Rp, Rn, Rm
+
+{e_lines_targ}
+{m_lines_targ}
+{Rpproj} {Rnproj} {Rmproj} ! proj Rp, Rn, Rm
+
+{e_lines_proj}
+{m_lines_proj}
 {Emin} {Emax} {Estep} ! Emin, Emax, dE
 {Eexpt} ! Eexpt
 """
