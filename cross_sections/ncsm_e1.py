@@ -99,14 +99,13 @@ def get_radii(ncsd_file, nmax, state):
             J2 = float(J) * 2
             T2 = float(T) * 2
             # we'll only take very close matches
-            if abs(state_J2 - J2) < 1e-3 and abs(state_T2 - T2) < 1e-3:
+            if abs(state_J2 - J2) < 1e-2 and abs(state_T2 - T2) < 1e-2:
                 # we found a state with matching J and T!
                 found_state = True
         # find the first time after "State #" that "Radius" comes up
         if found_state and "Radius" in line:
             # line looks something like this:
             # Radius: proton=   2.0671  neutron=   2.3067 mass =   2.2199
-
             # get the data
             _, _, Rp, _, Rn, _, _, Rm = line.split()
             Rp, Rn, Rm = float(Rp), float(Rn), float(Rm)
@@ -117,7 +116,6 @@ def get_radii(ncsd_file, nmax, state):
             # then look for the next state
             state_counter += 1
             found_state = False
-
     # now format it a bit and return
     for state_i in range(1, state_counter):  # loop over every matching state
         for state_f in range(1, state_counter):
@@ -185,8 +183,7 @@ def make_ncsm_e1(desired_states, transitions, run_name,
             simp, num = file_tools.simplify_observ(
                 desired_state, transitions, filename, function="make_ncsm_e1")
             num_desired_state = num
-            if simp is None:
-                continue
+
             # get the useful info out of the data lines, e.g. E2p number
             # e.g. E1p in the line L= 1 E1p= -0.0102 E1n= 0.0102 B(E1)= 0.0001
             with open(simp, "r+") as simp_file:
@@ -241,14 +238,12 @@ def make_ncsm_e1(desired_states, transitions, run_name,
             if not added_radii:
                 added_radii = True
                 radii = get_radii(ncsd_file, nmax, (J2, p, T2))
-
                 if (J2, p, T2) not in transition_bank.keys():
                     transition_bank[(J2, p, T2)] = {}
                 if "0" not in transition_bank[(J2, p, T2)].keys():
                     transition_bank[(J2, p, T2)]["0"] = []
-
-                for i in range(1, num_desired_state+1):
-                    for j in range(1, num_desired_state+1):
+                for i in range(1, min(len(radii)+1,num_desired_state+1)):
+                    for j in range(1, min(len(radii)+1,num_desired_state+1)):
                         Rp, Rn, Rm = radii[(i, j)]
                         transition_bank[(J2, p, T2)]["0"].append(
                             (str(i), str(j), f"{Rp} {Rn} {Rm}"))

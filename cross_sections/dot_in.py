@@ -15,7 +15,6 @@ r_zero = 50.0
 n_points = 10000
 n_bound_resultant = 1
 n_scattering_resultant = 1
-n_bound_proj = 1
 Eexpt = 0.0
 nsig_min = 0
 nsig_max = 1
@@ -69,7 +68,6 @@ def parameter_list(transition):
     }
     return param_dict[transition]
 
-
 def get_e_m_transitions(simp_file_text, target_bound_states, lamb_max):
     """
     Given a simplified observ.out file and the bound states of the target,
@@ -103,7 +101,7 @@ def get_e_m_transitions(simp_file_text, target_bound_states, lamb_max):
     # simp_file_text comes in groups of 3 lines:
     # states, transition, data
     lines = simp_file_text.split("\n")
-    while lines != []:
+    while lines != ['']:
         # get first 3 lines
         states_line, transition, data_line = lines[0:3]
         #print(states_line)
@@ -195,7 +193,7 @@ def get_e_m_transitions(simp_file_text, target_bound_states, lamb_max):
             #print(t, d)
         else:
             t = (index_i, index_f)
-            d = (data["pl"],data["nl"], data["ps"], data["ns"])
+            d = (data["pl"],data["nl"], data["ps"], data["ns"]) 
             if t not in m_transitions.keys():
                 m_transitions[t] = d
             else:
@@ -229,6 +227,107 @@ def get_e_m_transitions(simp_file_text, target_bound_states, lamb_max):
 
     return new_e_trans, new_m_trans
 
+    ##Chloe Modif
+def get_e_m_transitions_proj(proj_file_text,proj_states,lamb_max,proj_info):
+    
+    regex = r'channel, 2\SJ, 2\ST, parity=[ ]*([0-9]*)[ ]*([0-9]*)[ ]*([0-9]*)[ ]*(-?[0-9]*)'    
+    matchchan = re.findall(regex, proj_file_text)
+    regex=r'state \#[ ]([0-9])*[ ]*energy=[ ]*(-?[.0-9]*).*'
+    matchstates = re.findall(regex, proj_file_text)
+    Nst=0
+    ii=0
+    for matchst in matchstates:
+        ist=int(float(matchst[0]))
+        if ist > Nst :
+            Nst=int(float(matchst[0]))
+        ii=ii+1
+    Nst2=0
+    ii=0
+    for matchst in proj_states:
+        ist=int(float(matchst[1]))
+        if ist > Nst2 :
+            Nst2=int(float(matchst[1]))
+        ii=ii+1        
+    Nchan=0
+    ii=0
+    for matchch in matchchan:
+        ich=int(float(matchch[0]))
+        if ich > Nchan :
+            Nchan=int(float(matchch[0]))
+        ii=ii+1
+    Nchan2=0
+    ii=0
+    for matchch in proj_states:
+        ich=int(float(matchch[0]))
+        if ich > Nchan2 :
+            Nchan2=int(float(matchch[0]))
+        ii=ii+1
+    if Nchan !=Nchan2 or Nst!= Nst2 :
+         print(Nchan,Nchan2,Nst,Nst2)
+         exit("Number of channels of the projectile not consistent between the rgm file and the E1E2M1 transition files")
+    i=0
+    for state in proj_states:     
+        i=i+1       
+        if(int(proj_info[2])!=int(state[2]) or int(proj_info[4])!=int(state[4])):
+            if(i==len(proj_states) ):      
+                exit("J and T quantum numbers of the projectile in input not consistent with the rgm  and the E1E2M1 transition files")
+        else:
+            break
+     
+    lines = proj_file_text.split("\n")  
+
+    while lines!= ['']:
+        if any("state" in line for line in lines):
+            lines = lines[1:] 
+        else:
+            break     
+    e_transitionsE1 = []
+    e_transitionsE2=[]
+    m_transitions = []    
+    while lines != ['']:
+        # get first 3 lines
+        states_line,Radii, transitionE1,transitionE2,transitionM1 = lines[0:5]        
+        lines = lines[5:]
+        state_i,state_f=states_line.split("Jf")
+        _,Ji,_,Ti,_,_,Ei= state_i.split()
+        _,Jf,_,Tf,_,_,Ef= state_f.split()
+
+        Ji,Ti,Jf,Tf= int(Ji), int(Ti),int(Jf),int(Tf)
+        Ei,Ef=float(Ei),float(Ef)
+        isti=1
+        for state in proj_states:            
+            if(Ji==int(state[2]/2) and Ti==int(state[4]/2) and Ei==state[5]): 
+                break
+            isti=isti+1
+        istf=1
+        for state in proj_states:    
+            if(Jf==int(state[2]/2)  and Tf==int(state[4]/2) and Ef==state[5]): 
+                break
+            istf=istf+1  
+        if(isti==1 and istf==1):
+            _,Rp,_,Rn,_,Rm=Radii.split()
+            Rp_proj,Rn_proj,Rm_proj=float(Rp),float(Rn),float(Rm)
+    
+        _,E1p,_,E1n,_,_=transitionE1.split()  
+        E1p,E1n=float(E1p),float(E1n) 
+        e_transitionsE1.append([1, isti, istf, E1p, E1n]) 
+        _,E2p,_,E2n,_,_=transitionE2.split()   
+        E2p,E2n=float(E2p),float(E2n)
+        e_transitionsE2.append([2, isti, istf, E2p, E2n])   
+        _,pl,_,nl,_,ps,_,ns,_,_,_,_=transitionM1.split()
+        pl,nl,ps,ns=float(pl),float(nl),float(ps),float(ns)
+        m_transitions.append([isti,istf,pl,nl,ps,ns])  
+    e_transitions=[]
+    for l in range(1, lamb_max+1):
+        ii=0
+        for isti in range(0,len(proj_states)):
+            for istf in range(0,len(proj_states)):                
+                if l==1:
+                    e_transitions.append(e_transitionsE1[ii])
+                if l==2:
+                    e_transitions.append(e_transitionsE2[ii])
+                ii=ii+1
+    return Rp_proj,Rn_proj,Rm_proj,e_transitions, m_transitions
 
 def get_bound_state_str(target_bound_states):
     """
@@ -295,7 +394,6 @@ def get_target_info(observ_file):
     observ_file:
         path to observ.out file
     """
-
     with open(observ_file, "r+") as observ:
         lines = observ.readlines()
     # get parity
@@ -336,7 +434,9 @@ def get_proj_info(projectile):
         return [1, 1, 1, 1, 1]  # TODO: that's right, right?
     #elif ... add your own special case here
     else:
-        raise ValueError("I'm not sure how to process this projectile!")
+        result =[x.strip() for x in projectile.split(',')]
+        return result
+        #        raise ValueError("I'm not sure how to process this projectile!")
 
 
 def get_energy_info(shift_file):
@@ -424,7 +524,7 @@ def get_Rs(ncsd_file, nmax):
     return Rp, Rn, Rm
 
 
-def make_dot_in(proj, target_bound_states, run_name,
+def make_dot_in(proj, proj_file,proj_states,target_bound_states, run_name,
                 state_name, naming_str, ncsd_file, nmax,
                 observ_file, transitions, shift_file,
                 out_dir=None):
@@ -479,6 +579,35 @@ def make_dot_in(proj, target_bound_states, run_name,
     t_A, t_Z, t_gs_J2, t_gs_parity, t_gs_T2 = get_target_info(observ_file)
     proj_info = proj if type(proj) == list else get_proj_info(proj)
     p_A, p_Z, p_gs_J2, p_gs_parity, p_gs_T2 = proj_info
+    p_A=int(p_A)
+    #proj_bound string
+    if p_A==1:
+        n_bound_proj = 1
+    else:
+        n_bound_proj=len(proj_states)
+    proj_bound_str=""
+    bound_state_fmt = "{E}d0   {J2}  {parity}  {T2}     ! E, 2J, pi, 2T"
+    ii=0
+    for state in proj_states:       
+        _,_,J2,par,T2,Energy=state
+        proj_bound_str+=bound_state_fmt.format(E=Energy,J2=J2,parity=par,T2=T2)
+        ii+=1
+        if ii!=n_bound_proj:
+           proj_bound_str+= "\n"
+
+    #Projectile e-m transition
+    with open(proj_file,"r+") as proj_file:
+        text=proj_file.read()
+    Rp_proj,Rn_proj,Rm_proj,e_transitions_proj, m_transitions_proj = get_e_m_transitions_proj(text,proj_states,lamb_max,proj_info)
+
+    e_fmt = "{multipolarity} {i} {f} {Ep} {En} ! proj E mul i f  Mp Mn\n"
+    e_lines_proj = ""
+    for m, i, f, Ep, En in e_transitions_proj:
+        e_lines_proj += e_fmt.format(multipolarity=m, i=i, f=f, Ep=Ep, En=En)
+    m_fmt = "{i} {f} {Mlp} {Mln} {Msp} {Msn} ! proj M1 i f Mlp Mln Msp Msn\n"
+    m_lines_proj = ""
+    for i, f, Mlp, Mln, Msp, Msn in m_transitions_proj:
+        m_lines_proj += m_fmt.format(i=i, f=f, Mlp=Mlp, Mln=Mln, Msp=Msp, Msn=Msn)
 
     n_bound_target = len(target_bound_states)
 
@@ -487,6 +616,7 @@ def make_dot_in(proj, target_bound_states, run_name,
 
     # simplify observ file, get text
     shutil.copyfile(observ_file, os.path.split(observ_file)[1])
+    print(target_bound_states)
     ground_state = " ".join(map(str, target_bound_states[0][:3]))
     simp = file_tools.simplify_observ(ground_state, transitions, observ_file)
     with open(simp, "r+") as simp_file:
@@ -494,49 +624,219 @@ def make_dot_in(proj, target_bound_states, run_name,
 
     # get frequency from observ file
     hw = get_freq(observ_file)
-
     e_transitions, m_transitions = get_e_m_transitions(
         text, target_bound_states, lamb_max)
     targ_bound_str = get_bound_state_str(target_bound_states)
     e_lines, m_lines = get_transition_lines(e_transitions, m_transitions)
 
-    file_str = cross_sections_utils.dot_in_fmt.format(
-        run_name=run_name,
-        state_name=state_name,
-        naming_str=naming_str,
-        n_bound_resultant=n_bound_resultant,
-        n_scattering_resultant=n_scattering_resultant,
-        target_A=t_A,
-        target_Z=t_Z,
-        target_gs_J2=t_gs_J2,
-        target_gs_parity=t_gs_parity,
-        target_gs_T2=t_gs_T2,
-        n_bound_target=n_bound_target,
-        targ_bound_str=targ_bound_str,
-        proj_A=p_A,
-        proj_Z=p_Z,
-        proj_gs_J2=p_gs_J2,
-        proj_gs_parity=p_gs_parity,
-        proj_gs_T2=p_gs_T2,
-        n_bound_proj=n_bound_proj,
-        hw=hw,
-        r_matching=r_matching,
-        r_zero=r_zero,
-        n_points=n_points,
-        nsig_min=nsig_min,
-        nsig_max=nsig_max,
-        lamb_min=lamb_min,
-        lamb_max=lamb_max,
-        Rp=Rp,
-        Rn=Rn,
-        Rm=Rm,
-        e_lines=e_lines,
-        m_lines=m_lines,
-        Emin=Emin,
-        Emax=Emax,
-        Estep=Estep,
-        Eexpt=Eexpt
-    )
+
+    if n_bound_target>1  and p_A==1:
+        file_str = cross_sections_utils.dot_in_fmt_1.format(
+            run_name=run_name,
+            state_name=state_name,
+            naming_str=naming_str,
+            n_bound_resultant=n_bound_resultant,
+            n_scattering_resultant=n_scattering_resultant,
+            target_A=t_A,
+            target_Z=t_Z,
+            target_gs_J2=t_gs_J2,
+            target_gs_parity=t_gs_parity,
+            target_gs_T2=t_gs_T2,
+            n_bound_target=n_bound_target,
+            targ_bound_str=targ_bound_str,
+            proj_A=p_A,
+            proj_Z=p_Z,
+            proj_gs_J2=p_gs_J2,
+            proj_gs_parity=p_gs_parity,
+            proj_gs_T2=p_gs_T2,
+            n_bound_proj=n_bound_proj,
+            hw=hw,
+            r_matching=r_matching,
+            r_zero=r_zero,
+            n_points=n_points,
+            nsig_min=nsig_min,
+            nsig_max=nsig_max,
+            lamb_min=lamb_min,
+            lamb_max=lamb_max,
+            Rp=Rp,
+            Rn=Rn,
+            Rm=Rm,
+            e_lines=e_lines,
+            m_lines=m_lines,
+            Emin=Emin,
+            Emax=Emax,
+            Estep=Estep,
+            Eexpt=Eexpt
+        )
+    if n_bound_target==1  and p_A==1:
+       file_str = cross_sections_utils.dot_in_fmt_2.format(
+            run_name=run_name,
+            state_name=state_name,
+            naming_str=naming_str,
+            n_bound_resultant=n_bound_resultant,
+            n_scattering_resultant=n_scattering_resultant,
+            target_A=t_A,
+            target_Z=t_Z,
+            target_gs_J2=t_gs_J2,
+            target_gs_parity=t_gs_parity,
+            target_gs_T2=t_gs_T2,
+            n_bound_target=n_bound_target,
+            targ_bound_str=targ_bound_str,
+            proj_A=p_A,
+            proj_Z=p_Z,
+            proj_gs_J2=p_gs_J2,
+            proj_gs_parity=p_gs_parity,
+            proj_gs_T2=p_gs_T2,
+            n_bound_proj=n_bound_proj,
+            hw=hw,
+            r_matching=r_matching,
+            r_zero=r_zero,
+            n_points=n_points,
+            nsig_min=nsig_min,
+            nsig_max=nsig_max,
+            lamb_min=lamb_min,
+            lamb_max=lamb_max,
+            Rp=Rp,
+            Rn=Rn,
+            Rm=Rm,
+            e_lines=e_lines,
+            m_lines=m_lines,
+            Emin=Emin,
+            Emax=Emax,
+            Estep=Estep,
+            Eexpt=Eexpt
+        )
+    if n_bound_target>1 and n_bound_proj>1 and p_A>1:
+        file_str = cross_sections_utils.dot_in_fmt_3.format(
+            run_name=run_name,
+            state_name=state_name,
+            naming_str=naming_str,
+            n_bound_resultant=n_bound_resultant,
+            n_scattering_resultant=n_scattering_resultant,
+            target_A=t_A,
+            target_Z=t_Z,
+            target_gs_J2=t_gs_J2,
+            target_gs_parity=t_gs_parity,
+            target_gs_T2=t_gs_T2,
+            n_bound_target=n_bound_target,
+            targ_bound_str=targ_bound_str,
+            proj_A=p_A,
+            proj_Z=p_Z,
+            proj_gs_J2=p_gs_J2,
+            proj_gs_parity=p_gs_parity,
+            proj_gs_T2=p_gs_T2,
+            n_bound_proj=n_bound_proj,
+            proj_bound_str=proj_bound_str,
+            hw=hw,
+            r_matching=r_matching,
+            r_zero=r_zero,
+            n_points=n_points,
+            nsig_min=nsig_min,
+            nsig_max=nsig_max,
+            lamb_min=lamb_min,
+            lamb_max=lamb_max,
+            Rptarg=Rp,
+            Rntarg=Rn,
+            Rmtarg=Rm,
+            e_lines_targ=e_lines,
+            m_lines_targ=m_lines,
+            Rpproj=Rp_proj,
+            Rnproj=Rn_proj,
+            Rmproj=Rm_proj,
+            e_lines_proj=e_lines_proj,
+            m_lines_proj=m_lines_proj,            
+            Emin=Emin,
+            Emax=Emax,
+            Estep=Estep,
+            Eexpt=Eexpt
+        )
+    if n_bound_target==1 and n_bound_proj>1 and p_A>1:    
+        file_str = cross_sections_utils.dot_in_fmt_4.format(
+            run_name=run_name,
+            state_name=state_name,
+            naming_str=naming_str,
+            n_bound_resultant=n_bound_resultant,
+            n_scattering_resultant=n_scattering_resultant,
+            target_A=t_A,
+            target_Z=t_Z,
+            target_gs_J2=t_gs_J2,
+            target_gs_parity=t_gs_parity,
+            target_gs_T2=t_gs_T2,
+            n_bound_target=n_bound_target,
+            proj_A=p_A,
+            proj_Z=p_Z,
+            proj_gs_J2=p_gs_J2,
+            proj_gs_parity=p_gs_parity,
+            proj_gs_T2=p_gs_T2,
+            n_bound_proj=n_bound_proj,
+            proj_bound_str=proj_bound_str,
+            hw=hw,
+            r_matching=r_matching,
+            r_zero=r_zero,
+            n_points=n_points,
+            nsig_min=nsig_min,
+            nsig_max=nsig_max,
+            lamb_min=lamb_min,
+            lamb_max=lamb_max,
+            Rptarg=Rp,
+            Rntarg=Rn,
+            Rmtarg=Rm,
+            e_lines_targ=e_lines,
+            m_lines_targ=m_lines,
+            Rpproj=Rp_proj,
+            Rnproj=Rn_proj,
+            Rmproj=Rm_proj,
+            e_lines_proj=e_lines_proj,
+            m_lines_proj=m_lines_proj,            
+            Emin=Emin,
+            Emax=Emax,
+            Estep=Estep,
+            Eexpt=Eexpt
+        )
+    if n_bound_target==1 and n_bound_proj==1 and p_A>1:    
+        file_str = cross_sections_utils.dot_in_fmt_5.format(
+            run_name=run_name,
+            state_name=state_name,
+            naming_str=naming_str,
+            n_bound_resultant=n_bound_resultant,
+            n_scattering_resultant=n_scattering_resultant,
+            target_A=t_A,
+            target_Z=t_Z,
+            target_gs_J2=t_gs_J2,
+            target_gs_parity=t_gs_parity,
+            target_gs_T2=t_gs_T2,
+            n_bound_target=n_bound_target,
+            proj_A=p_A,
+            proj_Z=p_Z,
+            proj_gs_J2=p_gs_J2,
+            proj_gs_parity=p_gs_parity,
+            proj_gs_T2=p_gs_T2,
+            n_bound_proj=n_bound_proj,
+            hw=hw,
+            r_matching=r_matching,
+            r_zero=r_zero,
+            n_points=n_points,
+            nsig_min=nsig_min,
+            nsig_max=nsig_max,
+            lamb_min=lamb_min,
+            lamb_max=lamb_max,
+            Rptarg=Rp,
+            Rntarg=Rn,
+            Rmtarg=Rm,
+            e_lines_targ=e_lines,
+            m_lines_targ=m_lines,
+            Rpproj=Rp_proj,
+            Rnproj=Rn_proj,
+            Rmproj=Rm_proj,
+            e_lines_proj=e_lines_proj,
+            m_lines_proj=m_lines_proj,            
+            Emin=Emin,
+            Emax=Emax,
+            Estep=Estep,
+            Eexpt=Eexpt
+        )
+
+
     if out_dir is None:
         out_dir = os.path.dirname(observ_file)
     filename = os.path.join(out_dir, "transitions_NCSMC.in")
