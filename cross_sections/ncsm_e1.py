@@ -247,8 +247,8 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                 if "0" not in transition_bank[(J2, p, T2)].keys():
                     transition_bank[(J2, p, T2)]["0"] = []
 
-                for i in range(1, min(len(radii)+1,num_desired_state+1)):
-                    for j in range(1, min(len(radii)+1,num_desired_state+1)):
+                for i in range(1, min(len(radii)+1, num_desired_state+1)):
+                    for j in range(1, min(len(radii)+1, num_desired_state+1)):
                         Rp, Rn, Rm = radii[(i, j)]
                         transition_bank[(J2, p, T2)]["0"].append(
                             (str(i), str(j), f"{Rp} {Rn} {Rm}"))
