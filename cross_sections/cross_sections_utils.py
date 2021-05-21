@@ -200,9 +200,10 @@ def get_target_state_info(rgm_out_filename):
         parity = -1
     else:
         raise ValueError("Parity value " + target_parity + " not understood")
-    trdens_matches = re.findall(r'Density file',text)
+    trdens_matches = re.findall(r'Density file', text)
     if len(trdens_matches) == 0:
-        # I assume all hunks of relevant info look something like this:
+        # I assume all hunks of relevant info 
+        # look something like this:
         # J=  4    T=  2    Energy= -34.8845
         # (if kernels were precomputed in trdens)
         regex = r'J=[ ]*-?[0-9]*[ ]*T=[ ]*-?[0-9]*[ ]*Energy=[ ]-?[0-9]*.?[0-9]*'
@@ -211,18 +212,19 @@ def get_target_state_info(rgm_out_filename):
         # keep a record of how many times a state with [J2, pi, T2] is entered
         nums = {}
         for match in matches:
-             words = match.split()
-             J2 = int(words[1])
-             T2 = int(words[3])
-             energy = float(words[5])
-             num_string = f"{J2} {parity} {T2}"
-             if num_string not in nums.keys():
-                 nums[num_string] = 1
-             else:
-                 nums[num_string] += 1
-             states.append([J2, parity, T2, nums[num_string], energy])
+            words = match.split()
+            J2 = int(words[1])
+            T2 = int(words[3])
+            energy = float(words[5])
+            num_string = f"{J2} {parity} {T2}"
+            if num_string not in nums.keys():
+                nums[num_string] = 1
+            else:
+                nums[num_string] += 1
+            states.append([J2, parity, T2, nums[num_string], energy])
     elif len(trdens_matches) == 1:
-        # I assume all hunks of relevant info look something like this:
+        # I assume all hunks of relevant info 
+        # look something like this:
         # J=  4.0000    T=  2.0001    Energy= -34.8845
         # might not be exactly integer but should be close
         regex = r'J=[ ]*([.0-9]*)[ ]*T=[ ]*([.0-9]*)[ ]*Energy=[ ]*-?([.0-9]*).*'
