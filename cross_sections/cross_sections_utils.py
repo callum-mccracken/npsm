@@ -206,8 +206,8 @@ def get_target_state_info(rgm_out_filename):
         # look something like this:
         # J=  4    T=  2    Energy= -34.8845
         # (if kernels were precomputed in trdens)
-        regex = r'J=[ ]*-?[0-9]*[ ]*T=[ ]*-?[0-9]*[ ]*'
-                r'Energy=[ ]-?[0-9]*.?[0-9]*'''
+        regex = r'J=[ ]*-?[0-9]*[ ]*T=[ ]*-?[0-9]*[ ]*'\
+                r'Energy=[ ]-?[0-9]*.?[0-9]*'
         matches = re.findall(regex, text)
         states = []
         # keep a record of how many times a state with [J2, pi, T2] is entered
@@ -228,7 +228,7 @@ def get_target_state_info(rgm_out_filename):
         # look something like this:
         # J=  4.0000    T=  2.0001    Energy= -34.8845
         # might not be exactly integer but should be close
-        regex = r'J=[ ]*([.0-9]*)[ ]*T=[ ]*([.0-9]*)[ ]*'
+        regex = r'J=[ ]*([.0-9]*)[ ]*T=[ ]*([.0-9]*)[ ]*'\
                 r'Energy=[ ]*-?([.0-9]*).*'
         matches = re.findall(regex, text)
         states = []
