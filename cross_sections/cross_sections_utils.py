@@ -246,7 +246,8 @@ def get_target_state_info(rgm_out_filename):
                 nums[num_string] += 1
             states.append([J2, parity, T2, nums[num_string], energy])
     else:
-        raise ValueError("Multiple trdens inputs found, not sure what to do here")
+        raise ValueError("Multiple trdens inputs found, "
+                         "not sure what to do here")
 
     #for state in states:
     #    print(state)
