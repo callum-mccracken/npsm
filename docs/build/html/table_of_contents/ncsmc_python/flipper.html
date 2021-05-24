@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>flipper.py &mdash; NPSM 0.0.1 documentation</title>
+  <title>flipper.py &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="output_simplifier.py" href="output_simplifier.html" />
@@ -169,7 +172,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ncsmc_python.flipper">
+  <section id="module-ncsmc_python.flipper">
 <span id="flipper-py"></span><h1>flipper.py<a class="headerlink" href="#module-ncsmc_python.flipper" title="Permalink to this headline">¶</a></h1>
 <p>Contains a whole bunch of functions which…</p>
 <ul class="simple">
@@ -190,9 +193,9 @@
 </pre></div>
 </div>
 <p>(output is saved in the same spot as the input, with <code class="docutils literal notranslate"><span class="pre">_flipped</span></code> at the end)</p>
-<dl class="function">
-<dt id="ncsmc_python.flipper.apply_add_mapping">
-<code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">apply_add_mapping</code><span class="sig-paren">(</span><em class="sig-param">line</em>, <em class="sig-param">mapping</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.apply_add_mapping" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.flipper.apply_add_mapping">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.flipper.</span></span><span class="sig-name descname"><span class="pre">apply_add_mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.apply_add_mapping" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply map generated in get_add_map() to a line</p>
 <dl class="simple">
 <dt>line:</dt><dd><p>list of floats</p>
@@ -202,9 +205,9 @@
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.flipper.apply_col_mapping">
-<code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">apply_col_mapping</code><span class="sig-paren">(</span><em class="sig-param">line</em>, <em class="sig-param">mapping</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.apply_col_mapping" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.flipper.apply_col_mapping">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.flipper.</span></span><span class="sig-name descname"><span class="pre">apply_col_mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.apply_col_mapping" title="Permalink to this definition">¶</a></dt>
 <dd><p>Applies a column mapping to a line, mapping defined in get_column_map()</p>
 <dl class="simple">
 <dt>line:</dt><dd><p>list of floats</p>
@@ -214,9 +217,9 @@
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.flipper.dist">
-<code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">dist</code><span class="sig-paren">(</span><em class="sig-param">a</em>, <em class="sig-param">b</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.dist" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.flipper.dist">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.flipper.</span></span><span class="sig-name descname"><span class="pre">dist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.dist" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compares a and b “up to flips”, i.e. mod 180</p>
 <dl class="simple">
 <dt>a:</dt><dd><p>float</p>
@@ -226,9 +229,9 @@
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.flipper.do_one_flip">
-<code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">do_one_flip</code><span class="sig-paren">(</span><em class="sig-param">section</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.do_one_flip" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.flipper.do_one_flip">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.flipper.</span></span><span class="sig-name descname"><span class="pre">do_one_flip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.do_one_flip" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform the flip operation on one section one time</p>
 <dl class="simple">
 <dt>sections:</dt><dd><p>list, one element from the output of <code class="docutils literal notranslate"><span class="pre">separate_into_sections</span></code></p>
@@ -236,9 +239,9 @@
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.flipper.flip">
-<code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">flip</code><span class="sig-paren">(</span><em class="sig-param">read_filename</em>, <em class="sig-param">verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.flip" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.flipper.flip">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.flipper.</span></span><span class="sig-name descname"><span class="pre">flip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">read_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.flip" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs flipping operation from start to finish,
 returns the filename of the flipped file</p>
 <dl class="simple">
@@ -249,9 +252,9 @@ returns the filename of the flipped file</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.flipper.flip_all_sections">
-<code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">flip_all_sections</code><span class="sig-paren">(</span><em class="sig-param">sections</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.flip_all_sections" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.flipper.flip_all_sections">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.flipper.</span></span><span class="sig-name descname"><span class="pre">flip_all_sections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sections</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.flip_all_sections" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform flipping operation on each section and make sure that there
 are no discontinuities at section breaks within megasections</p>
 <dl class="simple">
@@ -260,9 +263,9 @@ are no discontinuities at section breaks within megasections</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.flipper.flip_columns">
-<code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">flip_columns</code><span class="sig-paren">(</span><em class="sig-param">sections</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.flip_columns" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.flipper.flip_columns">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.flipper.</span></span><span class="sig-name descname"><span class="pre">flip_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sections</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.flip_columns" title="Permalink to this definition">¶</a></dt>
 <dd><p>Take a list of sections and return those same sections, but with
 the columns re-ordered so they’re consistent throughout megasections.</p>
 <dl class="simple">
@@ -271,9 +274,9 @@ the columns re-ordered so they’re consistent throughout megasections.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.flipper.flip_if_needed">
-<code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">flip_if_needed</code><span class="sig-paren">(</span><em class="sig-param">top_nums</em>, <em class="sig-param">btm_nums</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.flip_if_needed" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.flipper.flip_if_needed">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.flipper.</span></span><span class="sig-name descname"><span class="pre">flip_if_needed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_nums</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">btm_nums</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.flip_if_needed" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="simple">
 <dt>top_nums:</dt><dd><p>list of floats, line directly above btm_nums</p>
 </dd>
@@ -286,9 +289,9 @@ If the difference is big, flip the number to make it small.</p>
 <p>Return the new list of nums, after being flipped if needed</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.flipper.flip_one_section">
-<code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">flip_one_section</code><span class="sig-paren">(</span><em class="sig-param">section</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.flip_one_section" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.flipper.flip_one_section">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.flipper.</span></span><span class="sig-name descname"><span class="pre">flip_one_section</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.flip_one_section" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform flip operation on a section until fully finished</p>
 <dl class="simple">
 <dt>sections:</dt><dd><p>list, one element from the output of <code class="docutils literal notranslate"><span class="pre">separate_into_sections</span></code></p>
@@ -296,9 +299,9 @@ If the difference is big, flip the number to make it small.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.flipper.get_add_map">
-<code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">get_add_map</code><span class="sig-paren">(</span><em class="sig-param">top_line</em>, <em class="sig-param">bottom_line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.get_add_map" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.flipper.get_add_map">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.flipper.</span></span><span class="sig-name descname"><span class="pre">get_add_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bottom_line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.get_add_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>An add_map is for when we’re combining previously flipped sections
 and we need to know what to add to other sections so that the boundaries
 of flipped sections don’t have big jumps due to fixing flipping issues.</p>
@@ -311,9 +314,9 @@ of flipped sections don’t have big jumps due to fixing flipping issues.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.flipper.get_column_map">
-<code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">get_column_map</code><span class="sig-paren">(</span><em class="sig-param">top_line</em>, <em class="sig-param">bottom_line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.get_column_map" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.flipper.get_column_map">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.flipper.</span></span><span class="sig-name descname"><span class="pre">get_column_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bottom_line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.get_column_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>get a dict of the form:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="n">index0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">index1</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
 </pre></div>
@@ -340,9 +343,9 @@ to which one in the bottom line, you can use this mapping.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.flipper.sanitize">
-<code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">sanitize</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.sanitize" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.flipper.sanitize">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.flipper.</span></span><span class="sig-name descname"><span class="pre">sanitize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.sanitize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Opens NCSMC output file, reads each line, separates into text lines and
 number lines. Sets NaN values to zero.</p>
 <dl class="simple">
@@ -356,9 +359,9 @@ number lines. Sets NaN values to zero.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.flipper.separate_into_channels">
-<code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">separate_into_channels</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.separate_into_channels" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.flipper.separate_into_channels">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.flipper.</span></span><span class="sig-name descname"><span class="pre">separate_into_channels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.separate_into_channels" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns channels (i.e. individual columns within megasections)
 as lists of floats, along with their associated labels (strings).</p>
 <p>Also returns energies associated with each row. Note that not all
@@ -369,9 +372,9 @@ channels have the same length as the energy list!</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.flipper.separate_into_megasections">
-<code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">separate_into_megasections</code><span class="sig-paren">(</span><em class="sig-param">sections</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.separate_into_megasections" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.flipper.separate_into_megasections">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.flipper.</span></span><span class="sig-name descname"><span class="pre">separate_into_megasections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sections</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.separate_into_megasections" title="Permalink to this definition">¶</a></dt>
 <dd><p>Maybe calling them megasections was a little dramatic,
 but megasections are the sections of the input file separated by titles,
 rather than sections, which are separated by changing line length</p>
@@ -411,9 +414,9 @@ throughout a megasection!</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.flipper.separate_into_sections">
-<code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">separate_into_sections</code><span class="sig-paren">(</span><em class="sig-param">list_of_nums</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.separate_into_sections" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.flipper.separate_into_sections">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.flipper.</span></span><span class="sig-name descname"><span class="pre">separate_into_sections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_of_nums</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.separate_into_sections" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns sections of the file based on line length</p>
 <p>e.g. if your list_of_nums looks like:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
@@ -445,9 +448,9 @@ throughout a megasection!</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.flipper.start_from_zero">
-<code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">start_from_zero</code><span class="sig-paren">(</span><em class="sig-param">sections</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.start_from_zero" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.flipper.start_from_zero">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.flipper.</span></span><span class="sig-name descname"><span class="pre">start_from_zero</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sections</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.start_from_zero" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ensure that all channels start “from zero”,
 or rather that they don’t start at like 180 or -180 or something.</p>
 <p>Make them start from, say, 0.1, not 180.1</p>
@@ -457,9 +460,9 @@ or rather that they don’t start at like 180 or -180 or something.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.flipper.write_data">
-<code class="sig-prename descclassname">ncsmc_python.flipper.</code><code class="sig-name descname">write_data</code><span class="sig-paren">(</span><em class="sig-param">sections</em>, <em class="sig-param">text_lines</em>, <em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.write_data" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.flipper.write_data">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.flipper.</span></span><span class="sig-name descname"><span class="pre">write_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.flipper.write_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write flipped data back into a file,
 making sure to put the text_lines (i.e. section titles, …)
 back in the right spots.</p>
@@ -473,7 +476,7 @@ back in the right spots.</p>
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -495,7 +498,7 @@ back in the right spots.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>

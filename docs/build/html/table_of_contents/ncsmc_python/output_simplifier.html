@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>output_simplifier.py &mdash; NPSM 0.0.1 documentation</title>
+  <title>output_simplifier.py &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="pheno.py" href="pheno.html" />
@@ -169,16 +172,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ncsmc_python.output_simplifier">
+  <section id="module-ncsmc_python.output_simplifier">
 <span id="output-simplifier-py"></span><h1>output_simplifier.py<a class="headerlink" href="#module-ncsmc_python.output_simplifier" title="Permalink to this headline">¶</a></h1>
 <p>Takes ncsmc output (.out) files, grabs info about bound states,
 and outputs a “.out_simplified” file in the same spot as the original.</p>
 <p>Can be run by editing the filename parameter in this file,
 or just running the file with the command:</p>
 <p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">output_simplifier.py</span> <span class="pre">-f</span> <span class="pre">[filename]</span></code></p>
-<dl class="function">
-<dt id="ncsmc_python.output_simplifier.bound_state_line">
-<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">bound_state_line</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.bound_state_line" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.output_simplifier.bound_state_line">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.output_simplifier.</span></span><span class="sig-name descname"><span class="pre">bound_state_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.bound_state_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if line is of the form:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bound</span> <span class="n">state</span> <span class="n">found</span> <span class="n">at</span> <span class="n">E_b</span><span class="o">=</span><span class="p">[</span><span class="n">energy</span><span class="p">]</span> <span class="p">[</span><span class="n">unit</span><span class="p">]</span>
 </pre></div>
@@ -189,9 +192,9 @@ or just running the file with the command:</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.output_simplifier.get_e">
-<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">get_e</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.get_e" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.output_simplifier.get_e">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.output_simplifier.</span></span><span class="sig-name descname"><span class="pre">get_e</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.get_e" title="Permalink to this definition">¶</a></dt>
 <dd><p>assuming bound_state_line(line) == True, return E</p>
 <dl class="simple">
 <dt>line:</dt><dd><p>string, a line of a file</p>
@@ -199,11 +202,13 @@ or just running the file with the command:</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.output_simplifier.get_ground_e">
-<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">get_ground_e</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.get_ground_e" title="Permalink to this definition">¶</a></dt>
-<dd><p>The line looks like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ground</span><span class="o">-</span><span class="n">state</span> <span class="n">E</span><span class="o">=</span> <span class="o">-</span><span class="mf">68.4838</span>  <span class="n">T_rel</span><span class="o">=</span>   <span class="mf">9.3033</span>  <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.output_simplifier.get_ground_e">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.output_simplifier.</span></span><span class="sig-name descname"><span class="pre">get_ground_e</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.get_ground_e" title="Permalink to this definition">¶</a></dt>
+<dd><p><a href="#id1"><span class="problematic" id="id2">*</span></a>edited since ground state energy is not on
+the line that says “Ground-state E=”</p>
+<p>The line looks like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Lowest</span> <span class="n">eigenenergy</span><span class="o">=</span> <span class="o">-</span><span class="mf">68.4838</span> <span class="n">MeV</span>
 </pre></div>
 </div>
 <p>Get E.</p>
@@ -213,19 +218,19 @@ or just running the file with the command:</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.output_simplifier.get_j_parity">
-<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">get_j_parity</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.get_j_parity" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.output_simplifier.get_j_parity">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.output_simplifier.</span></span><span class="sig-name descname"><span class="pre">get_j_parity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.get_j_parity" title="Permalink to this definition">¶</a></dt>
 <dd><p>assuming j_parity_line(line) == True, return J, parity</p>
 <dl class="simple">
-<dt>line:</dt><dd><p>string, a line of a file</p>
+<dt>line:</dt><dd><p>string, like  “2*J=  6    parity=-1”</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.output_simplifier.get_t">
-<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">get_t</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.get_t" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.output_simplifier.get_t">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.output_simplifier.</span></span><span class="sig-name descname"><span class="pre">get_t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.get_t" title="Permalink to this definition">¶</a></dt>
 <dd><p>assuming t_line(line) == True, return T</p>
 <dl class="simple">
 <dt>line:</dt><dd><p>string, a line of a file</p>
@@ -233,9 +238,9 @@ or just running the file with the command:</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.output_simplifier.get_thresh_e">
-<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">get_thresh_e</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.get_thresh_e" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.output_simplifier.get_thresh_e">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.output_simplifier.</span></span><span class="sig-name descname"><span class="pre">get_thresh_e</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.get_thresh_e" title="Permalink to this definition">¶</a></dt>
 <dd><p>line looks like:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Threshold</span> <span class="n">E</span><span class="o">=</span> <span class="o">-</span><span class="mf">69.0645</span> <span class="n">MeV</span>
 </pre></div>
@@ -246,9 +251,9 @@ or just running the file with the command:</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.output_simplifier.groud_e_line">
-<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">groud_e_line</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.groud_e_line" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.output_simplifier.groud_e_line">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.output_simplifier.</span></span><span class="sig-name descname"><span class="pre">groud_e_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.groud_e_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if line contains <code class="docutils literal notranslate"><span class="pre">Ground-state</span> <span class="pre">E=</span></code></p>
 <dl class="simple">
 <dt>line:</dt><dd><p>string, a line of a file</p>
@@ -256,9 +261,9 @@ or just running the file with the command:</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.output_simplifier.j_parity_line">
-<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">j_parity_line</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.j_parity_line" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.output_simplifier.j_parity_line">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.output_simplifier.</span></span><span class="sig-name descname"><span class="pre">j_parity_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.j_parity_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if line is of the form:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">*</span><span class="n">J</span><span class="o">=</span>  <span class="mi">6</span>    <span class="n">parity</span><span class="o">=-</span><span class="mi">1</span>
 </pre></div>
@@ -269,9 +274,9 @@ or just running the file with the command:</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.output_simplifier.simplify">
-<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">simplify</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.simplify" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.output_simplifier.simplify">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.output_simplifier.</span></span><span class="sig-name descname"><span class="pre">simplify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.simplify" title="Permalink to this definition">¶</a></dt>
 <dd><p>Makes a simpler version of ncsmc .out files,
 no more scrolling through 100000 line files!</p>
 <p>Steps:</p>
@@ -284,7 +289,14 @@ no more scrolling through 100000 line files!</p>
 </dd>
 </dl>
 </li>
-<li><p>Get bound state energy</p></li>
+<li><dl class="simple">
+<dt>Get bound state energy</dt><dd><ul class="simple">
+<li><p>there may be multiple bound states with the same J pi T,
+so don’t stop looping through when we find one</p></li>
+</ul>
+</dd>
+</dl>
+</li>
 <li><p>Get details</p></li>
 </ol>
 <dl class="simple">
@@ -295,9 +307,9 @@ no more scrolling through 100000 line files!</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.output_simplifier.t_line">
-<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">t_line</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.t_line" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.output_simplifier.t_line">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.output_simplifier.</span></span><span class="sig-name descname"><span class="pre">t_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.t_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if line is of the form:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">*</span><span class="n">T</span><span class="o">=</span> <span class="mi">0</span>
 </pre></div>
@@ -308,9 +320,9 @@ no more scrolling through 100000 line files!</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.output_simplifier.thresh_e_line">
-<code class="sig-prename descclassname">ncsmc_python.output_simplifier.</code><code class="sig-name descname">thresh_e_line</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.thresh_e_line" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.output_simplifier.thresh_e_line">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.output_simplifier.</span></span><span class="sig-name descname"><span class="pre">thresh_e_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.output_simplifier.thresh_e_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if line contains <code class="docutils literal notranslate"><span class="pre">Threshold</span> <span class="pre">E=</span></code></p>
 <dl class="simple">
 <dt>line:</dt><dd><p>string, a line of a file</p>
@@ -318,7 +330,7 @@ no more scrolling through 100000 line files!</p>
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -340,7 +352,7 @@ no more scrolling through 100000 line files!</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>

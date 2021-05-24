@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>NCSD &mdash; NPSM 0.0.1 documentation</title>
+  <title>NCSD &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Raising/Lowering" href="running_raising_lowering.html" />
@@ -170,11 +173,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="ncsd">
+  <section id="ncsd">
 <h1>NCSD<a class="headerlink" href="#ncsd" title="Permalink to this headline">¶</a></h1>
 <p>The ncsd_python module makes it easy to run NCSD multiple times
 and to plot output from those NCSD runs.</p>
-<div class="section" id="important-variables">
+<section id="important-variables">
 <h2>Important Variables<a class="headerlink" href="#important-variables" title="Permalink to this headline">¶</a></h2>
 <dl class="simple">
 <dt>ncsd_path:</dt><dd><p>Path to NCSD executable</p>
@@ -261,8 +264,8 @@ when doing the importance truncated steps.</p>
 Note that this file must be stored inside int_dir!</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="running-ncsd">
+</section>
+<section id="running-ncsd">
 <h2>Running NCSD<a class="headerlink" href="#running-ncsd" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p>Open the <code class="docutils literal notranslate"><span class="pre">ncsd_python</span></code> directory, and the <code class="docutils literal notranslate"><span class="pre">ncsd_multi.py</span></code> file within.</p></li>
@@ -310,15 +313,15 @@ at the end of this script</p></li>
 </ul>
 </li>
 </ol>
-</div>
-<div class="section" id="plotting-ncsd-output">
+</section>
+<section id="plotting-ncsd-output">
 <h2>Plotting NCSD Output<a class="headerlink" href="#plotting-ncsd-output" title="Permalink to this headline">¶</a></h2>
 <p>Now you have ncsd output files, and you want to make a plot
 of energies vs Nmax. Something like this:</p>
 <a href="https://i.imgur.com/nw1HBUW.png" >
     <img src="https://i.imgur.com/nw1HBUW.png"/>
 </a><p>The file containing the relevant output will have a name like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Li8_n3lo</span><span class="o">-</span><span class="n">NN3Nlnl</span><span class="o">-</span><span class="n">srg2</span><span class="o">.</span><span class="mi">0</span><span class="n">_Nmax0</span><span class="o">-</span><span class="mf">10.20</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Li8_n3lo</span><span class="o">-</span><span class="n">NN3Nlnl</span><span class="o">-</span><span class="n">srg2</span><span class="mf">.0</span><span class="n">_Nmax0</span><span class="o">-</span><span class="mf">10.20</span>
 </pre></div>
 </div>
 <p>The script <code class="docutils literal notranslate"><span class="pre">output_plotter.py</span></code> will read that file, then plot the energies
@@ -330,8 +333,8 @@ edit the .svg file with Inkscape or a similar program.</p>
 <p>If you want your plot to exclude certain <code class="docutils literal notranslate"><span class="pre">Nmax</span></code> values or something,
 there are parameters in the <code class="docutils literal notranslate"><span class="pre">output_plotter.py</span></code> file that you can edit,
 and then re-run. Those parameters are better explained inside the actual file.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -353,7 +356,7 @@ and then re-run. Those parameters are better explained inside the actual file.</
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>

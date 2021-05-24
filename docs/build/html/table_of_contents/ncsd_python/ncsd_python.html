@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ncsd_python &mdash; NPSM 0.0.1 documentation</title>
+  <title>ncsd_python &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="data_checker.py" href="multi_modules/data_checker.html" />
@@ -175,7 +178,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="ncsd-python">
+  <section id="ncsd-python">
 <h1>ncsd_python<a class="headerlink" href="#ncsd-python" title="Permalink to this headline">¶</a></h1>
 <p>NCSD is short for No Core Slater Determinant.</p>
 <p>ncsd is the code that, given details about a nucleus, finds its wavefunction
@@ -185,7 +188,7 @@ harmonic oscillator basis states.</p>
 with respect to particle exchange as required by symmetry properties of QCD.</p>
 <p>There are two top-level modules here, and each has some sub-modules
 full of helper functions.</p>
-<span class="target" id="module-ncsd_python.ncsd_multi"></span><div class="section" id="ncsd-multi-py">
+<span class="target" id="module-ncsd_python.ncsd_multi"></span><section id="ncsd-multi-py">
 <h2>ncsd_multi.py<a class="headerlink" href="#ncsd-multi-py" title="Permalink to this headline">¶</a></h2>
 <p>A module to facilitate running ncsd with many nuclei.</p>
 <p>It takes sets of inputs for multiple ncsd runs. Then, for each run:</p>
@@ -198,23 +201,23 @@ full of helper functions.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">ncsd_multi</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<dl class="data">
-<dt id="ncsd_python.ncsd_multi.int_dir">
-<code class="sig-prename descclassname">ncsd_python.ncsd_multi.</code><code class="sig-name descname">int_dir</code><em class="property"> = '/Users/callum/Desktop/8Li-9Li/random_code_files'</em><a class="headerlink" href="#ncsd_python.ncsd_multi.int_dir" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="ncsd_python.ncsd_multi.int_dir">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.ncsd_multi.</span></span><span class="sig-name descname"><span class="pre">int_dir</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'/home/callum/Documents/Undergrad</span> <span class="pre">Work/8Li-9Li/random_code_files'</span></em><a class="headerlink" href="#ncsd_python.ncsd_multi.int_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p>Paths: change the values as needed, but don’t remove the <code class="docutils literal notranslate"><span class="pre">realpath</span></code>
 (it converts relative –&gt; absolute paths).
 Relative paths = relative to current working directory.</p>
 </dd></dl>
 
-<dl class="data">
-<dt id="ncsd_python.ncsd_multi.machine">
-<code class="sig-prename descclassname">ncsd_python.ncsd_multi.</code><code class="sig-name descname">machine</code><em class="property"> = 'cedar'</em><a class="headerlink" href="#ncsd_python.ncsd_multi.machine" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="ncsd_python.ncsd_multi.machine">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.ncsd_multi.</span></span><span class="sig-name descname"><span class="pre">machine</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'cedar'</span></em><a class="headerlink" href="#ncsd_python.ncsd_multi.machine" title="Permalink to this definition">¶</a></dt>
 <dd><p>machine must be one of “cedar”, “summit”, “local”.</p>
 </dd></dl>
 
-<dl class="data">
-<dt id="ncsd_python.ncsd_multi.man_params">
-<code class="sig-prename descclassname">ncsd_python.ncsd_multi.</code><code class="sig-name descname">man_params</code><em class="property"> = &lt;multi_modules.data_structures.ManParams object&gt;</em><a class="headerlink" href="#ncsd_python.ncsd_multi.man_params" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="ncsd_python.ncsd_multi.man_params">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.ncsd_multi.</span></span><span class="sig-name descname"><span class="pre">man_params</span></span><em class="property"> <span class="pre">=</span> <span class="pre">&lt;multi_modules.data_structures.ManParams</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#ncsd_python.ncsd_multi.man_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Manual Parameters:</p>
 <ul>
 <li><p>specify all as single parameter or list []</p></li>
@@ -233,15 +236,15 @@ we will make runs for:</p>
 </ul>
 </dd></dl>
 
-<dl class="data">
-<dt id="ncsd_python.ncsd_multi.run">
-<code class="sig-prename descclassname">ncsd_python.ncsd_multi.</code><code class="sig-name descname">run</code><em class="property"> = False</em><a class="headerlink" href="#ncsd_python.ncsd_multi.run" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="ncsd_python.ncsd_multi.run">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.ncsd_multi.</span></span><span class="sig-name descname"><span class="pre">run</span></span><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#ncsd_python.ncsd_multi.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do you want to run jobs automatically? If so, set run=True</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsd_python.ncsd_multi.run_ncsd">
-<code class="sig-prename descclassname">ncsd_python.ncsd_multi.</code><code class="sig-name descname">run_ncsd</code><span class="sig-paren">(</span><em class="sig-param">man_params</em>, <em class="sig-param">int_dir</em>, <em class="sig-param">ncsd_path</em>, <em class="sig-param">working_dir</em>, <em class="sig-param">machine</em>, <em class="sig-param">run=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.ncsd_multi.run_ncsd" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsd_python.ncsd_multi.run_ncsd">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.ncsd_multi.</span></span><span class="sig-name descname"><span class="pre">run_ncsd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">man_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncsd_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">working_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">machine</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.ncsd_multi.run_ncsd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs NCSD code. The real heavy lifting is done in ncsd_multi_run.py.</p>
 <dl class="simple">
 <dt>man_params:</dt><dd><p>a data_structures.ManParams instance,
@@ -261,8 +264,8 @@ new directories for each run</p>
 </dl>
 </dd></dl>
 
-</div>
-<span class="target" id="module-ncsd_python.output_plotter"></span><div class="section" id="output-plotter-py">
+</section>
+<span class="target" id="module-ncsd_python.output_plotter"></span><section id="output-plotter-py">
 <h2>output_plotter.py<a class="headerlink" href="#output-plotter-py" title="Permalink to this headline">¶</a></h2>
 <p>A module for helping to deal with data from NCSD output files,
 and saving that data to various formats (e.g. png plots, xmgrace files).</p>
@@ -277,15 +280,15 @@ and then running:</p>
 </div>
 <p>And if you ran ncsd with ncsd_multi.py, this file will be automatically
 called at the end of the batch script.</p>
-<dl class="data">
-<dt id="ncsd_python.output_plotter.grace_plotter_path">
-<code class="sig-prename descclassname">ncsd_python.output_plotter.</code><code class="sig-name descname">grace_plotter_path</code><em class="property"> = '/Users/callum/Desktop/npsm/docs/grace_spectra_plotter.exe'</em><a class="headerlink" href="#ncsd_python.output_plotter.grace_plotter_path" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="ncsd_python.output_plotter.grace_plotter_path">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.output_plotter.</span></span><span class="sig-name descname"><span class="pre">grace_plotter_path</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'/home/callum/Documents/Undergrad</span> <span class="pre">Work/npsm/docs/grace_spectra_plotter.exe'</span></em><a class="headerlink" href="#ncsd_python.output_plotter.grace_plotter_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>The path to grace_spectra_plotter.exe</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsd_python.output_plotter.make_plot_files">
-<code class="sig-prename descclassname">ncsd_python.output_plotter.</code><code class="sig-name descname">make_plot_files</code><span class="sig-paren">(</span><em class="sig-param">output_paths=[], save_dir=None, out_types=['xmgrace'], skip_Nmax=[], max_state=1e+100, get_online_data=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.output_plotter.make_plot_files" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsd_python.output_plotter.make_plot_files">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.output_plotter.</span></span><span class="sig-name descname"><span class="pre">make_plot_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_paths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['xmgrace']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_Nmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e+100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_online_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.output_plotter.make_plot_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>This takes ncsd output filenames,
 and exports the data to each format listed in out_types.</p>
 <dl class="simple">
@@ -302,45 +305,45 @@ and exports the data to each format listed in out_types.</p>
 </dl>
 </dd></dl>
 
-<dl class="data">
-<dt id="ncsd_python.output_plotter.max_state">
-<code class="sig-prename descclassname">ncsd_python.output_plotter.</code><code class="sig-name descname">max_state</code><em class="property"> = 1e+100</em><a class="headerlink" href="#ncsd_python.output_plotter.max_state" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="ncsd_python.output_plotter.max_state">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.output_plotter.</span></span><span class="sig-name descname"><span class="pre">max_state</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1e+100</span></em><a class="headerlink" href="#ncsd_python.output_plotter.max_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>If you have, say, 10 states and only want to plot 8, set max_state=8.
 If you don’t want a max state, set max_state to a huge number, e.g. 1e100</p>
 </dd></dl>
 
-<dl class="data">
-<dt id="ncsd_python.output_plotter.out_types">
-<code class="sig-prename descclassname">ncsd_python.output_plotter.</code><code class="sig-name descname">out_types</code><em class="property"> = ['xmgrace', 'matplotlib', 'csv']</em><a class="headerlink" href="#ncsd_python.output_plotter.out_types" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="ncsd_python.output_plotter.out_types">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.output_plotter.</span></span><span class="sig-name descname"><span class="pre">out_types</span></span><em class="property"> <span class="pre">=</span> <span class="pre">['xmgrace',</span> <span class="pre">'matplotlib',</span> <span class="pre">'csv']</span></em><a class="headerlink" href="#ncsd_python.output_plotter.out_types" title="Permalink to this definition">¶</a></dt>
 <dd><p>out_types is a list of the kinds of output you want.
 - Possible output types: xmgrace, csv, matplotlib
 - The output is saved in the same directory as this script.</p>
 </dd></dl>
 
-<dl class="data">
-<dt id="ncsd_python.output_plotter.output_paths">
-<code class="sig-prename descclassname">ncsd_python.output_plotter.</code><code class="sig-name descname">output_paths</code><em class="property"> = ['/Users/callum/Desktop/npsm/_ncsd_output/Li8_n3lo-NN3Nlnl-srg2.0_Nmax0-10.20']</em><a class="headerlink" href="#ncsd_python.output_plotter.output_paths" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="ncsd_python.output_plotter.output_paths">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.output_plotter.</span></span><span class="sig-name descname"><span class="pre">output_paths</span></span><em class="property"> <span class="pre">=</span> <span class="pre">['/home/callum/Documents/npsm/input_files/petr_files/Be7_NNn4lo500_3NlnlcD-1.8cE-0.3_E71.8-srg2.0_Nmax0-10.20']</span></em><a class="headerlink" href="#ncsd_python.output_plotter.output_paths" title="Permalink to this definition">¶</a></dt>
 <dd><p>List of paths to ncsd output files</p>
 </dd></dl>
 
-<dl class="data">
-<dt id="ncsd_python.output_plotter.save_dir">
-<code class="sig-prename descclassname">ncsd_python.output_plotter.</code><code class="sig-name descname">save_dir</code><em class="property"> = None</em><a class="headerlink" href="#ncsd_python.output_plotter.save_dir" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="ncsd_python.output_plotter.save_dir">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.output_plotter.</span></span><span class="sig-name descname"><span class="pre">save_dir</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'/home/callum/Documents/npsm/ncsd_python/'</span></em><a class="headerlink" href="#ncsd_python.output_plotter.save_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p>save_dir: where to save the plot files, formatted as a string or None.
 - None = save in the same directory as the first output_paths file
 - blank string = current working directory
 - some other string = save to that directory, include a final slash</p>
 </dd></dl>
 
-<dl class="data">
-<dt id="ncsd_python.output_plotter.skip_Nmax">
-<code class="sig-prename descclassname">ncsd_python.output_plotter.</code><code class="sig-name descname">skip_Nmax</code><em class="property"> = []</em><a class="headerlink" href="#ncsd_python.output_plotter.skip_Nmax" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="ncsd_python.output_plotter.skip_Nmax">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.output_plotter.</span></span><span class="sig-name descname"><span class="pre">skip_Nmax</span></span><em class="property"> <span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#ncsd_python.output_plotter.skip_Nmax" title="Permalink to this definition">¶</a></dt>
 <dd><p>If there are any Nmax values you want to skip, put them here,
 e.g. [0,2,4]. If you don’t want to skip any, use [].</p>
 </dd></dl>
 
-</div>
-<div class="section" id="multi-modules">
+</section>
+<section id="multi-modules">
 <h2>multi_modules<a class="headerlink" href="#multi-modules" title="Permalink to this headline">¶</a></h2>
 <p>Helper modules for ncsd_multi.py</p>
 <div class="toctree-wrapper compound">
@@ -353,8 +356,8 @@ e.g. [0,2,4]. If you don’t want to skip any, use [].</p>
 <li class="toctree-l1"><a class="reference internal" href="multi_modules/parameter_calculations.html">parameter_calculations.py</a></li>
 </ul>
 </div>
-</div>
-<div class="section" id="plot-modules">
+</section>
+<section id="plot-modules">
 <h2>plot_modules<a class="headerlink" href="#plot-modules" title="Permalink to this headline">¶</a></h2>
 <p>Helper modules for output_plotter.py</p>
 <div class="toctree-wrapper compound">
@@ -365,8 +368,8 @@ e.g. [0,2,4]. If you don’t want to skip any, use [].</p>
 <li class="toctree-l1"><a class="reference internal" href="plot_modules/scraper.html">scraper.py</a></li>
 </ul>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -388,7 +391,7 @@ e.g. [0,2,4]. If you don’t want to skip any, use [].</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>

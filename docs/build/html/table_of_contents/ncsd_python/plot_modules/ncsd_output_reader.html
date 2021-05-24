@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ncsd_output_reader.py &mdash; NPSM 0.0.1 documentation</title>
+  <title>ncsd_output_reader.py &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="plotter.py" href="plotter.html" />
@@ -169,13 +172,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ncsd_python.plot_modules.ncsd_output_reader">
+  <section id="module-ncsd_python.plot_modules.ncsd_output_reader">
 <span id="ncsd-output-reader-py"></span><h1>ncsd_output_reader.py<a class="headerlink" href="#module-ncsd_python.plot_modules.ncsd_output_reader" title="Permalink to this headline">¶</a></h1>
 <p>Contains a function which reads data from ncsd output files.</p>
 <p>Also contains a couple small functions for getting names of nuclei.</p>
-<dl class="function">
-<dt id="ncsd_python.plot_modules.ncsd_output_reader.element_name">
-<code class="sig-prename descclassname">ncsd_python.plot_modules.ncsd_output_reader.</code><code class="sig-name descname">element_name</code><span class="sig-paren">(</span><em class="sig-param">Z</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.ncsd_output_reader.element_name" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsd_python.plot_modules.ncsd_output_reader.element_name">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.plot_modules.ncsd_output_reader.</span></span><span class="sig-name descname"><span class="pre">element_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.ncsd_output_reader.element_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the name of an element. Currently only works up to Z=30.</p>
 <dl class="simple">
 <dt>Z:</dt><dd><p>integer, number of protons</p>
@@ -187,9 +190,9 @@
 </div>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsd_python.plot_modules.ncsd_output_reader.nucleus_name">
-<code class="sig-prename descclassname">ncsd_python.plot_modules.ncsd_output_reader.</code><code class="sig-name descname">nucleus_name</code><span class="sig-paren">(</span><em class="sig-param">Z</em>, <em class="sig-param">N</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.ncsd_output_reader.nucleus_name" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsd_python.plot_modules.ncsd_output_reader.nucleus_name">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.plot_modules.ncsd_output_reader.</span></span><span class="sig-name descname"><span class="pre">nucleus_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.ncsd_output_reader.nucleus_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the name of a nucleus.</p>
 <dl class="simple">
 <dt>Z:</dt><dd><p>integer, number of protons</p>
@@ -203,9 +206,9 @@
 </div>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsd_python.plot_modules.ncsd_output_reader.read_all_ncsd_output">
-<code class="sig-prename descclassname">ncsd_python.plot_modules.ncsd_output_reader.</code><code class="sig-name descname">read_all_ncsd_output</code><span class="sig-paren">(</span><em class="sig-param">real_paths</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.ncsd_output_reader.read_all_ncsd_output" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsd_python.plot_modules.ncsd_output_reader.read_all_ncsd_output">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.plot_modules.ncsd_output_reader.</span></span><span class="sig-name descname"><span class="pre">read_all_ncsd_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">real_paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.ncsd_output_reader.read_all_ncsd_output" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs read_ncsd_output for many paths in case you have a few different files
 then tries to merge data at the end.</p>
 <dl class="simple">
@@ -214,9 +217,9 @@ then tries to merge data at the end.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsd_python.plot_modules.ncsd_output_reader.read_ncsd_output">
-<code class="sig-prename descclassname">ncsd_python.plot_modules.ncsd_output_reader.</code><code class="sig-name descname">read_ncsd_output</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.ncsd_output_reader.read_ncsd_output" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsd_python.plot_modules.ncsd_output_reader.read_ncsd_output">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.plot_modules.ncsd_output_reader.</span></span><span class="sig-name descname"><span class="pre">read_ncsd_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.ncsd_output_reader.read_ncsd_output" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parses ncsd output.</p>
 <dl class="simple">
 <dt>filename:</dt><dd><p>path to ncsd output file</p>
@@ -229,6 +232,7 @@ then tries to merge data at the end.</p>
     <span class="s2">&quot;Z&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
     <span class="s2">&quot;N&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
     <span class="s2">&quot;Z_plus_N&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+    <span class="s2">&quot;hbar_omega&quot;</span><span class="p">:</span> <span class="mf">18.0</span><span class="p">,</span>
     <span class="s2">&quot;n_states&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
     <span class="s2">&quot;filename&quot;</span><span class="p">:</span> <span class="s2">&quot;filename&quot;</span><span class="p">,</span>
     <span class="s2">&quot;interaction_name&quot;</span><span class="p">:</span> <span class="s2">&quot;n3lo-NN3Nlnl-srg2.0&quot;</span>
@@ -247,7 +251,7 @@ then tries to merge data at the end.</p>
 </div>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -269,7 +273,7 @@ then tries to merge data at the end.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>

@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>parameter_calculations.py &mdash; NPSM 0.0.1 documentation</title>
+  <title>parameter_calculations.py &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="formats_plot.py" href="../plot_modules/formats_plot.html" />
@@ -171,27 +174,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ncsd_python.multi_modules.parameter_calculations">
+  <section id="module-ncsd_python.multi_modules.parameter_calculations">
 <span id="parameter-calculations-py"></span><h1>parameter_calculations.py<a class="headerlink" href="#module-ncsd_python.multi_modules.parameter_calculations" title="Permalink to this headline">¶</a></h1>
 <p>A module for calculating parameters to be used in ncsd run files,
 using manual parameters.</p>
-<dl class="function">
-<dt id="ncsd_python.multi_modules.parameter_calculations.Ngs_func">
-<code class="sig-prename descclassname">ncsd_python.multi_modules.parameter_calculations.</code><code class="sig-name descname">Ngs_func</code><span class="sig-paren">(</span><em class="sig-param">Z</em>, <em class="sig-param">N</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.parameter_calculations.Ngs_func" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsd_python.multi_modules.parameter_calculations.Ngs_func">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.multi_modules.parameter_calculations.</span></span><span class="sig-name descname"><span class="pre">Ngs_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.parameter_calculations.Ngs_func" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates Ngs: number of excitations in the ground state</p>
 <p>I didn’t want to call this function Ngs, so I could use
 Ngs as a variable later.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsd_python.multi_modules.parameter_calculations.Nmin_HO">
-<code class="sig-prename descclassname">ncsd_python.multi_modules.parameter_calculations.</code><code class="sig-name descname">Nmin_HO</code><span class="sig-paren">(</span><em class="sig-param">Z</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.parameter_calculations.Nmin_HO" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsd_python.multi_modules.parameter_calculations.Nmin_HO">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.multi_modules.parameter_calculations.</span></span><span class="sig-name descname"><span class="pre">Nmin_HO</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.parameter_calculations.Nmin_HO" title="Permalink to this definition">¶</a></dt>
 <dd><p>Helper function for Ngs_func</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsd_python.multi_modules.parameter_calculations.calc_params">
-<code class="sig-prename descclassname">ncsd_python.multi_modules.parameter_calculations.</code><code class="sig-name descname">calc_params</code><span class="sig-paren">(</span><em class="sig-param">run_dir</em>, <em class="sig-param">paths</em>, <em class="sig-param">man_params</em>, <em class="sig-param">default_params</em>, <em class="sig-param">machine</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.parameter_calculations.calc_params" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsd_python.multi_modules.parameter_calculations.calc_params">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.multi_modules.parameter_calculations.</span></span><span class="sig-name descname"><span class="pre">calc_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">run_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">man_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">machine</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.parameter_calculations.calc_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates all parameters needed for an NCSD run, using manual
 parameters input by the user (man_params) and a set of default_params.</p>
 <ul class="simple">
@@ -205,13 +208,13 @@ parameters input by the user (man_params) and a set of default_params.</p>
 to be written into a folder for an NCSD run.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsd_python.multi_modules.parameter_calculations.nucleus">
-<code class="sig-prename descclassname">ncsd_python.multi_modules.parameter_calculations.</code><code class="sig-name descname">nucleus</code><span class="sig-paren">(</span><em class="sig-param">Z</em>, <em class="sig-param">N</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.parameter_calculations.nucleus" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsd_python.multi_modules.parameter_calculations.nucleus">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.multi_modules.parameter_calculations.</span></span><span class="sig-name descname"><span class="pre">nucleus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.parameter_calculations.nucleus" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the name of a nucleus in ‘Li8’ style</p>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -233,7 +236,7 @@ to be written into a folder for an NCSD run.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>

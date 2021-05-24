@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pheno.py &mdash; NPSM 0.0.1 documentation</title>
+  <title>pheno.py &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="process_ncsmc_output.py" href="process_ncsmc_output.html" />
@@ -169,7 +172,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ncsmc_python.pheno">
+  <section id="module-ncsmc_python.pheno">
 <span id="pheno-py"></span><h1>pheno.py<a class="headerlink" href="#module-ncsmc_python.pheno" title="Permalink to this headline">¶</a></h1>
 <p>Module to do phenomenological adjustment of data</p>
 <p>i.e. it’ll mess with your coupling kernel files and re-run ncsmc.</p>
@@ -177,31 +180,31 @@
 <dt>Warning:</dt><dd><p>This module is under construction.</p>
 </dd>
 </dl>
-<dl class="function">
-<dt id="ncsmc_python.pheno.adjust_energy">
-<code class="sig-prename descclassname">ncsmc_python.pheno.</code><code class="sig-name descname">adjust_energy</code><span class="sig-paren">(</span><em class="sig-param">n_points</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.pheno.adjust_energy" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.pheno.adjust_energy">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.pheno.</span></span><span class="sig-name descname"><span class="pre">adjust_energy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_points</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.pheno.adjust_energy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make run directories for a bunch of different energies</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.pheno.get_current_state_energy">
-<code class="sig-prename descclassname">ncsmc_python.pheno.</code><code class="sig-name descname">get_current_state_energy</code><span class="sig-paren">(</span><em class="sig-param">coupling_file</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.pheno.get_current_state_energy" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.pheno.get_current_state_energy">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.pheno.</span></span><span class="sig-name descname"><span class="pre">get_current_state_energy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coupling_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.pheno.get_current_state_energy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the current energy of the state of interest.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.pheno.get_ground_state_energy">
-<code class="sig-prename descclassname">ncsmc_python.pheno.</code><code class="sig-name descname">get_ground_state_energy</code><span class="sig-paren">(</span><em class="sig-param">dot_out_file</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.pheno.get_ground_state_energy" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.pheno.get_ground_state_energy">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.pheno.</span></span><span class="sig-name descname"><span class="pre">get_ground_state_energy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dot_out_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.pheno.get_ground_state_energy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get ground state energy from ncsmc output.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.pheno.make_run_dir">
-<code class="sig-prename descclassname">ncsmc_python.pheno.</code><code class="sig-name descname">make_run_dir</code><span class="sig-paren">(</span><em class="sig-param">new_energy</em>, <em class="sig-param">old_energy</em>, <em class="sig-param">line_num</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.pheno.make_run_dir" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.pheno.make_run_dir">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.pheno.</span></span><span class="sig-name descname"><span class="pre">make_run_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_energy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">old_energy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_num</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.pheno.make_run_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p>Put all files needed to run ncsmc in a directory</p>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -223,7 +226,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>

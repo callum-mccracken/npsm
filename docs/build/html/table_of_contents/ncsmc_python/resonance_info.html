@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>resonance_info.py &mdash; NPSM 0.0.1 documentation</title>
+  <title>resonance_info.py &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="resonance_plotter.py" href="resonance_plotter.html" />
@@ -169,7 +172,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ncsmc_python.resonance_info">
+  <section id="module-ncsmc_python.resonance_info">
 <span id="resonance-info-py"></span><h1>resonance_info.py<a class="headerlink" href="#module-ncsmc_python.resonance_info" title="Permalink to this headline">¶</a></h1>
 <p>Contains a function which looks through ncsmc data and figures out which
 channels likely have a resonance, which ones have a potential resonance,
@@ -181,9 +184,9 @@ If you have a better way, feel free to implement it.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">resonance_info</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">some</span><span class="o">/</span><span class="n">file</span>
 </pre></div>
 </div>
-<dl class="function">
-<dt id="ncsmc_python.resonance_info.get_resonance_info">
-<code class="sig-prename descclassname">ncsmc_python.resonance_info.</code><code class="sig-name descname">get_resonance_info</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">Nmax=None</em>, <em class="sig-param">already_flipped=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.resonance_info.get_resonance_info" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.resonance_info.get_resonance_info">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.resonance_info.</span></span><span class="sig-name descname"><span class="pre">get_resonance_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">already_flipped</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.resonance_info.get_resonance_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parses a ncsmc (eigen)phase shift file and writes info about each
 channel to a .csv file, with information about whether or not there is a
 resonance there. Returns name of said .csv file</p>
@@ -198,7 +201,7 @@ resonance there. Returns name of said .csv file</p>
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -220,7 +223,7 @@ resonance there. Returns name of said .csv file</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>

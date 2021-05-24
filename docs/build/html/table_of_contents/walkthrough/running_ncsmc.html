@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>NCSMC &mdash; NPSM 0.0.1 documentation</title>
+  <title>NCSMC &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Cross-Sections" href="running_cross_sections.html" />
@@ -173,7 +176,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="ncsmc">
+  <section id="ncsmc">
 <span id="ncsmc-python"></span><h1>NCSMC<a class="headerlink" href="#ncsmc" title="Permalink to this headline">¶</a></h1>
 <p>Buckle up for this one, this code is more interactive than the others.</p>
 <div class="admonition-first-run-ncsmc admonition">
@@ -182,14 +185,14 @@
 that would be appreciated. Currently, we only deal with
 processing / plotting the output from NCSMC.</p>
 </div>
-<div class="section" id="get-set-up">
+<section id="get-set-up">
 <h2>1. Get Set Up<a class="headerlink" href="#get-set-up" title="Permalink to this headline">¶</a></h2>
 <p>Once you have your NCSMC output, copy it to a local machine, where you
 have followed the setup instructions for Python. See <a class="reference internal" href="the_basics.html#basics"><span class="std std-ref">The Basics</span></a>.</p>
 <p>Also, ensure the columns in the eigenphase_shift and phase_shift files are
 rearranged as needed, this code does not adjust column order.</p>
-</div>
-<div class="section" id="edit-process-ncsmc-output-py">
+</section>
+<section id="edit-process-ncsmc-output-py">
 <h2>2. Edit process_ncsmc_output.py<a class="headerlink" href="#edit-process-ncsmc-output-py" title="Permalink to this headline">¶</a></h2>
 <p>Head into <code class="docutils literal notranslate"><span class="pre">ncsmc_python</span></code>, where you’ll see a bunch of .py files. You only
 need to worry about one of them for now, <code class="docutils literal notranslate"><span class="pre">process_ncsmc_output.py</span></code>.</p>
@@ -251,8 +254,8 @@ usually <a class="reference external" href="http://www.tunl.duke.edu/nucldata/in
 <p class="admonition-title">Note:</p>
 <p>Energy values here are relative to the ground state of your nucleus.</p>
 </div>
-</div>
-<div class="section" id="run-the-file">
+</section>
+<section id="run-the-file">
 <h2>3. Run the File<a class="headerlink" href="#run-the-file" title="Permalink to this headline">¶</a></h2>
 <p>Once you’ve edited those parameters, run the file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">process_ncsmc_output</span><span class="o">.</span><span class="n">py</span>
@@ -307,8 +310,8 @@ Hit enter once you&#39;ve had enough time to enter the right lines. Don&#39;t fo
 just delete the <code class="docutils literal notranslate"><span class="pre">resonances_Nmax_X</span></code> folder that got created,
 and start over.</p>
 </div>
-</div>
-<div class="section" id="select-interesting-channels">
+</section>
+<section id="select-interesting-channels">
 <h2>4. Select Interesting Channels<a class="headerlink" href="#select-interesting-channels" title="Permalink to this headline">¶</a></h2>
 <p>By this point in the code, here’s what’s been done:</p>
 <ul class="simple">
@@ -343,8 +346,8 @@ eigenphase_shift file. Copy that line into <code class="docutils literal notrans
 </a><p>Once you’ve got all the interesting channels selected, double-check
 that they’re actually interesting by looking at the PNGs_eigenphase files.</p>
 <p>Then save <code class="docutils literal notranslate"><span class="pre">interesting.txt</span></code> and hit enter in your terminal.</p>
-</div>
-<div class="section" id="fit-resonances">
+</section>
+<section id="fit-resonances">
 <h2>5. Fit Resonances<a class="headerlink" href="#fit-resonances" title="Permalink to this headline">¶</a></h2>
 <p>Soon after you hit enter, you should see something like this:</p>
 <p>
@@ -365,8 +368,8 @@ the data you’re seeing here is from the eigenphase_shift file.</p>
 <p>After the last one (don’t be alarmed if the window doesn’t close this time),
 it’s on to the next Nmax value!</p>
 <p>Repeat steps 5 and 6 for all following Nmax values.</p>
-</div>
-<div class="section" id="recap">
+</section>
+<section id="recap">
 <h2>6. Recap<a class="headerlink" href="#recap" title="Permalink to this headline">¶</a></h2>
 <p>When you’re done the last Nmax value, wait for a few seconds,
 and then the code should be finished!</p>
@@ -406,8 +409,8 @@ and <code class="docutils literal notranslate"><span class="pre">eigenphase_info
 you can edit .svg files with many programs, for example
 <a class="reference external" href="https://inkscape.org/">Inkscape</a>.</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -429,7 +432,7 @@ you can edit .svg files with many programs, for example
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>

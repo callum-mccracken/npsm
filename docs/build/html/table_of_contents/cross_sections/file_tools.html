@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>file_tools.py &mdash; NPSM 0.0.1 documentation</title>
+  <title>file_tools.py &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="ncsm_e1.py" href="ncsm_e1.html" />
@@ -95,7 +98,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">file_tools.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ncsm_e1.html">ncsm_e1.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="run_transitions.html">run_transitions.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utils.html">utils.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cross_sections_utils.html">cross_sections_utils.py</a></li>
 </ul>
 </li>
 </ul>
@@ -164,12 +167,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-cross_sections.file_tools">
+  <section id="module-cross_sections.file_tools">
 <span id="file-tools-py"></span><h1>file_tools.py<a class="headerlink" href="#module-cross_sections.file_tools" title="Permalink to this headline">¶</a></h1>
 <p>A module for processing files from NCSMC output.</p>
-<dl class="function">
-<dt id="cross_sections.file_tools.make_wf_file">
-<code class="sig-prename descclassname">cross_sections.file_tools.</code><code class="sig-name descname">make_wf_file</code><span class="sig-paren">(</span><em class="sig-param">wavefunction_NCSMC_file</em>, <em class="sig-param">res_state</em>, <em class="sig-param">run_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.file_tools.make_wf_file" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cross_sections.file_tools.make_wf_file">
+<span class="sig-prename descclassname"><span class="pre">cross_sections.file_tools.</span></span><span class="sig-name descname"><span class="pre">make_wf_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavefunction_NCSMC_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res_state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.file_tools.make_wf_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Makes a wavefunction_NCSMC file for the resultant nucleus</p>
 <dl class="simple">
 <dt>wavefunction_NCSMC_file:</dt><dd><p>string, path to the original wavefunction_NCSMC file</p>
@@ -181,9 +184,9 @@
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="cross_sections.file_tools.simplify_observ">
-<code class="sig-prename descclassname">cross_sections.file_tools.</code><code class="sig-name descname">simplify_observ</code><span class="sig-paren">(</span><em class="sig-param">desired_state</em>, <em class="sig-param">transitions</em>, <em class="sig-param">filename</em>, <em class="sig-param">function=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.file_tools.simplify_observ" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cross_sections.file_tools.simplify_observ">
+<span class="sig-prename descclassname"><span class="pre">cross_sections.file_tools.</span></span><span class="sig-name descname"><span class="pre">simplify_observ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">desired_state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transitions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.file_tools.simplify_observ" title="Permalink to this definition">¶</a></dt>
 <dd><p>Makes a “simplified” version of an <code class="docutils literal notranslate"><span class="pre">observ.out</span></code> file.</p>
 <dl>
 <dt>desired_state:</dt><dd><p>string, of the form 2J, pi, 2T, e.g. “3 -1 3”</p>
@@ -208,7 +211,7 @@ numbers as the desired state</p>
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -230,7 +233,7 @@ numbers as the desired state</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>

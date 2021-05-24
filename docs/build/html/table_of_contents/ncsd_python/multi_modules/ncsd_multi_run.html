@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ncsd_multi_run.py &mdash; NPSM 0.0.1 documentation</title>
+  <title>ncsd_multi_run.py &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="parameter_calculations.py" href="parameter_calculations.html" />
@@ -171,12 +174,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ncsd_python.multi_modules.ncsd_multi_run">
+  <section id="module-ncsd_python.multi_modules.ncsd_multi_run">
 <span id="ncsd-multi-run-py"></span><h1>ncsd_multi_run.py<a class="headerlink" href="#module-ncsd_python.multi_modules.ncsd_multi_run" title="Permalink to this headline">¶</a></h1>
 <p>Once we grab input from ncsd_multi.py, this module actually processes it.</p>
-<dl class="function">
-<dt id="ncsd_python.multi_modules.ncsd_multi_run.create_dirs">
-<code class="sig-prename descclassname">ncsd_python.multi_modules.ncsd_multi_run.</code><code class="sig-name descname">create_dirs</code><span class="sig-paren">(</span><em class="sig-param">defaults</em>, <em class="sig-param">dict_list</em>, <em class="sig-param">paths</em>, <em class="sig-param">machine</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.ncsd_multi_run.create_dirs" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsd_python.multi_modules.ncsd_multi_run.create_dirs">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.multi_modules.ncsd_multi_run.</span></span><span class="sig-name descname"><span class="pre">create_dirs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">defaults</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">machine</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.ncsd_multi_run.create_dirs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates directories which hold ncsd run files.</p>
 <p>Returns paths to batch scripts in each directory. Run these to run ncsd.</p>
 <dl class="simple">
@@ -192,9 +195,9 @@
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsd_python.multi_modules.ncsd_multi_run.ncsd_multi_run">
-<code class="sig-prename descclassname">ncsd_python.multi_modules.ncsd_multi_run.</code><code class="sig-name descname">ncsd_multi_run</code><span class="sig-paren">(</span><em class="sig-param">man_params</em>, <em class="sig-param">paths</em>, <em class="sig-param">machine</em>, <em class="sig-param">run=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.ncsd_multi_run.ncsd_multi_run" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsd_python.multi_modules.ncsd_multi_run.ncsd_multi_run">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.multi_modules.ncsd_multi_run.</span></span><span class="sig-name descname"><span class="pre">ncsd_multi_run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">man_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">machine</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.ncsd_multi_run.ncsd_multi_run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run ncsd multiple times with given parameters.</p>
 <dl class="simple">
 <dt>man_params:</dt><dd><p>a ManParams object with possible lists of values for all ncsd runs</p>
@@ -209,9 +212,9 @@
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsd_python.multi_modules.ncsd_multi_run.prepare_input">
-<code class="sig-prename descclassname">ncsd_python.multi_modules.ncsd_multi_run.</code><code class="sig-name descname">prepare_input</code><span class="sig-paren">(</span><em class="sig-param">m_params</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.ncsd_multi_run.prepare_input" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsd_python.multi_modules.ncsd_multi_run.prepare_input">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.multi_modules.ncsd_multi_run.</span></span><span class="sig-name descname"><span class="pre">prepare_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.ncsd_multi_run.prepare_input" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes manual input m_params (a ManParams instance),
 and parses it into a format that is usable by the functions
 that make the run directories.</p>
@@ -227,7 +230,7 @@ are not lists, we’ll do runs for:</p>
 </div>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -249,7 +252,7 @@ are not lists, we’ll do runs for:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>

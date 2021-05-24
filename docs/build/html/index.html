@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>No Pain Shell Model &mdash; NPSM 0.0.1 documentation</title>
+  <title>No Pain Shell Model &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Walkthrough" href="table_of_contents/walkthrough/walkthrough.html" />
@@ -154,16 +157,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="no-pain-shell-model">
+  <section id="no-pain-shell-model">
 <h1>No Pain Shell Model<a class="headerlink" href="#no-pain-shell-model" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://callum-mccracken.github.io/npsm/build/html">See the Detailed Docs</a></p>
-<div class="section" id="why-does-npsm-exist">
+<section id="why-does-npsm-exist">
 <h2>Why Does NPSM Exist?<a class="headerlink" href="#why-does-npsm-exist" title="Permalink to this headline">¶</a></h2>
 <p>There are many codes to run when doing No Core Shell Model
 work, and historically it’s been a bit of a pain to figure out
 how each one works. This is an attempt to simplify that process.</p>
-</div>
-<div class="section" id="getting-started">
+</section>
+<section id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <p>First clone the
 <a class="reference external" href="https://github.com/callum-mccracken/npsm.git">github repository</a>.</p>
@@ -171,7 +174,7 @@ how each one works. This is an attempt to simplify that process.</p>
 flag so all submodules are created properly, i.e. do this:</p>
 <p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">--recurse-submodules</span> <span class="pre">https://github.com/callum-mccracken/npsm</span></code></p>
 <p>To get the latest version, do this:</p>
-<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">master</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--recurse-submodules</span> <span class="pre">origin</span> <span class="pre">master</span></code></p>
 <p>Then, make sure you have some kind of way to download python packages,
 e.g. Anaconda. We won’t need much, but we will need numpy and matplotlib
 for sure.</p>
@@ -179,8 +182,8 @@ for sure.</p>
 called <a class="reference external" href="https://callum-mccracken.github.io/npsm/build/html/table_of_contents/walkthrough/the_basics.html">The Basics</a>,
 walks you through how to get set up in more detail.</p>
 <p>Read the rest of the <a class="reference external" href="https://callum-mccracken.github.io/npsm/build/html/table_of_contents/walkthrough/walkthrough.html">Walkthrough</a> to see how to run each script.</p>
-</div>
-<div class="section" id="main-things-that-npsm-should-do">
+</section>
+<section id="main-things-that-npsm-should-do">
 <h2>Main Things That npsm Should Do<a class="headerlink" href="#main-things-that-npsm-should-do" title="Permalink to this headline">¶</a></h2>
 <p>(should != does, this is just the outline of what I’d like it to eventually do)</p>
 <ol class="arabic simple">
@@ -208,7 +211,7 @@ walks you through how to get set up in more detail.</p>
 </ul>
 </li>
 </ol>
-<div class="section" id="links">
+<section id="links">
 <h3>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h3>
 <div class="toctree-wrapper compound">
 <ul>
@@ -220,8 +223,8 @@ walks you through how to get set up in more detail.</p>
 <li class="toctree-l1"><a class="reference internal" href="table_of_contents/cross_sections/cross_sections.html">cross_sections</a></li>
 </ul>
 </div>
-</div>
-<div class="section" id="to-edit-these-docs">
+</section>
+<section id="to-edit-these-docs">
 <h3>To Edit these Docs<a class="headerlink" href="#to-edit-these-docs" title="Permalink to this headline">¶</a></h3>
 <p>These docs were created by sphinx, which pulls docstrings from Python modules.
 It’s not fully automatic, so if you add a new file to the file structure,
@@ -231,7 +234,7 @@ and make sure they looked decent, but if you want to make it more automatic,
 go ahead!</p>
 <p>To generate new HTML files:</p>
 <ol class="arabic simple">
-<li><p>You will need to install a few packages, <code class="docutils literal notranslate"><span class="pre">m2r</span></code> and <code class="docutils literal notranslate"><span class="pre">sphinx_rtd_theme</span></code>.</p></li>
+<li><p>You will need to install a few packages, <code class="docutils literal notranslate"><span class="pre">m2r2</span></code> and <code class="docutils literal notranslate"><span class="pre">sphinx_rtd_theme</span></code>.</p></li>
 <li><p>Then, <code class="docutils literal notranslate"><span class="pre">cd</span></code> into <code class="docutils literal notranslate"><span class="pre">docs</span></code> then run a sphinx command like <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code>.</p></li>
 </ol>
 <p>To add a new Python module:</p>
@@ -248,9 +251,9 @@ go ahead!</p>
 <li><p>You may have to force a hard reset to see your changes,
 using <code class="docutils literal notranslate"><span class="pre">cmd</span> <span class="pre">+</span> <span class="pre">shift</span> <span class="pre">+</span> <span class="pre">R</span></code> on Chrome for OSX.</p></li>
 </ol>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -270,7 +273,7 @@ using <code class="docutils literal notranslate"><span class="pre">cmd</span> <s
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>

@@ -29,7 +29,7 @@ go ahead!
 
 To generate new HTML files:
 
-1. You will need to install a few packages, ``m2r`` and ``sphinx_rtd_theme``.
+1. You will need to install a few packages, ``m2r2`` and ``sphinx_rtd_theme``.
 2. Then, ``cd`` into ``docs`` then run a sphinx command like ``make html``.
 
 To add a new Python module:

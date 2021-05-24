@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>scheme_plot.py &mdash; NPSM 0.0.1 documentation</title>
+  <title>scheme_plot.py &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="utils.py" href="utils.html" />
@@ -169,19 +172,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ncsmc_python.scheme_plot">
+  <section id="module-ncsmc_python.scheme_plot">
 <span id="scheme-plot-py"></span><h1>scheme_plot.py<a class="headerlink" href="#module-ncsmc_python.scheme_plot" title="Permalink to this headline">¶</a></h1>
 <p>A module with functions for making plots of level schemes.</p>
 <p>Either single or multi-scheme plots are possible, and we make output in
 two different formats.</p>
-<p>The one with a .png extension is an image file
-(if you haven’t heard of png, get outta here).</p>
+<p>The one with a .png extension is a standard image file.</p>
 <p>The one with a .svg extension is also an image file, but saved in
-Scalable Vector Graphics format. It’s like .agr, but more commonly used.
+Scalable Vector Graphics format, which means it is more easily editable.
 To open / edit that file, may I recommend <a class="reference external" href="https://inkscape.org/">Inkscape</a>?</p>
-<dl class="function">
-<dt id="ncsmc_python.scheme_plot.linewidth_from_data_units">
-<code class="sig-prename descclassname">ncsmc_python.scheme_plot.</code><code class="sig-name descname">linewidth_from_data_units</code><span class="sig-paren">(</span><em class="sig-param">linewidth</em>, <em class="sig-param">axis</em>, <em class="sig-param">reference='y'</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.scheme_plot.linewidth_from_data_units" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.scheme_plot.linewidth_from_data_units">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.scheme_plot.</span></span><span class="sig-name descname"><span class="pre">linewidth_from_data_units</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">linewidth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'y'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.scheme_plot.linewidth_from_data_units" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a linewidth in data units to linewidth in points.
 (many thanks to stack exchange!)</p>
 <dl class="simple">
@@ -194,9 +196,9 @@ To open / edit that file, may I recommend <a class="reference external" href="ht
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.scheme_plot.plot_levels">
-<code class="sig-prename descclassname">ncsmc_python.scheme_plot.</code><code class="sig-name descname">plot_levels</code><span class="sig-paren">(</span><em class="sig-param">energies</em>, <em class="sig-param">widths</em>, <em class="sig-param">channel_titles</em>, <em class="sig-param">main_title</em>, <em class="sig-param">min_y</em>, <em class="sig-param">max_y</em>, <em class="sig-param">ax=None</em>, <em class="sig-param">y_label='Energy ($MeV$)'</em>, <em class="sig-param">colors=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.scheme_plot.plot_levels" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.scheme_plot.plot_levels">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.scheme_plot.</span></span><span class="sig-name descname"><span class="pre">plot_levels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_titles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Energy</span> <span class="pre">($MeV$)'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.scheme_plot.plot_levels" title="Permalink to this definition">¶</a></dt>
 <dd><p>Makes a plot of a single level scheme.</p>
 <dl class="simple">
 <dt>energies:</dt><dd><p>list of floats, energies to plot</p>
@@ -220,9 +222,9 @@ it’s just useful if you’re putting multiple ones on the same figure.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.scheme_plot.plot_multi_levels">
-<code class="sig-prename descclassname">ncsmc_python.scheme_plot.</code><code class="sig-name descname">plot_multi_levels</code><span class="sig-paren">(</span><em class="sig-param">energies_list</em>, <em class="sig-param">widths_list</em>, <em class="sig-param">channel_title_list</em>, <em class="sig-param">main_title_list</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.scheme_plot.plot_multi_levels" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.scheme_plot.plot_multi_levels">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.scheme_plot.</span></span><span class="sig-name descname"><span class="pre">plot_multi_levels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energies_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widths_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_title_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_title_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.scheme_plot.plot_multi_levels" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make plots of many different schemes, stiched together into one figure.</p>
 <dl class="simple">
 <dt>energies_list:</dt><dd><p>list of list of floats, energies of each channel on each plot</p>
@@ -236,7 +238,7 @@ it’s just useful if you’re putting multiple ones on the same figure.</p>
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -258,7 +260,7 @@ it’s just useful if you’re putting multiple ones on the same figure.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>

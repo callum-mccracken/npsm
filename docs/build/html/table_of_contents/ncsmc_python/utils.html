@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>utils.py &mdash; NPSM 0.0.1 documentation</title>
+  <title>utils.py &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="cross_sections" href="../cross_sections/cross_sections.html" />
@@ -169,18 +172,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ncsmc_python.utils">
+  <section id="module-ncsmc_python.utils">
 <span id="utils-py"></span><h1>utils.py<a class="headerlink" href="#module-ncsmc_python.utils" title="Permalink to this headline">¶</a></h1>
 <p>Things that are useful but didn’t really belong anywhere else.</p>
-<dl class="function">
-<dt id="ncsmc_python.utils.abs_path">
-<code class="sig-prename descclassname">ncsmc_python.utils.</code><code class="sig-name descname">abs_path</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.utils.abs_path" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.utils.abs_path">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.utils.</span></span><span class="sig-name descname"><span class="pre">abs_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.utils.abs_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the absolute path to a file (input: string)</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.utils.index_list">
-<code class="sig-prename descclassname">ncsmc_python.utils.</code><code class="sig-name descname">index_list</code><span class="sig-paren">(</span><em class="sig-param">input_list</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.utils.index_list" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.utils.index_list">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.utils.</span></span><span class="sig-name descname"><span class="pre">index_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.utils.index_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns indices for smallest to largest values in <code class="docutils literal notranslate"><span class="pre">input_list</span></code>,
 no repeat values allowed.</p>
 <p>Same idea as <code class="docutils literal notranslate"><span class="pre">list.index()</span></code>, except that function gives repeats</p>
@@ -190,9 +193,9 @@ no repeat values allowed.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.utils.is_float">
-<code class="sig-prename descclassname">ncsmc_python.utils.</code><code class="sig-name descname">is_float</code><span class="sig-paren">(</span><em class="sig-param">string</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.utils.is_float" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.utils.is_float">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.utils.</span></span><span class="sig-name descname"><span class="pre">is_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.utils.is_float" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if a string can be cast as a float, returns boolean</p>
 <dl class="simple">
 <dt>string:</dt><dd><p>some string that might or might not be castable as a float</p>
@@ -200,9 +203,9 @@ no repeat values allowed.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.utils.make_nice_title">
-<code class="sig-prename descclassname">ncsmc_python.utils.</code><code class="sig-name descname">make_nice_title</code><span class="sig-paren">(</span><em class="sig-param">xmtitle</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.utils.make_nice_title" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.utils.make_nice_title">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.utils.</span></span><span class="sig-name descname"><span class="pre">make_nice_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xmtitle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.utils.make_nice_title" title="Permalink to this definition">¶</a></dt>
 <dd><p>Makes nicer-looking titles than the ones provided in xmgrace files</p>
 <dl class="simple">
 <dt>xmtitle:</dt><dd><p>string, xmgrace title format</p>
@@ -210,9 +213,9 @@ no repeat values allowed.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.utils.make_plot_title">
-<code class="sig-prename descclassname">ncsmc_python.utils.</code><code class="sig-name descname">make_plot_title</code><span class="sig-paren">(</span><em class="sig-param">nice_title</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.utils.make_plot_title" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.utils.make_plot_title">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.utils.</span></span><span class="sig-name descname"><span class="pre">make_plot_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nice_title</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.utils.make_plot_title" title="Permalink to this definition">¶</a></dt>
 <dd><p>Makes a plottable, LaTeX formatted title, for use in matplotlib graphs</p>
 <dl class="simple">
 <dt>nice_title:</dt><dd><p>a human-readable, but not very pretty string, like 3_1_3</p>
@@ -220,9 +223,9 @@ no repeat values allowed.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.utils.multi_strip">
-<code class="sig-prename descclassname">ncsmc_python.utils.</code><code class="sig-name descname">multi_strip</code><span class="sig-paren">(</span><em class="sig-param">string</em>, <em class="sig-param">list_of_strs</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.utils.multi_strip" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.utils.multi_strip">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.utils.</span></span><span class="sig-name descname"><span class="pre">multi_strip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_of_strs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.utils.multi_strip" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the string but stripped of substrings</p>
 <p>Same idea as <code class="docutils literal notranslate"><span class="pre">string.strip()</span></code>, but for many arguments.</p>
 <dl class="simple">
@@ -233,9 +236,9 @@ no repeat values allowed.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.utils.plot_title_2">
-<code class="sig-prename descclassname">ncsmc_python.utils.</code><code class="sig-name descname">plot_title_2</code><span class="sig-paren">(</span><em class="sig-param">title</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.utils.plot_title_2" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.utils.plot_title_2">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.utils.</span></span><span class="sig-name descname"><span class="pre">plot_title_2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.utils.plot_title_2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Makes another kind of plottable, LaTeX formatted title.</p>
 <dl class="simple">
 <dt>title:</dt><dd><p>string of the form <code class="docutils literal notranslate"><span class="pre">J_parity_T[_column]</span></code> (the _column is optional).
@@ -244,9 +247,9 @@ E.g. 3_1_3</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.utils.xmgrace_title">
-<code class="sig-prename descclassname">ncsmc_python.utils.</code><code class="sig-name descname">xmgrace_title</code><span class="sig-paren">(</span><em class="sig-param">xmtitle</em>, <em class="sig-param">series_num</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.utils.xmgrace_title" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.utils.xmgrace_title">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.utils.</span></span><span class="sig-name descname"><span class="pre">xmgrace_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xmtitle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">series_num</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.utils.xmgrace_title" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes an xmgrace series title and edits the series number,
 setting it equal to series_num.</p>
 <dl class="simple">
@@ -257,7 +260,7 @@ setting it equal to series_num.</p>
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -279,7 +282,7 @@ setting it equal to series_num.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>

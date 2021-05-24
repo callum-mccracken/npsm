@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>scraper.py &mdash; NPSM 0.0.1 documentation</title>
+  <title>scraper.py &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="raising_lowering" href="../../raising_lowering/raising_lowering.html" />
@@ -169,7 +172,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ncsd_python.plot_modules.scraper">
+  <section id="module-ncsd_python.plot_modules.scraper">
 <span id="scraper-py"></span><h1>scraper.py<a class="headerlink" href="#module-ncsd_python.plot_modules.scraper" title="Permalink to this headline">¶</a></h1>
 <dl class="simple">
 <dt>Warning:</dt><dd><p>This module is pretty experimental, not super functional,
@@ -187,34 +190,34 @@ and not used by default anywhere.</p>
 <ul class="simple">
 <li><p>It is pretty possible to get data from Brookhaven’s site: nndc.bnl.gov</p></li>
 </ul>
-<dl class="function">
-<dt id="ncsd_python.plot_modules.scraper.get_bnl_data">
-<code class="sig-prename descclassname">ncsd_python.plot_modules.scraper.</code><code class="sig-name descname">get_bnl_data</code><span class="sig-paren">(</span><em class="sig-param">calc_data</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.scraper.get_bnl_data" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsd_python.plot_modules.scraper.get_bnl_data">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.plot_modules.scraper.</span></span><span class="sig-name descname"><span class="pre">get_bnl_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calc_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.scraper.get_bnl_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function to get data from Brookhaven National Labs</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsd_python.plot_modules.scraper.get_online_data_wrapper">
-<code class="sig-prename descclassname">ncsd_python.plot_modules.scraper.</code><code class="sig-name descname">get_online_data_wrapper</code><span class="sig-paren">(</span><em class="sig-param">calc_data</em>, <em class="sig-param">get_online_data</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.scraper.get_online_data_wrapper" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsd_python.plot_modules.scraper.get_online_data_wrapper">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.plot_modules.scraper.</span></span><span class="sig-name descname"><span class="pre">get_online_data_wrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calc_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_online_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.scraper.get_online_data_wrapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>This tries to get data from online,
 but doesn’t break everything if it fails.
 Instead, filler data is returned.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsd_python.plot_modules.scraper.get_tunl_data">
-<code class="sig-prename descclassname">ncsd_python.plot_modules.scraper.</code><code class="sig-name descname">get_tunl_data</code><span class="sig-paren">(</span><em class="sig-param">calc_data</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.scraper.get_tunl_data" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsd_python.plot_modules.scraper.get_tunl_data">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.plot_modules.scraper.</span></span><span class="sig-name descname"><span class="pre">get_tunl_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calc_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.scraper.get_tunl_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function to get data from TUNL. Currently only gets energies.
 If you have any ideas about how to get J, T, parity, please implement them!</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsd_python.plot_modules.scraper.parse_tunl_pdf">
-<code class="sig-prename descclassname">ncsd_python.plot_modules.scraper.</code><code class="sig-name descname">parse_tunl_pdf</code><span class="sig-paren">(</span><em class="sig-param">pdf_url</em>, <em class="sig-param">pdf_save_path</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.scraper.parse_tunl_pdf" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsd_python.plot_modules.scraper.parse_tunl_pdf">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.plot_modules.scraper.</span></span><span class="sig-name descname"><span class="pre">parse_tunl_pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdf_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdf_save_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.plot_modules.scraper.parse_tunl_pdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns Ex column of the pdf from TUNL, without uncertainties</p>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -236,7 +239,7 @@ If you have any ideas about how to get J, T, parity, please implement them!</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>

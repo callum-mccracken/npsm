@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>formats_plot.py &mdash; NPSM 0.0.1 documentation</title>
+  <title>formats_plot.py &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="ncsd_output_reader.py" href="ncsd_output_reader.html" />
@@ -169,44 +172,44 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ncsd_python.plot_modules.formats_plot">
+  <section id="module-ncsd_python.plot_modules.formats_plot">
 <span id="formats-plot-py"></span><h1>formats_plot.py<a class="headerlink" href="#module-ncsd_python.plot_modules.formats_plot" title="Permalink to this headline">¶</a></h1>
 <p>Contains long strings to make writing files easier.</p>
 <p>PS: if you’re reading this online, this looks way better in the actual file</p>
 <p>PPS: double curly braces tell Python you mean a literal curly brace
 when you’re formatting a string.
 E.g. “{a}, {b}, {{a}}”.format(a=1, b=2) produces the string “1, 2, {a}”</p>
-<dl class="data">
-<dt id="ncsd_python.plot_modules.formats_plot.xmgrace_Nmax_title_format">
-<code class="sig-prename descclassname">ncsd_python.plot_modules.formats_plot.</code><code class="sig-name descname">xmgrace_Nmax_title_format</code><em class="property"> = 'N\\smax\\N = {Nmax}'</em><a class="headerlink" href="#ncsd_python.plot_modules.formats_plot.xmgrace_Nmax_title_format" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="ncsd_python.plot_modules.formats_plot.xmgrace_Nmax_title_format">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.plot_modules.formats_plot.</span></span><span class="sig-name descname"><span class="pre">xmgrace_Nmax_title_format</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'N\\smax\\N</span> <span class="pre">=</span> <span class="pre">{Nmax}'</span></em><a class="headerlink" href="#ncsd_python.plot_modules.formats_plot.xmgrace_Nmax_title_format" title="Permalink to this definition">¶</a></dt>
 <dd><p>format of xmgrace Nmax title</p>
 </dd></dl>
 
-<dl class="data">
-<dt id="ncsd_python.plot_modules.formats_plot.xmgrace_axis_label_line">
-<code class="sig-prename descclassname">ncsd_python.plot_modules.formats_plot.</code><code class="sig-name descname">xmgrace_axis_label_line</code><em class="property"> = '{Nmax}h\\h{{-.6}}\\v{{.3}}- \\v{{-.3}}\\xW\\f{{}}\n'</em><a class="headerlink" href="#ncsd_python.plot_modules.formats_plot.xmgrace_axis_label_line" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="ncsd_python.plot_modules.formats_plot.xmgrace_axis_label_line">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.plot_modules.formats_plot.</span></span><span class="sig-name descname"><span class="pre">xmgrace_axis_label_line</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'{Nmax}h\\h{{-.6}}\\v{{.3}}-</span> <span class="pre">\\v{{-.3}}\\xW\\f{{}}\n'</span></em><a class="headerlink" href="#ncsd_python.plot_modules.formats_plot.xmgrace_axis_label_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>format of an xmgrace axis label</p>
 </dd></dl>
 
-<dl class="data">
-<dt id="ncsd_python.plot_modules.formats_plot.xmgrace_data_line_format">
-<code class="sig-prename descclassname">ncsd_python.plot_modules.formats_plot.</code><code class="sig-name descname">xmgrace_data_line_format</code><em class="property"> = '{j} {repetition} {parity}   {energy:.4f}\n'</em><a class="headerlink" href="#ncsd_python.plot_modules.formats_plot.xmgrace_data_line_format" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="ncsd_python.plot_modules.formats_plot.xmgrace_data_line_format">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.plot_modules.formats_plot.</span></span><span class="sig-name descname"><span class="pre">xmgrace_data_line_format</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'{j}</span> <span class="pre">{repetition}</span> <span class="pre">{parity}</span>&#160;&#160; <span class="pre">{energy:.4f}\n'</span></em><a class="headerlink" href="#ncsd_python.plot_modules.formats_plot.xmgrace_data_line_format" title="Permalink to this definition">¶</a></dt>
 <dd><p>format of xmgrace line of data</p>
 </dd></dl>
 
-<dl class="data">
-<dt id="ncsd_python.plot_modules.formats_plot.xmgrace_dataset_format">
-<code class="sig-prename descclassname">ncsd_python.plot_modules.formats_plot.</code><code class="sig-name descname">xmgrace_dataset_format</code><em class="property"> = '{title}\n{lines}'</em><a class="headerlink" href="#ncsd_python.plot_modules.formats_plot.xmgrace_dataset_format" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="ncsd_python.plot_modules.formats_plot.xmgrace_dataset_format">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.plot_modules.formats_plot.</span></span><span class="sig-name descname"><span class="pre">xmgrace_dataset_format</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'{title}\n{lines}'</span></em><a class="headerlink" href="#ncsd_python.plot_modules.formats_plot.xmgrace_dataset_format" title="Permalink to this definition">¶</a></dt>
 <dd><p>xmgrace files are made of datasets, which are a title + data lines</p>
 </dd></dl>
 
-<dl class="data">
-<dt id="ncsd_python.plot_modules.formats_plot.xmgrace_format">
-<code class="sig-prename descclassname">ncsd_python.plot_modules.formats_plot.</code><code class="sig-name descname">xmgrace_format</code><em class="property"> = '\nE\\sx\\N [MeV]\nlin lin\n{num_spectra_plus_2} {num_states} {num_spectra} {num_plots}              !       num_strings num_states num_specs num_plots\n\\S{Z_plus_N}\\N{element}\n{interaction_name}\n{axis_labels}\n dotted off rotate\n{data}\n\n'</em><a class="headerlink" href="#ncsd_python.plot_modules.formats_plot.xmgrace_format" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="ncsd_python.plot_modules.formats_plot.xmgrace_format">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.plot_modules.formats_plot.</span></span><span class="sig-name descname"><span class="pre">xmgrace_format</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'\nE\\sx\\N</span> <span class="pre">[MeV]\nlin</span> <span class="pre">lin\n{num_spectra_plus_2}</span> <span class="pre">{num_states}</span> <span class="pre">{num_spectra}</span> <span class="pre">{num_plots}</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">!</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">num_strings</span> <span class="pre">num_states</span> <span class="pre">num_specs</span> <span class="pre">num_plots\n\\S{Z_plus_N}\\N{element}\n{interaction_name}\n{axis_labels}\n</span> <span class="pre">dotted</span> <span class="pre">off</span> <span class="pre">rotate\n{data}\n\n'</span></em><a class="headerlink" href="#ncsd_python.plot_modules.formats_plot.xmgrace_format" title="Permalink to this definition">¶</a></dt>
 <dd><p>overall format of xmgrace file</p>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -228,7 +231,7 @@ E.g. “{a}, {b}, {{a}}”.format(a=1, b=2) produces the string “1, 2, {a}”<
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>

@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Cross-Sections &mdash; NPSM 0.0.1 documentation</title>
+  <title>Cross-Sections &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="ncsd_python" href="../ncsd_python/ncsd_python.html" />
@@ -170,11 +173,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="cross-sections">
+  <section id="cross-sections">
 <h1>Cross-Sections<a class="headerlink" href="#cross-sections" title="Permalink to this headline">¶</a></h1>
 <p>Now that you’ve run NCSMC and you’ve looked at the output with
 <a class="reference internal" href="running_ncsmc.html#ncsmc-python"><span class="std std-ref">NCSMC</span></a>, it’s time to calculate the cross-section of the reaction.</p>
-<div class="section" id="edit-run-transitions-py">
+<section id="edit-run-transitions-py">
 <h2>1. Edit run_transitions.py<a class="headerlink" href="#edit-run-transitions-py" title="Permalink to this headline">¶</a></h2>
 <p>If you head to the cross_sections directory and open run_transitions.py,
 you’ll see some variables at the top that look like this, but with comments:</p>
@@ -202,15 +205,15 @@ you’ll see some variables at the top that look like this, but with comments:</
 </pre></div>
 </div>
 <p>Edit the variables to suit your needs.</p>
-</div>
-<div class="section" id="run-run-transitions-py">
+</section>
+<section id="run-run-transitions-py">
 <h2>2. Run run_transitions.py<a class="headerlink" href="#run-run-transitions-py" title="Permalink to this headline">¶</a></h2>
 <p>Like so:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">run_transitions</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="that-s-it">
+</section>
+<section id="that-s-it">
 <h2>3. That’s it<a class="headerlink" href="#that-s-it" title="Permalink to this headline">¶</a></h2>
 <p>For each bound state of the resultant nucleus desribed in resultant_states,
 the code will do the following things:</p>
@@ -224,8 +227,8 @@ the code will do the following things:</p>
 <p>Then at the end all the executables will be run in parallel
 and write output to <code class="docutils literal notranslate"><span class="pre">output.txt</span></code> in their respective directories
 while you sip champagne and think about how convenient this code is.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -247,7 +250,7 @@ while you sip champagne and think about how convenient this code is.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>

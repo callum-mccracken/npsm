@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>file_manager.py &mdash; NPSM 0.0.1 documentation</title>
+  <title>file_manager.py &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="formats_multi.py" href="formats_multi.html" />
@@ -171,57 +174,57 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ncsd_python.multi_modules.file_manager">
+  <section id="module-ncsd_python.multi_modules.file_manager">
 <span id="file-manager-py"></span><h1>file_manager.py<a class="headerlink" href="#module-ncsd_python.multi_modules.file_manager" title="Permalink to this headline">¶</a></h1>
 <p>A module for dealing with reading/writing files for NCSD code.</p>
-<dl class="class">
-<dt id="ncsd_python.multi_modules.file_manager.CedarBatch">
-<em class="property">class </em><code class="sig-prename descclassname">ncsd_python.multi_modules.file_manager.</code><code class="sig-name descname">CedarBatch</code><span class="sig-paren">(</span><em class="sig-param">filename='batch_ncsd'</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.file_manager.CedarBatch" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="ncsd_python.multi_modules.file_manager.CedarBatch">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">ncsd_python.multi_modules.file_manager.</span></span><span class="sig-name descname"><span class="pre">CedarBatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'batch_ncsd'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.file_manager.CedarBatch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Subclass of FileManager, for ncsd batch files on cedar.</p>
 </dd></dl>
 
-<dl class="class">
-<dt id="ncsd_python.multi_modules.file_manager.Defaults">
-<em class="property">class </em><code class="sig-prename descclassname">ncsd_python.multi_modules.file_manager.</code><code class="sig-name descname">Defaults</code><span class="sig-paren">(</span><em class="sig-param">filename='defaults'</em>, <em class="sig-param">params=&lt;ncsd_python.multi_modules.data_structures.DefaultParams object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.file_manager.Defaults" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="ncsd_python.multi_modules.file_manager.Defaults">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">ncsd_python.multi_modules.file_manager.</span></span><span class="sig-name descname"><span class="pre">Defaults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">filename='defaults'</span></em>, <em class="sig-param"><span class="pre">params=&lt;ncsd_python.multi_modules.data_structures.DefaultParams</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.file_manager.Defaults" title="Permalink to this definition">¶</a></dt>
 <dd><p>Subclass of FileManager,
 for holding default parameters as if they were a file.</p>
 </dd></dl>
 
-<dl class="class">
-<dt id="ncsd_python.multi_modules.file_manager.FileManager">
-<em class="property">class </em><code class="sig-prename descclassname">ncsd_python.multi_modules.file_manager.</code><code class="sig-name descname">FileManager</code><span class="sig-paren">(</span><em class="sig-param">filetype</em>, <em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.file_manager.FileManager" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="ncsd_python.multi_modules.file_manager.FileManager">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">ncsd_python.multi_modules.file_manager.</span></span><span class="sig-name descname"><span class="pre">FileManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filetype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.file_manager.FileManager" title="Permalink to this definition">¶</a></dt>
 <dd><p>A general class for dealing with files, has a general write function
 that must be implemented for each file type.</p>
 <p>Does not contain a general read function, you have to implement that
 for each different file type if you want one.</p>
-<dl class="method">
-<dt id="ncsd_python.multi_modules.file_manager.FileManager.param_dict">
-<code class="sig-name descname">param_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.file_manager.FileManager.param_dict" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="ncsd_python.multi_modules.file_manager.FileManager.param_dict">
+<span class="sig-name descname"><span class="pre">param_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.file_manager.FileManager.param_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dictionary containing all file parameters</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="ncsd_python.multi_modules.file_manager.FileManager.write">
-<code class="sig-name descname">write</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.file_manager.FileManager.write" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="ncsd_python.multi_modules.file_manager.FileManager.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.file_manager.FileManager.write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes <code class="docutils literal notranslate"><span class="pre">self.format_string.format(**self.param_dict())</span></code>
 to <code class="docutils literal notranslate"><span class="pre">self.filename</span></code>.</p>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="ncsd_python.multi_modules.file_manager.LocalBatch">
-<em class="property">class </em><code class="sig-prename descclassname">ncsd_python.multi_modules.file_manager.</code><code class="sig-name descname">LocalBatch</code><span class="sig-paren">(</span><em class="sig-param">filename='batch_ncsd'</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.file_manager.LocalBatch" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="ncsd_python.multi_modules.file_manager.LocalBatch">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">ncsd_python.multi_modules.file_manager.</span></span><span class="sig-name descname"><span class="pre">LocalBatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'batch_ncsd'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.file_manager.LocalBatch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Subclass of FileManager, for ncsd batch files on local machine.</p>
 </dd></dl>
 
-<dl class="class">
-<dt id="ncsd_python.multi_modules.file_manager.MFDP">
-<em class="property">class </em><code class="sig-prename descclassname">ncsd_python.multi_modules.file_manager.</code><code class="sig-name descname">MFDP</code><span class="sig-paren">(</span><em class="sig-param">filename='mfdp.dat'</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.file_manager.MFDP" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="ncsd_python.multi_modules.file_manager.MFDP">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">ncsd_python.multi_modules.file_manager.</span></span><span class="sig-name descname"><span class="pre">MFDP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mfdp.dat'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.file_manager.MFDP" title="Permalink to this definition">¶</a></dt>
 <dd><p>Subclass of FileManager, for reading / writing mfdp.dat files.</p>
-<dl class="method">
-<dt id="ncsd_python.multi_modules.file_manager.MFDP.read">
-<code class="sig-name descname">read</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.file_manager.MFDP.read" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="ncsd_python.multi_modules.file_manager.MFDP.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.file_manager.MFDP.read" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="simple">
 <dt>Warning:</dt><dd><p>This is old, sketchy, and not actually used!
 I just kept it around in case you want to try something similar.</p>
@@ -231,13 +234,13 @@ I just kept it around in case you want to try something similar.</p>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="ncsd_python.multi_modules.file_manager.SummitBatch">
-<em class="property">class </em><code class="sig-prename descclassname">ncsd_python.multi_modules.file_manager.</code><code class="sig-name descname">SummitBatch</code><span class="sig-paren">(</span><em class="sig-param">filename='batch_ncsd'</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.file_manager.SummitBatch" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="ncsd_python.multi_modules.file_manager.SummitBatch">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">ncsd_python.multi_modules.file_manager.</span></span><span class="sig-name descname"><span class="pre">SummitBatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'batch_ncsd'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.file_manager.SummitBatch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Subclass of FileManager, for ncsd batch files on summit.</p>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -259,7 +262,7 @@ I just kept it around in case you want to try something similar.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>

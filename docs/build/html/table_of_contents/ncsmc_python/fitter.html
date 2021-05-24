@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>fitter.py &mdash; NPSM 0.0.1 documentation</title>
+  <title>fitter.py &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="flipper.py" href="flipper.html" />
@@ -169,13 +172,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ncsmc_python.fitter">
+  <section id="module-ncsmc_python.fitter">
 <span id="fitter-py"></span><h1>fitter.py<a class="headerlink" href="#module-ncsmc_python.fitter" title="Permalink to this headline">¶</a></h1>
 <p>Module for fitting cubics to resonances interactively.</p>
 <p>Creates GUI with interactive sliders to play with, to set left/right limits.</p>
-<dl class="function">
-<dt id="ncsmc_python.fitter.find_resonance">
-<code class="sig-prename descclassname">ncsmc_python.fitter.</code><code class="sig-name descname">find_resonance</code><span class="sig-paren">(</span><em class="sig-param">csv_filename</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.fitter.find_resonance" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.fitter.find_resonance">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.fitter.</span></span><span class="sig-name descname"><span class="pre">find_resonance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csv_filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.fitter.find_resonance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the energy at which a resonance occurs for given channel.</p>
 <dl>
 <dt>csv_filename:</dt><dd><p>path of the form <code class="docutils literal notranslate"><span class="pre">path/to/file/phase_1_-_3_column_4_Nmax_4.csv</span></code></p>
@@ -185,9 +188,9 @@
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.fitter.fit_cubic">
-<code class="sig-prename descclassname">ncsmc_python.fitter.</code><code class="sig-name descname">fit_cubic</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.fitter.fit_cubic" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.fitter.fit_cubic">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.fitter.</span></span><span class="sig-name descname"><span class="pre">fit_cubic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.fitter.fit_cubic" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="simple">
 <dt>x, y:</dt><dd><p>1D arrays of floats</p>
 </dd>
@@ -198,9 +201,9 @@ and a, b, c, d are the coefficients (floats)</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.fitter.make_plot">
-<code class="sig-prename descclassname">ncsmc_python.fitter.</code><code class="sig-name descname">make_plot</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">title</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.fitter.make_plot" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.fitter.make_plot">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.fitter.</span></span><span class="sig-name descname"><span class="pre">make_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.fitter.make_plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function makes an interactive plot for finding resonances.</p>
 <dl class="simple">
 <dt>x, y:</dt><dd><p>1D arrays of floats</p>
@@ -217,9 +220,9 @@ for one resonance</p>
 <p>(both list elements are floats)</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.fitter.read_csv">
-<code class="sig-prename descclassname">ncsmc_python.fitter.</code><code class="sig-name descname">read_csv</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.fitter.read_csv" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.fitter.read_csv">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.fitter.</span></span><span class="sig-name descname"><span class="pre">read_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.fitter.read_csv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gives the x and y values contained in a 2-column csv file</p>
 <dl class="simple">
 <dt>filename:</dt><dd><p>string, path to a csv file with 2 columns (for x and y values)</p>
@@ -229,9 +232,9 @@ for one resonance</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.fitter.save_info">
-<code class="sig-prename descclassname">ncsmc_python.fitter.</code><code class="sig-name descname">save_info</code><span class="sig-paren">(</span><em class="sig-param">csv_path</em>, <em class="sig-param">titles</em>, <em class="sig-param">widths</em>, <em class="sig-param">energies</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.fitter.save_info" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.fitter.save_info">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.fitter.</span></span><span class="sig-name descname"><span class="pre">save_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csv_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">titles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energies</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.fitter.save_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save titles, widths, and energies to a csv file.</p>
 <dl class="simple">
 <dt>csv_path:</dt><dd><p>string, where to save the file</p>
@@ -245,7 +248,7 @@ for one resonance</p>
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -267,7 +270,7 @@ for one resonance</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>

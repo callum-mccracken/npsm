@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>data_checker.py &mdash; NPSM 0.0.1 documentation</title>
+  <title>data_checker.py &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="data_structures.py" href="data_structures.html" />
@@ -171,12 +174,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ncsd_python.multi_modules.data_checker">
+  <section id="module-ncsd_python.multi_modules.data_checker">
 <span id="data-checker-py"></span><h1>data_checker.py<a class="headerlink" href="#module-ncsd_python.multi_modules.data_checker" title="Permalink to this headline">¶</a></h1>
 <p>Contains functions to check various sorts of data.</p>
-<dl class="function">
-<dt id="ncsd_python.multi_modules.data_checker.check_mfdp_read">
-<code class="sig-prename descclassname">ncsd_python.multi_modules.data_checker.</code><code class="sig-name descname">check_mfdp_read</code><span class="sig-paren">(</span><em class="sig-param">mfdp_params</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.data_checker.check_mfdp_read" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsd_python.multi_modules.data_checker.check_mfdp_read">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.multi_modules.data_checker.</span></span><span class="sig-name descname"><span class="pre">check_mfdp_read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mfdp_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.data_checker.check_mfdp_read" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks to see if mfdp data, read from a file, was ok.</p>
 <p>Note that this is not actually used now, since we don’t try to parse
 mfdp files anymore, it’s just left around from when we did, in case
@@ -187,23 +190,23 @@ you want to use it for something later.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsd_python.multi_modules.data_checker.get_int_dir">
-<code class="sig-prename descclassname">ncsd_python.multi_modules.data_checker.</code><code class="sig-name descname">get_int_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.data_checker.get_int_dir" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsd_python.multi_modules.data_checker.get_int_dir">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.multi_modules.data_checker.</span></span><span class="sig-name descname"><span class="pre">get_int_dir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.data_checker.get_int_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if INT_DIR environment variable exists, create it if not.</p>
 <p>Not used by default, but it’s an option if you want it.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsd_python.multi_modules.data_checker.get_work_dir">
-<code class="sig-prename descclassname">ncsd_python.multi_modules.data_checker.</code><code class="sig-name descname">get_work_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.data_checker.get_work_dir" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsd_python.multi_modules.data_checker.get_work_dir">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.multi_modules.data_checker.</span></span><span class="sig-name descname"><span class="pre">get_work_dir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.data_checker.get_work_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if WORK_DIR environment variable exists, create it if not.</p>
 <p>Not used by default, but it’s an option if you want it.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsd_python.multi_modules.data_checker.manual_input_check">
-<code class="sig-prename descclassname">ncsd_python.multi_modules.data_checker.</code><code class="sig-name descname">manual_input_check</code><span class="sig-paren">(</span><em class="sig-param">manual_params</em>, <em class="sig-param">machine</em>, <em class="sig-param">paths</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.data_checker.manual_input_check" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsd_python.multi_modules.data_checker.manual_input_check">
+<span class="sig-prename descclassname"><span class="pre">ncsd_python.multi_modules.data_checker.</span></span><span class="sig-name descname"><span class="pre">manual_input_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manual_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">machine</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsd_python.multi_modules.data_checker.manual_input_check" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks manual input to ensure it is self-consistent.</p>
 <dl class="simple">
 <dt>manual_params:</dt><dd><p>a data_structures.ManParams object, filled with manual input variables</p>
@@ -215,7 +218,7 @@ you want to use it for something later.</p>
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -237,7 +240,7 @@ you want to use it for something later.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>

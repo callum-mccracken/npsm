@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>dot_in.py &mdash; NPSM 0.0.1 documentation</title>
+  <title>dot_in.py &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="file_tools.py" href="file_tools.html" />
@@ -95,7 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="file_tools.html">file_tools.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ncsm_e1.html">ncsm_e1.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="run_transitions.html">run_transitions.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utils.html">utils.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cross_sections_utils.html">cross_sections_utils.py</a></li>
 </ul>
 </li>
 </ul>
@@ -164,24 +167,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-cross_sections.dot_in">
+  <section id="module-cross_sections.dot_in">
 <span id="dot-in-py"></span><h1>dot_in.py<a class="headerlink" href="#module-cross_sections.dot_in" title="Permalink to this headline">¶</a></h1>
 <p>A module for making transitions_NCSMC.in files</p>
-<dl class="function">
-<dt id="cross_sections.dot_in.get_bound_state_str">
-<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">get_bound_state_str</code><span class="sig-paren">(</span><em class="sig-param">target_bound_states</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_bound_state_str" title="Permalink to this definition">¶</a></dt>
-<dd><p>The .in file has a few lines dedicated to describing target bound states,
-this file makes those.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="cross_sections.dot_in.get_Rs">
+<span class="sig-prename descclassname"><span class="pre">cross_sections.dot_in.</span></span><span class="sig-name descname"><span class="pre">get_Rs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ncsd_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmax</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_Rs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an ncsd output file, get the values of Rp, Rn, Rm</p>
 <dl class="simple">
-<dt>target_bound_states:</dt><dd><p>list of bound states, formatted like
-<code class="docutils literal notranslate"><span class="pre">[[J2,</span> <span class="pre">parity,</span> <span class="pre">T2,</span> <span class="pre">energy],</span> <span class="pre">...]</span></code></p>
+<dt>ncsd_file:</dt><dd><p>string, path to the ncsd output file for the target nucleus</p>
+</dd>
+<dt>nmax:</dt><dd><p>int, the value of Nmax for which we want to get values</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="cross_sections.dot_in.get_e_m_transitions">
-<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">get_e_m_transitions</code><span class="sig-paren">(</span><em class="sig-param">simp_file_text</em>, <em class="sig-param">target_bound_states</em>, <em class="sig-param">lamb_max</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_e_m_transitions" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cross_sections.dot_in.get_bound_state_str">
+<span class="sig-prename descclassname"><span class="pre">cross_sections.dot_in.</span></span><span class="sig-name descname"><span class="pre">get_bound_state_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_bound_states</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_bound_state_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>The .in file has a few lines dedicated to describing target bound states,
+this file makes those.</p>
+<dl class="simple">
+<dt>target_bound_states:</dt><dd><p>list of bound states, formatted like
+<code class="docutils literal notranslate"><span class="pre">[[J2,</span> <span class="pre">parity,</span> <span class="pre">T2,</span> <span class="pre">num,</span> <span class="pre">energy],</span> <span class="pre">...]</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cross_sections.dot_in.get_e_m_transitions">
+<span class="sig-prename descclassname"><span class="pre">cross_sections.dot_in.</span></span><span class="sig-name descname"><span class="pre">get_e_m_transitions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simp_file_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_bound_states</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lamb_max</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_e_m_transitions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a simplified observ.out file and the bound states of the target,
 get lists containg the values to be printed for E and M transitions
 between those bound states.</p>
@@ -189,7 +204,7 @@ between those bound states.</p>
 <dt>simp_file_text:</dt><dd><p>string, the text of a simplified observ.out file</p>
 </dd>
 <dt>target_bound_states:</dt><dd><p>list of bound states, formatted like
-<code class="docutils literal notranslate"><span class="pre">[[J2,</span> <span class="pre">parity,</span> <span class="pre">T2,</span> <span class="pre">energy],</span> <span class="pre">...]</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">[[J2,</span> <span class="pre">parity,</span> <span class="pre">T2,</span> <span class="pre">num,</span> <span class="pre">energy],</span> <span class="pre">...]</span></code></p>
 </dd>
 <dt>lamb_max:</dt><dd><p>integer, lambda = multipolarity of a transition. If we have some block
 of e transitions that looks like this:</p>
@@ -199,15 +214,16 @@ of e transitions that looks like this:</p>
 2 2 2 1.0374 0.8974 ! targ E mul i f  Mp Mn
 </pre></div>
 </div>
-<p>we’re going to have a problem, since the code needs to read lines with
-all possible values from 1 to lamb_max as the first number.</p>
+<p>then we’re going to have a problem, since the code needs to read lines with
+all possible values from 1 to lamb_max as the first number.
+Same deal with the second and third.</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="cross_sections.dot_in.get_energy_info">
-<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">get_energy_info</code><span class="sig-paren">(</span><em class="sig-param">shift_file</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_energy_info" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cross_sections.dot_in.get_energy_info">
+<span class="sig-prename descclassname"><span class="pre">cross_sections.dot_in.</span></span><span class="sig-name descname"><span class="pre">get_energy_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shift_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_energy_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>The shift_file is a path to a file that looks something like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">@</span> <span class="n">s0</span> <span class="n">legend</span> <span class="s2">&quot;1\S-\N3&quot;</span>
 <span class="mf">0.02000</span>      <span class="o">-</span><span class="mf">0.05754</span>   <span class="mf">0.00000</span>   <span class="mf">0.00001</span>
@@ -220,9 +236,9 @@ all possible values from 1 to lamb_max as the first number.</p>
 <p>Let’s get the minimum energy, maximum energy, and energy step</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="cross_sections.dot_in.get_freq">
-<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">get_freq</code><span class="sig-paren">(</span><em class="sig-param">observ_file</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_freq" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cross_sections.dot_in.get_freq">
+<span class="sig-prename descclassname"><span class="pre">cross_sections.dot_in.</span></span><span class="sig-name descname"><span class="pre">get_freq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">observ_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_freq" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the frequency (Nhw) used for the calculation</p>
 <dl class="simple">
 <dt>observ_file:</dt><dd><p>path to observ.out file</p>
@@ -230,9 +246,9 @@ all possible values from 1 to lamb_max as the first number.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="cross_sections.dot_in.get_proj_info">
-<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">get_proj_info</code><span class="sig-paren">(</span><em class="sig-param">projectile</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_proj_info" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cross_sections.dot_in.get_proj_info">
+<span class="sig-prename descclassname"><span class="pre">cross_sections.dot_in.</span></span><span class="sig-name descname"><span class="pre">get_proj_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">projectile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_proj_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>get A, Z, 2J, parity, 2T for a projectile</p>
 <dl class="simple">
 <dt>projectile:</dt><dd><p>string, e.g. “n” or “p”</p>
@@ -243,9 +259,9 @@ more general implementation</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="cross_sections.dot_in.get_target_info">
-<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">get_target_info</code><span class="sig-paren">(</span><em class="sig-param">observ_file</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_target_info" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cross_sections.dot_in.get_target_info">
+<span class="sig-prename descclassname"><span class="pre">cross_sections.dot_in.</span></span><span class="sig-name descname"><span class="pre">get_target_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">observ_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_target_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets A, Z, J2, parity, T2 for the target.</p>
 <dl class="simple">
 <dt>observ_file:</dt><dd><p>path to observ.out file</p>
@@ -253,9 +269,9 @@ more general implementation</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="cross_sections.dot_in.get_transition_lines">
-<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">get_transition_lines</code><span class="sig-paren">(</span><em class="sig-param">e_transitions</em>, <em class="sig-param">m_transitions</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_transition_lines" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cross_sections.dot_in.get_transition_lines">
+<span class="sig-prename descclassname"><span class="pre">cross_sections.dot_in.</span></span><span class="sig-name descname"><span class="pre">get_transition_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e_transitions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m_transitions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.get_transition_lines" title="Permalink to this definition">¶</a></dt>
 <dd><p>The .in file has lines which describe E/M transitions between bound states
 of the target.</p>
 <p>Givem e_transitions, m_transitions, make those lines.</p>
@@ -267,21 +283,25 @@ of the target.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="cross_sections.dot_in.make_dot_in">
-<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">make_dot_in</code><span class="sig-paren">(</span><em class="sig-param">proj</em>, <em class="sig-param">target_bound_states</em>, <em class="sig-param">run_name</em>, <em class="sig-param">state_name</em>, <em class="sig-param">naming_str</em>, <em class="sig-param">observ_file</em>, <em class="sig-param">transitions</em>, <em class="sig-param">shift_file</em>, <em class="sig-param">out_dir=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.make_dot_in" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cross_sections.dot_in.make_dot_in">
+<span class="sig-prename descclassname"><span class="pre">cross_sections.dot_in.</span></span><span class="sig-name descname"><span class="pre">make_dot_in</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_bound_states</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">naming_str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncsd_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observ_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transitions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shift_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.make_dot_in" title="Permalink to this definition">¶</a></dt>
 <dd><p>Makes a transitions_NCSMC.in file.</p>
 <dl class="simple">
 <dt>proj:</dt><dd><p>string, the projectile, e.g. “n”, or list of [A, Z, 2J, pi, 2T]</p>
 </dd>
 <dt>target_bound_states:</dt><dd><p>list, info about bound states of the target.
-Formatted like <code class="docutils literal notranslate"><span class="pre">[[J2,</span> <span class="pre">parity,</span> <span class="pre">T2,</span> <span class="pre">energy],</span> <span class="pre">...]</span></code></p>
+Formatted like <code class="docutils literal notranslate"><span class="pre">[[J2,</span> <span class="pre">parity,</span> <span class="pre">T2,</span> <span class="pre">num,</span> <span class="pre">energy],</span> <span class="pre">...]</span></code></p>
 </dd>
 <dt>run_name:</dt><dd><p>string, name of directory where we’ll put files</p>
 </dd>
 <dt>state_name:</dt><dd><p>string, state of resultant nucleus, in “2Jparity” format, e.g. “1m”</p>
 </dd>
 <dt>naming_str:</dt><dd><p>string, for naming stuff after the run is complete</p>
+</dd>
+<dt>ncsd_file:</dt><dd><p>string, path to the ncsd output file for the target nucleus</p>
+</dd>
+<dt>nmax:</dt><dd><p>int, value of Nmax (excitations above lowest Pauli state)</p>
 </dd>
 <dt>observ_file:</dt><dd><p>string, path to the observ.out file for the target nucleus</p>
 </dd>
@@ -294,21 +314,27 @@ Formatted like <code class="docutils literal notranslate"><span class="pre">[[J2
 </dl>
 </dd></dl>
 
-<dl class="data">
-<dt id="cross_sections.dot_in.naming_str">
-<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">naming_str</code><em class="property"> = 'NCSMC_E1M1E2_Li9_2J_3'</em><a class="headerlink" href="#cross_sections.dot_in.naming_str" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="cross_sections.dot_in.naming_str">
+<span class="sig-prename descclassname"><span class="pre">cross_sections.dot_in.</span></span><span class="sig-name descname"><span class="pre">naming_str</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'NCSMC_E1M1E2_Li9_2J_3'</span></em><a class="headerlink" href="#cross_sections.dot_in.naming_str" title="Permalink to this definition">¶</a></dt>
 <dd><p>a string for naming output files</p>
 </dd></dl>
 
-<dl class="data">
-<dt id="cross_sections.dot_in.observ_file">
-<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">observ_file</code><em class="property"> = '/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output/Li8_observ_Nmax6_Jz1'</em><a class="headerlink" href="#cross_sections.dot_in.observ_file" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="cross_sections.dot_in.ncsd_file">
+<span class="sig-prename descclassname"><span class="pre">cross_sections.dot_in.</span></span><span class="sig-name descname"><span class="pre">ncsd_file</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'/home/callum/exch/Li8Li9/ncsd/Li8_n3lo-NN3Nlnl-srg2.0_Nmax0-10.20'</span></em><a class="headerlink" href="#cross_sections.dot_in.ncsd_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>the ncsd output file for the target</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="cross_sections.dot_in.observ_file">
+<span class="sig-prename descclassname"><span class="pre">cross_sections.dot_in.</span></span><span class="sig-name descname"><span class="pre">observ_file</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output/Li8_observ_Nmax6_Jz1'</span></em><a class="headerlink" href="#cross_sections.dot_in.observ_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>the observ.out file for the target</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="cross_sections.dot_in.parameter_list">
-<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">parameter_list</code><span class="sig-paren">(</span><em class="sig-param">transition</em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.parameter_list" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cross_sections.dot_in.parameter_list">
+<span class="sig-prename descclassname"><span class="pre">cross_sections.dot_in.</span></span><span class="sig-name descname"><span class="pre">parameter_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cross_sections.dot_in.parameter_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the parameters we should take from the observ.out file,
 for each type of transition. E.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">parameter_list</span><span class="p">(</span><span class="s2">&quot;E2&quot;</span><span class="p">)</span>
@@ -317,43 +343,43 @@ for each type of transition. E.g.:</p>
 </div>
 </dd></dl>
 
-<dl class="data">
-<dt id="cross_sections.dot_in.proj">
-<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">proj</code><em class="property"> = 'n'</em><a class="headerlink" href="#cross_sections.dot_in.proj" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="cross_sections.dot_in.proj">
+<span class="sig-prename descclassname"><span class="pre">cross_sections.dot_in.</span></span><span class="sig-name descname"><span class="pre">proj</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'n'</span></em><a class="headerlink" href="#cross_sections.dot_in.proj" title="Permalink to this definition">¶</a></dt>
 <dd><p>the projectile we’re using, curently only “n” and “p” are supported</p>
 </dd></dl>
 
-<dl class="data">
-<dt id="cross_sections.dot_in.run_name">
-<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">run_name</code><em class="property"> = 'nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6'</em><a class="headerlink" href="#cross_sections.dot_in.run_name" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="cross_sections.dot_in.run_name">
+<span class="sig-prename descclassname"><span class="pre">cross_sections.dot_in.</span></span><span class="sig-name descname"><span class="pre">run_name</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6'</span></em><a class="headerlink" href="#cross_sections.dot_in.run_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>a string that input files contain</p>
 </dd></dl>
 
-<dl class="data">
-<dt id="cross_sections.dot_in.shift_file">
-<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">shift_file</code><em class="property"> = '/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output/phase_shift_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6.agr'</em><a class="headerlink" href="#cross_sections.dot_in.shift_file" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="cross_sections.dot_in.shift_file">
+<span class="sig-prename descclassname"><span class="pre">cross_sections.dot_in.</span></span><span class="sig-name descname"><span class="pre">shift_file</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'/Users/callum/Desktop/npsm/_Nmax6_ncsmc_output/phase_shift_nLi8_n3lo-NN3Nlnl-srg2.0_20_Nmax6.agr'</span></em><a class="headerlink" href="#cross_sections.dot_in.shift_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>the eigenphase_shift or phase_shift file, for getting energy bounds</p>
 </dd></dl>
 
-<dl class="data">
-<dt id="cross_sections.dot_in.state_name">
-<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">state_name</code><em class="property"> = '3m'</em><a class="headerlink" href="#cross_sections.dot_in.state_name" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="cross_sections.dot_in.state_name">
+<span class="sig-prename descclassname"><span class="pre">cross_sections.dot_in.</span></span><span class="sig-name descname"><span class="pre">state_name</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'3m'</span></em><a class="headerlink" href="#cross_sections.dot_in.state_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>the state name of a bound state in the resultant nucleus</p>
 </dd></dl>
 
-<dl class="data">
-<dt id="cross_sections.dot_in.target_bound_states">
-<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">target_bound_states</code><em class="property"> = [[4, 1, 2, -34.8845], [2, 1, 2, -33.7694]]</em><a class="headerlink" href="#cross_sections.dot_in.target_bound_states" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="cross_sections.dot_in.target_bound_states">
+<span class="sig-prename descclassname"><span class="pre">cross_sections.dot_in.</span></span><span class="sig-name descname"><span class="pre">target_bound_states</span></span><em class="property"> <span class="pre">=</span> <span class="pre">[[4,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">1,</span> <span class="pre">-34.8845],</span> <span class="pre">[2,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">1,</span> <span class="pre">-33.7694]]</span></em><a class="headerlink" href="#cross_sections.dot_in.target_bound_states" title="Permalink to this definition">¶</a></dt>
 <dd><p>bound states of the target nucleus.</p>
 </dd></dl>
 
-<dl class="data">
-<dt id="cross_sections.dot_in.transitions">
-<code class="sig-prename descclassname">cross_sections.dot_in.</code><code class="sig-name descname">transitions</code><em class="property"> = ['E2', 'M1']</em><a class="headerlink" href="#cross_sections.dot_in.transitions" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="cross_sections.dot_in.transitions">
+<span class="sig-prename descclassname"><span class="pre">cross_sections.dot_in.</span></span><span class="sig-name descname"><span class="pre">transitions</span></span><em class="property"> <span class="pre">=</span> <span class="pre">['E2',</span> <span class="pre">'M1']</span></em><a class="headerlink" href="#cross_sections.dot_in.transitions" title="Permalink to this definition">¶</a></dt>
 <dd><p>the transitions we want to keep track of</p>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -375,7 +401,7 @@ for each type of transition. E.g.:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>

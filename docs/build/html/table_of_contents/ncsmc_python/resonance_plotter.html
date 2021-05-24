@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>resonance_plotter.py &mdash; NPSM 0.0.1 documentation</title>
+  <title>resonance_plotter.py &mdash; NPSM 0.0.2 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="scheme_plot.py" href="scheme_plot.html" />
@@ -169,7 +172,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ncsmc_python.resonance_plotter">
+  <section id="module-ncsmc_python.resonance_plotter">
 <span id="resonance-plotter-py"></span><h1>resonance_plotter.py<a class="headerlink" href="#module-ncsmc_python.resonance_plotter" title="Permalink to this headline">¶</a></h1>
 <p>Contains a function for making plots related to ncsmc output.</p>
 <p>Makes both matplotlib (png and svg) and xmgrace plots.</p>
@@ -182,15 +185,15 @@
 <li><p>detect which channels have resonances (saved in resonances directory)</p></li>
 <li><p>plot all channels</p></li>
 </ul>
-<dl class="data">
-<dt id="ncsmc_python.resonance_plotter.Nmax">
-<code class="sig-prename descclassname">ncsmc_python.resonance_plotter.</code><code class="sig-name descname">Nmax</code><em class="property"> = 4</em><a class="headerlink" href="#ncsmc_python.resonance_plotter.Nmax" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="ncsmc_python.resonance_plotter.Nmax">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.resonance_plotter.</span></span><span class="sig-name descname"><span class="pre">Nmax</span></span><em class="property"> <span class="pre">=</span> <span class="pre">4</span></em><a class="headerlink" href="#ncsmc_python.resonance_plotter.Nmax" title="Permalink to this definition">¶</a></dt>
 <dd><p>value of Nmax, for file naming purposes</p>
 </dd></dl>
 
-<dl class="data">
-<dt id="ncsmc_python.resonance_plotter.channels_to_plot">
-<code class="sig-prename descclassname">ncsmc_python.resonance_plotter.</code><code class="sig-name descname">channels_to_plot</code><em class="property"> = '\n\n'</em><a class="headerlink" href="#ncsmc_python.resonance_plotter.channels_to_plot" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="ncsmc_python.resonance_plotter.channels_to_plot">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.resonance_plotter.</span></span><span class="sig-name descname"><span class="pre">channels_to_plot</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'\n\n'</span></em><a class="headerlink" href="#ncsmc_python.resonance_plotter.channels_to_plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>channels_to_plot: which channels should be added to the multi channel plot?</p>
 <dl class="simple">
 <dt>format:</dt><dd><p>2J,parity,2T,column_number,resonance_type, e.g.: “2,+,4,1,strong”</p>
@@ -201,9 +204,9 @@ Just paste into the space between the pair of triple quotes above</p>
 </dl>
 </dd></dl>
 
-<dl class="data">
-<dt id="ncsmc_python.resonance_plotter.energy_bounds">
-<code class="sig-prename descclassname">ncsmc_python.resonance_plotter.</code><code class="sig-name descname">energy_bounds</code><em class="property"> = (-inf, inf)</em><a class="headerlink" href="#ncsmc_python.resonance_plotter.energy_bounds" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="ncsmc_python.resonance_plotter.energy_bounds">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.resonance_plotter.</span></span><span class="sig-name descname"><span class="pre">energy_bounds</span></span><em class="property"> <span class="pre">=</span> <span class="pre">(-inf,</span> <span class="pre">inf)</span></em><a class="headerlink" href="#ncsmc_python.resonance_plotter.energy_bounds" title="Permalink to this definition">¶</a></dt>
 <dd><p>energy_bounds: the bounds to use for the energy (x) axis</p>
 <ul class="simple">
 <li><p>e.g. if you have 0-10 but only want 0-5, set this to (0, 5)</p></li>
@@ -211,21 +214,21 @@ Just paste into the space between the pair of triple quotes above</p>
 </ul>
 </dd></dl>
 
-<dl class="data">
-<dt id="ncsmc_python.resonance_plotter.filepath">
-<code class="sig-prename descclassname">ncsmc_python.resonance_plotter.</code><code class="sig-name descname">filepath</code><em class="property"> = '/path/to/phase_shift.agr_flipped'</em><a class="headerlink" href="#ncsmc_python.resonance_plotter.filepath" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="ncsmc_python.resonance_plotter.filepath">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.resonance_plotter.</span></span><span class="sig-name descname"><span class="pre">filepath</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'/path/to/phase_shift.agr_flipped'</span></em><a class="headerlink" href="#ncsmc_python.resonance_plotter.filepath" title="Permalink to this definition">¶</a></dt>
 <dd><p>File path (relative paths are okay)</p>
 </dd></dl>
 
-<dl class="data">
-<dt id="ncsmc_python.resonance_plotter.flipped">
-<code class="sig-prename descclassname">ncsmc_python.resonance_plotter.</code><code class="sig-name descname">flipped</code><em class="property"> = True</em><a class="headerlink" href="#ncsmc_python.resonance_plotter.flipped" title="Permalink to this definition">¶</a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="ncsmc_python.resonance_plotter.flipped">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.resonance_plotter.</span></span><span class="sig-name descname"><span class="pre">flipped</span></span><em class="property"> <span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#ncsmc_python.resonance_plotter.flipped" title="Permalink to this definition">¶</a></dt>
 <dd><p>Has the file already been “flipped”?</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="ncsmc_python.resonance_plotter.plot">
-<code class="sig-prename descclassname">ncsmc_python.resonance_plotter.</code><code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">flipped=False</em>, <em class="sig-param">e_bounds=(-inf</em>, <em class="sig-param">inf)</em>, <em class="sig-param">res_types='all'</em>, <em class="sig-param">channels=''</em>, <em class="sig-param">Nmax=None</em>, <em class="sig-param">dpi=90</em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.resonance_plotter.plot" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ncsmc_python.resonance_plotter.plot">
+<span class="sig-prename descclassname"><span class="pre">ncsmc_python.resonance_plotter.</span></span><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flipped</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-</span> <span class="pre">inf,</span> <span class="pre">inf)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">90</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncsmc_python.resonance_plotter.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Makes a whole bunch of plots.</p>
 <ul class="simple">
 <li><p>one for each of the user-specified channels</p></li>
@@ -249,7 +252,7 @@ Just paste into the space between the pair of triple quotes above</p>
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -271,7 +274,7 @@ Just paste into the space between the pair of triple quotes above</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Callum McCracken
+        &copy; Copyright 2021, Callum McCracken
 
     </p>
   </div>
