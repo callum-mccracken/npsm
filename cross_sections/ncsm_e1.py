@@ -244,13 +244,12 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                             already_exists = True
                     if not already_exists:
                         if pn_mode:
-                           fnum_pn = 0 # count number of duplicate states (only J pi)
-                           f_num_int = int(f_num)
+                           fnum_max = 0
                            for inum, fnum, _, _ in transition_bank[state_f_jpt][trans_type]:
-                              if inum == i_num and fnum == f_num:
-                                 fnum_pn += 1
-                                 f_num_int += fnum_pn
-                           f_num = str(f_num_int)
+                              if inum == i_num:
+                                 if int(fnum) > fnum_max:
+                                    fnum_max = int(fnum)
+                           f_num = str(fnum_max+1)
                         transition_bank[state_f_jpt][trans_type].append(
                                 (i_num, f_num, param, M1_components[i+2]))
 
