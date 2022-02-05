@@ -10,6 +10,10 @@ import re
 desired_states = ["1 -1 3", "3 -1 3"]
 """resultant nucleus states we care about, 2J, pi, 2T"""
 
+pn_mode = True
+"""ignore isospin quantum numbers"""
+#(the transitions code will use proton and neutron components individually)
+
 transitions = ["E1", "E2", "M1"]
 """transitions we care about"""
 
@@ -221,6 +225,7 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                     # ignore the bit at the start, and write state as a tuple
                     # which contains (2J, pi, 2T). Record state # too
                     state_f_jpt = tuple(state_f.split()[2:5])  # indices 2 3 4
+                    if pn_mode: state_f_jpt = tuple(state_f.split()[2:4])
                     # we'll only want transitions to final states of interest
                     f_num = state_f.split()[6]
                     # state_i_jpt = state_i.split()[2:5]
@@ -238,6 +243,14 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                         if inum == i_num and fnum == f_num and params_are_same:
                             already_exists = True
                     if not already_exists:
+                        if pn_mode:
+                           fnum_pn = 0 # count number of duplicate states (only J pi)
+                           f_num_int = int(f_num)
+                           for inum, fnum, _, _ in transition_bank[state_f_jpt][trans_type]:
+                              if inum == i_num and fnum == f_num:
+                                 fnum_pn += 1
+                                 f_num_int += fnum_pn
+                           f_num = str(f_num_int)
                         transition_bank[state_f_jpt][trans_type].append(
                                 (i_num, f_num, param, M1_components[i+2]))
 
