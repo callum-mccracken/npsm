@@ -187,7 +187,7 @@ def make_ncsm_e1(desired_states, transitions, run_name,
         for file_index, filename in enumerate(observ_files):
             # simplify observ file
             simp, num = file_tools.simplify_observ(
-                desired_state, transitions, filename, function="make_ncsm_e1")
+                desired_state, transitions, filename, function="make_ncsm_e1", pn_mode=pn_mode)
             num_desired_state = num
             if simp is None:
                 continue
@@ -225,7 +225,7 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                     # ignore the bit at the start, and write state as a tuple
                     # which contains (2J, pi, 2T). Record state # too
                     state_f_jpt = tuple(state_f.split()[2:5])  # indices 2 3 4
-                    if pn_mode: state_f_jpt = tuple(state_f.split()[2:4])
+                    #if pn_mode: state_f_jpt = tuple(state_f.split()[2:4])
                     # we'll only want transitions to final states of interest
                     f_num = state_f.split()[6]
                     # state_i_jpt = state_i.split()[2:5]
