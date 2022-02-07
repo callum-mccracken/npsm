@@ -188,7 +188,7 @@ def make_ncsm_e1(desired_states, transitions, run_name,
             # simplify observ file
             simp, num = file_tools.simplify_observ(
                 desired_state, transitions, filename, function="make_ncsm_e1", pn_mode=pn_mode)
-            num_desired_state = num
+            num_desired_state = max(num,num_desired_state)
             if simp is None:
                 continue
             # get the useful info out of the data lines, e.g. E2p number

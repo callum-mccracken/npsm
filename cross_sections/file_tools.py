@@ -149,6 +149,8 @@ def simplify_observ(desired_state, transitions, filename, function=None, verbose
         _, J2, parity, T2, num, _, _ = state
         if "{} {} {}".format(J2, parity, T2) == desired_state:
             num_list.append(num)
+            print("Desired state {}".format(desired_state),
+                "found in {}".format(filename))
     if len(num_list) == 0:
         print("Desired state {}".format(desired_state),
               "not found in {}".format(filename))
