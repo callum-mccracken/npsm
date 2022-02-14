@@ -184,6 +184,7 @@ def make_ncsm_e1(desired_states, transitions, run_name,
         j2_parity = J2 + ("m" if p == "-1" else "p")
         # data stores info from observ files, to be written out after the loop
         data = []
+        num_desired_state = 0
         for file_index, filename in enumerate(observ_files):
             # simplify observ file
             simp, num = file_tools.simplify_observ(
