@@ -172,22 +172,67 @@ def get_A_Z(name):
     n_chars = 1
     while not is_float(name[n_chars:]):
         n_chars += 1
-    A = float(name[n_chars:])
+    A = int(name[n_chars:])
     Z = ptable[name[:n_chars]]
     return A, Z
 
-def get_all_resultant_states(rgm_out_filename, verbose=False):
+def get_all_resultant_states(rgm_out_filename, A=None, verbose=False):
     if verbose:
         print("getting resultant state list from", rgm_out_filename)
+    if A is None:
+        print("Can't get resultant states because we don't know A")
+        return None
+    elif verbose:
+        print("Assuming nucleus with A=",A)
     lines = []
     with open(rgm_out_filename, "r+") as open_file:
        for line in open_file:
-          if line!="  *** Composite nucleus ***":
+          if line!="  *** Composite nucleus ***\n":
               lines.append(line)
           else:
               break
     text = "\n".join(lines)
-    blocks = text.split(" NCSMC coupling kernels read from the file")
+    #print(text)
+    blocks = text.split("Nucleus:")
+    #print(blocks[1])
+    # Assume text looks like
+    # '''
+    #  Nucleus:
+    #  A=  8   Z=  4   N=  4
+    #  2*MJ=  0   2*MT=  0  parity= +
+    #  hbar Omega= 20.0000   Nhw= 12 nk= 15
+    #  
+    #  2*J=  0    2*T=  0     Energy=    -52.3517     Ex=      0.0000
+    #  ...
+    # '''
+    states = {}
+    for block in blocks[1:]:
+        #print(block)
+        lines = block.splitlines()
+        print(lines[0])
+        print(lines[1])
+        print(lines[2])
+        words = lines[2].split()
+        print(words)
+        # check if this is the right block for the resultant
+        if int(words[1])==A:
+            print(lines[5])
+            # record parity
+            parity = lines[3].split()[5]
+            assert parity in ['-','+']
+            parity_dict = {'-':0, '+':1}
+            parity_val = parity_dict[parity]
+            for line in lines[6:]:
+                if line=="\n":
+                    break
+                _, J2, _, T2, _, E, _, Ex = line.split()
+                if (J2, parity_val, T2) in states.keys():
+                    if 
+                else:
+                    states[(J2,parity_val,T2)] = {}
+
+        else:
+            print('no A match')
     return None 
 
 
