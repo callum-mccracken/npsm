@@ -172,7 +172,7 @@ def simplify_observ(desired_state, transitions, filename, function=None, verbose
     # take only data that is relevant to us
     # e.g. if we only have transitions = ["E3"] up top,
     # keep lines with E3 transitions and discard others
-    
+
     # we have data lines of the form:
 
     # #  4 [2*(J,T),Ex]_f=  5 1  7.5177   #  3 [2*(J,T),Ex]_i=  7 1  4.8240
@@ -203,12 +203,12 @@ def simplify_observ(desired_state, transitions, filename, function=None, verbose
         for i, line in enumerate(lines):
             if line[0] == "#":
                 state_line = line
-                print(state_line)
-                print(state_line[24])
+                #print(state_line)
+                #print(state_line[24])
                 if pn_mode: 
-                   state_line_list = list(state_line)
-                   state_line_list[24] = '0' # will break if either J,T are double digit
-                   state_line = ''.join(x for x in state_line_list)
+                    state_line_list = list(state_line)
+                    state_line_list[24] = '0' # TODO: will break if either J,T are double digit
+                    state_line = ''.join(x for x in state_line_list)
             #elif "#" in line:
             #    print('noop', line)
             elif line == line_to_find:

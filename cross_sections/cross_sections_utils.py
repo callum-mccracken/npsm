@@ -186,11 +186,11 @@ def get_all_resultant_states(rgm_out_filename, A=None, verbose=False):
         print("Assuming nucleus with A=",A)
     lines = []
     with open(rgm_out_filename, "r+") as open_file:
-       for line in open_file:
-          if line!="  *** Composite nucleus ***\n":
-              lines.append(line)
-          else:
-              break
+        for line in open_file:
+            if line!="  *** Composite nucleus ***\n":
+                lines.append(line)
+            else:
+                break
     text = "\n".join(lines)
     blocks = text.split("Nucleus:")
     #print(blocks[1])
@@ -200,7 +200,7 @@ def get_all_resultant_states(rgm_out_filename, A=None, verbose=False):
     #  A=  8   Z=  4   N=  4
     #  2*MJ=  0   2*MT=  0  parity= +
     #  hbar Omega= 20.0000   Nhw= 12 nk= 15
-    #  
+    #
     #  2*J=  0    2*T=  0     Energy=    -52.3517     Ex=      0.0000
     #  ...
     # '''
@@ -230,8 +230,8 @@ def get_all_resultant_states(rgm_out_filename, A=None, verbose=False):
                         print(float(E) - float(states[(J2,parity_val,T2,i_num)]))
                     raise RuntimeError("Found same state with different energy",line,E)
                 else:
-                   if verbose:
-                       print("duplicate state found, ignoring",line)
+                    if verbose:
+                        print("duplicate state found, ignoring",line)
                 i_num += 1
             if verbose: print(states)
         else:

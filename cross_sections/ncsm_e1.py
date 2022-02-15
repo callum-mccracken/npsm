@@ -235,7 +235,7 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                     if line=="M1":
                         if lines[i+1][0:2] == "pl":
                             M1_components[i+1] = (lines[i+1].split()[1:8:2])
-                     
+ 
             text = "\n".join(lines)
 
             # get transitions from simplified observ.out file
@@ -243,7 +243,6 @@ def make_ncsm_e1(desired_states, transitions, run_name,
             for i, line in enumerate(lines):
                 # get all transitions from the state of interest to others
                 if " ++ " + desired_state in line:
-                    
                     state_f, state_i = line.split("   ")  # 3 spaces
                     # ignore the bit at the start, and write state as a tuple
                     # which contains (2J, pi, 2T). Record state # too
@@ -297,9 +296,9 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                 for trans_type in sorted(transition_bank[state_f].keys()):
                     copy = transition_bank[state_f][trans_type]
                     for j, transition in enumerate(copy):
-                       i, f, param, comps = transition
-                       f = state_map[state_f,f]
-                       transition_bank[state_f][trans_type][j] = (i, f, param, comps)
+                        i, f, param, comps = transition
+                        f = state_map[state_f,f]
+                        transition_bank[state_f][trans_type][j] = (i, f, param, comps)
 
         # then go through and write all final states, in the format we need
         for state_f in sorted(transition_bank.keys()):
