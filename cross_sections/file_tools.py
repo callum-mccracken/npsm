@@ -5,6 +5,7 @@ import re
 from os.path import basename, join
 import cross_sections_utils
 
+
 def simplify_observ(desired_state, transitions, filename, function=None, verbose=True, pn_mode=False):
     """
     Makes a "simplified" version of an ``observ.out`` file.
@@ -33,7 +34,7 @@ def simplify_observ(desired_state, transitions, filename, function=None, verbose
     """
     if verbose:
         print("simplifying", filename)
-        print("pn_mode=",pn_mode)
+        print("pn_mode=", pn_mode)
     # get all text from file
     with open(filename, "r+") as open_file:
         text = open_file.read()
@@ -110,7 +111,8 @@ def simplify_observ(desired_state, transitions, filename, function=None, verbose
             J, T, E, Ex = list(map(float, [J, T, E, Ex]))
             J2 = round(J * 2)
             T2 = round(T * 2)
-            if pn_mode: T2 = 0 # ignore isospin and always set T=0
+            if pn_mode:
+                T2 = 0  # ignore isospin and always set T=0
             if (J2, T2) not in state_nums.keys():
                 state_nums[(J2, T2)] = 1
             else:
@@ -148,11 +150,9 @@ def simplify_observ(desired_state, transitions, filename, function=None, verbose
         _, J2, parity, T2, num, _, _ = state
         if "{} {} {}".format(J2, parity, T2) == desired_state:
             num_list.append(num)
-            print("Desired state {}".format(desired_state),
-                "found in {}".format(filename))
+            print(f"Desired state {desired_state} found in {filename}")
     if len(num_list) == 0:
-        print("Desired state {}".format(desired_state),
-              "not found in {}".format(filename))
+        print(f"Desired state {desired_state} not found in {filename}")
         return None, 0
     num_desired_state = max(num_list)
     # Now note that the Ex numbers in nuclei
@@ -203,17 +203,16 @@ def simplify_observ(desired_state, transitions, filename, function=None, verbose
         for i, line in enumerate(lines):
             if line[0] == "#":
                 state_line = line
-                #print(state_line)
-                #print(state_line[24])
+                # print(state_line)
+                # print(state_line[24])
                 if pn_mode: 
                     state_line_list = list(state_line)
-                    state_line_list[24] = '0' # TODO: will break if either J,T are double digit
+                    # TODO: will break if either J,T are double digit
+                    state_line_list[24] = '0'
                     state_line = ''.join(x for x in state_line_list)
-            #elif "#" in line:
-            #    print('noop', line)
             elif line == line_to_find:
                 interesting_lines += [state_line, m[1:], lines[i+1]]
-            #print(interesting_lines)
+            # print(interesting_lines)
     text = "\n".join(interesting_lines)
     
     # now we have something that looks mostly like this:
@@ -243,7 +242,8 @@ def simplify_observ(desired_state, transitions, filename, function=None, verbose
         _, num, _, J2, T2, Ex = title.split()
         num, J2, T2, Ex = list(map(float, [num, J2, T2, Ex]))
         num, J2, T2 = int(num), int(J2), int(T2)
-        if pn_mode: T2 = 0 # ignore isospin and always set T=0
+        if pn_mode:
+            T2 = 0  # ignore isospin and always set T=0
         if (J2, T2) not in state_counter.keys():
             state_counter[(J2, T2)] = 1
         else:
@@ -276,7 +276,8 @@ def simplify_observ(desired_state, transitions, filename, function=None, verbose
         text = text.replace(title, new_name)
 
     simp_path = filename+"_simp"
-    if pn_mode: simp_path += "_pn"
+    if pn_mode:
+        simp_path += "_pn"
     with open(simp_path, "w+") as simp_file:
         simp_file.write(text)
     if verbose: print('wrote output to', simp_path)

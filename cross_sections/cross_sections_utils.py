@@ -176,6 +176,7 @@ def get_A_Z(name):
     Z = ptable[name[:n_chars]]
     return A, Z
 
+
 def get_all_resultant_states(rgm_out_filename, A=None, verbose=False):
     if verbose:
         print("getting resultant state list from", rgm_out_filename)
@@ -183,11 +184,11 @@ def get_all_resultant_states(rgm_out_filename, A=None, verbose=False):
         print("Can't get resultant states because we don't know A")
         return None
     elif verbose:
-        print("Assuming nucleus with A=",A)
+        print("Assuming nucleus with A=", A)
     lines = []
     with open(rgm_out_filename, "r+") as open_file:
         for line in open_file:
-            if line!="  *** Composite nucleus ***\n":
+            if line != "  *** Composite nucleus ***\n":
                 lines.append(line)
             else:
                 break
@@ -214,29 +215,32 @@ def get_all_resultant_states(rgm_out_filename, A=None, verbose=False):
         if int(words[1])==A:
             # record parity
             parity = lines[2].split()[5]
-            assert parity in ['-','+']
-            parity_dict = {'-':'-1', '+':'1'}
+            assert parity in ['-', '+']
+            parity_dict = {'-': '-1', '+': '1'}
             parity_val = parity_dict[parity]
             i_num = 1
             for line in lines[5:]:
-                if line=="":
+                if line == "":
                     break
                 _, J2, _, T2, _, E, _, Ex = line.split()
                 if (J2, parity_val, T2, i_num) not in states.keys():
                     states[(J2, parity_val, T2, i_num)] = E
                 elif abs(float(E) - float(states[(J2, parity_val, T2, i_num)]))>1e-4:
                     if verbose:
-                        print("duplicate state found, confused",line)
-                        print(float(E) - float(states[(J2,parity_val,T2,i_num)]))
-                    raise RuntimeError("Found same state with different energy",line,E)
+                        print("duplicate state found, confused", line)
+                        print(float(E) - float(states[(J2, parity_val, T2, i_num)]))
+                    raise RuntimeError("Found same state with different energy", line, E)
                 else:
                     if verbose:
                         print("duplicate state found, ignoring",line)
                 i_num += 1
-            if verbose: print(states)
+            if verbose:
+                print(states)
         else:
-            if verbose: print('no A match')
+            if verbose:
+                print('no A match')
     return states
+
 
 # only bound states
 def get_resultant_state_info(rgm_out_filename, verbose=False):

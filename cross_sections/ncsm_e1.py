@@ -13,7 +13,7 @@ desired_states = ["1 -1 3", "3 -1 3"]
 
 pn_mode = True
 """ignore isospin quantum numbers"""
-#(the transitions code will use proton and neutron components individually)
+# (the transitions code will use proton and neutron components individually)
 
 transitions = ["E1", "E2", "M1"]
 """transitions we care about"""
@@ -136,7 +136,8 @@ def get_radii(ncsd_file, nmax, state):
 
 
 def make_ncsm_e1(desired_states, transitions, run_name,
-                 observ_files, ncsd_file, nmax, out_dir=None, pn_mode=False, A=None, verbose=False):
+                 observ_files, ncsd_file, nmax, out_dir=None,
+                 pn_mode=False, A=None, verbose=False):
     """
     Makes NCSM_E1_Afi.dat files for the given parameters.
 
@@ -178,7 +179,8 @@ def make_ncsm_e1(desired_states, transitions, run_name,
 
     if pn_mode:
         # get order of states from ncsmc_rgm_out file
-        all_resultant_states = cross_sections_utils.get_all_resultant_states(ncsmc_rgm_out_file, A=A, verbose=verbose)
+        all_resultant_states = cross_sections_utils.get_all_resultant_states(
+              ncsmc_rgm_out_file, A=A, verbose=verbose)
         # create mapping from ncsmc_rgm_out order to ascending energy
         state_numbering = {}
         for (J2, par, T2, i), E in all_resultant_states.items():
@@ -211,7 +213,7 @@ def make_ncsm_e1(desired_states, transitions, run_name,
             # simplify observ file
             simp, num = file_tools.simplify_observ(
                 desired_state, transitions, filename, function="make_ncsm_e1", pn_mode=pn_mode)
-            num_desired_state = max(num,num_desired_state)
+            num_desired_state = max(num, num_desired_state)
             if simp is None:
                 continue
             # get the useful info out of the data lines, e.g. E2p number
@@ -326,8 +328,8 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                         if i == i_val:
                             line_counter += 1
                             block_lines.append(" ".join([i, f, param]))
-                            if not comps is None:
-                                block_lines[-1] = " ".join([block_lines[-1]," ".join(comps)])
+                            if comps is not None:
+                                block_lines[-1] = " ".join([block_lines[-1], " ".join(comps)])
                     lines.append(str(line_counter))
                     lines += block_lines
         # once we've looped over all files, write data to a file for this state
