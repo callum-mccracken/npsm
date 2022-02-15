@@ -176,7 +176,22 @@ def get_A_Z(name):
     Z = ptable[name[:n_chars]]
     return A, Z
 
+def get_all_resultant_states(rgm_out_filename, verbose=False):
+    if verbose:
+        print("getting resultant state list from", rgm_out_filename)
+    lines = []
+    with open(rgm_out_filename, "r+") as open_file:
+       for line in open_file:
+          if line!="  *** Composite nucleus ***":
+              lines.append(line)
+          else:
+              break
+    text = "\n".join(lines)
+    blocks = text.split(" NCSMC coupling kernels read from the file")
+    return None 
 
+
+# only bound states
 def get_resultant_state_info(rgm_out_filename, verbose=False):
     _, state_titles = simplify(rgm_out_filename, verbose=verbose)
     for i, title in enumerate(state_titles):

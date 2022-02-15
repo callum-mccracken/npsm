@@ -32,6 +32,8 @@ ncsd_file = "/home/callum/ncsd/Li9_n3lo-NN3Nlnl-srg2.0_Nmax8.20"
 
 nmax = 8
 
+ncsmc_rgm_out_file = join(ncsmc_out_dir, f"ncsm_rgm_Am2_1_1.out_{run_name}")
+
 def transition_parameter(trans_str):
     """
     Which parameter should we take from lines of data?
@@ -171,6 +173,12 @@ def make_ncsm_e1(desired_states, transitions, run_name,
     # tolerance is controled by tol here:
     tol = 1e-3
     transition_bank = {}
+
+    if pn_mode:
+       # get order of states from ncsmc_rgm_out file
+       all_resultant_states = cross_sections_utils.get_all_resultant_states(ncsmc_rgm_out_file, verbose=verbose)
+       # create mapping from ncsmc_rgm_out order to ascending energy
+
 
     # make one ncsm_e1 file for each state
     for desired_state in desired_states:
