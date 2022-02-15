@@ -130,7 +130,6 @@ def simplify_observ(desired_state, transitions, filename, function=None, verbose
         states = states[:n_states]
         nuclei.append(states)
         text = "\n".join(lines)
-        #print(text)
 
     assert len(nuclei) < 3  # let us pray this never fails
     # assuming all went well, now we have
@@ -273,14 +272,14 @@ def simplify_observ(desired_state, transitions, filename, function=None, verbose
         assert num == f_num
         new_name = "{} -- {} {} {} # {} {}".format(
             num, J2, f_parity, T2, state_counter[(J2, T2)], E)
-        print("replacing", title, "with", new_name)
+        if verbose: print("replacing", title, "with", new_name)
         text = text.replace(title, new_name)
 
     simp_path = filename+"_simp"
     if pn_mode: simp_path += "_pn"
     with open(simp_path, "w+") as simp_file:
         simp_file.write(text)
-    print('wrote output to', simp_path)
+    if verbose: print('wrote output to', simp_path)
 
     if function == "make_ncsm_e1":
         return simp_path, num_desired_state

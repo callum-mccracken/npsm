@@ -33,7 +33,7 @@ ncsd_file = "/home/callum/ncsd/Li9_n3lo-NN3Nlnl-srg2.0_Nmax8.20"
 
 nmax = 8
 
-A, _ = cross_sections_utils.get_A_Z("Be8")
+A, _ = cross_sections_utils.get_A_Z("Li8")
 ncsmc_rgm_out_file = join(ncsmc_out_dir, f"ncsm_rgm_Am2_1_1.out_{run_name}")
 
 def transition_parameter(trans_str):
@@ -177,23 +177,22 @@ def make_ncsm_e1(desired_states, transitions, run_name,
     transition_bank = {}
 
     if pn_mode:
-       # get order of states from ncsmc_rgm_out file
-       all_resultant_states = cross_sections_utils.get_all_resultant_states(ncsmc_rgm_out_file, A=A, verbose=verbose)
-       # create mapping from ncsmc_rgm_out order to ascending energy
-
+        # get order of states from ncsmc_rgm_out file
+        all_resultant_states = cross_sections_utils.get_all_resultant_states(ncsmc_rgm_out_file, A=A, verbose=verbose)
+        # create mapping from ncsmc_rgm_out order to ascending energy
         state_numbering = {}
         for (J2, par, T2, i), E in all_resultant_states.items():
-            print(J2,par,T2,i,E)
+            # print(J2,par,T2,i,E)
             if (J2, par, '0') not in state_numbering:
                 state_numbering[(J2, par, '0')] = []
             state_numbering[(J2, par, '0')].append((float(E), i))
         state_map = {}
         for key, val in state_numbering.items():
-            print(key, val)
+            # print(key, val)
             for iE, (E, istr) in enumerate(sorted(val)):
                 i = str(int(istr)-int(val[0][1])+1)
                 state_map[(key,str(iE+1))] = i
-        print(state_map)
+        # print(state_map)
 
     # make one ncsm_e1 file for each state
     for desired_state in desired_states:
@@ -249,7 +248,6 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                     # ignore the bit at the start, and write state as a tuple
                     # which contains (2J, pi, 2T). Record state # too
                     state_f_jpt = tuple(state_f.split()[2:5])  # indices 2 3 4
-                    #if pn_mode: state_f_jpt = tuple(state_f.split()[2:4])
                     # we'll only want transitions to final states of interest
                     f_num = state_f.split()[6]
                     # state_i_jpt = state_i.split()[2:5]
@@ -323,6 +321,7 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                     # line for how many lines are in this block
                     line_counter = 0
                     block_lines = []
+                    # sort transitions by f so that the output comes out in the right order
                     for transition in sorted(transition_bank[state_f][trans_type], key=lambda x:x[1]):
                         i, f, param, comps = transition
                         if i == i_val:

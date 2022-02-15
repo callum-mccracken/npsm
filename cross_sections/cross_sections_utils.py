@@ -192,7 +192,6 @@ def get_all_resultant_states(rgm_out_filename, A=None, verbose=False):
           else:
               break
     text = "\n".join(lines)
-    #print(text)
     blocks = text.split("Nucleus:")
     #print(blocks[1])
     # Assume text looks like
@@ -207,19 +206,12 @@ def get_all_resultant_states(rgm_out_filename, A=None, verbose=False):
     # '''
     states = {}
     for block in blocks[1:]:
-        #print(block)
         block = block.replace("\n ", "\n")
         block = block.replace("\n\n", "\n")
         lines = block.splitlines()
-        #print(lines[:5])
-        #print(lines[0])
-        #print(lines[1])
-        #print(lines[2])
         words = lines[1].split()
-        #print(words)
         # check if this is the right block for the resultant
         if int(words[1])==A:
-            #print(lines[2])
             # record parity
             parity = lines[2].split()[5]
             assert parity in ['-','+']
@@ -227,11 +219,9 @@ def get_all_resultant_states(rgm_out_filename, A=None, verbose=False):
             parity_val = parity_dict[parity]
             i_num = 1
             for line in lines[5:]:
-                #print(line)
                 if line=="":
                     break
                 _, J2, _, T2, _, E, _, Ex = line.split()
-                #print(J2,T2,E,Ex)
                 if (J2, parity_val, T2, i_num) not in states.keys():
                     states[(J2, parity_val, T2, i_num)] = E
                 elif abs(float(E) - float(states[(J2, parity_val, T2, i_num)]))>1e-4:
@@ -247,7 +237,6 @@ def get_all_resultant_states(rgm_out_filename, A=None, verbose=False):
         else:
             if verbose: print('no A match')
     return states
-
 
 # only bound states
 def get_resultant_state_info(rgm_out_filename, verbose=False):
