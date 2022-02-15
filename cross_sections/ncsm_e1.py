@@ -294,6 +294,15 @@ def make_ncsm_e1(desired_states, transitions, run_name,
         # first 2 lines of the file should be initial state description
         lines.append(desired_state)
         lines.append(str(num_desired_state))
+        if pn_mode:
+            for state_f in sorted(transition_bank.keys()):
+                for trans_type in sorted(transition_bank[state_f].keys()):
+                    copy = transition_bank[state_f][trans_type]
+                    for j, transition in enumerate(copy):
+                       i, f, param, comps = transition
+                       f = state_map[state_f,f]
+                       transition_bank[state_f][trans_type][j] = (i, f, param, comps)
+
         # then go through and write all final states, in the format we need
         for state_f in sorted(transition_bank.keys()):
             for trans_type in sorted(transition_bank[state_f].keys()):
@@ -314,12 +323,8 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                     # line for how many lines are in this block
                     line_counter = 0
                     block_lines = []
-                    for transition in transition_bank[state_f][trans_type]:
+                    for transition in sorted(transition_bank[state_f][trans_type], key=lambda x:x[1]):
                         i, f, param, comps = transition
-                        #print(transition[:2])
-                        if pn_mode:
-                            f = state_map[state_f,f]
-                            #print(i,f)
                         if i == i_val:
                             line_counter += 1
                             block_lines.append(" ".join([i, f, param]))
