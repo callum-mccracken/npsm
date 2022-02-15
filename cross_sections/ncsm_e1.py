@@ -6,9 +6,14 @@ import file_tools
 import dot_in
 import os
 import re
+import cross_sections_utils
 
 desired_states = ["1 -1 3", "3 -1 3"]
 """resultant nucleus states we care about, 2J, pi, 2T"""
+
+pn_mode = True
+"""ignore isospin quantum numbers"""
+# (the transitions code will use proton and neutron components individually)
 
 transitions = ["E1", "E2", "M1"]
 """transitions we care about"""
@@ -27,6 +32,9 @@ ncsd_file = "/home/callum/ncsd/Li9_n3lo-NN3Nlnl-srg2.0_Nmax8.20"
 """path to ncsd output file for resultant nucleus"""
 
 nmax = 8
+
+A, _ = cross_sections_utils.get_A_Z("Li8")
+ncsmc_rgm_out_file = join(ncsmc_out_dir, f"ncsm_rgm_Am2_1_1.out_{run_name}")
 
 def transition_parameter(trans_str):
     """
@@ -128,7 +136,8 @@ def get_radii(ncsd_file, nmax, state):
 
 
 def make_ncsm_e1(desired_states, transitions, run_name,
-                 observ_files, ncsd_file, nmax, out_dir=None, verbose=False):
+                 observ_files, ncsd_file, nmax, out_dir=None,
+                 pn_mode=False, A=None, verbose=False):
     """
     Makes NCSM_E1_Afi.dat files for the given parameters.
 
@@ -168,6 +177,25 @@ def make_ncsm_e1(desired_states, transitions, run_name,
     tol = 1e-3
     transition_bank = {}
 
+    if pn_mode:
+        # get order of states from ncsmc_rgm_out file
+        all_resultant_states = cross_sections_utils.get_all_resultant_states(
+              ncsmc_rgm_out_file, A=A, verbose=verbose)
+        # create mapping from ncsmc_rgm_out order to ascending energy
+        state_numbering = {}
+        for (J2, par, T2, i), E in all_resultant_states.items():
+            # print(J2,par,T2,i,E)
+            if (J2, par, '0') not in state_numbering:
+                state_numbering[(J2, par, '0')] = []
+            state_numbering[(J2, par, '0')].append((float(E), i))
+        state_map = {}
+        for key, val in state_numbering.items():
+            # print(key, val)
+            for iE, (E, istr) in enumerate(sorted(val)):
+                i = str(int(istr)-int(val[0][1])+1)
+                state_map[(key, str(iE+1))] = i
+        # print(state_map)
+
     # make one ncsm_e1 file for each state
     for desired_state in desired_states:
         # have we got the radii yet?
@@ -180,11 +208,13 @@ def make_ncsm_e1(desired_states, transitions, run_name,
         j2_parity = J2 + ("m" if p == "-1" else "p")
         # data stores info from observ files, to be written out after the loop
         data = []
+        num_desired_state = 0
         for file_index, filename in enumerate(observ_files):
             # simplify observ file
             simp, num = file_tools.simplify_observ(
-                desired_state, transitions, filename, function="make_ncsm_e1")
-            num_desired_state = num
+                desired_state, transitions, filename,
+                function="make_ncsm_e1", pn_mode=pn_mode)
+            num_desired_state = max(num, num_desired_state)
             if simp is None:
                 continue
             # get the useful info out of the data lines, e.g. E2p number
@@ -192,6 +222,7 @@ def make_ncsm_e1(desired_states, transitions, run_name,
             with open(simp, "r+") as simp_file:
                 text = simp_file.read()
             lines = text.splitlines()
+            M1_components = [None]*len(lines)
             for t in transitions:
                 var = transition_parameter(t)
                 for i, line in enumerate(lines):
@@ -204,6 +235,10 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                             print(line)
                             raise ValueError("Could not find variable "+var)
                         lines[i] = words[index+1]
+                    if line == "M1":
+                        if lines[i+1][0:2] == "pl":
+                            M1_components[i+1] = (lines[i+1].split()[1:8:2])
+
             text = "\n".join(lines)
 
             # get transitions from simplified observ.out file
@@ -211,7 +246,6 @@ def make_ncsm_e1(desired_states, transitions, run_name,
             for i, line in enumerate(lines):
                 # get all transitions from the state of interest to others
                 if " ++ " + desired_state in line:
-                    
                     state_f, state_i = line.split("   ")  # 3 spaces
                     # ignore the bit at the start, and write state as a tuple
                     # which contains (2J, pi, 2T). Record state # too
@@ -228,13 +262,13 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                     if trans_type not in transition_bank[state_f_jpt].keys():
                         transition_bank[state_f_jpt][trans_type] = []
                     already_exists = False
-                    for inum, fnum, paramval in transition_bank[state_f_jpt][trans_type]:
+                    for inum, fnum, paramval, _ in transition_bank[state_f_jpt][trans_type]:
                         params_are_same = abs(float(paramval) - float(param)) < tol
                         if inum == i_num and fnum == f_num and params_are_same:
                             already_exists = True
                     if not already_exists:
                         transition_bank[state_f_jpt][trans_type].append(
-                                (i_num, f_num, param))
+                                (i_num, f_num, param, M1_components[i+2]))
 
             # get E0 transitions from a state to another state with same Q#s
             # careful to just do this once!
@@ -251,7 +285,7 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                     for j in range(1, min(len(radii)+1, num_desired_state+1)):
                         Rp, Rn, Rm = radii[(i, j)]
                         transition_bank[(J2, p, T2)]["0"].append(
-                            (str(i), str(j), f"{Rp} {Rn} {Rm}"))
+                            (str(i), str(j), f"{Rp} {Rn} {Rm}", None))
 
 
         # now turn the data in transition_bank into writable lines
@@ -260,13 +294,22 @@ def make_ncsm_e1(desired_states, transitions, run_name,
         # first 2 lines of the file should be initial state description
         lines.append(desired_state)
         lines.append(str(num_desired_state))
+        if pn_mode:
+            for state_f in sorted(transition_bank.keys()):
+                for trans_type in sorted(transition_bank[state_f].keys()):
+                    copy = transition_bank[state_f][trans_type]
+                    for j, transition in enumerate(copy):
+                        i, f, param, comps = transition
+                        new_f = state_map[state_f, f]
+                        transition_bank[state_f][trans_type][j] = (i, new_f, param, comps)
+
         # then go through and write all final states, in the format we need
         for state_f in sorted(transition_bank.keys()):
             for trans_type in sorted(transition_bank[state_f].keys()):
                 # how many blocks will we need for this transition?
                 blocks = {}
                 for transition in transition_bank[state_f][trans_type]:
-                    i, f, param = transition
+                    i, f, param, comps = transition
                     if i not in blocks.keys():
                         blocks[i] = 1
                     else:
@@ -280,11 +323,16 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                     # line for how many lines are in this block
                     line_counter = 0
                     block_lines = []
-                    for transition in transition_bank[state_f][trans_type]:
-                        i, f, param = transition
+                    # sort transitions by f so that the output comes out in the right order
+                    for transition in sorted(transition_bank[state_f][trans_type],
+                                             key=lambda x: x[1]):
+                        i, f, param, comps = transition
                         if i == i_val:
                             line_counter += 1
                             block_lines.append(" ".join([i, f, param]))
+                            if comps is not None:
+                                block_lines[-1] = " ".join([block_lines[-1],
+                                                           " ".join(comps)])
                     lines.append(str(line_counter))
                     lines += block_lines
         # once we've looped over all files, write data to a file for this state
@@ -301,4 +349,4 @@ def make_ncsm_e1(desired_states, transitions, run_name,
 if __name__ == "__main__":
     make_ncsm_e1(
         desired_states, transitions, run_name, observ_files, ncsd_file, nmax,
-        out_dir="")
+        out_dir="", pn_mode=pn_mode, A=A, verbose=True)
