@@ -212,7 +212,8 @@ def make_ncsm_e1(desired_states, transitions, run_name,
         for file_index, filename in enumerate(observ_files):
             # simplify observ file
             simp, num = file_tools.simplify_observ(
-                desired_state, transitions, filename, function="make_ncsm_e1", pn_mode=pn_mode)
+                desired_state, transitions, filename,
+                function="make_ncsm_e1", pn_mode=pn_mode)
             num_desired_state = max(num, num_desired_state)
             if simp is None:
                 continue
@@ -299,8 +300,8 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                     copy = transition_bank[state_f][trans_type]
                     for j, transition in enumerate(copy):
                         i, f, param, comps = transition
-                        f = state_map[state_f, f]
-                        transition_bank[state_f][trans_type][j] = (i, f, param, comps)
+                        new_f = state_map[state_f, f]
+                        transition_bank[state_f][trans_type][j] = (i, new_f, param, comps)
 
         # then go through and write all final states, in the format we need
         for state_f in sorted(transition_bank.keys()):
@@ -330,7 +331,8 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                             line_counter += 1
                             block_lines.append(" ".join([i, f, param]))
                             if comps is not None:
-                                block_lines[-1] = " ".join([block_lines[-1], " ".join(comps)])
+                                block_lines[-1] = " ".join([block_lines[-1],
+                                                           " ".join(comps)])
                     lines.append(str(line_counter))
                     lines += block_lines
         # once we've looped over all files, write data to a file for this state

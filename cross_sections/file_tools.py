@@ -6,7 +6,8 @@ from os.path import basename, join
 import cross_sections_utils
 
 
-def simplify_observ(desired_state, transitions, filename, function=None, verbose=True, pn_mode=False):
+def simplify_observ(desired_state, transitions, filename, function=None,
+                    verbose=True, pn_mode=False):
     """
     Makes a "simplified" version of an ``observ.out`` file.
 
