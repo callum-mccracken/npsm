@@ -208,32 +208,43 @@ def get_all_resultant_states(rgm_out_filename, A=None, verbose=False):
     states = {}
     for block in blocks[1:]:
         #print(block)
+        block = block.replace("\n ", "\n")
+        block = block.replace("\n\n", "\n")
         lines = block.splitlines()
+        print(lines[:5])
         print(lines[0])
         print(lines[1])
         print(lines[2])
-        words = lines[2].split()
+        words = lines[1].split()
         print(words)
         # check if this is the right block for the resultant
         if int(words[1])==A:
-            print(lines[5])
+            print(lines[2])
             # record parity
-            parity = lines[3].split()[5]
+            parity = lines[2].split()[5]
             assert parity in ['-','+']
             parity_dict = {'-':0, '+':1}
             parity_val = parity_dict[parity]
-            for line in lines[6:]:
-                if line=="\n":
+            i_num = 1
+            for line in lines[5:]:
+                print(line)
+                if line=="":
                     break
                 _, J2, _, T2, _, E, _, Ex = line.split()
-                if (J2, parity_val, T2) in states.keys():
-                    if 
+                print(J2,T2,E,Ex)
+                if (J2, parity_val, T2, i_num) not in states.keys():
+                    states[(J2, parity_val, T2, i_num)] = E
+                elif abs(float(E) - float(states[(J2, parity_val, T2, i_num)]))>1e-4:
+                    print("duplicate state found, confused",line)
+                    print(float(E) - float(states[(J2,parity_val,T2,i_num)]))
+                    raise RuntimeError("Found same state with different energy",line,E)
                 else:
-                    states[(J2,parity_val,T2)] = {}
-
+                   print("duplicate state found, ignoring",line)
+                i_num += 1
+            print(states)
         else:
             print('no A match')
-    return None 
+    return states
 
 
 # only bound states
