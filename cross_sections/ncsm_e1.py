@@ -181,6 +181,19 @@ def make_ncsm_e1(desired_states, transitions, run_name,
        all_resultant_states = cross_sections_utils.get_all_resultant_states(ncsmc_rgm_out_file, A=A, verbose=verbose)
        # create mapping from ncsmc_rgm_out order to ascending energy
 
+        state_numbering = {}
+        for (J2, par, T2, i), E in all_resultant_states.items():
+            print(J2,par,T2,i,E)
+            if (J2, par, '0') not in state_numbering:
+                state_numbering[(J2, par, '0')] = []
+            state_numbering[(J2, par, '0')].append((float(E), i))
+        state_map = {}
+        for key, val in state_numbering.items():
+            print(key, val)
+            for iE, (E, istr) in enumerate(sorted(val)):
+                i = str(int(istr)-int(val[0][1])+1)
+                state_map[(key,str(iE+1))] = i
+        print(state_map)
 
     # make one ncsm_e1 file for each state
     for desired_state in desired_states:
@@ -254,13 +267,6 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                         if inum == i_num and fnum == f_num and params_are_same:
                             already_exists = True
                     if not already_exists:
-                        if pn_mode:
-                           fnum_max = 0
-                           for inum, fnum, _, _ in transition_bank[state_f_jpt][trans_type]:
-                              if inum == i_num:
-                                 if int(fnum) > fnum_max:
-                                    fnum_max = int(fnum)
-                           f_num = str(fnum_max+1)
                         transition_bank[state_f_jpt][trans_type].append(
                                 (i_num, f_num, param, M1_components[i+2]))
 
@@ -310,6 +316,10 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                     block_lines = []
                     for transition in transition_bank[state_f][trans_type]:
                         i, f, param, comps = transition
+                        #print(transition[:2])
+                        if pn_mode:
+                            f = state_map[state_f,f]
+                            #print(i,f)
                         if i == i_val:
                             line_counter += 1
                             block_lines.append(" ".join([i, f, param]))
