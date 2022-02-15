@@ -225,13 +225,13 @@ def get_all_resultant_states(rgm_out_filename, A=None, verbose=False):
                 if (J2, parity_val, T2, i_num) not in states.keys():
                     states[(J2, parity_val, T2, i_num)] = E
                 elif abs(float(E)
-                       - float(states[(J2, parity_val, T2, i_num)])) > 1e-4:
+                        - float(states[(J2, parity_val, T2, i_num)])) > 1e-4:
                     if verbose:
                         print("duplicate state found, confused", line)
                         print(float(E)
-                            - float(states[(J2, parity_val, T2, i_num)]))
+                               - float(states[(J2, parity_val, T2, i_num)]))
                     raise RuntimeError("Found same state with different E",
-                                        line, E)
+                               line, E)
                 else:
                     if verbose:
                         print("duplicate state found, ignoring", line)
