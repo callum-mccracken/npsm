@@ -193,7 +193,7 @@ def make_ncsm_e1(desired_states, transitions, run_name,
             # print(key, val)
             for iE, (E, istr) in enumerate(sorted(val)):
                 i = str(int(istr)-int(val[0][1])+1)
-                state_map[(key,str(iE+1))] = i
+                state_map[(key, str(iE+1))] = i
         # print(state_map)
 
     # make one ncsm_e1 file for each state
@@ -234,10 +234,10 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                             print(line)
                             raise ValueError("Could not find variable "+var)
                         lines[i] = words[index+1]
-                    if line=="M1":
+                    if line == "M1":
                         if lines[i+1][0:2] == "pl":
                             M1_components[i+1] = (lines[i+1].split()[1:8:2])
- 
+
             text = "\n".join(lines)
 
             # get transitions from simplified observ.out file
@@ -299,7 +299,7 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                     copy = transition_bank[state_f][trans_type]
                     for j, transition in enumerate(copy):
                         i, f, param, comps = transition
-                        f = state_map[state_f,f]
+                        f = state_map[state_f, f]
                         transition_bank[state_f][trans_type][j] = (i, f, param, comps)
 
         # then go through and write all final states, in the format we need
@@ -323,7 +323,8 @@ def make_ncsm_e1(desired_states, transitions, run_name,
                     line_counter = 0
                     block_lines = []
                     # sort transitions by f so that the output comes out in the right order
-                    for transition in sorted(transition_bank[state_f][trans_type], key=lambda x:x[1]):
+                    for transition in sorted(transition_bank[state_f][trans_type],
+                                             key=lambda x: x[1]):
                         i, f, param, comps = transition
                         if i == i_val:
                             line_counter += 1

@@ -194,7 +194,6 @@ def get_all_resultant_states(rgm_out_filename, A=None, verbose=False):
                 break
     text = "\n".join(lines)
     blocks = text.split("Nucleus:")
-    #print(blocks[1])
     # Assume text looks like
     # '''
     #  Nucleus:
@@ -212,7 +211,7 @@ def get_all_resultant_states(rgm_out_filename, A=None, verbose=False):
         lines = block.splitlines()
         words = lines[1].split()
         # check if this is the right block for the resultant
-        if int(words[1])==A:
+        if int(words[1]) == A:
             # record parity
             parity = lines[2].split()[5]
             assert parity in ['-', '+']
@@ -225,14 +224,14 @@ def get_all_resultant_states(rgm_out_filename, A=None, verbose=False):
                 _, J2, _, T2, _, E, _, Ex = line.split()
                 if (J2, parity_val, T2, i_num) not in states.keys():
                     states[(J2, parity_val, T2, i_num)] = E
-                elif abs(float(E) - float(states[(J2, parity_val, T2, i_num)]))>1e-4:
+                elif abs(float(E) - float(states[(J2, parity_val, T2, i_num)])) > 1e-4:
                     if verbose:
                         print("duplicate state found, confused", line)
                         print(float(E) - float(states[(J2, parity_val, T2, i_num)]))
                     raise RuntimeError("Found same state with different energy", line, E)
                 else:
                     if verbose:
-                        print("duplicate state found, ignoring",line)
+                        print("duplicate state found, ignoring", line)
                 i_num += 1
             if verbose:
                 print(states)

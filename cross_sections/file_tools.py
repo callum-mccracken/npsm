@@ -205,7 +205,7 @@ def simplify_observ(desired_state, transitions, filename, function=None, verbose
                 state_line = line
                 # print(state_line)
                 # print(state_line[24])
-                if pn_mode: 
+                if pn_mode:
                     state_line_list = list(state_line)
                     # TODO: will break if either J,T are double digit
                     state_line_list[24] = '0'
@@ -272,7 +272,8 @@ def simplify_observ(desired_state, transitions, filename, function=None, verbose
         assert num == f_num
         new_name = "{} -- {} {} {} # {} {}".format(
             num, J2, f_parity, T2, state_counter[(J2, T2)], E)
-        if verbose: print("replacing", title, "with", new_name)
+        if verbose:
+            print("replacing", title, "with", new_name)
         text = text.replace(title, new_name)
 
     simp_path = filename+"_simp"
@@ -280,7 +281,8 @@ def simplify_observ(desired_state, transitions, filename, function=None, verbose
         simp_path += "_pn"
     with open(simp_path, "w+") as simp_file:
         simp_file.write(text)
-    if verbose: print('wrote output to', simp_path)
+    if verbose:
+        print('wrote output to', simp_path)
 
     if function == "make_ncsm_e1":
         return simp_path, num_desired_state
