@@ -6,6 +6,7 @@ import file_tools
 import dot_in
 import os
 import re
+import cross_sections_utils
 
 desired_states = ["1 -1 3", "3 -1 3"]
 """resultant nucleus states we care about, 2J, pi, 2T"""
@@ -32,6 +33,7 @@ ncsd_file = "/home/callum/ncsd/Li9_n3lo-NN3Nlnl-srg2.0_Nmax8.20"
 
 nmax = 8
 
+A, _ = cross_sections_utils.get_A_Z("Be8")
 ncsmc_rgm_out_file = join(ncsmc_out_dir, f"ncsm_rgm_Am2_1_1.out_{run_name}")
 
 def transition_parameter(trans_str):
@@ -134,7 +136,7 @@ def get_radii(ncsd_file, nmax, state):
 
 
 def make_ncsm_e1(desired_states, transitions, run_name,
-                 observ_files, ncsd_file, nmax, out_dir=None, verbose=False):
+                 observ_files, ncsd_file, nmax, out_dir=None, pn_mode=False, A=None, verbose=False):
     """
     Makes NCSM_E1_Afi.dat files for the given parameters.
 
@@ -176,7 +178,7 @@ def make_ncsm_e1(desired_states, transitions, run_name,
 
     if pn_mode:
        # get order of states from ncsmc_rgm_out file
-       all_resultant_states = cross_sections_utils.get_all_resultant_states(ncsmc_rgm_out_file, verbose=verbose)
+       all_resultant_states = cross_sections_utils.get_all_resultant_states(ncsmc_rgm_out_file, A=A, verbose=verbose)
        # create mapping from ncsmc_rgm_out order to ascending energy
 
 
@@ -329,4 +331,4 @@ def make_ncsm_e1(desired_states, transitions, run_name,
 if __name__ == "__main__":
     make_ncsm_e1(
         desired_states, transitions, run_name, observ_files, ncsd_file, nmax,
-        out_dir="")
+        out_dir="", pn_mode=pn_mode, A=A, verbose=True)
